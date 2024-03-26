@@ -2,4 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="green">#006666</color>
+    <color name="green_x1">#E6F1D8</color>
+    <color name="xam">#888888</color>
+    <color name="xam_x1">#EEEEEE</color>
+    <color name="red">#FF0000</color>
 </resources>

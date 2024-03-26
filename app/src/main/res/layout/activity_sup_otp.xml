@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Presentation.LoginAccout.OTP.SP_OTP"
+    android:background="@color/white"
+    tools:ignore="MissingDefaultResource">
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar_SigUpOTP"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_back_24"
+                        android:backgroundTint="@color/green"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"/>
+                </RelativeLayout>
+            </androidx.appcompat.widget.Toolbar>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp">
+                <TextView
+                    android:text="Enter OTP Code"
+                    android:textStyle="bold"
+                    android:textSize="35dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"/>
+                <TextView
+                    android:text="Please check your email inbox for a message from Trendify Enter the one-live verfication code below"
+                    android:layout_marginTop="8dp"
+                    android:textSize="20dp"
+                    android:textStyle="italic"
+                    android:layout_width="380dp"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <RelativeLayout
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"> <!-- Sử dụng drawable để tạo đường viền tròn -->
+                    <EditText
+                        android:id="@+id/editText1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:inputType="number"
+                        android:maxLength="1"
+                        android:textSize="24sp"
+                        android:gravity="center"
+                        android:background="@drawable/rounded_border_otp"
+
+                        /> <!-- Để giữ khoảng cách giữa văn bản và viền -->
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"> <!-- Sử dụng drawable để tạo đường viền tròn -->
+                    <EditText
+                        android:id="@+id/editText2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:inputType="number"
+                        android:maxLength="1"
+                        android:textSize="24sp"
+                        android:gravity="center"
+                        android:background="@drawable/rounded_border_otp"
+                        /> <!-- Để giữ khoảng cách giữa văn bản và viền -->
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"> <!-- Sử dụng drawable để tạo đường viền tròn -->
+                    <EditText
+                        android:id="@+id/editText3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:inputType="number"
+                        android:maxLength="1"
+                        android:textSize="24sp"
+                        android:gravity="center"
+                        android:background="@drawable/rounded_border_otp"
+                        /> <!-- Để giữ khoảng cách giữa văn bản và viền -->
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"> <!-- Sử dụng drawable để tạo đường viền tròn -->
+                    <EditText
+                        android:id="@+id/editText4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:inputType="number"
+                        android:maxLength="1"
+                        android:textSize="24sp"
+                        android:gravity="center"
+                        android:background="@drawable/rounded_border_otp"
+                        /> <!-- Để giữ khoảng cách giữa văn bản và viền -->
+                </RelativeLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginLeft="15dp">
+                <TextView
+                    android:text="You can ressend code ... seconds"
+                    android:gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:textSize="20dp"
+                    android:layout_width="380dp"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:text="Resend code"
+                    android:gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:textSize="20dp"
+                    android:layout_width="380dp"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center">
+                <Button
+                    android:id="@+id/btn_sendCode"
+                    android:layout_gravity="center"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

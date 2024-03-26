@@ -13,6 +13,27 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".Presentation.LoginAccout.ForgotPass.forgot_password"
+            android:exported="true" />
+        <activity
+            android:name=".Presentation.LoginAccout.SignIn.sign_in"
+            android:exported="true" />
+        <activity
+            android:name=".Presentation.Wishlist.Detail_SP_WishList"
+            android:exported="true" />
+        <activity
+            android:name=".Presentation.LoginAccout.OTP.SP_OTP"
+            android:exported="true" />
+        <activity
+            android:name=".Presentation.LoginAccout.SingUp.sign_up"
+            android:exported="true" />
+        <activity
+            android:name=".Presentation.LoginAccout.HomeThamGia"
+            android:exported="true" />
+        <activity
+            android:name=".Presentation.Wishlist.Wishlist"
+            android:exported="true" />
+        <activity
             android:name=".UI.MainActivity"
             android:exported="true">
             <intent-filter>

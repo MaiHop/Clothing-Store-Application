@@ -2,7 +2,13 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
+      <entry key="DatLai_Password">
+        <State />
+      </entry>
       <entry key="HomeThamGia">
+        <State />
+      </entry>
+      <entry key="Wishlist">
         <State />
       </entry>
       <entry key="app">

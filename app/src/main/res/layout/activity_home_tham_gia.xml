@@ -146,19 +146,21 @@
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginTop="50dp"
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="vertical"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:layout_gravity="center_vertical"
                 >
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
+                    android:layout_marginBottom="10dp"
                     android:background="@drawable/rounded_border_thamgia"
                     android:backgroundTint="@color/green"
                     > <!-- Sử dụng drawable để tạo đường viền tròn -->
@@ -176,27 +178,13 @@
                         android:textStyle="bold" />
 
                 </RelativeLayout>
-
-            </LinearLayout>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center">
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
+                    android:layout_marginTop="10dp"
                     android:background="@drawable/rounded_border_thamgia"
                     android:backgroundTint="@color/green_x1"
                     > <!-- Sử dụng drawable để tạo đường viền tròn -->
-
                     <!-- TextView -->
                     <Button
                         android:id="@+id/btn_SignInThamGia"
@@ -211,6 +199,7 @@
 
                 </RelativeLayout>
             </LinearLayout>
+
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

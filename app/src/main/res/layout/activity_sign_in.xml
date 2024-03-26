@@ -45,7 +45,7 @@
                     android:textSize="35dp"
                     android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"/>
+                    android:layout_height="wrap_content"/>
                 <TextView
                     android:text="Sign in access your personalized fashion."
                     android:layout_marginTop="8dp"
@@ -123,36 +123,12 @@
                     android:layout_marginTop="12dp"
                     />
                 <TextView
+                    android:id="@+id/tv_forgotPW"
                     android:text="Forgot Password?"
                     android:gravity="center_vertical|right"
                     android:textSize="18dp"
                     android:textColor="@color/green"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="12dp"
-                    />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:gravity="center">
-                <TextView
-                    android:text="Already have an account? "
-                    android:gravity="center_vertical"
-                    android:textSize="18dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="12dp"
-                    />
-                <TextView
-                    android:text="Sign in"
-                    android:gravity="center_vertical"
-                    android:textSize="18dp"
-                    android:textColor="@color/green"
-                    android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:layout_marginTop="12dp"
                     />
@@ -402,13 +378,13 @@
                         android:background="@drawable/rounded_border_thamgia"
                         android:backgroundTint="@color/green"> <!-- Sử dụng drawable để tạo đường viền tròn -->
                         <Button
-                            android:id="@+id/btn_SignUp"
+                            android:id="@+id/btn_SignIn"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:padding="8dp"
-                            android:text="Sign Up"
+                            android:text="Sign In"
                             android:backgroundTint="@color/green"
                             android:textColor="@color/white"
                             android:textStyle="bold"/>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="bold"
+    android:id="@+id/layout_item_cart"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/border"
+    tools:ignore="MissingDefaultResource"
+    android:layout_marginBottom="15dp">
+
+    <ImageView
+        android:id="@+id/iv_Image"
+        android:layout_width="110dp"
+        android:layout_height="180dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_launcher_background" />
+
+    <TextView
+        android:id="@+id/tv_TenSanPham"
+        android:layout_width="232dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        android:text="Áo Polo Vải Dry Pique Ngắn Tay (Kẻ Sọc)"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/iv_Image"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_Mau"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:text="Color: Black"
+        app:layout_constraintStart_toEndOf="@+id/iv_Image"
+        app:layout_constraintTop_toBottomOf="@+id/tv_Size" />
+
+    <TextView
+        android:id="@+id/tv_Size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:text="Size : L"
+        app:layout_constraintStart_toEndOf="@+id/iv_Image"
+        app:layout_constraintTop_toBottomOf="@+id/tv_TenSanPham" />
+
+    <ImageView
+        android:id="@+id/iv_color"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintStart_toEndOf="@+id/tv_Mau"
+        app:layout_constraintTop_toBottomOf="@+id/tv_Size"
+        app:srcCompat="@android:drawable/alert_dark_frame" />
+
+    <TextView
+        android:id="@+id/tv_SoLuong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:text="Qty : 1"
+        app:layout_constraintStart_toEndOf="@+id/iv_Image"
+        app:layout_constraintTop_toBottomOf="@+id/tv_Mau" />
+
+    <TextView
+        android:id="@+id/tv_ThanhTien"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:text="$ 980.000 VND"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/iv_Image"
+        app:layout_constraintTop_toBottomOf="@+id/tv_SoLuong" />
+
+    <CheckBox
+        android:id="@+id/cb_Selected"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="22dp"
+        android:checked="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/ib_Edit"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@+id/tv_TenSanPham"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_edit" />
+
+    <ImageButton
+        android:id="@+id/ib_Remove"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="25dp"
+        app:layout_constraintStart_toEndOf="@+id/tv_TenSanPham"
+        app:layout_constraintTop_toBottomOf="@+id/ib_Edit"
+        app:srcCompat="@android:drawable/ic_menu_delete" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

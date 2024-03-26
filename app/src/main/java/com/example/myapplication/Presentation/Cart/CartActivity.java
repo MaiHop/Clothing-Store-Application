@@ -58,6 +58,6 @@ public class CartActivity extends AppCompatActivity {
         this.btn_DatHang = findViewById(R.id.btn_DatHang);
         this.toolbar_cart = findViewById(R.id.toolbar_cart);
         setSupportActionBar(toolbar_cart);
-        
+
     }
 }

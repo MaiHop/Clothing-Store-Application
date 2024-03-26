@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    android:background="@drawable/item_background"
+    android:elevation="3dp">
+
+    <TextView
+        android:id="@+id/datetxt"
+        android:layout_width="249dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="30/11/213"
+        android:textSize="17dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="68dp"
+        android:src="@drawable/menu"
+        app:layout_constraintBottom_toBottomOf="@+id/datetxt"
+        app:layout_constraintStart_toEndOf="@+id/datetxt" />
+
+    <ImageView
+        android:id="@+id/pic"
+        android:layout_width="129dp"
+        android:layout_height="184dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/datetxt" />
+
+    <TextView
+        android:id="@+id/titletxt"
+        android:layout_width="193dp"
+        android:layout_height="44dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="Urban bend long ....."
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="137dp"
+        android:layout_height="27dp"
+        android:layout_marginEnd="106dp"
+        android:layout_marginBottom="4dp"
+        android:text="Total Shopping"
+        android:textColor="#808080"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/pricetxt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/pricetxt"
+        tools:ignore="TextSizeCheck" />
+
+    <TextView
+        android:id="@+id/pricetxt"
+        android:layout_width="92dp"
+        android:layout_height="34dp"
+
+        android:layout_marginEnd="149dp"
+        android:layout_marginBottom="4dp"
+        android:text="$411"
+        android:textColor="#4CAF50"
+        android:textSize="23dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnTOrder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btnTOrder" />
+
+    <Button
+        android:id="@+id/btnTOrder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="16dp"
+        android:text="Track Order"
+        app:layout_constraintBottom_toBottomOf="@+id/pic"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

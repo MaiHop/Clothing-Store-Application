@@ -1,5 +1,6 @@
-package com.example.myapplication.Presentation.Cart;
+package com.example.myapplication.Presentation.Cart.ViewHolder;
 
+import android.app.Dialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.View;
@@ -16,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.Presentation.Cart.Cart;
 import com.example.myapplication.R;
 
 import java.util.ArrayList;
@@ -56,6 +58,8 @@ public class CartViewHolder extends RecyclerView.ViewHolder {
 
     }
 
+
+
     public void updateUI(Cart cart){
         this.iv_Image.setImageResource(cart.getImage());
         this.tv_TenSanPham.setText(cart.getTenSanPham());
@@ -64,8 +68,6 @@ public class CartViewHolder extends RecyclerView.ViewHolder {
         this.tv_SoLuong.setText("Qty :"+cart.getSoLuong());
         this.tv_ThanhTien.setText("$"+cart.getThanhTien());
         this.cb_Selected.setSelected(cart.isChecked());
-
-
     }
 
     public void updateTotal(List<Cart> list,Button button){
@@ -78,7 +80,6 @@ public class CartViewHolder extends RecyclerView.ViewHolder {
             }
         }
         button.setText("Checkout ("+count+") - "+"$"+total);
-
     }
 
 

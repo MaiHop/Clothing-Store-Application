@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CartRepository {
-    public static List<Cart> getAll(){
+    public  List<Cart> getAll(){
         Cart cart1 = new Cart();
-        cart1.setImage(R.drawable.negi);
+        cart1.setImage(R.drawable.logo);
         cart1.setTenSanPham("AIRism Cotton Áo Thun Không Tay");
         cart1.setSize("L");
         cart1.setMau("Đen");
@@ -17,7 +17,7 @@ public class CartRepository {
         cart1.setChecked(true);
 
         Cart cart2 = new Cart();
-        cart2.setImage(R.drawable.negi);
+        cart2.setImage(R.drawable.logo);
         cart2.setTenSanPham("AIRism Cotton Áo Thun Không Tay");
         cart2.setSize("L");
         cart2.setMau("Đen");
@@ -26,7 +26,7 @@ public class CartRepository {
         cart2.setChecked(true);
 
         Cart cart3 = new Cart();
-        cart3.setImage(R.drawable.negi);
+        cart3.setImage(R.drawable.logo);
         cart3.setTenSanPham("AIRism Cotton Áo Thun Không Tay");
         cart3.setSize("L");
         cart3.setMau("Đen");
@@ -35,7 +35,7 @@ public class CartRepository {
         cart3.setChecked(true);
 
         Cart cart4 = new Cart();
-        cart4.setImage(R.drawable.negi);
+        cart4.setImage(R.drawable.logo);
         cart4.setTenSanPham("AIRism Cotton Áo Thun Không Tay");
         cart4.setSize("L");
         cart4.setMau("Đen");
@@ -44,7 +44,7 @@ public class CartRepository {
         cart4.setChecked(true);
 
         Cart cart5 = new Cart();
-        cart5.setImage(R.drawable.negi);
+        cart5.setImage(R.drawable.logo);
         cart5.setTenSanPham("AIRism Cotton Áo Thun Không Tay");
         cart5.setSize("L");
         cart5.setMau("Đen");
@@ -61,4 +61,13 @@ public class CartRepository {
 
         return  list;
     }
+     public List<String> ListSize(){
+        List<String> list = new ArrayList<>();
+        list.add("XS");
+        list.add("S");
+        list.add("M");
+        list.add("L");
+        list.add("XL");
+        return list;
+     }
 }

@@ -6,7 +6,7 @@
     android:id="@+id/layout_item_cart"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/border"
+    android:background="@drawable/item_cart_defaut"
     tools:ignore="MissingDefaultResource"
     android:layout_marginBottom="15dp">
 
@@ -17,6 +17,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
+        android:background="@drawable/bg_image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -104,7 +105,7 @@
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toEndOf="@+id/tv_TenSanPham"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_edit" />
+        android:background="@drawable/baseline_edit_24" />
 
     <ImageButton
         android:id="@+id/ib_Remove"
@@ -114,6 +115,6 @@
         android:layout_marginTop="25dp"
         app:layout_constraintStart_toEndOf="@+id/tv_TenSanPham"
         app:layout_constraintTop_toBottomOf="@+id/ib_Edit"
-        app:srcCompat="@android:drawable/ic_menu_delete" />
+        android:background="@drawable/baseline_delete_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -19,7 +19,7 @@ public class SizeAdapter extends RecyclerView.Adapter<SizeViewHolder> {
     private List<String> list_size;
     private Context context;
     private LayoutInflater minflater;
-    int rowindex = 0;
+    int rowindex = -1;
     public SizeAdapter( Context context,List<String> list_size) {
         this.list_size = list_size;
         this.context = context;

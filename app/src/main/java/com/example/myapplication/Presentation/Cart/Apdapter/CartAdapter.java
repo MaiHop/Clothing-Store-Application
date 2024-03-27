@@ -73,27 +73,30 @@ public class CartAdapter extends RecyclerView.Adapter<CartViewHolder> {
         holder.ib_Edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Dialog dialog = new Dialog(context);
-                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                dialog.setContentView(R.layout.bottom_dialog_cart);
-                dialog.show();
-                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
-                dialog.getWindow().setGravity(Gravity.BOTTOM);
-
-                CartRepository rep = new CartRepository();
-                List<String> list = rep.ListSize();
-
-                RecyclerView rv_size =context.findViewById(R.id.rv_size);
-
-                CartAdapter cartAdapter =new CartAdapter(context, list,btn_DatHang, toolbar_title);
-                this.rv_ListCart.setAdapter(cartAdapter);
-                this.rv_ListCart.setLayoutManager(new LinearLayoutManager(this));
+                showdialog();
 
 
             }
         });
+    }
+    private void showdialog(){
+        Dialog dialog = new Dialog(context);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.bottom_dialog_cart);
+        dialog.show();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+        dialog.getWindow().setGravity(Gravity.BOTTOM);
+
+        CartRepository re = new CartRepository();
+        List<String> list = re.getListSize();
+
+        RecyclerView rv_size =dialog.findViewById(R.id.rv_size);
+
+        SizeAdapter cartAdapter =new SizeAdapter(this.context, list);
+        rv_size.setAdapter(cartAdapter);
+        rv_size.setLayoutManager(new LinearLayoutManager(this.context,RecyclerView.HORIZONTAL,false));
     }
 
 

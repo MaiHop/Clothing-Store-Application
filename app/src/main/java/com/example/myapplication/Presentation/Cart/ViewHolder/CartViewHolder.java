@@ -1,9 +1,15 @@
 package com.example.myapplication.Presentation.Cart.ViewHolder;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -15,9 +21,13 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.Presentation.Cart.Apdapter.CartAdapter;
+import com.example.myapplication.Presentation.Cart.Apdapter.SizeAdapter;
 import com.example.myapplication.Presentation.Cart.Cart;
+import com.example.myapplication.Presentation.Cart.CartRepository;
 import com.example.myapplication.R;
 
 import java.util.ArrayList;
@@ -44,6 +54,7 @@ public class CartViewHolder extends RecyclerView.ViewHolder {
         this.tv_ThanhTien = itemView.findViewById(R.id.tv_ThanhTien);
         //Image Button
         this.ib_Edit = itemView.findViewById(R.id.ib_Edit);
+
         this.ib_Remove = itemView.findViewById(R.id.ib_Remove);
         this.layout_item_cart = itemView.findViewById(R.id.layout_item_cart);
 //        this.layout_item_cart.setOnClickListener(new View.OnClickListener() {
@@ -80,6 +91,25 @@ public class CartViewHolder extends RecyclerView.ViewHolder {
             }
         }
         button.setText("Checkout ("+count+") - "+"$"+total);
+    }
+    public void showDialog(Context context){
+//        Dialog dialog = new Dialog(context);
+//        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        dialog.setContentView(R.layout.bottom_dialog_cart);
+//        dialog.show();
+//        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+//        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+//        dialog.getWindow().setGravity(Gravity.BOTTOM);
+//
+//        CartRepository rep = new CartRepository();
+//        List<String> list = rep.ListSize();
+//
+//        RecyclerView rv_size = itemView.findViewById(R.id.rv_size);
+//
+//        SizeAdapter sizeAdapter =new SizeAdapter(list,context);
+//        rv_size.setAdapter(sizeAdapter);
+////        rv_size.setLayoutManager(new LinearLayoutManager(context,RecyclerView.HORIZONTAL,false));
     }
 
 

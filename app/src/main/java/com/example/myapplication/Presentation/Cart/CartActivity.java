@@ -1,6 +1,7 @@
 package com.example.myapplication.Presentation.Cart;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Size;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,7 +15,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.Presentation.Cart.Apdapter.CartAdapter;
+import com.example.myapplication.Presentation.Cart.Apdapter.SizeAdapter;
 import com.example.myapplication.R;
+
+import java.util.List;
 
 public class CartActivity extends AppCompatActivity {
     private RecyclerView rv_ListCart;
@@ -30,10 +34,12 @@ public class CartActivity extends AppCompatActivity {
 
         this.rv_ListCart =findViewById(R.id.rv_ListCart);
 
-        CartAdapter cartAdapter =new CartAdapter(this, CartRepository.getAll(),btn_DatHang, toolbar_title);
+        CartRepository re = new CartRepository();
+        List<Cart> list = re.getAll();
+
+        CartAdapter cartAdapter =new CartAdapter(this, list,btn_DatHang, toolbar_title);
         this.rv_ListCart.setAdapter(cartAdapter);
         this.rv_ListCart.setLayoutManager(new LinearLayoutManager(this));
-
 
     }
 

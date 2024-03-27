@@ -61,7 +61,7 @@ public class CartRepository {
 
         return  list;
     }
-     public List<String> ListSize(){
+     public List<String> getListSize(){
         List<String> list = new ArrayList<>();
         list.add("XS");
         list.add("S");

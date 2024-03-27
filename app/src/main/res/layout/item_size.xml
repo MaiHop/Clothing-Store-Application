@@ -12,6 +12,7 @@
         android:text="XS"
         android:textStyle="bold"
         android:gravity="center"
+        android:layout_margin="10dp"
         android:background="@drawable/item_size_defaut"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

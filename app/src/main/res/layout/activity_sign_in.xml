@@ -173,14 +173,14 @@
                                     android:layout_height="45dp"
                                     android:background="@drawable/rounded_border_thamgia"><!-- Sử dụng drawable để tạo đường viền tròn -->
 
-                                    <Button
+                                    <com.google.android.material.button.MaterialButton
                                         android:id="@+id/btn_GG"
                                         android:text="Đăng Nhập Bằng Google"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:layout_marginLeft="10dp"
                                         android:layout_marginRight="10dp"
-                                        android:backgroundTint="@color/white"
+                                        style="@style/Widget.MaterialComponents.Button.TextButton"
                                         android:padding="8dp"
                                         android:textColor="@color/black"
                                         android:textStyle="bold"
@@ -206,9 +206,9 @@
                                     android:layout_height="45dp"
                                     android:background="@drawable/rounded_border_thamgia"><!-- Sử dụng drawable để tạo đường viền tròn -->
 
-                                    <Button
+                                    <com.google.android.material.button.MaterialButton
                                         android:id="@+id/btn_AP"
-                                        android:backgroundTint="@color/white"
+                                        style="@style/Widget.MaterialComponents.Button.TextButton"
                                         android:padding="8dp"
                                         android:text="Đăng Nhập Bằng Apple"
                                         android:textColor="@color/black"
@@ -239,9 +239,9 @@
                                     android:layout_height="45dp"
                                     android:background="@drawable/rounded_border_thamgia"><!-- Sử dụng drawable để tạo đường viền tròn -->
 
-                                    <Button
+                                    <com.google.android.material.button.MaterialButton
                                         android:id="@+id/btn_FB"
-                                        android:backgroundTint="@color/white"
+                                        style="@style/Widget.MaterialComponents.Button.TextButton"
                                         android:padding="8dp"
                                         android:text="Đăng Nhập Bằng Facebook"
                                         android:textColor="@color/black"

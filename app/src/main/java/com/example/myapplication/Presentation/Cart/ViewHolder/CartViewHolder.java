@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -25,6 +26,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.Presentation.Cart.Apdapter.CartAdapter;
+import com.example.myapplication.Presentation.Cart.Apdapter.ColorAdapter;
 import com.example.myapplication.Presentation.Cart.Apdapter.SizeAdapter;
 import com.example.myapplication.Presentation.Cart.Cart;
 import com.example.myapplication.Presentation.Cart.CartRepository;
@@ -56,7 +58,7 @@ public class CartViewHolder extends RecyclerView.ViewHolder {
         this.ib_Edit = itemView.findViewById(R.id.ib_Edit);
 
         this.ib_Remove = itemView.findViewById(R.id.ib_Remove);
-        this.layout_item_cart = itemView.findViewById(R.id.layout_item_cart);
+//        this.layout_item_cart = itemView.findViewById(R.id.layout_item_cart);
 //        this.layout_item_cart.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -92,26 +94,82 @@ public class CartViewHolder extends RecyclerView.ViewHolder {
         }
         button.setText("Checkout ("+count+") - "+"$"+total);
     }
-    public void showDialog(Context context){
-//        Dialog dialog = new Dialog(context);
-//        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-//        dialog.setContentView(R.layout.bottom_dialog_cart);
-//        dialog.show();
-//        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-//        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
-//        dialog.getWindow().setGravity(Gravity.BOTTOM);
-//
-//        CartRepository rep = new CartRepository();
-//        List<String> list = rep.ListSize();
-//
-//        RecyclerView rv_size = itemView.findViewById(R.id.rv_size);
-//
-//        SizeAdapter sizeAdapter =new SizeAdapter(list,context);
-//        rv_size.setAdapter(sizeAdapter);
-////        rv_size.setLayoutManager(new LinearLayoutManager(context,RecyclerView.HORIZONTAL,false));
+    private int qty =1;
+    public void showdialog(Context context){
+
+        Dialog dialog = new Dialog(context);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.bottom_dialog_cart);
+        dialog.show();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+        dialog.getWindow().setGravity(Gravity.BOTTOM);
+
+        CartRepository re = new CartRepository();
+        List<String> list = re.getListSize();
+
+        RecyclerView rv_size =dialog.findViewById(R.id.rv_size);
+
+        SizeAdapter sizeAdapter =new SizeAdapter(context, list);
+        rv_size.setAdapter(sizeAdapter);
+        rv_size.setLayoutManager(new LinearLayoutManager(context,RecyclerView.HORIZONTAL,false));
+
+        RecyclerView rv_color =dialog.findViewById(R.id.rv_color);
+
+        ColorAdapter colortAdapter =new ColorAdapter(context, list);
+        rv_color.setAdapter(colortAdapter);
+        rv_color.setLayoutManager(new LinearLayoutManager(context,RecyclerView.HORIZONTAL,false));
+
+
+        TextView tv_SoLuongDat = dialog.findViewById(R.id.tv_SoLuongDat);
+        Button btn_Giam = dialog.findViewById(R.id.btn_Giam);
+        Button btn_Tang = dialog.findViewById(R.id.btn_Tang);
+        Button btn_Cancel = dialog.findViewById(R.id.btn_Cancel);
+        Button btn_Confirm = dialog.findViewById(R.id.btn_Confirm);
+        btn_Giam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(qty>1){
+                    qty-=1;
+                    tv_SoLuongDat.setText(String.valueOf(qty));
+                }else {
+                    qty=1;
+                    tv_SoLuongDat.setText(String.valueOf(qty));
+                }
+//                Toast.makeText(context, "Trừ", Toast.LENGTH_SHORT).show();
+            }
+        });
+        btn_Tang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                qty+=1;
+                tv_SoLuongDat.setText(String.valueOf(qty));
+//                Toast.makeText(context, "Tăng", Toast.LENGTH_SHORT).show();
+            }
+        });
+        btn_Cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.hide();
+            }
+        });
+        btn_Confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, qty, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 
-
+    public void removeItem(Context context,LayoutInflater layoutInflater) {
+        Toast toast = new Toast(context);
+        View view = layoutInflater.inflate(R.layout.custom_toast,(ViewGroup) itemView.findViewById(R.id.removed_custom_toast));
+        toast.setView(view);
+        toast.setGravity(Gravity.BOTTOM,0,0);
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.show();
+        //                Toast.makeText(context,"Removed form Cart!", Toast.LENGTH_SHORT).show();
+    }
 }

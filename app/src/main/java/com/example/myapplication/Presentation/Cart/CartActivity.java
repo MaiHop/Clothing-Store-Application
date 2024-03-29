@@ -1,7 +1,6 @@
 package com.example.myapplication.Presentation.Cart;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Size;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -15,7 +14,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.Presentation.Cart.Apdapter.CartAdapter;
-import com.example.myapplication.Presentation.Cart.Apdapter.SizeAdapter;
 import com.example.myapplication.R;
 
 import java.util.List;
@@ -62,7 +60,7 @@ public class CartActivity extends AppCompatActivity {
     }
 
     private void init(){
-        this.toolbar_title = findViewById((R.id.toolbar_title));
+        this.toolbar_title = findViewById((R.id.toolbar_cart_title));
         this.btn_DatHang = findViewById(R.id.btn_DatHang);
         this.toolbar_cart = findViewById(R.id.toolbar_cart);
         setSupportActionBar(toolbar_cart);

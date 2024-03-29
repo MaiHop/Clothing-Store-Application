@@ -19,7 +19,7 @@ public class SizeAdapter extends RecyclerView.Adapter<SizeViewHolder> {
     private List<String> list_size;
     private Context context;
     private LayoutInflater minflater;
-    int rowindex = -1;
+    int rowindex=-1;
     public SizeAdapter( Context context,List<String> list_size) {
         this.list_size = list_size;
         this.context = context;
@@ -43,10 +43,11 @@ public class SizeAdapter extends RecyclerView.Adapter<SizeViewHolder> {
     public void onBindViewHolder(@NonNull SizeViewHolder holder, int position) {
         String size = list_size.get(position);
         holder.updateUI(size);
+        int p = position;
         holder.tv_size.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                rowindex = position;
+                rowindex = p;
                 notifyDataSetChanged();            }
         });
         if(rowindex!=position){

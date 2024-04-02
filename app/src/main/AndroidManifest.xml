@@ -18,6 +18,9 @@
         <activity
             android:name=".Presentation.Homepage.category_women"
             android:exported="true" />
+        <activity
+            android:name=".Presentation.Homepage.Runsort"
+            android:exported="true" />
 
         <activity
             android:name=".UI.MainActivity"

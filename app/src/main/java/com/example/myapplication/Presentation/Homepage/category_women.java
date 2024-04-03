@@ -1,8 +1,10 @@
 package com.example.myapplication.Presentation.Homepage;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,6 +35,19 @@ public class category_women extends AppCompatActivity {
                 finish();
             }
         });
+        final Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.sort2);
+
+        // Tìm nút "Sort" và đặt sự kiện click cho nó
+        Button btnSort = findViewById(R.id.btnSort);
+        btnSort.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Hiển thị dialog
+                dialog.show();
+            }
+        });
+
 
         initRecyclerView();
     }

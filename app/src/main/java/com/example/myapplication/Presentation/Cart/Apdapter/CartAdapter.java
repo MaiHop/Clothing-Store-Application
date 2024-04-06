@@ -1,32 +1,24 @@
 package com.example.myapplication.Presentation.Cart.Apdapter;
 
-import android.app.Dialog;
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Presentation.Cart.Cart;
-import com.example.myapplication.Presentation.Cart.CartRepository;
-import com.example.myapplication.Presentation.Cart.ViewHolder.CartViewHolder;
+import com.example.myapplication.Presentation.Cart.Model.Cart;
+import com.example.myapplication.Presentation.Cart.ViewHolder.GioHangVH;
 import com.example.myapplication.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CartAdapter extends RecyclerView.Adapter<CartViewHolder> {
+public class CartAdapter extends RecyclerView.Adapter<GioHangVH> {
     private List<Cart> list;
     private List<Cart> list_checkout=new ArrayList<>();
     private LayoutInflater minflater;
@@ -45,11 +37,11 @@ public class CartAdapter extends RecyclerView.Adapter<CartViewHolder> {
 
     @NonNull
     @Override
-    public CartViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public GioHangVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = minflater.inflate(
                 R.layout.item_cart, parent, false);
 
-        return new CartViewHolder(itemView);
+        return new GioHangVH(itemView);
     }
 
     @Override
@@ -58,7 +50,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CartViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull GioHangVH holder, int position) {
         Cart cart = list.get(position);
         toolbar_title.setText("Cart ("+list.size()+")");
         holder.updateTotal(list, btn_DatHang);

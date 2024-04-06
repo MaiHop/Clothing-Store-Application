@@ -3,24 +3,19 @@ package com.example.myapplication.Presentation.Cart.Apdapter;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Presentation.Cart.ViewHolder.CartViewHolder;
-import com.example.myapplication.Presentation.Cart.ViewHolder.ColorViewHolder;
-import com.example.myapplication.Presentation.Cart.ViewHolder.SizeViewHolder;
+import com.example.myapplication.Presentation.Cart.ViewHolder.MauVH;
 import com.example.myapplication.R;
-import com.google.android.material.shape.ShapeAppearanceModel;
 
 import java.util.List;
 
-public class ColorAdapter extends RecyclerView.Adapter<ColorViewHolder>{
+public class ColorAdapter extends RecyclerView.Adapter<MauVH>{
     private List<String> list_color;
     private Context context;
     private LayoutInflater minflater;
@@ -34,18 +29,18 @@ public class ColorAdapter extends RecyclerView.Adapter<ColorViewHolder>{
 
     @NonNull
     @Override
-    public ColorViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MauVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = minflater.inflate(
                 R.layout.item_color, parent, false);
 
-        return new ColorViewHolder(itemView);
+        return new MauVH(itemView);
     }
     @Override
     public int getItemCount() {
         return list_color.size();
     }
     @Override
-    public void onBindViewHolder(@NonNull ColorViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MauVH holder, int position) {
         String color = list_color.get(position);
         holder.updateUI();
         int p = position;

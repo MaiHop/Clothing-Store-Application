@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/item_delivery"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="15dp"
+    android:orientation="horizontal"
+    android:background="@drawable/stroke_black_rad_5">
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_Logo_VanChuyen"
+        android:layout_width="83dp"
+        android:layout_height="83dp"
+        android:background="#000000"
+        android:padding="0dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/circular"
+        app:strokeColor="#EFEFEF"
+        app:strokeWidth="3dp" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="5">
+        <TextView
+            android:id="@+id/tv_TenVanChuyen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:text="FedEx Express"/>
+        <TextView
+            android:id="@+id/tv_ThoiGianDuKien"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:text="Estimated arrival: 23 - 24 Dec, 2024"/>
+        <TextView
+            android:id="@+id/tv_GiaVanCHuyen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:padding="10dp"
+            android:text="$10"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_D_Checked"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:visibility="visible"
+        app:srcCompat="@drawable/baseline_check_24" />
+
+
+</LinearLayout>

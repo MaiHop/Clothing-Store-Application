@@ -1,6 +1,8 @@
-package com.example.myapplication.Presentation.Cart;
+package com.example.myapplication.Presentation.Cart.Model;
 
-public class Cart {
+import java.io.Serializable;
+
+public class Cart implements Serializable {
     private String  TenSanPham, Size, Mau, SoLuong;
     private int Image;
     private double ThanhTien;

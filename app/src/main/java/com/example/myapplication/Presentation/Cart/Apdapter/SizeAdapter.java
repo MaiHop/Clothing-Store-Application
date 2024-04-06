@@ -9,13 +9,12 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Presentation.Cart.ViewHolder.CartViewHolder;
-import com.example.myapplication.Presentation.Cart.ViewHolder.SizeViewHolder;
+import com.example.myapplication.Presentation.Cart.ViewHolder.SizeVH;
 import com.example.myapplication.R;
 
 import java.util.List;
 
-public class SizeAdapter extends RecyclerView.Adapter<SizeViewHolder> {
+public class SizeAdapter extends RecyclerView.Adapter<SizeVH> {
     private List<String> list_size;
     private Context context;
     private LayoutInflater minflater;
@@ -28,11 +27,11 @@ public class SizeAdapter extends RecyclerView.Adapter<SizeViewHolder> {
 
     @NonNull
     @Override
-    public SizeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public SizeVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = minflater.inflate(
                 R.layout.item_size, parent, false);
 
-        return new SizeViewHolder(itemView);
+        return new SizeVH(itemView);
     }
 
     @Override
@@ -40,7 +39,7 @@ public class SizeAdapter extends RecyclerView.Adapter<SizeViewHolder> {
         return list_size.size();
     }
     @Override
-    public void onBindViewHolder(@NonNull SizeViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull SizeVH holder, int position) {
         String size = list_size.get(position);
         holder.updateUI(size);
         int p = position;

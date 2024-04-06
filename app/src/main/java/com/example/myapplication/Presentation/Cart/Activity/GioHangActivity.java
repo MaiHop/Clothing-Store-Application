@@ -1,4 +1,4 @@
-package com.example.myapplication.Presentation.Cart;
+package com.example.myapplication.Presentation.Cart.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -6,23 +6,29 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.Presentation.Cart.Apdapter.CartAdapter;
+import com.example.myapplication.Presentation.Cart.Model.Cart;
+import com.example.myapplication.Presentation.Cart.Model.DonHang;
+import com.example.myapplication.Presentation.Cart.Repository.CartRepository;
 import com.example.myapplication.R;
 
 import java.util.List;
 
-public class CartActivity extends AppCompatActivity {
+public class GioHangActivity extends AppCompatActivity {
     private RecyclerView rv_ListCart;
     private Button btn_DatHang;
     private TextView toolbar_title;
     private Toolbar toolbar_cart;
+    List<Cart> list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,11 +39,13 @@ public class CartActivity extends AppCompatActivity {
         this.rv_ListCart =findViewById(R.id.rv_ListCart);
 
         CartRepository re = new CartRepository();
-        List<Cart> list = re.getAll();
+        list = re.getAll();
 
         CartAdapter cartAdapter =new CartAdapter(this, list,btn_DatHang, toolbar_title);
         this.rv_ListCart.setAdapter(cartAdapter);
         this.rv_ListCart.setLayoutManager(new LinearLayoutManager(this));
+
+
 
     }
 
@@ -58,7 +66,12 @@ public class CartActivity extends AppCompatActivity {
         }
 
     }
-
+    private void dathang() {
+        DonHang dh = new DonHang();
+        Intent intent = new Intent(this, ThanhToanActivity.class);
+        intent.putExtra("DonHang", dh);
+        startActivity(intent);
+    }
     private void init(){
         this.toolbar_title = findViewById((R.id.toolbar_cart_title));
         this.btn_DatHang = findViewById(R.id.btn_DatHang);
@@ -66,5 +79,14 @@ public class CartActivity extends AppCompatActivity {
         setSupportActionBar(toolbar_cart);
         toolbar_cart.setLogo(R.drawable.baseline_adb_24);
 
+        this.btn_DatHang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dathang();
+            }
+        });
+
     }
+
+
 }

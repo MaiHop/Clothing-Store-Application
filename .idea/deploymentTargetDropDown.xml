@@ -5,6 +5,9 @@
       <entry key="CartActivity">
         <State />
       </entry>
+      <entry key="CheckoutActivity">
+        <State />
+      </entry>
       <entry key="MainActivity">
         <State />
       </entry>

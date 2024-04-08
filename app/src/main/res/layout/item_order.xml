@@ -23,10 +23,11 @@
                 android:id="@+id/iv_Image_order"
                 android:layout_width="110dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/bg_image"
+                android:background="@drawable/solid_white_rad_5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_launcher_background" />
+                app:srcCompat="@drawable/ic_launcher_background"
+                android:scaleType="fitXY"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -74,12 +75,15 @@
                         android:layout_height="wrap_content"
                         android:text="Size : L" />
 
-                    <ImageView
+                    <com.google.android.material.imageview.ShapeableImageView
                         android:id="@+id/iv_Color_order"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
                         android:layout_marginStart="5dp"
-                        app:srcCompat="@android:drawable/alert_dark_frame" />
+                        android:padding="1dp"
+                        android:layout_gravity="center"
+                        app:shapeAppearanceOverlay="@style/circular"
+                        android:background="#000000" />
                 </LinearLayout>
 
                 <TextView
@@ -104,11 +108,12 @@
 
 
     </LinearLayout>
+
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:background="#EFEFEF"
-        android:text=""/>
+        android:text="" />
 
 </LinearLayout>

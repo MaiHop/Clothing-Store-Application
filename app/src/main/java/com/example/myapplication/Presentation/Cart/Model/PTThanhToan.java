@@ -3,11 +3,19 @@ package com.example.myapplication.Presentation.Cart.Model;
 import java.io.Serializable;
 
 public class PTThanhToan implements Serializable {
-    private String TenPhuongThuc;
+    private String TenPhuongThuc, SoThe;
     private boolean checked;
     private int logo;
 
     public PTThanhToan() {
+    }
+
+    public String getSoThe() {
+        return SoThe;
+    }
+
+    public void setSoThe(String soThe) {
+        SoThe = soThe;
     }
 
     public int getLogo() {

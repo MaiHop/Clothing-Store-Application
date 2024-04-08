@@ -1,10 +1,10 @@
 package com.example.myapplication.Presentation.Cart.Repository;
 
 import com.example.myapplication.Presentation.Cart.Model.Cart;
-import com.example.myapplication.Presentation.Cart.Model.DiaChi;
+import com.example.myapplication.Presentation.Cart.Model.DiaChiGH;
 import com.example.myapplication.Presentation.Cart.Model.KhuyenMai;
 import com.example.myapplication.Presentation.Cart.Model.PTThanhToan;
-import com.example.myapplication.Presentation.Cart.Model.VanCHuyen;
+import com.example.myapplication.Presentation.Cart.Model.VanChuyen;
 import com.example.myapplication.R;
 
 import java.util.ArrayList;
@@ -76,11 +76,12 @@ public class CartRepository {
         return list;
      }
 
-     public List<DiaChi> getListAddress(){
-        List<DiaChi> list = new ArrayList<>();
+     public List<DiaChiGH> getListAddress(){
+        List<DiaChiGH> list = new ArrayList<>();
 
-        DiaChi dc1 = new DiaChi();
+        DiaChiGH dc1 = new DiaChiGH();
         dc1.setId("1");
+        dc1.setTenDiaChi("Home");
         dc1.setDiaChiChinh(true);
         dc1.setNguoiNhan("Trung Hậu");
         dc1.setSDT("0765328458");
@@ -88,18 +89,20 @@ public class CartRepository {
         dc1.setXacDinh(true);
         dc1.setChecked(false);
 
-         DiaChi dc2 = new DiaChi();
+         DiaChiGH dc2 = new DiaChiGH();
          dc2.setId("1");
-         dc2.setDiaChiChinh(true);
+         dc2.setTenDiaChi("CC1");
+         dc2.setDiaChiChinh(false);
          dc2.setNguoiNhan("Trung Hậu");
          dc2.setSDT("0765328458");
          dc2.setDiaChi("155/33 Nguyễn Trãi");
          dc2.setXacDinh(true);
          dc2.setChecked(false);
 
-         DiaChi dc3 = new DiaChi();
+         DiaChiGH dc3 = new DiaChiGH();
          dc3.setId("1");
-         dc3.setDiaChiChinh(true);
+         dc3.setTenDiaChi("CC2");
+         dc3.setDiaChiChinh(false);
          dc3.setNguoiNhan("Trung Hậu");
          dc3.setSDT("0765328458");
          dc3.setDiaChi("155/33 Nguyễn Trãi");
@@ -112,24 +115,24 @@ public class CartRepository {
          return list;
      }
 
-     public List<VanCHuyen> getListDelivery(){
-        List<VanCHuyen> list = new ArrayList<>();
+     public List<VanChuyen> getListDelivery(){
+        List<VanChuyen> list = new ArrayList<>();
 
-        VanCHuyen vc1 = new VanCHuyen();
+        VanChuyen vc1 = new VanChuyen();
         vc1.setLogo(R.drawable.baseline_check_box_outline_blank_24);
         vc1.setTenDonVI("J&T Express");
         vc1.setThoiGian("23 - 25 tháng 10 2024");
         vc1.setGiaTien(10);
         vc1.setChecked(false);
 
-        VanCHuyen vc2 = new VanCHuyen();
+        VanChuyen vc2 = new VanChuyen();
         vc2.setLogo(R.drawable.baseline_check_box_outline_blank_24);
         vc2.setTenDonVI("J&T Express");
         vc2.setThoiGian("23 - 25 tháng 10 2024");
         vc2.setGiaTien(10);
         vc2.setChecked(false);
 
-        VanCHuyen vc3 = new VanCHuyen();
+        VanChuyen vc3 = new VanChuyen();
         vc3.setLogo(R.drawable.baseline_check_box_outline_blank_24);
         vc3.setTenDonVI("J&T Express");
         vc3.setThoiGian("23 - 25 tháng 10 2024");

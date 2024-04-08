@@ -2,11 +2,11 @@ package com.example.myapplication.Presentation.Cart.Model;
 
 import java.io.Serializable;
 
-public class DiaChi implements Serializable {
+public class DiaChiGH implements Serializable {
     private String id, TenDiaChi,NguoiNhan, SDT, DiaChi;
     private boolean XacDinh, checked, DiaChiChinh;
 
-    public DiaChi() {
+    public DiaChiGH() {
     }
 
     public boolean isDiaChiChinh() {

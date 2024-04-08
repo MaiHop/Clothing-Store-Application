@@ -3,8 +3,8 @@ package com.example.myapplication.Presentation.Cart.Model;
 import java.io.Serializable;
 
 public class DonHang implements Serializable {
-    private DiaChi diachi = null;
-    private VanCHuyen vanchuyen= null;
+    private DiaChiGH diachi = null;
+    private VanChuyen vanchuyen= null;
     private PTThanhToan thanhToan = null;
     private KhuyenMai khuyenmai= null;
     private double ThanhTien =0, PhiPhucVu=0, PhiGiaoHang=0, Thue=0, TienKhuyenMai=0, TongCong=0;
@@ -12,19 +12,19 @@ public class DonHang implements Serializable {
     public DonHang() {
     }
 
-    public DiaChi getDiachi() {
+    public DiaChiGH getDiachi() {
         return diachi;
     }
 
-    public void setDiachi(DiaChi diachi) {
+    public void setDiachi(DiaChiGH diachi) {
         this.diachi = diachi;
     }
 
-    public VanCHuyen getVanchuyen() {
+    public VanChuyen getVanchuyen() {
         return vanchuyen;
     }
 
-    public void setVanchuyen(VanCHuyen vanchuyen) {
+    public void setVanchuyen(VanChuyen vanchuyen) {
         this.vanchuyen = vanchuyen;
     }
 

@@ -17,7 +17,11 @@ import android.widget.Toast;
 
 import com.example.myapplication.Presentation.Cart.Apdapter.CartAdapter;
 import com.example.myapplication.Presentation.Cart.Model.Cart;
+import com.example.myapplication.Presentation.Cart.Model.DiaChiGH;
 import com.example.myapplication.Presentation.Cart.Model.DonHang;
+import com.example.myapplication.Presentation.Cart.Model.KhuyenMai;
+import com.example.myapplication.Presentation.Cart.Model.PTThanhToan;
+import com.example.myapplication.Presentation.Cart.Model.VanChuyen;
 import com.example.myapplication.Presentation.Cart.Repository.CartRepository;
 import com.example.myapplication.R;
 
@@ -68,6 +72,34 @@ public class GioHangActivity extends AppCompatActivity {
     }
     private void dathang() {
         DonHang dh = new DonHang();
+        DiaChiGH dc = new DiaChiGH();
+        dc.setTenDiaChi("Home");
+        dc.setNguoiNhan("Mai Hop");
+        dc.setDiaChi("30893r89dvjsnsdjnr");
+        dc.setChecked(true);
+        dc.setXacDinh(true);
+        dc.setDiaChiChinh(true);
+
+        VanChuyen vc = new VanChuyen();
+        vc.setChecked(true);
+        vc.setGiaTien(100);
+        vc.setThoiGian("23 -24 Tháng 12, 2024");
+        vc.setTenDonVI("GiaoHangTietKiem");
+        vc.setLogo(R.drawable.baseline_local_shipping_24);
+
+        PTThanhToan pm = new PTThanhToan();
+        pm.setChecked(true);
+        pm.setTenPhuongThuc("Mastercard");
+
+        KhuyenMai km = new KhuyenMai();
+        km.setChecked(true);
+        km.setChiTietKhuyenMai("Mua 1 tặng 1");
+        km.setTenKhuyenMai("Khuyến Mãi T4");
+
+        dh.setDiachi(dc);
+        dh.setVanchuyen(vc);
+        dh.setThanhToan(pm);
+        dh.setKhuyenmai(km);
         Intent intent = new Intent(this, ThanhToanActivity.class);
         intent.putExtra("DonHang", dh);
         startActivity(intent);
@@ -77,7 +109,7 @@ public class GioHangActivity extends AppCompatActivity {
         this.btn_DatHang = findViewById(R.id.btn_DatHang);
         this.toolbar_cart = findViewById(R.id.toolbar_cart);
         setSupportActionBar(toolbar_cart);
-        toolbar_cart.setLogo(R.drawable.baseline_adb_24);
+        toolbar_cart.setLogo(R.drawable.baseline_check_box_outline_blank_24);
 
         this.btn_DatHang.setOnClickListener(new View.OnClickListener() {
             @Override

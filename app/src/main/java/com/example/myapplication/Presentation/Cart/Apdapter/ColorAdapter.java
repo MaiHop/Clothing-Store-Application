@@ -19,7 +19,7 @@ public class ColorAdapter extends RecyclerView.Adapter<MauVH>{
     private List<String> list_color;
     private Context context;
     private LayoutInflater minflater;
-     int rowindex=-1;
+    private int rowindex=-1;
 
     public ColorAdapter(Context context, List<String> list_color) {
         this.list_color = list_color;

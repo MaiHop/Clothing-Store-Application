@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F5F5F5"
+    android:orientation="vertical"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    android:orientation="vertical"
     tools:context=".Presentation.Cart.Activity.GioHangActivity">
 
     <ScrollView
@@ -26,7 +27,7 @@
                 android:id="@+id/toolbar_cart"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="?attr/colorPrimary"
+                android:background="#00FFFFFF"
                 android:minHeight="?attr/actionBarSize"
                 android:theme="?attr/actionBarTheme"
                 app:layout_constraintStart_toStartOf="parent"
@@ -48,28 +49,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clipToPadding="false"
-                android:padding="10dp" />
+                android:padding="15dp" />
 
             <TextView
                 android:id="@+id/textView14"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:padding="10dp"
+                android:padding="15dp"
                 android:text="TextView"
                 android:textColor="#00FFFFFF" />
         </LinearLayout>
     </ScrollView>
 
-
-    <Button
-        android:id="@+id/btn_DatHang"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
+        app:layout_constraintStart_toStartOf="parent"
+        android:padding="15dp">
+        <Button
+            android:id="@+id/btn_DatHang"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Button"/>
+    </LinearLayout>
 
 
 

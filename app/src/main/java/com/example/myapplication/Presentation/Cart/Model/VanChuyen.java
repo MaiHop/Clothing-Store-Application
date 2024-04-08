@@ -2,7 +2,7 @@ package com.example.myapplication.Presentation.Cart.Model;
 
 import java.io.Serializable;
 
-public class VanCHuyen implements Serializable {
+public class VanChuyen implements Serializable {
     private String TenDonVI, ThoiGian;
     private double GiaTien;
     private boolean checked;
@@ -24,7 +24,7 @@ public class VanCHuyen implements Serializable {
         this.checked = checked;
     }
 
-    public VanCHuyen() {
+    public VanChuyen() {
     }
 
     public String getTenDonVI() {

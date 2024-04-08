@@ -8,14 +8,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Presentation.Cart.Model.VanCHuyen;
+import com.example.myapplication.Presentation.Cart.Model.VanChuyen;
 import com.example.myapplication.R;
 
-public class VanCHuyenVH extends RecyclerView.ViewHolder{
+public class VanChuyenVH extends RecyclerView.ViewHolder{
     private ImageView iv_Logo_VanChuyen,iv_D_Checked;
     private TextView tv_TenVanChuyen, tv_ThoiGianDuKien;
-    private LinearLayout item_delivery;
-    public VanCHuyenVH(@NonNull View itemView) {
+    public LinearLayout item_delivery;
+    public VanChuyenVH(@NonNull View itemView) {
         super(itemView);
 
         iv_Logo_VanChuyen = itemView.findViewById(R.id.iv_Logo_VanChuyen);
@@ -25,16 +25,16 @@ public class VanCHuyenVH extends RecyclerView.ViewHolder{
         item_delivery = itemView.findViewById(R.id.item_delivery);
     }
 
-    public void updateUI(VanCHuyen vanchuyen){
-        iv_Logo_VanChuyen.setImageResource(vanchuyen.getLogo());
+    public void updateUI(VanChuyen vanchuyen){
+        iv_Logo_VanChuyen.setBackgroundResource(vanchuyen.getLogo());
         tv_TenVanChuyen.setText(vanchuyen.getTenDonVI());
-        tv_ThoiGianDuKien.setText("Thời gian giao dự kiến: "+vanchuyen.getThoiGian());
+        tv_ThoiGianDuKien.setText("Ngày giao dự kiến: "+vanchuyen.getThoiGian());
         if(vanchuyen.isChecked()){
             iv_D_Checked.setVisibility(View.VISIBLE);
-            item_delivery.setBackgroundResource(R.drawable.stroke_green_rad_5);
+            item_delivery.setBackgroundResource(R.drawable.solid_white_stroke_green_rad_5);
         }else {
             iv_D_Checked.setVisibility(View.INVISIBLE);
-            item_delivery.setBackgroundResource(R.drawable.stroke_black_rad_5);
+            item_delivery.setBackgroundResource(R.drawable.solid_white_rad_5);
         }
     }
 }

@@ -12,13 +12,13 @@ import com.example.myapplication.Presentation.Cart.Model.KhuyenMai;
 import com.example.myapplication.R;
 
 public class KhuyenMaiVH extends RecyclerView.ViewHolder{
-    public LinearLayout item_delivery;
+    public LinearLayout item_promos_vouchers;
     public TextView tv_TenKhuyenMai, tv_ChiTietKhuyenMai;
     public ImageView iv_PV_Checked;
     public KhuyenMaiVH(@NonNull View itemView) {
         super(itemView);
 
-        item_delivery = itemView.findViewById(R.id.item_promos_vouchers);
+        item_promos_vouchers = itemView.findViewById(R.id.item_promos_vouchers);
         tv_TenKhuyenMai = itemView.findViewById(R.id.tv_TenKhuyenMai);
         tv_ChiTietKhuyenMai = itemView.findViewById(R.id.tv_ChiTietKhuyenMai);
         iv_PV_Checked = itemView.findViewById(R.id.iv_PV_Checked);
@@ -27,10 +27,10 @@ public class KhuyenMaiVH extends RecyclerView.ViewHolder{
         tv_TenKhuyenMai.setText(khuyenmai.getTenKhuyenMai());
         tv_ChiTietKhuyenMai.setText((khuyenmai.getChiTietKhuyenMai()));
         if(khuyenmai.isChecked()){
-            item_delivery.setBackgroundResource(R.drawable.stroke_green_rad_5);
+            item_promos_vouchers.setBackgroundResource(R.drawable.solid_white_stroke_green_rad_5);
             iv_PV_Checked.setVisibility(View.VISIBLE);
         }else {
-            item_delivery.setBackgroundResource(R.drawable.stroke_black_rad_5);
+            item_promos_vouchers.setBackgroundResource(R.drawable.solid_white_rad_5);
             iv_PV_Checked.setVisibility(View.INVISIBLE);
         }
     }

@@ -55,7 +55,7 @@
             android:id="@+id/iv_Image_cart"
             android:layout_width="130dp"
             android:layout_height="180dp"
-            android:background="@drawable/bg_image" />
+            android:background="@drawable/solid_white_rad_5" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -102,7 +102,7 @@
                     android:id="@+id/btn_Giam"
                     android:layout_width="67dp"
                     android:layout_height="41dp"
-                    app:icon="@drawable/minus_3108" />
+                    app:icon="@drawable/baseline_check_box_outline_blank_24" />
 
 
                 <EditText
@@ -120,7 +120,7 @@
                     android:id="@+id/btn_Tang"
                     android:layout_width="67dp"
                     android:layout_height="41dp"
-                    app:icon="@drawable/plus_3107" />
+                    app:icon="@drawable/baseline_check_box_outline_blank_24" />
 
             </LinearLayout>
 

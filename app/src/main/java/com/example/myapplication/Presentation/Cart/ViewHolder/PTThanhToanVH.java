@@ -14,7 +14,7 @@ import com.example.myapplication.R;
 public class PTThanhToanVH extends RecyclerView.ViewHolder{
     private ImageView iv_Logo_ThanhToanv,  iv_PM_Checked;
     private TextView tv_TenThanhToan;
-    private LinearLayout item_payment_method;
+    public LinearLayout item_payment_method;
     public PTThanhToanVH(@NonNull View itemView) {
         super(itemView);
 
@@ -28,10 +28,10 @@ public class PTThanhToanVH extends RecyclerView.ViewHolder{
         tv_TenThanhToan.setText(ptthanhtoan.getTenPhuongThuc());
         if(ptthanhtoan.isChecked()){
             iv_PM_Checked.setVisibility(View.VISIBLE);
-            item_payment_method.setBackgroundResource(R.drawable.stroke_green_rad_5);
+            item_payment_method.setBackgroundResource(R.drawable.solid_white_stroke_green_rad_5);
         } else {
             iv_PM_Checked.setVisibility(View.INVISIBLE);
-            item_payment_method.setBackgroundResource(R.drawable.stroke_black_rad_5);
+            item_payment_method.setBackgroundResource(R.drawable.solid_white_rad_5);
         }
     }
 }

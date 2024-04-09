@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="90dp"
+    android:layout_height="60dp">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/rounded_border_wishlist"> <!-- Sử dụng drawable để tạo đường viền tròn -->
+        <TextView
+            android:id="@+id/gia"
+            android:text="Item 1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:padding="8dp"/> <!-- Để giữ khoảng cách giữa văn bản và viền -->
+    </FrameLayout>
+</androidx.cardview.widget.CardView>

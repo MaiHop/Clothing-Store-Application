@@ -1,4 +1,4 @@
-package com.example.myapplication.Presentation.Homepage;
+package com.example.myapplication.Presentation.Homepage.DTO;
 
 import java.io.Serializable;
 

@@ -1,4 +1,4 @@
-package com.example.myapplication.Presentation.Homepage;
+package com.example.myapplication.Presentation.Homepage.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.Presentation.Homepage.DTO.Products;
 import com.example.myapplication.R;
 
 import java.util.ArrayList;

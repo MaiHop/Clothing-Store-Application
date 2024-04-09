@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.Presentation.Homepage.Adapter.SortListAdapter;
+import com.example.myapplication.Presentation.Homepage.DTO.Sort;
 import com.example.myapplication.R;
 
 import java.util.ArrayList;

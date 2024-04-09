@@ -1,0 +1,8 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="#FFFFFF" /> <!-- Màu nền của đường viền -->
+    <corners android:radius="20dp" /> <!-- Độ cong của đường viền, bạn có thể điều chỉnh giá trị để làm cho đường viền cong hơn hoặc ít cong hơn -->
+    <stroke
+        android:width="2dp"
+        android:color="#000000" />
+</shape>

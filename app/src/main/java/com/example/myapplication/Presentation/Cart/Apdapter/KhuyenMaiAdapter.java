@@ -18,12 +18,14 @@ public class KhuyenMaiAdapter extends RecyclerView.Adapter<KhuyenMaiVH>{
     private Context context;
     private List<KhuyenMai> list;
     private LayoutInflater minflater;
+    private KhuyenMaiAdapter.ItemClickListener itemClickListener;
     private int rowindex=-1;
 
-    public KhuyenMaiAdapter(Context context, List<KhuyenMai> list) {
+    public KhuyenMaiAdapter(Context context, List<KhuyenMai> list,KhuyenMaiAdapter.ItemClickListener itemClickListene) {
         this.context = context;
         this.list = list;
         this.minflater = LayoutInflater.from(context);
+        this.itemClickListener = itemClickListene;
     }
 
     @NonNull
@@ -38,7 +40,9 @@ public class KhuyenMaiAdapter extends RecyclerView.Adapter<KhuyenMaiVH>{
     public int getItemCount() {
         return list.size();
     }
-
+    public interface ItemClickListener{
+        void onItemClick(KhuyenMai khuyenMai);
+    }
     @Override
     public void onBindViewHolder(@NonNull KhuyenMaiVH holder, int position) {
         KhuyenMai km = list.get(position);
@@ -49,7 +53,7 @@ public class KhuyenMaiAdapter extends RecyclerView.Adapter<KhuyenMaiVH>{
             public void onClick(View v) {
                 rowindex = p;
                 notifyDataSetChanged();
-
+                itemClickListener.onItemClick(list.get(position));
             }
         });
         if(rowindex!=position){

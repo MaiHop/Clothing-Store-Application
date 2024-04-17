@@ -3,6 +3,8 @@ package com.example.myapplication.Presentation.Cart.Activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,15 +18,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.Presentation.Cart.Apdapter.CartAdapter;
-import com.example.myapplication.Presentation.Cart.Model.Cart;
-import com.example.myapplication.Presentation.Cart.Model.DiaChiGH;
 import com.example.myapplication.Presentation.Cart.Model.DonHang;
-import com.example.myapplication.Presentation.Cart.Model.KhuyenMai;
-import com.example.myapplication.Presentation.Cart.Model.PTThanhToan;
-import com.example.myapplication.Presentation.Cart.Model.VanChuyen;
+import com.example.myapplication.Presentation.Cart.Model.DonHangChiTiet;
 import com.example.myapplication.Presentation.Cart.Repository.CartRepository;
+import com.example.myapplication.Presentation.Cart.ViewModel.CartVM;
 import com.example.myapplication.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GioHangActivity extends AppCompatActivity {
@@ -32,25 +32,30 @@ public class GioHangActivity extends AppCompatActivity {
     private Button btn_DatHang;
     private TextView toolbar_title;
     private Toolbar toolbar_cart;
-    List<Cart> list;
+    private List<DonHangChiTiet> list;
+    private CartVM cartVM;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
 
         init();
+        CartRepository res = new CartRepository();
+        List<DonHangChiTiet> list = res.getGioHang();
+        Toast.makeText(this, list.size(),Toast.LENGTH_SHORT).show();
 
-        this.rv_ListCart =findViewById(R.id.rv_ListCart);
-
-        CartRepository re = new CartRepository();
-        list = re.getAll();
-
-        CartAdapter cartAdapter =new CartAdapter(this, list,btn_DatHang, toolbar_title);
-        this.rv_ListCart.setAdapter(cartAdapter);
-        this.rv_ListCart.setLayoutManager(new LinearLayoutManager(this));
-
-
-
+//        this.rv_ListCart =findViewById(R.id.rv_ListCart);
+//
+//        this.rv_ListCart.setLayoutManager(new LinearLayoutManager(this));
+//        cartVM = new ViewModelProvider(this).get(CartVM.class);
+//        cartVM.getListCartLiveData().observe(this, new Observer<List<DonHangChiTiet>>() {
+//            @Override
+//            public void onChanged(List<DonHangChiTiet> donHangChiTiets) {
+//                list= donHangChiTiets;
+//                CartAdapter adapter = new CartAdapter(GioHangActivity.this, donHangChiTiets, btn_DatHang, toolbar_title);
+//                rv_ListCart.setAdapter(adapter);
+//            }
+//        });
     }
 
     @Override
@@ -63,43 +68,15 @@ public class GioHangActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         if(id == R.id.item_search_cart){
-            Toast.makeText(this,    "OK",Toast.LENGTH_SHORT).show();
+            cartVM.removeCart("1");
             return true;
         }else{
             return super.onOptionsItemSelected(item);
         }
-
     }
     private void dathang() {
-        DonHang dh = new DonHang();
-        DiaChiGH dc = new DiaChiGH();
-        dc.setTenDiaChi("Home");
-        dc.setNguoiNhan("Mai Hop");
-        dc.setDiaChi("30893r89dvjsnsdjnr");
-        dc.setChecked(true);
-        dc.setXacDinh(true);
-        dc.setDiaChiChinh(true);
-
-        VanChuyen vc = new VanChuyen();
-        vc.setChecked(true);
-        vc.setGiaTien(100);
-        vc.setThoiGian("23 -24 Tháng 12, 2024");
-        vc.setTenDonVI("GiaoHangTietKiem");
-        vc.setLogo(R.drawable.baseline_local_shipping_24);
-
-        PTThanhToan pm = new PTThanhToan();
-        pm.setChecked(true);
-        pm.setTenPhuongThuc("Mastercard");
-
-        KhuyenMai km = new KhuyenMai();
-        km.setChecked(true);
-        km.setChiTietKhuyenMai("Mua 1 tặng 1");
-        km.setTenKhuyenMai("Khuyến Mãi T4");
-
-        dh.setDiachi(dc);
-        dh.setVanchuyen(vc);
-        dh.setThanhToan(pm);
-        dh.setKhuyenmai(km);
+        DonHang dh =new DonHang();
+        dh.setListDonHangChiTiet(list);
         Intent intent = new Intent(this, ThanhToanActivity.class);
         intent.putExtra("DonHang", dh);
         startActivity(intent);

@@ -10,18 +10,19 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.Presentation.Cart.Model.Mau;
 import com.example.myapplication.Presentation.Cart.ViewHolder.MauVH;
 import com.example.myapplication.R;
 
 import java.util.List;
 
 public class ColorAdapter extends RecyclerView.Adapter<MauVH>{
-    private List<String> list_color;
+    private List<Mau> list_color;
     private Context context;
     private LayoutInflater minflater;
     private int rowindex=-1;
 
-    public ColorAdapter(Context context, List<String> list_color) {
+    public ColorAdapter(Context context, List<Mau> list_color) {
         this.list_color = list_color;
         this.context = context;
         this.minflater = LayoutInflater.from(context);
@@ -41,7 +42,7 @@ public class ColorAdapter extends RecyclerView.Adapter<MauVH>{
     }
     @Override
     public void onBindViewHolder(@NonNull MauVH holder, int position) {
-        String color = list_color.get(position);
+        Mau color = list_color.get(position);
         holder.updateUI();
         int p = position;
         holder.iv_color.setOnClickListener(new View.OnClickListener() {

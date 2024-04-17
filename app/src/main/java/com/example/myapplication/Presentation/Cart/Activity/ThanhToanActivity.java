@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -18,13 +17,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.Presentation.Cart.Apdapter.CheckOutAdapter;
-import com.example.myapplication.Presentation.Cart.Helper.LoadingDialog;
-import com.example.myapplication.Presentation.Cart.Model.Cart;
-import com.example.myapplication.Presentation.Cart.Model.DiaChiGH;
+import com.example.myapplication.Presentation.Cart.Model.DonHangChiTiet;
 import com.example.myapplication.Presentation.Cart.Model.DonHang;
-import com.example.myapplication.Presentation.Cart.Model.KhuyenMai;
-import com.example.myapplication.Presentation.Cart.Model.VanChuyen;
-import com.example.myapplication.Presentation.Cart.Repository.CartRepository;
 import com.example.myapplication.R;
 
 import java.util.List;
@@ -42,7 +36,7 @@ public class ThanhToanActivity extends AppCompatActivity {
     String type="";
     private Toolbar toolbar_checkout_cart;
     private LinearLayout ll_Delivery_Address, ll_Delivery, ll_Payment_Method, ll_Promos_Vouchers;
-
+    private DonHang dh;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,17 +44,12 @@ public class ThanhToanActivity extends AppCompatActivity {
 
         init();
         loadinfo();
-
-
-
     }
 
     private void loadinfo() {
-        CartRepository re = new CartRepository();
-        List<Cart> list = re.getAll();
-
         Intent i = getIntent();
-        DonHang dh = (DonHang) i.getSerializableExtra("DonHang");
+        dh = (DonHang) i.getSerializableExtra("DonHang");
+
 
         if (dh.getDiachi() == null){
             this.ll_Delivery_Address.setVisibility(View.GONE);
@@ -72,39 +61,39 @@ public class ThanhToanActivity extends AppCompatActivity {
         if (dh.getVanchuyen() == null){
             this.ll_Delivery.setVisibility(View.GONE);
         }else {
-            this.tv_Checkout_TenDonViGiaoHang.setText(dh.getVanchuyen().getTenDonVI());
-            this.tv_Checkout_ThoiGianGiaoHang.setText("Ngày giao dự kiến: "+dh.getVanchuyen().getThoiGian());
+            this.tv_Checkout_TenDonViGiaoHang.setText(dh.getVanchuyen().getTen());
+            this.tv_Checkout_ThoiGianGiaoHang.setText("Ngày giao dự kiến: "+dh.getVanchuyen().getNgayGiao());
             this.ll_Delivery.setVisibility(View.VISIBLE);
         }
         if (dh.getThanhToan() == null){
             this.ll_Payment_Method.setVisibility(View.GONE);
         }else {
-            this.tv_TenPhuongThucThanhToan.setText(dh.getThanhToan().getTenPhuongThuc());
-            if(dh.getThanhToan().getSoThe() == null){
+            this.tv_TenPhuongThucThanhToan.setText(dh.getThanhToan().getLoai());
+            if(dh.getThanhToan().getTenThanhToan() == null){
                 this.tv_SoThe.setVisibility(View.GONE);
             }else {
-                this.tv_SoThe.setText(dh.getThanhToan().getSoThe());
+                this.tv_SoThe.setText(dh.getThanhToan().getTenThanhToan());
             }
         }
         if (dh.getKhuyenmai() == null){
             this.ll_Promos_Vouchers.setVisibility(View.GONE);
         }else {
             this.tv_TenKhuyenMai.setText(dh.getKhuyenmai().getTenKhuyenMai());
-            this.tv_ThongTinKhuyenMai.setText(dh.getKhuyenmai().getChiTietKhuyenMai());
+            this.tv_ThongTinKhuyenMai.setText(dh.getKhuyenmai().getDieuKien()+" * "+dh.getKhuyenmai().getToiDaGiam()+" * "+dh.getKhuyenmai().getHanSuDung());
             this.iv_PV_Remove.setVisibility(View.VISIBLE);
             this.ll_Promos_Vouchers.setVisibility(View.VISIBLE);
         }
-        this.tv_Subtotal.setText("Subtotal ("+ list.size()+")");
+        this.tv_Subtotal.setText("Subtotal ("+ dh.getListDonHangChiTiet().size()+")");
         this.tv_Checkout_ThanhTien.setText(String.valueOf(dh.getThanhTien()));
         this.tv_Checkout_PhiDichVu.setText(String.valueOf(dh.getPhiPhucVu()));
         this.tv_Checkout_PhiGiaoHang.setText(String.valueOf(dh.getPhiGiaoHang()));
         this.tv_Checkout_TienThue.setText(String.valueOf(dh.getThue()));
         this.tv_Checkout_TienKhuyenMai.setText(String.valueOf(dh.getTienKhuyenMai()));
-        this.tv_Checkout_TongTien.setText(String.valueOf(dh.getTongCong()));
+        this.tv_Checkout_TongTien.setText(String.valueOf(dh.getTongTien()));
 
 
 
-        CheckOutAdapter cartAdapter =new CheckOutAdapter(this, list, this.order_title);
+        CheckOutAdapter cartAdapter =new CheckOutAdapter(this, dh.getListDonHangChiTiet(), this.order_title);
         this.rv_ListOrder.setAdapter(cartAdapter);
         this.rv_ListOrder.setLayoutManager(new LinearLayoutManager(this));
     }
@@ -220,6 +209,7 @@ public class ThanhToanActivity extends AppCompatActivity {
     private void DanhSachThongTin(String type) {
         Intent intent = new Intent(this, ThongTinActivity.class);
         intent.putExtra("Loai", type);
+        intent.putExtra("DonHang", dh);
         startActivity(intent);
     }
 }

@@ -7,6 +7,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.Presentation.Cart.Model.KichThuoc;
 import com.example.myapplication.R;
 
 public class SizeVH extends RecyclerView.ViewHolder{
@@ -16,7 +17,7 @@ public class SizeVH extends RecyclerView.ViewHolder{
 
         tv_size = itemView.findViewById(R.id.tv_Size_cart);
     }
-    public void updateUI(String size){
-        tv_size.setText(size);
+    public void updateUI(KichThuoc size){
+        tv_size.setText(size.getTen());
     }
 }

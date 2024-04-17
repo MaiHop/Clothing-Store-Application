@@ -5,12 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".Presentation.Cart.Activity.ThongTinActivity"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
 
     <LinearLayout
+        android:id="@+id/linearLayout5"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -21,9 +23,7 @@
             android:layout_height="wrap_content"
             android:background="#00FFFFFF"
             android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:theme="?attr/actionBarTheme">
 
             <TextView
                 android:id="@+id/toolbar_thongtin_title"
@@ -32,10 +32,14 @@
                 android:gravity="center"
                 android:text="Checkout"
                 android:textColor="@android:color/black"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:textStyle="bold" />
         </androidx.appcompat.widget.Toolbar>
-
-        <LinearLayout
+        <ScrollView
+            android:id="@+id/scrollView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -99,19 +103,28 @@
                         android:visibility="visible" />
 
                 </LinearLayout>
-
-
             </LinearLayout>
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_Choose_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp" />
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/textView14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:padding="15dp"
+                    android:text="TextView"
+                    android:textColor="#00FFFFFF" />
+            </LinearLayout>
+        </ScrollView>
     </LinearLayout>
 
+
+
     <LinearLayout
+        android:id="@+id/linearLayout6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="15dp"

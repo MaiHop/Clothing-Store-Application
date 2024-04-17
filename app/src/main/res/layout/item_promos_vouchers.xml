@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/item_promos_vouchers"
+    android:id="@+id/layout_item_promos_vouchers"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="15dp"
@@ -34,11 +34,12 @@
             android:layout_weight="4"
             android:textSize="20dp"
             android:textStyle="bold"
-            android:text="FedEx Express"/>
+            android:text="Test"/>
         <TextView
             android:id="@+id/tv_ChiTietKhuyenMai"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="4"
             android:text="Estimated arrival: 23 - 24 Dec, 2024"/>
 
     </LinearLayout>

@@ -1,22 +1,52 @@
 package com.example.myapplication.Presentation.Cart.Model;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class DonHang implements Serializable {
-    private DiaChiGH diachi = null;
+    private String IdDonHang, TrangThai;
+    private KhachHang KhachHang= null;
+    private DiaChi diachi = null;
     private VanChuyen vanchuyen= null;
-    private PTThanhToan thanhToan = null;
+    private ThanhToan thanhToan = null;
     private KhuyenMai khuyenmai= null;
-    private double ThanhTien =0, PhiPhucVu=0, PhiGiaoHang=0, Thue=0, TienKhuyenMai=0, TongCong=0;
+    private int TongSoLuong;
+    private double ThanhTien =0, PhiPhucVu=0, PhiGiaoHang=0, Thue=0, TienKhuyenMai=0, TongTien=0;
+    private List<DonHangChiTiet> ListDonHangChiTiet = null;
+    private List<KhuyenMai> ListKhuyenMai = null;
 
     public DonHang() {
     }
 
-    public DiaChiGH getDiachi() {
+    public String getIdDonHang() {
+        return IdDonHang;
+    }
+
+    public void setIdDonHang(String idDonHang) {
+        IdDonHang = idDonHang;
+    }
+
+    public String getTrangThai() {
+        return TrangThai;
+    }
+
+    public void setTrangThai(String trangThai) {
+        TrangThai = trangThai;
+    }
+
+    public com.example.myapplication.Presentation.Cart.Model.KhachHang getKhachHang() {
+        return KhachHang;
+    }
+
+    public void setKhachHang(com.example.myapplication.Presentation.Cart.Model.KhachHang khachHang) {
+        KhachHang = khachHang;
+    }
+
+    public DiaChi getDiachi() {
         return diachi;
     }
 
-    public void setDiachi(DiaChiGH diachi) {
+    public void setDiachi(DiaChi diachi) {
         this.diachi = diachi;
     }
 
@@ -28,11 +58,11 @@ public class DonHang implements Serializable {
         this.vanchuyen = vanchuyen;
     }
 
-    public PTThanhToan getThanhToan() {
+    public ThanhToan getThanhToan() {
         return thanhToan;
     }
 
-    public void setThanhToan(PTThanhToan thanhToan) {
+    public void setThanhToan(ThanhToan thanhToan) {
         this.thanhToan = thanhToan;
     }
 
@@ -42,6 +72,14 @@ public class DonHang implements Serializable {
 
     public void setKhuyenmai(KhuyenMai khuyenmai) {
         this.khuyenmai = khuyenmai;
+    }
+
+    public int getTongSoLuong() {
+        return TongSoLuong;
+    }
+
+    public void setTongSoLuong(int tongSoLuong) {
+        TongSoLuong = tongSoLuong;
     }
 
     public double getThanhTien() {
@@ -84,11 +122,27 @@ public class DonHang implements Serializable {
         TienKhuyenMai = tienKhuyenMai;
     }
 
-    public double getTongCong() {
-        return TongCong;
+    public double getTongTien() {
+        return TongTien;
     }
 
-    public void setTongCong(double tongCong) {
-        TongCong = tongCong;
+    public void setTongTien(double tongTien) {
+        TongTien = tongTien;
+    }
+
+    public List<DonHangChiTiet> getListDonHangChiTiet() {
+        return ListDonHangChiTiet;
+    }
+
+    public void setListDonHangChiTiet(List<DonHangChiTiet> listDonHangChiTiet) {
+        ListDonHangChiTiet = listDonHangChiTiet;
+    }
+
+    public List<KhuyenMai> getListKhuyenMai() {
+        return ListKhuyenMai;
+    }
+
+    public void setListKhuyenMai(List<KhuyenMai> listKhuyenMai) {
+        ListKhuyenMai = listKhuyenMai;
     }
 }

@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     android:background="#F5F5F5"
     android:orientation="vertical"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
     tools:context=".Presentation.Cart.Activity.GioHangActivity">
 
     <ScrollView
@@ -41,7 +39,8 @@
                     android:layout_gravity="center"
                     android:text="My Title"
                     android:textColor="@android:color/black"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
             </androidx.appcompat.widget.Toolbar>
 
             <androidx.recyclerview.widget.RecyclerView

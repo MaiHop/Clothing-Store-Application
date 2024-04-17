@@ -2,35 +2,19 @@ package com.example.myapplication.Presentation.Cart.Model;
 
 import java.io.Serializable;
 
-public class DiaChiGH implements Serializable {
-    private String id, TenDiaChi,NguoiNhan, SDT, DiaChi;
+public class DiaChi implements Serializable {
+    private String IdDiaChi, TenDiaChi,NguoiNhan, SDT, DiaChi, GhiChu;
     private boolean XacDinh, checked, DiaChiChinh;
 
-    public DiaChiGH() {
+    public DiaChi() {
     }
 
-    public boolean isDiaChiChinh() {
-        return DiaChiChinh;
+    public String getIdDiaChi() {
+        return IdDiaChi;
     }
 
-    public void setDiaChiChinh(boolean diaChiChinh) {
-        DiaChiChinh = diaChiChinh;
-    }
-
-    public boolean isChecked() {
-        return checked;
-    }
-
-    public void setChecked(boolean checked) {
-        this.checked = checked;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+    public void setIdDiaChi(String idDiaChi) {
+        IdDiaChi = idDiaChi;
     }
 
     public String getTenDiaChi() {
@@ -65,11 +49,35 @@ public class DiaChiGH implements Serializable {
         DiaChi = diaChi;
     }
 
+    public String getGhiChu() {
+        return GhiChu;
+    }
+
+    public void setGhiChu(String ghiChu) {
+        GhiChu = ghiChu;
+    }
+
     public boolean isXacDinh() {
         return XacDinh;
     }
 
     public void setXacDinh(boolean xacDinh) {
         XacDinh = xacDinh;
+    }
+
+    public boolean isChecked() {
+        return checked;
+    }
+
+    public void setChecked(boolean checked) {
+        this.checked = checked;
+    }
+
+    public boolean isDiaChiChinh() {
+        return DiaChiChinh;
+    }
+
+    public void setDiaChiChinh(boolean diaChiChinh) {
+        DiaChiChinh = diaChiChinh;
     }
 }

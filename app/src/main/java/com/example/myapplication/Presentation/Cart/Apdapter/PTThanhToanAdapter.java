@@ -8,9 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Presentation.Cart.Model.DiaChiGH;
-import com.example.myapplication.Presentation.Cart.Model.PTThanhToan;
-import com.example.myapplication.Presentation.Cart.ViewHolder.DiaChiGHVH;
+import com.example.myapplication.Presentation.Cart.Model.ThanhToan;
 import com.example.myapplication.Presentation.Cart.ViewHolder.PTThanhToanVH;
 import com.example.myapplication.R;
 
@@ -18,14 +16,16 @@ import java.util.List;
 
 public class PTThanhToanAdapter extends RecyclerView.Adapter<PTThanhToanVH>{
     private Context context;
-    private List<PTThanhToan> list;
+    private List<ThanhToan> list;
     private LayoutInflater minflater;
+    private PTThanhToanAdapter.ItemClickListener itemClickListener;
     private int rowindex=-1;
 
-    public PTThanhToanAdapter(Context context, List<PTThanhToan> list) {
+    public PTThanhToanAdapter(Context context, List<ThanhToan> list, PTThanhToanAdapter.ItemClickListener itemClickListener) {
         this.context = context;
         this.list = list;
         this.minflater = LayoutInflater.from(context);
+        this.itemClickListener = itemClickListener;
     }
 
     @NonNull
@@ -40,10 +40,12 @@ public class PTThanhToanAdapter extends RecyclerView.Adapter<PTThanhToanVH>{
     public int getItemCount() {
         return list.size();
     }
-
+    public interface ItemClickListener{
+        void onItemClick(ThanhToan thanhToan);
+    }
     @Override
     public void onBindViewHolder(@NonNull PTThanhToanVH holder, int position) {
-        PTThanhToan pttt = list.get(position);
+        ThanhToan pttt = list.get(position);
         holder.updateUI(pttt);
         int p = position;
         holder.item_payment_method.setOnClickListener(new View.OnClickListener() {
@@ -51,7 +53,7 @@ public class PTThanhToanAdapter extends RecyclerView.Adapter<PTThanhToanVH>{
             public void onClick(View v) {
                 rowindex = p;
                 notifyDataSetChanged();
-
+                itemClickListener.onItemClick(list.get(position));
             }
         });
         if(rowindex!=position){

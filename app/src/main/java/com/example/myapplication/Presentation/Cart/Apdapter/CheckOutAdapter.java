@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Presentation.Cart.Model.Cart;
+import com.example.myapplication.Presentation.Cart.Model.DonHangChiTiet;
 import com.example.myapplication.Presentation.Cart.ViewHolder.ThanhToanVH;
 import com.example.myapplication.R;
 
@@ -17,14 +17,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CheckOutAdapter extends RecyclerView.Adapter<ThanhToanVH> {
-    private List<Cart> list;
-    private List<Cart> list_checkout=new ArrayList<>();
+    private List<DonHangChiTiet> list;
+    private List<DonHangChiTiet> list_checkout=new ArrayList<>();
     private LayoutInflater minflater;
     private Context context;
     private TextView order_title;
 
 
-    public CheckOutAdapter(Context context, List<Cart> list, TextView order_title){
+    public CheckOutAdapter(Context context, List<DonHangChiTiet> list, TextView order_title){
         this.list = list;
         this.context = context;
         this.minflater = LayoutInflater.from(context);
@@ -47,9 +47,10 @@ public class CheckOutAdapter extends RecyclerView.Adapter<ThanhToanVH> {
 
     @Override
     public void onBindViewHolder(@NonNull ThanhToanVH holder, int position) {
-        Cart cart = list.get(position);
+        DonHangChiTiet donHangChiTiet = list.get(position);
         order_title.setText("Cart ("+list.size()+")");
-        holder.updateUI(cart);
+        donHangChiTiet.setThanhTien(donHangChiTiet.getSanPham().getGiaban()*donHangChiTiet.getSoLuong());
+        holder.updateUI(donHangChiTiet);
 
 
 

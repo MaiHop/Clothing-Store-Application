@@ -1,7 +1,7 @@
 package com.example.myapplication.Presentation.Cart.ViewHolder;
 
 
-import com.example.myapplication.Presentation.Cart.Model.DiaChiGH;
+import com.example.myapplication.Presentation.Cart.Model.DiaChi;
 import com.example.myapplication.R;
 
 import android.view.View;
@@ -16,18 +16,13 @@ public class DiaChiGHVH extends RecyclerView.ViewHolder{
     private TextView tv_TenDiaChi, tv_TenNguoiNhan_Sdt,tv_DiaChi,tv_XacDinh,tv_DiaChiChinh;
     public LinearLayout ll_item_DeliveryAddress;
     private ImageView iv_DA_checked;
+
     public DiaChiGHVH(@NonNull View itemView) {
         super(itemView);
-        tv_TenDiaChi = itemView.findViewById(R.id.tv_TenDiaChi);
-        tv_TenNguoiNhan_Sdt = itemView.findViewById(R.id.tv_TenNguoiNhan_Sdt);
-        tv_DiaChi = itemView.findViewById(R.id.tv_DiaChi);
-        tv_XacDinh = itemView.findViewById(R.id.tv_XacDinh);
-        tv_DiaChiChinh = itemView.findViewById(R.id.tv_DiaChiChinh);
-        ll_item_DeliveryAddress = itemView.findViewById(R.id.item_delivery_adress);
-        iv_DA_checked = itemView.findViewById(R.id.iv_DA_checked);
+        init();
     }
 
-    public void updateUI(DiaChiGH diachi){
+    public void updateUI(DiaChi diachi){
         tv_TenDiaChi.setText(diachi.getTenDiaChi());
         if (diachi.isDiaChiChinh()){
             tv_DiaChiChinh.setVisibility(View.VISIBLE);
@@ -50,4 +45,14 @@ public class DiaChiGHVH extends RecyclerView.ViewHolder{
         }
 
     }
+    private void init(){
+        tv_TenDiaChi = itemView.findViewById(R.id.tv_TenDiaChi);
+        tv_TenNguoiNhan_Sdt = itemView.findViewById(R.id.tv_TenNguoiNhan_Sdt);
+        tv_DiaChi = itemView.findViewById(R.id.tv_DiaChi);
+        tv_XacDinh = itemView.findViewById(R.id.tv_XacDinh);
+        tv_DiaChiChinh = itemView.findViewById(R.id.tv_DiaChiChinh);
+        ll_item_DeliveryAddress = itemView.findViewById(R.id.layout_item_delivery_adress);
+        iv_DA_checked = itemView.findViewById(R.id.iv_DA_checked);
+    }
+
 }

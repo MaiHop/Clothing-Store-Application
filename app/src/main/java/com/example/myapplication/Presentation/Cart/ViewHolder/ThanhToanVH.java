@@ -8,8 +8,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Presentation.Cart.Model.Cart;
+import com.example.myapplication.Presentation.Cart.Model.DonHangChiTiet;
 import com.example.myapplication.R;
+import com.squareup.picasso.Picasso;
 
 public class ThanhToanVH extends RecyclerView.ViewHolder{
     public TextView tv_TenSanPham, tv_Size, tv_Mau, tv_SoLuong, tv_ThanhTien;
@@ -26,14 +27,14 @@ public class ThanhToanVH extends RecyclerView.ViewHolder{
         this.tv_Mau = itemView.findViewById(R.id.tv_Mau_order);
         this.tv_SoLuong = itemView.findViewById(R.id.tv_SoLuong_order);
         this.tv_ThanhTien = itemView.findViewById(R.id.tv_ThanhTien_order);
-        this.item_payment_method = itemView.findViewById(R.id.item_payment_method);
+        this.item_payment_method = itemView.findViewById(R.id.layout_item_payment_method);
     }
-    public void updateUI(Cart cart){
-        this.iv_Image.setImageResource(cart.getImage());
-        this.tv_TenSanPham.setText(cart.getTenSanPham());
-        this.tv_Size.setText("Size : "+cart.getSize());
-        this.tv_Mau.setText("Color : "+cart.getMau());
-        this.tv_SoLuong.setText("Qty :"+cart.getSoLuong());
-        this.tv_ThanhTien.setText("$"+cart.getThanhTien());
+    public void updateUI(DonHangChiTiet donHangChiTiet){
+        Picasso.get().load(donHangChiTiet.getSanPham().getImageUrl()).into(this.iv_Image);
+        this.tv_TenSanPham.setText(donHangChiTiet.getSanPham().getTenSanPham());
+        this.tv_Size.setText("Size : "+ donHangChiTiet.getSanPham().getKichThuoc());
+        this.tv_Mau.setText("Color : "+ donHangChiTiet.getSanPham().getMau());
+        this.tv_SoLuong.setText("Qty :"+ donHangChiTiet.getSoLuong());
+        this.tv_ThanhTien.setText("$"+ donHangChiTiet.getThanhTien());
     }
 }

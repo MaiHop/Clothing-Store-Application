@@ -18,14 +18,14 @@ public class KhuyenMaiVH extends RecyclerView.ViewHolder{
     public KhuyenMaiVH(@NonNull View itemView) {
         super(itemView);
 
-        item_promos_vouchers = itemView.findViewById(R.id.item_promos_vouchers);
+        item_promos_vouchers = itemView.findViewById(R.id.layout_item_promos_vouchers);
         tv_TenKhuyenMai = itemView.findViewById(R.id.tv_TenKhuyenMai);
         tv_ChiTietKhuyenMai = itemView.findViewById(R.id.tv_ChiTietKhuyenMai);
         iv_PV_Checked = itemView.findViewById(R.id.iv_PV_Checked);
     }
     public void updateUI(KhuyenMai khuyenmai){
         tv_TenKhuyenMai.setText(khuyenmai.getTenKhuyenMai());
-        tv_ChiTietKhuyenMai.setText((khuyenmai.getChiTietKhuyenMai()));
+        tv_ChiTietKhuyenMai.setText((khuyenmai.getNoiDung()));
         if(khuyenmai.isChecked()){
             item_promos_vouchers.setBackgroundResource(R.drawable.solid_white_stroke_green_rad_5);
             iv_PV_Checked.setVisibility(View.VISIBLE);

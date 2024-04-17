@@ -9,17 +9,18 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.Presentation.Cart.Model.KichThuoc;
 import com.example.myapplication.Presentation.Cart.ViewHolder.SizeVH;
 import com.example.myapplication.R;
 
 import java.util.List;
 
 public class SizeAdapter extends RecyclerView.Adapter<SizeVH> {
-    private List<String> list_size;
+    private List<KichThuoc> list_size;
     private Context context;
     private LayoutInflater minflater;
     private int rowindex=-1;
-    public SizeAdapter( Context context,List<String> list_size) {
+    public SizeAdapter( Context context,List<KichThuoc> list_size) {
         this.list_size = list_size;
         this.context = context;
         this.minflater = LayoutInflater.from(context);
@@ -40,7 +41,7 @@ public class SizeAdapter extends RecyclerView.Adapter<SizeVH> {
     }
     @Override
     public void onBindViewHolder(@NonNull SizeVH holder, int position) {
-        String size = list_size.get(position);
+        KichThuoc size = list_size.get(position);
         holder.updateUI(size);
         int p = position;
         holder.tv_size.setOnClickListener(new View.OnClickListener() {

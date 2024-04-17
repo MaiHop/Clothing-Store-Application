@@ -18,12 +18,14 @@ public class VanChuyenAdapter extends RecyclerView.Adapter<VanChuyenVH>{
     private Context context;
     private List<VanChuyen> list;
     private LayoutInflater minflater;
+    private VanChuyenAdapter.ItemClickListener itemClickListener;
     private int rowindex=-1;
 
-    public VanChuyenAdapter(Context context, List<VanChuyen> list) {
+    public VanChuyenAdapter(Context context, List<VanChuyen> list,VanChuyenAdapter.ItemClickListener itemClickListener) {
         this.context = context;
         this.list = list;
         this.minflater = LayoutInflater.from(context);
+        this.itemClickListener = itemClickListener;
     }
 
     @NonNull
@@ -38,7 +40,9 @@ public class VanChuyenAdapter extends RecyclerView.Adapter<VanChuyenVH>{
     public int getItemCount() {
         return list.size();
     }
-
+    public interface ItemClickListener{
+        void onItemClick(VanChuyen vanChuyen);
+    }
     @Override
     public void onBindViewHolder(@NonNull VanChuyenVH holder, int position) {
         VanChuyen vc = list.get(position);
@@ -49,7 +53,7 @@ public class VanChuyenAdapter extends RecyclerView.Adapter<VanChuyenVH>{
             public void onClick(View v) {
                 rowindex = p;
                 notifyDataSetChanged();
-
+                itemClickListener.onItemClick(list.get(position));
             }
         });
         if(rowindex!=position){

@@ -80,15 +80,15 @@ public class category_women extends AppCompatActivity {
 
     private void initRecyclerView() {
         ArrayList<Products> items = new ArrayList<>();
-        items.add(new Products("Áo PoLo", R.drawable.polo, "123", "5"));
-        items.add(new Products("Áo PoLo", R.drawable.polo, "100", "5"));
-        items.add(new Products("Áo PoLo", R.drawable.polo, "120", "5"));
-        items.add(new Products("Áo PoLo", R.drawable.polo, "123", "5"));
-        items.add(new Products("Áo PoLo", R.drawable.polo, "100", "5"));
-        items.add(new Products("Áo PoLo", R.drawable.polo, "120", "5"));
-        items.add(new Products("Áo PoLo", R.drawable.polo, "123", "5"));
-        items.add(new Products("Áo PoLo", R.drawable.polo, "100", "5"));
-        items.add(new Products("Áo PoLo", R.drawable.polo, "120", "5"));
+        items.add(new Products("Áo PoLo", R.drawable.polo, "123", "5",""));
+        items.add(new Products("Áo PoLo", R.drawable.polo, "100", "5",""));
+        items.add(new Products("Áo PoLo", R.drawable.polo, "120", "5",""));
+        items.add(new Products("Áo PoLo", R.drawable.polo, "123", "5",""));
+        items.add(new Products("Áo PoLo", R.drawable.polo, "100", "5",""));
+        items.add(new Products("Áo PoLo", R.drawable.polo, "120", "5",""));
+        items.add(new Products("Áo PoLo", R.drawable.polo, "123", "5",""));
+        items.add(new Products("Áo PoLo", R.drawable.polo, "100", "5",""));
+        items.add(new Products("Áo PoLo", R.drawable.polo, "120", "5",""));
         recyclerviewWomen = findViewById(R.id.viewwomen);
         recyclerviewWomen.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         adapterProdutc = new ProductListAdapter(items);

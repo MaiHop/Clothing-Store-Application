@@ -82,17 +82,17 @@ public class Homepage extends AppCompatActivity {
 
     private void initRecyclerView(){
             ArrayList<Products> items = new ArrayList<>();
-            items.add(new Products("Áo PoLo",R.drawable.polo,"123","5"));
-            items.add(new Products("Áo PoLo",R.drawable.polo,"100","5"));
-            items.add(new Products("Áo PoLo",R.drawable.polo,"120","5"));
+            items.add(new Products("Áo PoLo",R.drawable.polo,"123","5",""));
+            items.add(new Products("Áo PoLo",R.drawable.polo,"100","5",""));
+            items.add(new Products("Áo PoLo",R.drawable.polo,"120","5",""));
             recyclerviewNewArrival = findViewById(R.id.view1);
             recyclerviewNewArrival.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
             adapterProdutc = new ProductListAdapter(items);
             recyclerviewNewArrival.setAdapter(adapterProdutc);
             //hot deals this week
-            items.add(new Products("Áo PoLo",R.drawable.polo,"123","5"));
-            items.add(new Products("Áo PoLo",R.drawable.polo,"100","5"));
-            items.add(new Products("Áo PoLo",R.drawable.polo,"120","5"));
+            items.add(new Products("Áo PoLo",R.drawable.polo,"123","5",""));
+            items.add(new Products("Áo PoLo",R.drawable.polo,"100","5",""));
+            items.add(new Products("Áo PoLo",R.drawable.polo,"120","5",""));
             recyclerViewdeals = findViewById(R.id.view2);
             recyclerViewdeals.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
             adapterProdutc = new ProductListAdapter(items);

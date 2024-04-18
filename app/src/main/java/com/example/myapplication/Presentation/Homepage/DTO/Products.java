@@ -7,12 +7,23 @@ public class Products implements Serializable {
     private int picture;
     private String price;
     private String core;
+    private  String thongtin;
 
-    public Products(String tilte, int picture, String price, String core) {
+
+    public Products(String tilte, int picture, String price, String core, String thongtin) {
         this.tilte = tilte;
         this.picture = picture;
         this.price = price;
         this.core = core;
+        this.thongtin = thongtin;
+    }
+
+    public String getThongtin() {
+        return thongtin;
+    }
+
+    public void setThongtin(String thongtin) {
+        this.thongtin = thongtin;
     }
 
     public String getTilte() {

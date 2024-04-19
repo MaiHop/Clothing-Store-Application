@@ -64,28 +64,34 @@ public class CartRepository {
         List<Mau> list = new ArrayList<>();
         Mau m1 = new Mau();
         m1.setId("1");
-        m1.setTen("05 GRAY");
+        m1.setTen("GRAY");
         m1.setImgUrl("https://inkythuatso.com/uploads/thumbnails/800/2023/05/logo-viettelpost-inkythuatso-27-14-52-01.jpg");
 
         Mau m2 = new Mau();
         m2.setId("2");
-        m2.setTen("08 DARK GRAY");
+        m2.setTen("DARK GRAY");
         m2.setImgUrl("https://inkythuatso.com/uploads/thumbnails/800/2023/05/logo-viettelpost-inkythuatso-27-14-52-01.jpg");
 
         Mau m3 = new Mau();
         m3.setId("3");
-        m3.setTen("09 BLACK");
+        m3.setTen("BLACK");
         m3.setImgUrl("https://inkythuatso.com/uploads/thumbnails/800/2023/05/logo-viettelpost-inkythuatso-27-14-52-01.jpg");
 
         Mau m4 = new Mau();
         m4.setId("4");
-        m4.setTen("69 NAVY");
+        m4.setTen("NAVY");
         m4.setImgUrl("https://inkythuatso.com/uploads/thumbnails/800/2023/05/logo-viettelpost-inkythuatso-27-14-52-01.jpg");
+
+        Mau m5 = new Mau();
+        m5.setId("5");
+        m5.setTen("RED");
+        m5.setImgUrl("https://inkythuatso.com/uploads/thumbnails/800/2023/05/logo-viettelpost-inkythuatso-27-14-52-01.jpg");
 
         list.add(m1);
         list.add(m2);
         list.add(m3);
         list.add(m4);
+        list.add(m5);
         return list;
     }
     public List<KieuSP> getListKieuSP(){
@@ -130,7 +136,7 @@ public class CartRepository {
         listcolor = this.getListMau();
 
         SanPham sp1 = new SanPham();
-        sp1.setIdSanPham("Test");
+        sp1.setIdSanPham("1");
         sp1.setImageUrl("https://inkythuatso.com/uploads/thumbnails/800/2023/05/logo-viettelpost-inkythuatso-27-14-52-01.jpg");
         sp1.setTenSanPham("Miracle Air Áo Khoác (AirSense Áo Khoác) (Wool Like)");
         sp1.setGiaban(120);
@@ -144,7 +150,7 @@ public class CartRepository {
         sp1.setThongTin("Chất liệu vải nhẹ, co giãn và nhanh khô mang lại sự thoải mái đáng kinh ngạc. Kiểu dáng đẹp mắt cho bất kỳ dịp nào.");
 
         SanPham sp2 = new SanPham();
-        sp2.setIdSanPham("Test");
+        sp2.setIdSanPham("2");
         sp2.setImageUrl("https://inkythuatso.com/uploads/thumbnails/800/2023/05/logo-viettelpost-inkythuatso-27-14-52-01.jpg");
         sp2.setTenSanPham("Miracle Air Áo Khoác (AirSense Áo Khoác) (Wool Like)");
         sp2.setGiaban(120);
@@ -158,7 +164,7 @@ public class CartRepository {
         sp2.setThongTin("Chất liệu vải nhẹ, co giãn và nhanh khô mang lại sự thoải mái đáng kinh ngạc. Kiểu dáng đẹp mắt cho bất kỳ dịp nào.");
 
         SanPham sp3 = new SanPham();
-        sp3.setIdSanPham("Test");
+        sp3.setIdSanPham("3");
         sp3.setImageUrl("https://inkythuatso.com/uploads/thumbnails/800/2023/05/logo-viettelpost-inkythuatso-27-14-52-01.jpg");
         sp3.setTenSanPham("Miracle Air Áo Khoác (AirSense Áo Khoác) (Wool Like)");
         sp3.setGiaban(120);
@@ -172,7 +178,7 @@ public class CartRepository {
         sp3.setThongTin("Chất liệu vải nhẹ, co giãn và nhanh khô mang lại sự thoải mái đáng kinh ngạc. Kiểu dáng đẹp mắt cho bất kỳ dịp nào.");
 
         SanPham sp4 = new SanPham();
-        sp4.setIdSanPham("Test");
+        sp4.setIdSanPham("4");
         sp4.setImageUrl("https://inkythuatso.com/uploads/thumbnails/800/2023/05/logo-viettelpost-inkythuatso-27-14-52-01.jpg");
         sp4.setTenSanPham("Miracle Air Áo Khoác (AirSense Áo Khoác) (Wool Like)");
         sp4.setGiaban(120);
@@ -185,10 +191,39 @@ public class CartRepository {
         sp4.setMau(listcolor.get(3));
         sp4.setThongTin("Chất liệu vải nhẹ, co giãn và nhanh khô mang lại sự thoải mái đáng kinh ngạc. Kiểu dáng đẹp mắt cho bất kỳ dịp nào.");
 
+        SanPham sp5 = new SanPham();
+        sp5.setIdSanPham("5");
+        sp5.setImageUrl("https://inkythuatso.com/uploads/thumbnails/800/2023/05/logo-viettelpost-inkythuatso-27-14-52-01.jpg");
+        sp5.setTenSanPham("Miracle Air Áo Khoác (AirSense Áo Khoác) (Wool Like)");
+        sp5.setGiaban(120);
+        sp5.setSoLuong(120);
+        sp5.setSoLuongBan(12);
+        sp5.setNhomSanPham(listNhomSP.get(0));
+        sp5.setLoaiSanPham(listLoaiSP.get(0));
+        sp5.setKieuSanPham(listKieuSP.get(0));
+        sp5.setKichThuoc(listsize.get(3));
+        sp5.setMau(listcolor.get(4));
+        sp5.setThongTin("Chất liệu vải nhẹ, co giãn và nhanh khô mang lại sự thoải mái đáng kinh ngạc. Kiểu dáng đẹp mắt cho bất kỳ dịp nào.");
+
+        SanPham sp6 = new SanPham();
+        sp6.setIdSanPham("5");
+        sp6.setImageUrl("https://inkythuatso.com/uploads/thumbnails/800/2023/05/logo-viettelpost-inkythuatso-27-14-52-01.jpg");
+        sp6.setTenSanPham("Miracle Air Áo Khoác (AirSense Áo Khoác) (Wool Like)");
+        sp6.setGiaban(120);
+        sp6.setSoLuong(120);
+        sp6.setSoLuongBan(12);
+        sp6.setNhomSanPham(listNhomSP.get(0));
+        sp6.setLoaiSanPham(listLoaiSP.get(0));
+        sp6.setKieuSanPham(listKieuSP.get(0));
+        sp6.setKichThuoc(listsize.get(2));
+        sp6.setMau(listcolor.get(4));
+        sp6.setThongTin("Chất liệu vải nhẹ, co giãn và nhanh khô mang lại sự thoải mái đáng kinh ngạc. Kiểu dáng đẹp mắt cho bất kỳ dịp nào.");
         list.add(sp1);
         list.add(sp2);
         list.add(sp3);
         list.add(sp4);
+        list.add(sp5);
+        list.add(sp6);
         return list;
     }
 
@@ -280,7 +315,7 @@ public class CartRepository {
         List<VanChuyen> list = new ArrayList<>();
 
         VanChuyen vc1 = new VanChuyen();
-        vc1.setId("cc");
+        vc1.setId("1");
         vc1.setTen("J&T Express");
         vc1.setImageURL("https://inkythuatso.com/uploads/thumbnails/800/2023/05/logo-viettelpost-inkythuatso-27-14-52-01.jpg");
         vc1.setNgayGiao("23 - 25 tháng 10 2024");
@@ -288,7 +323,7 @@ public class CartRepository {
         vc1.setChecked(false);
 
         VanChuyen vc2 = new VanChuyen();
-         vc2.setId("cc");
+         vc2.setId("2");
          vc2.setTen("J&T Express");
          vc2.setImageURL("https://inkythuatso.com/uploads/thumbnails/800/2023/05/logo-viettelpost-inkythuatso-27-14-52-01.jpg");
          vc2.setNgayGiao("23 - 25 tháng 10 2024");
@@ -296,7 +331,7 @@ public class CartRepository {
          vc2.setChecked(false);
 
         VanChuyen vc3 = new VanChuyen();
-         vc3.setId("cc");
+         vc3.setId("3");
          vc3.setTen("J&T Express");
          vc3.setImageURL("https://inkythuatso.com/uploads/thumbnails/800/2023/05/logo-viettelpost-inkythuatso-27-14-52-01.jpg");
          vc3.setNgayGiao("23 - 25 tháng 10 2024");
@@ -314,7 +349,7 @@ public class CartRepository {
         List<ThanhToan> list = new ArrayList<>();
 
         ThanhToan tt1 = new ThanhToan();
-        tt1.setIdThanhToan("ccc");
+        tt1.setIdThanhToan("1");
         tt1.setTenThanhToan("Paypal");
         tt1.setHanSuDung("22/01");
         tt1.setCVV("101");
@@ -323,7 +358,7 @@ public class CartRepository {
         tt1.setChecked(false);
 
         ThanhToan tt2 = new ThanhToan();
-        tt2.setIdThanhToan("ccc");
+        tt2.setIdThanhToan("2");
         tt2.setTenThanhToan("Paypal");
         tt2.setHanSuDung("22/01");
         tt2.setCVV("101");
@@ -332,7 +367,7 @@ public class CartRepository {
         tt2.setChecked(false);
 
         ThanhToan tt3 = new ThanhToan();
-        tt3.setIdThanhToan("ccc");
+        tt3.setIdThanhToan("3");
         tt3.setTenThanhToan("Paypal");
         tt3.setHanSuDung("22/01");
         tt3.setCVV("101");
@@ -350,7 +385,7 @@ public class CartRepository {
         List<KhuyenMai> list = new ArrayList<>();
 
         KhuyenMai km1 = new KhuyenMai();
-        km1.setIdKhuyenMai("cc");
+        km1.setIdKhuyenMai("1");
         km1.setTenKhuyenMai("Deal hè");
         km1.setNoiDung("Tặng 1 cái quần xì");
         km1.setDieuKien("Mua 2 cái áo");
@@ -365,7 +400,7 @@ public class CartRepository {
         km1.setChecked(false);
 
          KhuyenMai km2 = new KhuyenMai();
-         km2.setIdKhuyenMai("cc");
+         km2.setIdKhuyenMai("2");
          km2.setTenKhuyenMai("Deal hè");
          km2.setNoiDung("Tặng 1 cái quần xì");
          km2.setDieuKien("Mua 2 cái áo");
@@ -380,7 +415,7 @@ public class CartRepository {
          km2.setChecked(false);
 
          KhuyenMai km3 = new KhuyenMai();
-         km3.setIdKhuyenMai("cc");
+         km3.setIdKhuyenMai("3");
          km3.setTenKhuyenMai("Deal hè");
          km3.setNoiDung("Tặng 1 cái quần xì");
          km3.setDieuKien("Mua 2 cái áo");
@@ -401,9 +436,4 @@ public class CartRepository {
         return list;
      }
 
-    public static void main(String[] args) {
-        CartRepository res = new CartRepository();
-        List<DonHangChiTiet> list = res.getGioHang();
-        System.out.println(list.size());
-    }
 }

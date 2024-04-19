@@ -7,12 +7,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.Presentation.Cart.Activity.SPEditDialog;
 import com.example.myapplication.Presentation.Cart.Model.DonHangChiTiet;
 import com.example.myapplication.Presentation.Cart.ViewHolder.GioHangVH;
+import com.example.myapplication.Presentation.Cart.ViewModel.CartVM;
 import com.example.myapplication.R;
 
 import java.util.ArrayList;
@@ -26,14 +29,16 @@ public class CartAdapter extends RecyclerView.Adapter<GioHangVH> {
     private Button btn_DatHang;
     private TextView toolbar_title;
     private DonHangChiTiet donHangChiTiet;
+    private CartVM cartVM;
 
 
-    public CartAdapter(Context context, List<DonHangChiTiet> list, Button btn_DatHang, TextView toolbar_title){
+    public CartAdapter(Context context, List<DonHangChiTiet> list, Button btn_DatHang, TextView toolbar_title, CartVM cartVM){
         this.list = list;
         this.context = context;
         this.minflater = LayoutInflater.from(context);
         this.btn_DatHang = btn_DatHang;
         this.toolbar_title = toolbar_title;
+        this.cartVM = cartVM;
     }
 
     @NonNull
@@ -68,7 +73,10 @@ public class CartAdapter extends RecyclerView.Adapter<GioHangVH> {
             @Override
             public void onClick(View v) {
                 DonHangChiTiet dh_edit = list.get(holder.getAdapterPosition());
-                holder.show_dialog(context,dh_edit);
+//                Toast.makeText(context, dh_edit.getSanPham().getTenSanPham(),Toast.LENGTH_SHORT).show();
+//                holder.show_dialog(context,dh_edit);
+                SPEditDialog dia = new SPEditDialog(context, dh_edit, cartVM);
+                dia.showEditSanPhamDialog();
             }
         });
         holder.ib_Remove.setOnClickListener(new View.OnClickListener() {

@@ -1,6 +1,8 @@
 package com.example.myapplication.Presentation.Cart.Apdapter;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +12,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.Presentation.Cart.Model.KichThuoc;
+import com.example.myapplication.Presentation.Cart.Model.Mau;
 import com.example.myapplication.Presentation.Cart.ViewHolder.SizeVH;
 import com.example.myapplication.R;
 
@@ -44,20 +47,38 @@ public class SizeAdapter extends RecyclerView.Adapter<SizeVH> {
         KichThuoc size = list_size.get(position);
         holder.updateUI(size);
         int p = position;
-        holder.tv_size.setOnClickListener(new View.OnClickListener() {
+        holder.tv_Size_cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                rowindex = p;
+                for(int i =0; i<list_size.size();i++){
+                    KichThuoc kt = list_size.get(i);
+                    KichThuoc kt_check = list_size.get(holder.getAdapterPosition());
+                    if(kt.getId().equals(kt_check.getId())){
+                        kt.setChecked(true);
+                    }else {
+                        kt.setChecked(false);
+                    }
+                }
                 notifyDataSetChanged();            }
         });
-        if(rowindex!=position){
-            holder.tv_size.setBackgroundResource(R.drawable.item_size_defaut);
-            holder.tv_size.setTextColor(ContextCompat.getColor(context, android.R.color.black));
+        if(!size.isAble()){
+            holder.tv_Size_cart.setClickable(false);
+            holder.tv_line_item_size.setVisibility(View.VISIBLE);
+            holder.tv_Size_cart.setTextColor((Color.parseColor("#EDEBEB")));
 
         }else{
-            holder.tv_size.setBackgroundResource(R.drawable.item_size_selected);
-            holder.tv_size.setTextColor(ContextCompat.getColor(context, android.R.color.white));
+            holder.tv_Size_cart.setClickable(true);
+            holder.tv_line_item_size.setVisibility(View.GONE);
+            if(!size.isChecked()){
+                holder.tv_Size_cart.setBackgroundResource(R.drawable.item_size_defaut);
+                holder.tv_Size_cart.setTextColor(ContextCompat.getColor(context, android.R.color.black));
 
+            }else{
+                holder.tv_Size_cart.setBackgroundResource(R.drawable.item_size_selected);
+                holder.tv_Size_cart.setTextColor(ContextCompat.getColor(context, android.R.color.white));
+
+            }
         }
+
     }
 }

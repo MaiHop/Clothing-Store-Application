@@ -21,22 +21,33 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.Presentation.Cart.Activity.GioHangActivity;
+import com.example.myapplication.Presentation.Cart.Apdapter.CartAdapter;
 import com.example.myapplication.Presentation.Cart.Apdapter.ColorAdapter;
 import com.example.myapplication.Presentation.Cart.Apdapter.SizeAdapter;
 import com.example.myapplication.Presentation.Cart.Model.DonHangChiTiet;
 import com.example.myapplication.Presentation.Cart.Model.KichThuoc;
 import com.example.myapplication.Presentation.Cart.Model.Mau;
+import com.example.myapplication.Presentation.Cart.Model.SanPham;
 import com.example.myapplication.Presentation.Cart.Repository.CartRepository;
 import com.example.myapplication.Presentation.Cart.ViewModel.CartVM;
+import com.example.myapplication.Presentation.Cart.ViewModel.KichThuocVM;
+import com.example.myapplication.Presentation.Cart.ViewModel.MauVM;
 import com.example.myapplication.R;
+import com.google.android.material.imageview.ShapeableImageView;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
 import java.util.List;
 
 public class GioHangVH extends RecyclerView.ViewHolder {
@@ -44,7 +55,8 @@ public class GioHangVH extends RecyclerView.ViewHolder {
             tv_ThanhTien_cart;
     private EditText ed_SoLuongDat;
     public ImageButton ib_Edit, ib_Remove;
-    public ImageView iv_Image;
+    public ImageView iv_Image,iv_Image_cart;
+    public ShapeableImageView iv_Color_cart;
     public CheckBox cb_Selected;
     public ConstraintLayout layout_item_cart;
     private CartVM cartVM;
@@ -54,15 +66,12 @@ public class GioHangVH extends RecyclerView.ViewHolder {
         super(itemView);
         init();
     }
-
-
-
     public void updateUI(DonHangChiTiet donHangChiTiet){
-//        Picasso.get().load(donHangChiTiet.getSanPham().getImageUrl()).into(iv_Image);
+        Picasso.get().load(donHangChiTiet.getSanPham().getImageUrl()).into(iv_Image);
+        Picasso.get().load(donHangChiTiet.getSanPham().getMau().getImgUrl()).into(iv_Color_cart);
         this.tv_TenSanPham.setText(donHangChiTiet.getSanPham().getTenSanPham());
-        this.tv_Size.setText("Size : "+ donHangChiTiet.getSanPham().getKichThuoc());
-        this.tv_Mau.setText("Color : "+ donHangChiTiet.getSanPham().getMau());
-//        this.tv_SoLuongConLai.setText("Qty :"+ donHangChiTiet.getSoLuong());
+        this.tv_Size.setText("Size : "+ donHangChiTiet.getSanPham().getKichThuoc().getTen());
+        this.tv_Mau.setText("Color : "+ donHangChiTiet.getSanPham().getMau().getTen());
         this.tv_ThanhTien.setText("$"+ donHangChiTiet.getThanhTien());
         this.cb_Selected.setSelected(donHangChiTiet.isChecked());
     }
@@ -78,49 +87,6 @@ public class GioHangVH extends RecyclerView.ViewHolder {
         }
         button.setText("Checkout ("+count+") - "+"$"+total);
     }
-    private int qty =1;
-
-    public void show_dialog(Context context, DonHangChiTiet donHangChiTiet){
-        init_dialog(context);
-
-        tv_TenSanPham_cart.setText(donHangChiTiet.getSanPham().getTenSanPham());
-        tv_SoLuongConLai.setText(donHangChiTiet.getSanPham().getSoLuong());
-        ed_SoLuongDat.setText(donHangChiTiet.getSoLuong());
-        tv_ThanhTien_cart.setText(String.valueOf(donHangChiTiet.getThanhTien()));
-        btn_Giam.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(qty>1){
-                    qty-=1;
-                    ed_SoLuongDat.setText(String.valueOf(qty));
-                }else {
-                    qty=1;
-                    ed_SoLuongDat.setText(String.valueOf(qty));
-                }
-//                Toast.makeText(context, "Trừ", Toast.LENGTH_SHORT).show();
-            }
-        });
-        btn_Tang.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                qty+=1;
-                ed_SoLuongDat.setText(String.valueOf(qty));
-//                Toast.makeText(context, "Tăng", Toast.LENGTH_SHORT).show();
-            }
-        });
-        btn_Cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.hide();
-            }
-        });
-        btn_Confirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(context, qty, Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 
 
     public void removeItem(Context context,LayoutInflater layoutInflater) {
@@ -131,51 +97,16 @@ public class GioHangVH extends RecyclerView.ViewHolder {
         toast.setDuration(Toast.LENGTH_SHORT);
         toast.show();
     }
-    private void init_dialog(Context context){
-        dialog = new Dialog(context);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.dialog_bottom_cart);
-        dialog.show();
-        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
-        dialog.getWindow().setGravity(Gravity.BOTTOM);
-
-        CartRepository re = new CartRepository();
-        List<KichThuoc> list_size = re.getListSize();
-        List<Mau> list_mau = re.getListMau();
-
-        RecyclerView rv_size =dialog.findViewById(R.id.rv_size);
-
-        SizeAdapter sizeAdapter =new SizeAdapter(context, list_size);
-        rv_size.setAdapter(sizeAdapter);
-        rv_size.setLayoutManager(new LinearLayoutManager(context,RecyclerView.HORIZONTAL,false));
-
-        RecyclerView rv_color =dialog.findViewById(R.id.rv_color);
-
-        ColorAdapter colortAdapter =new ColorAdapter(context, list_mau);
-        rv_color.setAdapter(colortAdapter);
-        rv_color.setLayoutManager(new LinearLayoutManager(context,RecyclerView.HORIZONTAL,false));
-
-
-        ed_SoLuongDat = dialog.findViewById(R.id.ed_SoLuongDat);
-        tv_TenSanPham_cart = dialog.findViewById(R.id.tv_TenSanPham_cart);
-        tv_ThanhTien_cart = dialog.findViewById(R.id.tv_ThanhTien_cart);
-        btn_Giam = dialog.findViewById(R.id.btn_Giam);
-        btn_Tang = dialog.findViewById(R.id.btn_Tang);
-        btn_Cancel = dialog.findViewById(R.id.btn_Cancel);
-        btn_Confirm = dialog.findViewById(R.id.btn_Confirm);
-    }
     private void init(){
         //CheckBox
         this.cb_Selected = itemView.findViewById(R.id.cb_Selected);
         //ImageView
         this.iv_Image = itemView.findViewById((R.id.iv_Image_cart));
+        this.iv_Color_cart = itemView.findViewById(R.id.iv_Color_cart);
         //TextView
         this.tv_TenSanPham = itemView.findViewById(R.id.tv_TenSanPham_cart);
         this.tv_Size = itemView.findViewById(R.id.tv_Size_cart);
         this.tv_Mau = itemView.findViewById(R.id.tv_Mau_cart);
-        this.tv_SoLuongConLai = itemView.findViewById(R.id.tv_SoLuongConLai);
         this.tv_ThanhTien = itemView.findViewById(R.id.tv_ThanhTien_cart);
         //EditText
         this.ed_SoLuongDat = itemView.findViewById(R.id.ed_SoLuongDat);

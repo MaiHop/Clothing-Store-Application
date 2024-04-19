@@ -4,8 +4,24 @@ import java.io.Serializable;
 
 public class Mau implements Serializable {
     private String Id, Ten, ImgUrl;
-
+    private boolean Checked, Able = true;
     public Mau() {
+    }
+
+    public boolean isAble() {
+        return Able;
+    }
+
+    public void setAble(boolean able) {
+        Able = able;
+    }
+
+    public boolean isChecked() {
+        return Checked;
+    }
+
+    public void setChecked(boolean checked) {
+        Checked = checked;
     }
 
     public String getId() {

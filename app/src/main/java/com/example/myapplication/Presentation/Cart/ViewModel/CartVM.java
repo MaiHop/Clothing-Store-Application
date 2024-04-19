@@ -31,15 +31,14 @@ public class CartVM extends ViewModel {
     public void addCart(){
         CartRepository res = new CartRepository();
         List<SanPham> listsp = res.getSanPham();
-        DonHangChiTiet donHangChiTiet1 = new DonHangChiTiet();
         DonHangChiTiet dh1 = new DonHangChiTiet();
         dh1.setIdDonHang("cc");
-        dh1.setSanPham(listsp.get(0));
+        dh1.setSanPham(listsp.get(4));
         dh1.setSoLuong(1);
-        dh1.setThanhTien(listsp.get(0).getGiaban()*dh1.getSoLuong());
+        dh1.setThanhTien(dh1.getSanPham().getGiaban()*dh1.getSoLuong());
         dh1.setThanhTienKhuyenMai(0);
         dh1.setChecked(true);
-        listDonHangChiTiet.add(donHangChiTiet1);
+        listDonHangChiTiet.add(dh1);
         listCartLiveData.setValue(listDonHangChiTiet);
     }
     public void removeCart(String id){
@@ -49,5 +48,8 @@ public class CartVM extends ViewModel {
             }
         }
         listCartLiveData.setValue(listDonHangChiTiet);
+    }
+    public void editCart(DonHangChiTiet donHangChiTiet){
+        
     }
 }

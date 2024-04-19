@@ -40,22 +40,18 @@ public class GioHangActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cart);
 
         init();
-        CartRepository res = new CartRepository();
-        List<DonHangChiTiet> list = res.getGioHang();
-        Toast.makeText(this, list.size(),Toast.LENGTH_SHORT).show();
+        this.rv_ListCart =findViewById(R.id.rv_ListCart);
 
-//        this.rv_ListCart =findViewById(R.id.rv_ListCart);
-//
-//        this.rv_ListCart.setLayoutManager(new LinearLayoutManager(this));
-//        cartVM = new ViewModelProvider(this).get(CartVM.class);
-//        cartVM.getListCartLiveData().observe(this, new Observer<List<DonHangChiTiet>>() {
-//            @Override
-//            public void onChanged(List<DonHangChiTiet> donHangChiTiets) {
-//                list= donHangChiTiets;
-//                CartAdapter adapter = new CartAdapter(GioHangActivity.this, donHangChiTiets, btn_DatHang, toolbar_title);
-//                rv_ListCart.setAdapter(adapter);
-//            }
-//        });
+        this.rv_ListCart.setLayoutManager(new LinearLayoutManager(this));
+        cartVM = new ViewModelProvider(this).get(CartVM.class);
+        cartVM.getListCartLiveData().observe(this, new Observer<List<DonHangChiTiet>>() {
+            @Override
+            public void onChanged(List<DonHangChiTiet> donHangChiTiets) {
+                list= donHangChiTiets;
+                CartAdapter adapter = new CartAdapter(GioHangActivity.this, donHangChiTiets, btn_DatHang, toolbar_title, cartVM);
+                rv_ListCart.setAdapter(adapter);
+            }
+        });
     }
 
     @Override

@@ -1,10 +1,12 @@
 package com.example.myapplication.Presentation.LoginAccout.OTP;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
@@ -16,15 +18,26 @@ import android.widget.Toast;
 
 import com.example.myapplication.Presentation.LoginAccout.ForgotPass.DatLai_Password;
 import com.example.myapplication.Presentation.LoginAccout.HomeThamGia;
+import com.example.myapplication.Presentation.LoginAccout.Load_Dialog;
+import com.example.myapplication.Presentation.LoginAccout.SignIn.logout;
+import com.example.myapplication.Presentation.LoginAccout.SignIn.sign_in;
 import com.example.myapplication.Presentation.LoginAccout.SingUp.sign_up;
 import com.example.myapplication.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class SP_OTP extends AppCompatActivity {
 
     EditText editText1, editText2, editText3, editText4;
     ImageView img_back;
+
+//    Class<?>
     Button btn_confirmCode;
 //    final String confirm_code = getIntent().getStringExtra("confirm_code");
+    FirebaseAuth mAuth = FirebaseAuth.getInstance();
     Intent intent;
 
 
@@ -33,38 +46,23 @@ public class SP_OTP extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sup_otp);
-        img_back = findViewById(R.id.img_pack_OTP);
-        btn_confirmCode = findViewById(R.id.Confirm_code);
-        String confirm_code = getIntent().getStringExtra("confirm_code");
-
-        img_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-        btn_confirmCode.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if ("forgot_password".equals(confirm_code)){
-                     intent = new Intent(SP_OTP.this,DatLai_Password.class);
-                }
-                else if("sign_up".equals(confirm_code)){
-                    intent = new Intent(SP_OTP.this, HomeThamGia.class);
-                }
-                startActivity(intent);
-            }
-        });
 
         editText1 = findViewById(R.id.editText1);
         editText2 = findViewById(R.id.editText2);
         editText3 = findViewById(R.id.editText3);
         editText4 = findViewById(R.id.editText4);
+        img_back = findViewById(R.id.img_pack_OTP);
+        btn_confirmCode = findViewById(R.id.Confirm_code);
 
         editText1.addTextChangedListener(new GenericTextWatcher(editText1));
         editText2.addTextChangedListener(new GenericTextWatcher(editText2));
         editText3.addTextChangedListener(new GenericTextWatcher(editText3));
         editText4.addTextChangedListener(new GenericTextWatcher(editText4));
+
+
+        OnclickImage(img_back);
+        Onclickbtn(btn_confirmCode);
+
     }
 
     private class GenericTextWatcher implements TextWatcher {
@@ -178,6 +176,76 @@ public class SP_OTP extends AppCompatActivity {
         @Override
         public void afterTextChanged(Editable editable) {
         }
+    }
+    public void OnclickImage(ImageView imgv){
+        imgv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+    public void Onclickbtn(Button btn){
+        final Load_Dialog loadDialog = new Load_Dialog(SP_OTP.this);
+
+        String confirm_code = getIntent().getStringExtra("confirm_code");
+        String email = getIntent().getStringExtra("Email");
+        String password = getIntent().getStringExtra("Password");
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if ("forgot_password".equals(confirm_code)){
+                    loadDialog.startLoadingDialog();
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            loadDialog.dismissDialog();
+                            intent = new Intent(SP_OTP.this,DatLai_Password.class);
+                            startActivity(intent);
+                        }
+                    },2000);
+
+                }
+                else if("sign_up".equals(confirm_code)){
+                    mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()){
+                                if(mAuth.getCurrentUser().isEmailVerified()){
+                                    loadDialog.startLoadingDialog();
+                                    Handler handler = new Handler();
+                                    handler.postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            loadDialog.dismissDialog();
+                                            intent = new Intent(SP_OTP.this, logout.class);
+                                            startActivity(intent);
+                                        }
+                                    },2000);
+                                }
+                                else {
+                                    loadDialog.startLoadingDialog();
+                                    Handler handler = new Handler();
+                                    handler.postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            loadDialog.dismissDialog();
+                                            Toast.makeText(SP_OTP.this,"Hãy xác nhận Email của bạn trước khi đăng nhập!",Toast.LENGTH_SHORT).show();
+                                        }
+                                    },1000);
+                                }
+                            }
+                            else {
+                                Toast.makeText(SP_OTP.this,task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+
+
+                }
+            }
+        });
     }
 
 }

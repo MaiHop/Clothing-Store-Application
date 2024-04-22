@@ -67,8 +67,9 @@
                     app:boxBackgroundMode="outline"
                     android:hint="Email">
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtip_email"
                         android:layout_width="380dp"
-                        android:layout_height="50dp"
+                        android:layout_height="match_parent"
                         android:inputType="textEmailAddress"
                         android:paddingLeft="10dp"
                         android:drawablePadding="10dp"/>
@@ -92,8 +93,9 @@
                     app:endIconMode="password_toggle"
                     android:hint="Password">
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtip_password"
                         android:layout_width="380dp"
-                        android:layout_height="50dp"
+                        android:layout_height="match_parent"
                         android:inputType="textPassword"
                         android:paddingLeft="10dp"
                         android:drawablePadding="10dp"/>
@@ -385,9 +387,9 @@
 
                 </LinearLayout>
                 <LinearLayout
+                    android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="140dp"
-                    android:orientation="vertical"
                     android:layout_weight="1"
                     android:gravity="center|bottom"
                     android:layout_marginBottom="10dp">

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".Presentation.Wishlist.Detail_SP_WishList">
+    tools:context=".Presentation.Wishlist.Activity.Detail_SP_WishList">
 
     <androidx.drawerlayout.widget.DrawerLayout
         android:layout_width="match_parent"

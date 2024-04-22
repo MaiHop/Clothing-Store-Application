@@ -1,4 +1,4 @@
-package com.example.myapplication.Presentation.Wishlist;
+package com.example.myapplication.Presentation.Wishlist.Model;
 
 public class BoLoc_WishList{
     private String ten_loai;

@@ -1,4 +1,4 @@
-package com.example.myapplication.Presentation.Wishlist;
+package com.example.myapplication.Presentation.Wishlist.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.Presentation.Wishlist.Model.SanPham_WishList;
 import com.example.myapplication.R;
 
 import java.text.DecimalFormat;

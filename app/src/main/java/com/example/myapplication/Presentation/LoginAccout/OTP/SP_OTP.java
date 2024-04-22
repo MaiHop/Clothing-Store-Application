@@ -34,7 +34,6 @@ public class SP_OTP extends AppCompatActivity {
     EditText editText1, editText2, editText3, editText4;
     ImageView img_back;
 
-//    Class<?>
     Button btn_confirmCode;
 //    final String confirm_code = getIntent().getStringExtra("confirm_code");
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
@@ -195,17 +194,8 @@ public class SP_OTP extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if ("forgot_password".equals(confirm_code)){
-                    loadDialog.startLoadingDialog();
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            loadDialog.dismissDialog();
-                            intent = new Intent(SP_OTP.this,DatLai_Password.class);
-                            startActivity(intent);
-                        }
-                    },2000);
-
+                    intent = new Intent(SP_OTP.this, HomeThamGia.class);
+                    startActivity(intent);
                 }
                 else if("sign_up".equals(confirm_code)){
                     mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {

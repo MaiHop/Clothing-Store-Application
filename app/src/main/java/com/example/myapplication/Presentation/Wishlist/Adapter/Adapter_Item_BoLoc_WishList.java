@@ -1,22 +1,19 @@
-package com.example.myapplication.Presentation.Wishlist;
+package com.example.myapplication.Presentation.Wishlist.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.TextView;
 
 
+import com.example.myapplication.Presentation.Wishlist.Model.BoLoc_WishList;
 import com.example.myapplication.R;
 
 import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import java.util.List;
 
 public class Adapter_Item_BoLoc_WishList extends RecyclerView.Adapter<Adapter_Item_BoLoc_WishList.BoLocWishListViewHolder> {
 

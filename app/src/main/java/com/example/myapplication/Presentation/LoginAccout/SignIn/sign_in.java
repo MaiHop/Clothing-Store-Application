@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.example.myapplication.Presentation.LoginAccout.ForgotPass.forgot_password;
 import com.example.myapplication.Presentation.LoginAccout.HomeThamGia;
 import com.example.myapplication.Presentation.LoginAccout.Load_Dialog;
+import com.example.myapplication.Presentation.LoginAccout.OTP.SP_OTP;
 import com.example.myapplication.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -46,27 +47,20 @@ public class sign_in extends AppCompatActivity {
 
     GoogleSignInClient mGoogleSignInClinet;
     int RC_SignIn = 1234;
+    Load_Dialog loadDialog = new Load_Dialog(sign_in.this);
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                .requestEmail().build();
-        mGoogleSignInClinet = GoogleSignIn.getClient(this,gso);
+
+        GGOption();
 
         initUI();
         btn();
-        mGoogleSignInClinet.signOut().addOnCompleteListener(this,
-                new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        // Now the user will be able to select an account to sign in
-                        btn();
-                    }
-                });
+        logout();
     }
     private void initUI(){
         imagePack = findViewById(R.id.pack_signin);
@@ -76,6 +70,22 @@ public class sign_in extends AppCompatActivity {
         txtip_email = findViewById(R.id.txtip_email);
         txtip_password = findViewById(R.id.txtip_password);
 
+    }
+    private void GGOption(){
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail().build();
+        mGoogleSignInClinet = GoogleSignIn.getClient(this,gso);
+    }
+    private void logout(){
+        mGoogleSignInClinet.signOut().addOnCompleteListener(this,
+                new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        // Now the user will be able to select an account to sign in
+                        btn();
+                    }
+                });
     }
     private void btn(){
         imagePack.setOnClickListener(new View.OnClickListener() {
@@ -171,19 +181,28 @@ public class sign_in extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            HashMap<String, Object> map = new HashMap<>();
-                            map.put("id",user.getUid());
-                            map.put("name",user.getDisplayName());
-                            map.put("profile",user.getPhotoUrl().toString());
-                            database.getReference().child("users").child(user.getUid()).setValue(map)
-                                    .addOnSuccessListener(aVoid -> {
-                                        Intent intent = new Intent(sign_in.this, logout.class);
-                                        startActivity(intent);
-                                    })
-                                    .addOnFailureListener(e -> {
-                                        Log.e("Firebase", "Failed to write user to database", e);
-                                    });
+                            loadDialog.startLoadingDialog();
+                            Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    loadDialog.dismissDialog();
+                                    FirebaseUser user = mAuth.getCurrentUser();
+                                    HashMap<String, Object> map = new HashMap<>();
+                                    map.put("id",user.getUid());
+                                    map.put("name",user.getDisplayName());
+                                    map.put("profile",user.getPhotoUrl().toString());
+                                    database.getReference().child("users").child(user.getUid()).setValue(map)
+                                            .addOnSuccessListener(aVoid -> {
+                                                Intent intent = new Intent(sign_in.this, logout.class);
+                                                startActivity(intent);
+                                            })
+                                            .addOnFailureListener(e -> {
+                                                Log.e("Firebase", "Failed to write user to database", e);
+                                            });
+                                }
+                            },2000);
+
                         }
                         else {
                             Toast.makeText(sign_in.this,"Loi",Toast.LENGTH_SHORT).show();

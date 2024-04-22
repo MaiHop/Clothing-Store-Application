@@ -1,4 +1,4 @@
-package com.example.myapplication.Presentation.Wishlist;
+package com.example.myapplication.Presentation.Wishlist.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;

@@ -1,4 +1,4 @@
-package com.example.myapplication.Presentation.Wishlist;
+package com.example.myapplication.Presentation.Wishlist.Model;
 
 public class SanPham_WishList {
     private String tenSP;

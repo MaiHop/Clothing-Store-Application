@@ -1,4 +1,4 @@
-package com.example.myapplication.Presentation.Wishlist;
+package com.example.myapplication.Presentation.Wishlist.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -6,31 +6,27 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.Menu;
-import android.widget.CheckBox;
-import android.widget.ListView;
 
+import com.example.myapplication.Presentation.Wishlist.Adapter.Adapter_Item_BoLoc_WishList;
+import com.example.myapplication.Presentation.Wishlist.Adapter.Adapter_Item_SP_WishList;
+import com.example.myapplication.Presentation.Wishlist.Model.BoLoc_WishList;
+import com.example.myapplication.Presentation.Wishlist.Model.SanPham_WishList;
 import com.example.myapplication.R;
 
-import java.io.PrintWriter;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Wishlist extends AppCompatActivity {
-
+    private Toolbar toolbar;
+    RecyclerView recyclerViewBoLoc,recyclerViewSP;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wish_list);
 
-        Toolbar toolbar = findViewById(R.id.toolbar_WishList);
+        initUI();
         setSupportActionBar(toolbar);
-
-
-        RecyclerView recyclerViewBoLoc = findViewById(R.id.RV_itemboloc_wishlist);
-        RecyclerView recyclerViewSP = findViewById(R.id.RV_item_Sp_wishlist);
 
         ArrayList<BoLoc_WishList> arrayBoLocList;
         ArrayList<SanPham_WishList> arraySPList;
@@ -49,6 +45,7 @@ public class Wishlist extends AppCompatActivity {
         arrayBoLocList.add(new BoLoc_WishList("pop"));
         arrayBoLocList.add(new BoLoc_WishList("Tui"));
         arrayBoLocList.add(new BoLoc_WishList("Giay"));
+
         arraySPList = new ArrayList<>();
         arraySPList.add(new SanPham_WishList("Ao Polo","200000",R.drawable.ic_apple));
         arraySPList.add(new SanPham_WishList("Ao Polo","200000",R.drawable.ic_apple));
@@ -72,5 +69,10 @@ public class Wishlist extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menutoolbarwishlist,menu);
         return true;
+    }
+    private void initUI(){
+        toolbar = findViewById(R.id.toolbar_WishList);
+        recyclerViewBoLoc = findViewById(R.id.RV_itemboloc_wishlist);
+        recyclerViewSP = findViewById(R.id.RV_item_Sp_wishlist);
     }
 }

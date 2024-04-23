@@ -9,6 +9,7 @@ import com.example.myapplication.Presentation.Cart.Repository.CartRepository;
 import com.example.myapplication.R;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CartVM extends ViewModel {
     private MutableLiveData<List<DonHangChiTiet>> listCartLiveData;
@@ -50,6 +51,30 @@ public class CartVM extends ViewModel {
         listCartLiveData.setValue(listDonHangChiTiet);
     }
     public void editCart(DonHangChiTiet donHangChiTiet){
-        
+        listDonHangChiTiet = listCartLiveData.getValue();
+        for(DonHangChiTiet ct : listDonHangChiTiet){
+            if(ct.getIdDonHang().equals(donHangChiTiet.getIdDonHang())){
+                ct.setSanPham(donHangChiTiet.getSanPham());
+                ct.setSoLuong(donHangChiTiet.getSoLuong());
+                ct.setThanhTien((donHangChiTiet.getThanhTien()));
+            }
+        }
+        listCartLiveData.setValue(listDonHangChiTiet);
+    }
+    public void filterCart(String key){
+        if(key.length() ==0){
+            CartRepository res = new CartRepository();
+            listDonHangChiTiet = res.getGioHang();
+
+            listCartLiveData.setValue(listDonHangChiTiet);
+        }else {
+            CartRepository res = new CartRepository();
+            listDonHangChiTiet = res.getGioHang();
+            listDonHangChiTiet = listDonHangChiTiet.stream()
+                    .filter(donHangChiTiet -> donHangChiTiet.getSanPham().getTenSanPham().toLowerCase().contains(key))
+                    .collect(Collectors.toList());
+            listCartLiveData.setValue(listDonHangChiTiet);
+        }
+
     }
 }

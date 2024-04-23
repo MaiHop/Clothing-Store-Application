@@ -49,7 +49,9 @@ public class ThanhToanActivity extends AppCompatActivity {
     private void loadinfo() {
         Intent i = getIntent();
         dh = (DonHang) i.getSerializableExtra("DonHang");
-
+        if(dh.getDiachi() == null || dh.getVanchuyen() == null || dh.getThanhToan() == null){
+            this.btn_XacNhanDonHang.setEnabled(false);
+        }
 
         if (dh.getDiachi() == null){
             this.ll_Delivery_Address.setVisibility(View.GONE);
@@ -79,17 +81,25 @@ public class ThanhToanActivity extends AppCompatActivity {
             this.ll_Promos_Vouchers.setVisibility(View.GONE);
         }else {
             this.tv_TenKhuyenMai.setText(dh.getKhuyenmai().getTenKhuyenMai());
-            this.tv_ThongTinKhuyenMai.setText(dh.getKhuyenmai().getDieuKien()+" * "+dh.getKhuyenmai().getToiDaGiam()+" * "+dh.getKhuyenmai().getHanSuDung());
+            this.tv_ThongTinKhuyenMai.setText(dh.getKhuyenmai().getDieuKien()+" * Tối đa giảm : "+dh.getKhuyenmai().getToiDaGiam()+" * "+dh.getKhuyenmai().getHanSuDung());
             this.iv_PV_Remove.setVisibility(View.VISIBLE);
             this.ll_Promos_Vouchers.setVisibility(View.VISIBLE);
+            this.iv_PV_Remove.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dh.setKhuyenmai(null);
+                    loadinfo();
+//                    Toast.makeText(ThanhToanActivity.this, "OK",Toast.LENGTH_SHORT).show();
+                }
+            });
         }
         this.tv_Subtotal.setText("Subtotal ("+ dh.getListDonHangChiTiet().size()+")");
-        this.tv_Checkout_ThanhTien.setText(String.valueOf(dh.getThanhTien()));
-        this.tv_Checkout_PhiDichVu.setText(String.valueOf(dh.getPhiPhucVu()));
-        this.tv_Checkout_PhiGiaoHang.setText(String.valueOf(dh.getPhiGiaoHang()));
-        this.tv_Checkout_TienThue.setText(String.valueOf(dh.getThue()));
-        this.tv_Checkout_TienKhuyenMai.setText(String.valueOf(dh.getTienKhuyenMai()));
-        this.tv_Checkout_TongTien.setText(String.valueOf(dh.getTongTien()));
+        this.tv_Checkout_ThanhTien.setText(String.valueOf("$"+dh.getThanhTien()));
+        this.tv_Checkout_PhiDichVu.setText(String.valueOf("$"+dh.getPhiPhucVu()));
+        this.tv_Checkout_PhiGiaoHang.setText(String.valueOf("$"+dh.getPhiGiaoHang()));
+        this.tv_Checkout_TienThue.setText(String.valueOf("$"+dh.getThue()));
+        this.tv_Checkout_TienKhuyenMai.setText(String.valueOf("-$"+dh.getTienKhuyenMai()));
+        this.tv_Checkout_TongTien.setText(String.valueOf("$"+dh.getTongTien()));
 
 
 
@@ -167,6 +177,7 @@ public class ThanhToanActivity extends AppCompatActivity {
         });
         //Button
         this.btn_XacNhanDonHang = findViewById(R.id.btn_XacNhanDonHang);
+
         this.btn_XacNhanDonHang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

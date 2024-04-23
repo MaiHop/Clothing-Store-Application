@@ -83,6 +83,10 @@ public class DonHang implements Serializable {
     }
 
     public double getThanhTien() {
+        ThanhTien =0;
+        for(DonHangChiTiet dhct : getListDonHangChiTiet()){
+            ThanhTien += dhct.getThanhTien();
+        }
         return ThanhTien;
     }
 
@@ -91,6 +95,7 @@ public class DonHang implements Serializable {
     }
 
     public double getPhiPhucVu() {
+        PhiPhucVu = ThanhTien * 0.08;
         return PhiPhucVu;
     }
 
@@ -107,6 +112,7 @@ public class DonHang implements Serializable {
     }
 
     public double getThue() {
+        Thue = ThanhTien * 0.1;
         return Thue;
     }
 
@@ -115,6 +121,12 @@ public class DonHang implements Serializable {
     }
 
     public double getTienKhuyenMai() {
+        if(khuyenmai != null){
+            TienKhuyenMai = Double.parseDouble(khuyenmai.getToiDaGiam());
+        }else {
+            TienKhuyenMai =0;
+        }
+
         return TienKhuyenMai;
     }
 
@@ -123,6 +135,8 @@ public class DonHang implements Serializable {
     }
 
     public double getTongTien() {
+        TongTien = 0;
+        TongTien = ThanhTien + PhiPhucVu + PhiGiaoHang + Thue - TienKhuyenMai;
         return TongTien;
     }
 

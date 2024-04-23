@@ -73,10 +73,9 @@ public class CartAdapter extends RecyclerView.Adapter<GioHangVH> {
             @Override
             public void onClick(View v) {
                 DonHangChiTiet dh_edit = list.get(holder.getAdapterPosition());
-//                Toast.makeText(context, dh_edit.getSanPham().getTenSanPham(),Toast.LENGTH_SHORT).show();
-//                holder.show_dialog(context,dh_edit);
                 SPEditDialog dia = new SPEditDialog(context, dh_edit, cartVM);
                 dia.showEditSanPhamDialog();
+                notifyDataSetChanged();
             }
         });
         holder.ib_Remove.setOnClickListener(new View.OnClickListener() {

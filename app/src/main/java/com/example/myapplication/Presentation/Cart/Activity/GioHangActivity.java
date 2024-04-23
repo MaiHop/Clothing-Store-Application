@@ -2,18 +2,24 @@ package com.example.myapplication.Presentation.Cart.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,9 +29,12 @@ import com.example.myapplication.Presentation.Cart.Model.DonHangChiTiet;
 import com.example.myapplication.Presentation.Cart.Repository.CartRepository;
 import com.example.myapplication.Presentation.Cart.ViewModel.CartVM;
 import com.example.myapplication.R;
+import com.google.android.material.search.SearchBar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class GioHangActivity extends AppCompatActivity {
     private RecyclerView rv_ListCart;
@@ -34,6 +43,7 @@ public class GioHangActivity extends AppCompatActivity {
     private Toolbar toolbar_cart;
     private List<DonHangChiTiet> list;
     private CartVM cartVM;
+    private SearchView searchView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,23 +63,37 @@ public class GioHangActivity extends AppCompatActivity {
             }
         });
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_toolbar_cart, menu);
+
+        searchView = (SearchView) menu.findItem(R.id.item_search_cart).getActionView();
+        searchView.setQueryHint("Nhập tên sản phẩm");
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                cartVM.filterCart(newText.toLowerCase());
+                return false;
+            }
+        });
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-        if(id == R.id.item_search_cart){
-            cartVM.removeCart("1");
-            return true;
-        }else{
-            return super.onOptionsItemSelected(item);
-        }
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+//        int id = item.getItemId();
+//        if(id == R.id.item_search_cart){
+//
+//            return true;
+//        }else {
+//            return super.onOptionsItemSelected(item);
+//        }
+//    }
     private void dathang() {
         DonHang dh =new DonHang();
         dh.setListDonHangChiTiet(list);
@@ -84,9 +108,12 @@ public class GioHangActivity extends AppCompatActivity {
         setSupportActionBar(toolbar_cart);
         toolbar_cart.setLogo(R.drawable.baseline_check_box_outline_blank_24);
 
+
+
         this.btn_DatHang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                toolbar_title.setVisibility(View.GONE);
                 dathang();
             }
         });

@@ -51,11 +51,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GioHangVH extends RecyclerView.ViewHolder {
-    public TextView tv_TenSanPham, tv_Size, tv_Mau, tv_SoLuongConLai, tv_ThanhTien,tv_TenSanPham_cart,
+    public TextView tv_TenSanPham_cart, tv_Size_cart, tv_Mau_cart, tv_SoLuong_cart,
             tv_ThanhTien_cart;
-    private EditText ed_SoLuongDat;
     public ImageButton ib_Edit, ib_Remove;
-    public ImageView iv_Image,iv_Image_cart;
+    public ImageView iv_Image_cart;
     public ShapeableImageView iv_Color_cart;
     public CheckBox cb_Selected;
     public ConstraintLayout layout_item_cart;
@@ -67,12 +66,13 @@ public class GioHangVH extends RecyclerView.ViewHolder {
         init();
     }
     public void updateUI(DonHangChiTiet donHangChiTiet){
-        Picasso.get().load(donHangChiTiet.getSanPham().getImageUrl()).into(iv_Image);
+        Picasso.get().load(donHangChiTiet.getSanPham().getImageUrl()).into(iv_Image_cart);
         Picasso.get().load(donHangChiTiet.getSanPham().getMau().getImgUrl()).into(iv_Color_cart);
-        this.tv_TenSanPham.setText(donHangChiTiet.getSanPham().getTenSanPham());
-        this.tv_Size.setText("Size : "+ donHangChiTiet.getSanPham().getKichThuoc().getTen());
-        this.tv_Mau.setText("Color : "+ donHangChiTiet.getSanPham().getMau().getTen());
-        this.tv_ThanhTien.setText("$"+ donHangChiTiet.getThanhTien());
+        this.tv_TenSanPham_cart.setText(donHangChiTiet.getSanPham().getTenSanPham());
+        this.tv_Size_cart.setText("Size : "+ donHangChiTiet.getSanPham().getKichThuoc().getTen());
+        this.tv_Mau_cart.setText("Color : "+ donHangChiTiet.getSanPham().getMau().getTen());
+        this.tv_SoLuong_cart.setText("Qty : " + donHangChiTiet.getSoLuong());
+        this.tv_ThanhTien_cart.setText("$"+ donHangChiTiet.getThanhTien());
         this.cb_Selected.setSelected(donHangChiTiet.isChecked());
     }
 
@@ -101,15 +101,16 @@ public class GioHangVH extends RecyclerView.ViewHolder {
         //CheckBox
         this.cb_Selected = itemView.findViewById(R.id.cb_Selected);
         //ImageView
-        this.iv_Image = itemView.findViewById((R.id.iv_Image_cart));
+        this.iv_Image_cart = itemView.findViewById((R.id.iv_Image_cart));
         this.iv_Color_cart = itemView.findViewById(R.id.iv_Color_cart);
         //TextView
-        this.tv_TenSanPham = itemView.findViewById(R.id.tv_TenSanPham_cart);
-        this.tv_Size = itemView.findViewById(R.id.tv_Size_cart);
-        this.tv_Mau = itemView.findViewById(R.id.tv_Mau_cart);
-        this.tv_ThanhTien = itemView.findViewById(R.id.tv_ThanhTien_cart);
+        this.tv_TenSanPham_cart = itemView.findViewById(R.id.tv_TenSanPham_cart);
+        this.tv_Size_cart = itemView.findViewById(R.id.tv_Size_cart);
+        this.tv_Mau_cart = itemView.findViewById(R.id.tv_Mau_cart);
+        this.tv_ThanhTien_cart = itemView.findViewById(R.id.tv_ThanhTien_cart);
+        this.tv_SoLuong_cart = itemView.findViewById(R.id.tv_SoLuong_cart);
         //EditText
-        this.ed_SoLuongDat = itemView.findViewById(R.id.ed_SoLuongDat);
+        this.tv_SoLuong_cart = itemView.findViewById(R.id.tv_SoLuong_cart);
         //Image Button
         this.ib_Edit = itemView.findViewById(R.id.ib_Edit);
         this.ib_Remove = itemView.findViewById(R.id.ib_Remove);

@@ -23,14 +23,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.Presentation.Cart.Apdapter.ColorAdapter;
 import com.example.myapplication.Presentation.Cart.Apdapter.SizeAdapter;
+import com.example.myapplication.Presentation.Cart.Model.DiaChi;
 import com.example.myapplication.Presentation.Cart.Model.DonHangChiTiet;
 import com.example.myapplication.Presentation.Cart.Model.KichThuoc;
+import com.example.myapplication.Presentation.Cart.Model.KieuSP;
 import com.example.myapplication.Presentation.Cart.Model.Mau;
 import com.example.myapplication.Presentation.Cart.Model.SanPham;
 import com.example.myapplication.Presentation.Cart.Repository.CartRepository;
 import com.example.myapplication.Presentation.Cart.ViewModel.CartVM;
 import com.example.myapplication.Presentation.Cart.ViewModel.KichThuocVM;
 import com.example.myapplication.Presentation.Cart.ViewModel.MauVM;
+import com.example.myapplication.Presentation.Cart.ViewModel.SanPhamVM;
 import com.example.myapplication.R;
 import com.squareup.picasso.Picasso;
 
@@ -48,6 +51,9 @@ public class SPEditDialog {
     private CartVM cartVM;
     private List<DonHangChiTiet> list;
     private int qty =1;
+    private KichThuocVM size_vm;
+    private MauVM color_vm;
+    private SanPham sp_find;
     public SPEditDialog(Context context, DonHangChiTiet donHangChiTiet, CartVM cartVM) {
         this.context = context;
         this.donHangChiTiet= donHangChiTiet;
@@ -55,55 +61,55 @@ public class SPEditDialog {
         this.init_dialog(context,donHangChiTiet);
     }
     public void showEditSanPhamDialog(){
-        rv_size.setLayoutManager(new LinearLayoutManager(context,RecyclerView.HORIZONTAL,false));
-        KichThuocVM size_vm = new ViewModelProvider((ViewModelStoreOwner) context).get(KichThuocVM.class);
-        size_vm.getListKichThuocLiveData().observe((LifecycleOwner) context, new Observer<List<KichThuoc>>() {
-            @Override
-            public void onChanged(List<KichThuoc> kichThuocs) {
-                for(int i =0; i<kichThuocs.size(); i++){
-                    KichThuoc kt = kichThuocs.get(i);
-                    if(kt.getId().equals(donHangChiTiet.getSanPham().getKichThuoc().getId())){
-                        kt.setChecked(true);
-                        kichThuocs.set(i,kt);
-                    }
-                }
-                SizeAdapter adapter = new SizeAdapter(context, kichThuocs);
-                rv_size.setAdapter(adapter);
-            }
-        });
-
         RecyclerView rv_color =dialog.findViewById(R.id.rv_color);
 
         rv_color.setLayoutManager(new LinearLayoutManager(context,RecyclerView.HORIZONTAL,false));
-        MauVM color_vm = new ViewModelProvider((ViewModelStoreOwner) context).get(MauVM.class);
-        color_vm.getListMauLiveData().observe((LifecycleOwner) context, new Observer<List<Mau>>() {
+        color_vm = new ViewModelProvider((ViewModelStoreOwner) context).get(MauVM.class);
+        color_vm.getListMauProductEditLiveData(donHangChiTiet.getSanPham()).observe((LifecycleOwner) context, new Observer<List<Mau>>() {
             @Override
             public void onChanged(List<Mau> maus) {
-                CartRepository res = new CartRepository();
-                List<DonHangChiTiet> list = res.getGioHang();
-                for(int i =0; i<maus.size(); i++){
-                    Mau m = maus.get(i);
-                    if(m.getId().equals(donHangChiTiet.getSanPham().getMau().getId())){
-                        m.setChecked(true);
-                        maus.set(i,m);
-                    }
-                }
-                for(DonHangChiTiet dh : list){
-                    for(Mau m : maus){
-                        if(dh.getSanPham().getTenSanPham().equals(donHangChiTiet.getSanPham().getTenSanPham()) ){
-                            if(dh.getSanPham().getMau().getId().equals(m.getId())){
-                                m.setAble(false);
-                            }
-                            if(m.getId().equals(donHangChiTiet.getSanPham().getMau().getId())){
-                                m.setAble(true);
-                            }
-                        }
-                    }
-                }
+                ColorAdapter adapter = new ColorAdapter(context, maus, size_vm, new ColorAdapter.ItemClickListener() {
+                    @Override
+                    public void onItemClick(Mau mau) {
+                       if(mau.isAble()){
+                           mau.setChecked(true);
+                       }
+                        sp_find = donHangChiTiet.getSanPham();
+                        sp_find.setMau(mau);
+                        size_vm.showListSize(sp_find);
 
-                ColorAdapter adapter = new ColorAdapter(context, maus, size_vm, donHangChiTiet.getSanPham());
+
+                    }
+                });
                 rv_color.setAdapter(adapter);
+
             }
+        });
+
+        rv_size.setLayoutManager(new LinearLayoutManager(context,RecyclerView.HORIZONTAL,false));
+        size_vm = new ViewModelProvider((ViewModelStoreOwner) context).get(KichThuocVM.class);
+        size_vm.getListKichThuocLiveData(donHangChiTiet.getSanPham()).observe((LifecycleOwner) context, new Observer<List<KichThuoc>>() {
+            @Override
+            public void onChanged(List<KichThuoc> kichThuocs) {
+                SizeAdapter adapter = new SizeAdapter(context, kichThuocs, new SizeAdapter.ItemClickListener() {
+                    @Override
+                    public void onItemClick(KichThuoc kichthuoc) {
+                        if(kichthuoc.isAble()){
+                            kichthuoc.setChecked(true);
+                        }
+                        sp_find.setKichThuoc(kichthuoc);
+                        SanPhamVM sp_vm = new SanPhamVM();
+                        sp_find = sp_vm.getSanPham(sp_find);
+                        Picasso.get().load(sp_find.getImageUrl()).into(iv_Image_cart);
+                        tv_TenSanPham_cart.setText(sp_find.getTenSanPham());
+                        tv_SoLuongConLai.setText("Stock : "+sp_find.getSoLuong());
+                        ed_SoLuongDat.setText(String.valueOf(donHangChiTiet.getSoLuong()));
+                        tv_ThanhTien_cart.setText(String.valueOf(sp_find.getGiaban()*donHangChiTiet.getSoLuong()));
+                    }
+                });
+                rv_size.setAdapter(adapter);
+            }
+
         });
 
         Picasso.get().load(donHangChiTiet.getSanPham().getImageUrl()).into(iv_Image_cart);
@@ -111,25 +117,32 @@ public class SPEditDialog {
         tv_SoLuongConLai.setText("Stock : "+donHangChiTiet.getSanPham().getSoLuong());
         ed_SoLuongDat.setText(String.valueOf(donHangChiTiet.getSoLuong()));
         tv_ThanhTien_cart.setText(String.valueOf(donHangChiTiet.getThanhTien()));
+        qty = donHangChiTiet.getSoLuong();
         btn_Giam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(qty>1){
+                if(qty>1 ){
                     qty-=1;
                     ed_SoLuongDat.setText(String.valueOf(qty));
+                    tv_ThanhTien_cart.setText(String.valueOf(qty*donHangChiTiet.getSanPham().getGiaban()));
                 }else {
                     qty=1;
                     ed_SoLuongDat.setText(String.valueOf(qty));
+                    tv_ThanhTien_cart.setText(String.valueOf(qty*donHangChiTiet.getSanPham().getGiaban()));
                 }
-//                Toast.makeText(context, "Trừ", Toast.LENGTH_SHORT).show();
             }
         });
         btn_Tang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                qty+=1;
-                ed_SoLuongDat.setText(String.valueOf(qty));
-//                Toast.makeText(context, "Tăng", Toast.LENGTH_SHORT).show();
+                if(qty == donHangChiTiet.getSanPham().getSoLuong()) {
+                    btn_Tang.setEnabled(false);
+                }else {
+                    qty+=1;
+                    ed_SoLuongDat.setText(String.valueOf(qty));
+                    tv_ThanhTien_cart.setText(String.valueOf(qty*donHangChiTiet.getSanPham().getGiaban()));
+                }
+
             }
         });
         btn_Cancel.setOnClickListener(new View.OnClickListener() {
@@ -141,20 +154,15 @@ public class SPEditDialog {
         btn_Confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cartVM.addCart();
-//                CartRepository res = new CartRepository();
-//                List<SanPham> listsp = res.getSanPham();
-//                DonHangChiTiet donHangChiTiet1 = new DonHangChiTiet();
-//                DonHangChiTiet dh1 = new DonHangChiTiet();
-//                dh1.setIdDonHang("cc");
-//                dh1.setSanPham(listsp.get(4));
-//                dh1.setSoLuong(1);
-//                dh1.setThanhTien(listsp.get(0).getGiaban()*dh1.getSoLuong());
-//                dh1.setThanhTienKhuyenMai(0);
-//                dh1.setChecked(true);
-//                list.add(donHangChiTiet1);
+                if(sp_find !=null){
+                    donHangChiTiet.setSanPham(sp_find);
+                    donHangChiTiet.setThanhTien(sp_find.getGiaban()*donHangChiTiet.getSoLuong());
+                }
+                donHangChiTiet.setThanhTien(Double.parseDouble(tv_ThanhTien_cart.getText().toString()));
+                donHangChiTiet.setSoLuong(Integer.parseInt(ed_SoLuongDat.getText().toString()));
 
-//                Toast.makeText(context, "qty", Toast.LENGTH_SHORT).show();
+                cartVM.editCart(donHangChiTiet);
+                dialog.hide();
             }
         });
     }

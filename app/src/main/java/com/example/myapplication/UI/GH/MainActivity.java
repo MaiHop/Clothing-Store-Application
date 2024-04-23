@@ -1,9 +1,6 @@
 package com.example.myapplication.UI.GH;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,19 +13,11 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 private RecyclerView.Adapter adapter;
 private RecyclerView recyclerViewItemList;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button trackOrderButton = findViewById(R.id.btnTOrder);
-        trackOrderButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, OrderDetailsActivity.class);
-                startActivity(intent);
-            }
-        });
+
         recyclerViewItem();
     }
     private void recyclerViewItem(){
@@ -40,7 +29,7 @@ private RecyclerView recyclerViewItemList;
 //        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
         recyclerViewItemList=findViewById(R.id.view1);
         recyclerViewItemList.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
-        adapter = new ItemAdaptor(item);
+        adapter = new ItemAdaptor(MainActivity.this,item);
         recyclerViewItemList.setAdapter(adapter);
     }
 

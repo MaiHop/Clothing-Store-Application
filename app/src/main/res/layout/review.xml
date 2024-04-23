@@ -49,6 +49,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView7">
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/view1"
                     android:layout_width="298dp"
                     android:layout_height="132dp"
                     android:layout_marginStart="4dp"

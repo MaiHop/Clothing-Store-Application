@@ -1,19 +1,16 @@
-package com.example.myapplication.Presentation.Cart.Repository;
+package com.example.myapplication.Domain.Repository;
 
-import com.example.myapplication.Presentation.Cart.Model.DonHang;
-import com.example.myapplication.Presentation.Cart.Model.DonHangChiTiet;
-import com.example.myapplication.Presentation.Cart.Model.DiaChi;
-import com.example.myapplication.Presentation.Cart.Model.KhachHang;
-import com.example.myapplication.Presentation.Cart.Model.KhuyenMai;
-import com.example.myapplication.Presentation.Cart.Model.KichThuoc;
-import com.example.myapplication.Presentation.Cart.Model.KieuSP;
-import com.example.myapplication.Presentation.Cart.Model.LoaiSP;
-import com.example.myapplication.Presentation.Cart.Model.Mau;
-import com.example.myapplication.Presentation.Cart.Model.NhomSP;
-import com.example.myapplication.Presentation.Cart.Model.SanPham;
-import com.example.myapplication.Presentation.Cart.Model.ThanhToan;
-import com.example.myapplication.Presentation.Cart.Model.VanChuyen;
-import com.example.myapplication.R;
+import com.example.myapplication.Domain.Model.DonHangChiTiet;
+import com.example.myapplication.Domain.Model.DiaChi;
+import com.example.myapplication.Domain.Model.KhuyenMai;
+import com.example.myapplication.Domain.Model.KichThuoc;
+import com.example.myapplication.Domain.Model.KieuSP;
+import com.example.myapplication.Domain.Model.LoaiSP;
+import com.example.myapplication.Domain.Model.Mau;
+import com.example.myapplication.Domain.Model.NhomSP;
+import com.example.myapplication.Domain.Model.SanPham;
+import com.example.myapplication.Domain.Model.ThanhToan;
+import com.example.myapplication.Domain.Model.VanChuyen;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

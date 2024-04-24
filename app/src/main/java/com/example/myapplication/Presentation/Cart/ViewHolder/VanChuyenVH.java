@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Presentation.Cart.Model.VanChuyen;
+import com.example.myapplication.Domain.Model.VanChuyen;
 import com.example.myapplication.R;
 import com.squareup.picasso.Picasso;
 

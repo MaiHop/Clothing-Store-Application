@@ -1,4 +1,4 @@
-package com.example.myapplication.Presentation.Cart.Model;
+package com.example.myapplication.Domain.Model;
 
 import java.io.Serializable;
 import java.util.List;
@@ -34,11 +34,11 @@ public class SanPham implements Serializable {
         KieuSanPham = kieuSanPham;
     }
 
-    public com.example.myapplication.Presentation.Cart.Model.KichThuoc getKichThuoc() {
+    public com.example.myapplication.Domain.Model.KichThuoc getKichThuoc() {
         return KichThuoc;
     }
 
-    public void setKichThuoc(com.example.myapplication.Presentation.Cart.Model.KichThuoc kichThuoc) {
+    public void setKichThuoc(com.example.myapplication.Domain.Model.KichThuoc kichThuoc) {
         KichThuoc = kichThuoc;
     }
 
@@ -106,11 +106,11 @@ public class SanPham implements Serializable {
         NhomSanPham = nhomSanPham;
     }
 
-    public com.example.myapplication.Presentation.Cart.Model.Mau getMau() {
+    public com.example.myapplication.Domain.Model.Mau getMau() {
         return Mau;
     }
 
-    public void setMau(com.example.myapplication.Presentation.Cart.Model.Mau mau) {
+    public void setMau(com.example.myapplication.Domain.Model.Mau mau) {
         Mau = mau;
     }
 

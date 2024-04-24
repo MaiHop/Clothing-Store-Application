@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Presentation.Cart.Model.KichThuoc;
+import com.example.myapplication.Domain.Model.KichThuoc;
 import com.example.myapplication.Presentation.Cart.ViewHolder.SizeVH;
 import com.example.myapplication.R;
 

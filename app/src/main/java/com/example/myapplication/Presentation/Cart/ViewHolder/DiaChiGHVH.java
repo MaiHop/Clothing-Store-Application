@@ -1,7 +1,7 @@
 package com.example.myapplication.Presentation.Cart.ViewHolder;
 
 
-import com.example.myapplication.Presentation.Cart.Model.DiaChi;
+import com.example.myapplication.Domain.Model.DiaChi;
 import com.example.myapplication.R;
 
 import android.view.View;

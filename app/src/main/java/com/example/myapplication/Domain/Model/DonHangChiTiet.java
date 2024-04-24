@@ -1,4 +1,4 @@
-package com.example.myapplication.Presentation.Cart.Model;
+package com.example.myapplication.Domain.Model;
 
 import java.io.Serializable;
 
@@ -20,11 +20,11 @@ public class DonHangChiTiet implements Serializable {
         IdDonHang = idDonHang;
     }
 
-    public com.example.myapplication.Presentation.Cart.Model.SanPham getSanPham() {
+    public com.example.myapplication.Domain.Model.SanPham getSanPham() {
         return SanPham;
     }
 
-    public void setSanPham(com.example.myapplication.Presentation.Cart.Model.SanPham sanPham) {
+    public void setSanPham(com.example.myapplication.Domain.Model.SanPham sanPham) {
         SanPham = sanPham;
     }
 

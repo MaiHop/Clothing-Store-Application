@@ -3,11 +3,10 @@ package com.example.myapplication.Presentation.Cart.ViewModel;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.myapplication.Presentation.Cart.Model.DonHangChiTiet;
-import com.example.myapplication.Presentation.Cart.Model.KichThuoc;
-import com.example.myapplication.Presentation.Cart.Model.Mau;
-import com.example.myapplication.Presentation.Cart.Model.SanPham;
-import com.example.myapplication.Presentation.Cart.Repository.CartRepository;
+import com.example.myapplication.Domain.Model.DonHangChiTiet;
+import com.example.myapplication.Domain.Model.Mau;
+import com.example.myapplication.Domain.Model.SanPham;
+import com.example.myapplication.Domain.Repository.CartRepository;
 
 import java.util.ArrayList;
 import java.util.List;

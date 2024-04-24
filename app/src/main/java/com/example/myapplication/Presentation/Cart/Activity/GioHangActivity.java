@@ -16,8 +16,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.myapplication.Presentation.Cart.Apdapter.CartAdapter;
-import com.example.myapplication.Presentation.Cart.Model.DonHang;
-import com.example.myapplication.Presentation.Cart.Model.DonHangChiTiet;
+import com.example.myapplication.Domain.Model.DonHang;
+import com.example.myapplication.Domain.Model.DonHangChiTiet;
 import com.example.myapplication.Presentation.Cart.ViewModel.CartVM;
 import com.example.myapplication.R;
 

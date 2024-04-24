@@ -1,20 +1,20 @@
-package com.example.myapplication.Presentation.Cart.Model;
+package com.example.myapplication.Domain.Model;
 
 import java.io.Serializable;
 import java.util.List;
 
-public class LoaiSP implements Serializable {
+public class NhomSP implements Serializable {
     private String id, ten;
-    private List<KieuSP> ListKieuSP;
-    public LoaiSP() {
+    private List<LoaiSP> ListLoaiSP;
+    public NhomSP() {
     }
 
-    public List<KieuSP> getListKieuSP() {
-        return ListKieuSP;
+    public List<LoaiSP> getListLoaiSP() {
+        return ListLoaiSP;
     }
 
-    public void setListKieuSP(List<KieuSP> listKieuSP) {
-        ListKieuSP = listKieuSP;
+    public void setListLoaiSP(List<LoaiSP> listLoaiSP) {
+        ListLoaiSP = listLoaiSP;
     }
 
     public String getId() {

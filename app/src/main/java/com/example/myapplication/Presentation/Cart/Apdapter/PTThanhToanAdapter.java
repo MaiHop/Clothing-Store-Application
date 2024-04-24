@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Presentation.Cart.Model.ThanhToan;
+import com.example.myapplication.Domain.Model.ThanhToan;
 import com.example.myapplication.Presentation.Cart.ViewHolder.PTThanhToanVH;
 import com.example.myapplication.R;
 

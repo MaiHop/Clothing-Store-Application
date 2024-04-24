@@ -17,7 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.Presentation.Cart.Apdapter.CheckOutAdapter;
-import com.example.myapplication.Presentation.Cart.Model.DonHang;
+import com.example.myapplication.Domain.Model.DonHang;
 import com.example.myapplication.R;
 
 import java.text.SimpleDateFormat;

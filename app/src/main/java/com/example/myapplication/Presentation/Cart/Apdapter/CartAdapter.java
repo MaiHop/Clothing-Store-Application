@@ -11,8 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Presentation.Cart.Activity.SPEditDialog;
-import com.example.myapplication.Presentation.Cart.Model.DonHangChiTiet;
+import com.example.myapplication.Presentation.Cart.Dialog.SPEditDialog;
+import com.example.myapplication.Domain.Model.DonHangChiTiet;
 import com.example.myapplication.Presentation.Cart.ViewHolder.GioHangVH;
 import com.example.myapplication.Presentation.Cart.ViewModel.CartVM;
 import com.example.myapplication.R;

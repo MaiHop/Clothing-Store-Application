@@ -3,8 +3,8 @@ package com.example.myapplication.Presentation.Cart.ViewModel;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.myapplication.Presentation.Cart.Model.KhuyenMai;
-import com.example.myapplication.Presentation.Cart.Repository.CartRepository;
+import com.example.myapplication.Domain.Model.KhuyenMai;
+import com.example.myapplication.Domain.Repository.CartRepository;
 
 import java.util.List;
 

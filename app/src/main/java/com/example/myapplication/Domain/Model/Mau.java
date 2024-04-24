@@ -1,11 +1,11 @@
-package com.example.myapplication.Presentation.Cart.Model;
+package com.example.myapplication.Domain.Model;
 
 import java.io.Serializable;
 
-public class KichThuoc implements Serializable {
-    private String id, Ten;
-    private boolean Checked, Able;
-    public KichThuoc() {
+public class Mau implements Serializable {
+    private String Id, Ten, ImgUrl;
+    private boolean Checked, Able = true;
+    public Mau() {
     }
 
     public boolean isAble() {
@@ -25,11 +25,11 @@ public class KichThuoc implements Serializable {
     }
 
     public String getId() {
-        return id;
+        return Id;
     }
 
     public void setId(String id) {
-        this.id = id;
+        Id = id;
     }
 
     public String getTen() {
@@ -38,5 +38,13 @@ public class KichThuoc implements Serializable {
 
     public void setTen(String ten) {
         Ten = ten;
+    }
+
+    public String getImgUrl() {
+        return ImgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        ImgUrl = imgUrl;
     }
 }

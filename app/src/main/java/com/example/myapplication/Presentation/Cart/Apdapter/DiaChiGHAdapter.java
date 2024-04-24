@@ -32,7 +32,7 @@ public class DiaChiGHAdapter extends RecyclerView.Adapter<DiaChiGHVH>{
     @Override
     public DiaChiGHVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = minflater.inflate(
-                R.layout.item_deliver_adress, parent, false);
+                R.layout.mh_item_deliver_adress, parent, false);
 
         return new DiaChiGHVH(itemView);
     }

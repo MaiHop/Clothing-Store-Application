@@ -2,18 +2,12 @@ package com.example.myapplication.Presentation.Cart.ViewHolder;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,33 +15,14 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.lifecycle.LifecycleOwner;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelStoreOwner;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Presentation.Cart.Activity.GioHangActivity;
-import com.example.myapplication.Presentation.Cart.Apdapter.CartAdapter;
-import com.example.myapplication.Presentation.Cart.Apdapter.ColorAdapter;
-import com.example.myapplication.Presentation.Cart.Apdapter.SizeAdapter;
 import com.example.myapplication.Presentation.Cart.Model.DonHangChiTiet;
-import com.example.myapplication.Presentation.Cart.Model.KichThuoc;
-import com.example.myapplication.Presentation.Cart.Model.Mau;
-import com.example.myapplication.Presentation.Cart.Model.SanPham;
-import com.example.myapplication.Presentation.Cart.Repository.CartRepository;
 import com.example.myapplication.Presentation.Cart.ViewModel.CartVM;
-import com.example.myapplication.Presentation.Cart.ViewModel.KichThuocVM;
-import com.example.myapplication.Presentation.Cart.ViewModel.MauVM;
 import com.example.myapplication.R;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.squareup.picasso.Picasso;
 
-import java.io.IOException;
-import java.net.URL;
-import java.net.URLConnection;
-import java.util.ArrayList;
 import java.util.List;
 
 public class GioHangVH extends RecyclerView.ViewHolder {
@@ -91,7 +66,7 @@ public class GioHangVH extends RecyclerView.ViewHolder {
 
     public void removeItem(Context context,LayoutInflater layoutInflater) {
         Toast toast = new Toast(context);
-        View view = layoutInflater.inflate(R.layout.custom_toast,(ViewGroup) itemView.findViewById(R.id.removed_custom_toast));
+        View view = layoutInflater.inflate(R.layout.mh_custom_toast,(ViewGroup) itemView.findViewById(R.id.removed_custom_toast));
         toast.setView(view);
         toast.setGravity(Gravity.BOTTOM,0,0);
         toast.setDuration(Toast.LENGTH_SHORT);

@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
@@ -23,13 +22,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.Presentation.Cart.Apdapter.ColorAdapter;
 import com.example.myapplication.Presentation.Cart.Apdapter.SizeAdapter;
-import com.example.myapplication.Presentation.Cart.Model.DiaChi;
 import com.example.myapplication.Presentation.Cart.Model.DonHangChiTiet;
 import com.example.myapplication.Presentation.Cart.Model.KichThuoc;
-import com.example.myapplication.Presentation.Cart.Model.KieuSP;
 import com.example.myapplication.Presentation.Cart.Model.Mau;
 import com.example.myapplication.Presentation.Cart.Model.SanPham;
-import com.example.myapplication.Presentation.Cart.Repository.CartRepository;
 import com.example.myapplication.Presentation.Cart.ViewModel.CartVM;
 import com.example.myapplication.Presentation.Cart.ViewModel.KichThuocVM;
 import com.example.myapplication.Presentation.Cart.ViewModel.MauVM;
@@ -169,7 +165,7 @@ public class SPEditDialog {
     private void init_dialog(Context context, DonHangChiTiet donHangChiTiet){
         dialog = new Dialog(context);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.dialog_bottom_cart);
+        dialog.setContentView(R.layout.mh_dialog_bottom_cart);
         dialog.show();
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));

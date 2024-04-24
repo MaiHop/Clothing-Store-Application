@@ -32,7 +32,7 @@ public class VanChuyenAdapter extends RecyclerView.Adapter<VanChuyenVH>{
     @Override
     public VanChuyenVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = minflater.inflate(
-                R.layout.item_delivery, parent, false);
+                R.layout.mh_item_delivery, parent, false);
 
         return new VanChuyenVH(itemView);
     }

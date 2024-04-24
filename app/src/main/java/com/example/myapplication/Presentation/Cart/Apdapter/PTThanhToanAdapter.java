@@ -32,7 +32,7 @@ public class PTThanhToanAdapter extends RecyclerView.Adapter<PTThanhToanVH>{
     @Override
     public PTThanhToanVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = minflater.inflate(
-                R.layout.item_payment_methods, parent, false);
+                R.layout.mh_item_payment_methods, parent, false);
 
         return new PTThanhToanVH(itemView);
     }

@@ -32,7 +32,7 @@ public class KhuyenMaiAdapter extends RecyclerView.Adapter<KhuyenMaiVH>{
     @Override
     public KhuyenMaiVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = minflater.inflate(
-                R.layout.item_promos_vouchers, parent, false);
+                R.layout.mh_item_promos_vouchers, parent, false);
 
         return new KhuyenMaiVH(itemView);
     }

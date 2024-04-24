@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -45,7 +44,7 @@ public class CartAdapter extends RecyclerView.Adapter<GioHangVH> {
     @Override
     public GioHangVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = minflater.inflate(
-                R.layout.item_cart, parent, false);
+                R.layout.mh_item_cart, parent, false);
 
         return new GioHangVH(itemView);
     }

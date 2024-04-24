@@ -17,12 +17,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.Presentation.Cart.Apdapter.CheckOutAdapter;
-import com.example.myapplication.Presentation.Cart.Model.DonHangChiTiet;
 import com.example.myapplication.Presentation.Cart.Model.DonHang;
 import com.example.myapplication.R;
 
 import java.text.SimpleDateFormat;
-import java.util.List;
 
 public class ThanhToanActivity extends AppCompatActivity {
     private RecyclerView rv_ListOrder;
@@ -41,7 +39,7 @@ public class ThanhToanActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_checkout);
+        setContentView(R.layout.mh_activity_checkout);
 
         init();
         loadinfo();
@@ -184,7 +182,7 @@ public class ThanhToanActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Dialog process = new Dialog(ThanhToanActivity.this);
-                process.setContentView(R.layout.dialog_processing_payments);
+                process.setContentView(R.layout.mh_dialog_processing_payments);
                 process.getWindow().setBackgroundDrawable(getDrawable(R.drawable.solid_white_rad_10));
                 process.setCancelable(true);
                 process.show();
@@ -194,7 +192,7 @@ public class ThanhToanActivity extends AppCompatActivity {
                     public void run() {
                         process.dismiss();
                         Dialog order = new Dialog(ThanhToanActivity.this);
-                        order.setContentView(R.layout.dialog_order_confirmed);
+                        order.setContentView(R.layout.mh_dialog_order_confirmed);
                         order.getWindow().setBackgroundDrawable(getDrawable(R.drawable.solid_white_rad_10));
                         order.setCancelable(true);
                         order.show();

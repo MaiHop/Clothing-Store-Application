@@ -35,7 +35,7 @@ public class CheckOutAdapter extends RecyclerView.Adapter<ThanhToanVH> {
     @Override
     public ThanhToanVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = minflater.inflate(
-                R.layout.item_order, parent, false);
+                R.layout.mh_item_order, parent, false);
 
         return new ThanhToanVH(itemView);
     }

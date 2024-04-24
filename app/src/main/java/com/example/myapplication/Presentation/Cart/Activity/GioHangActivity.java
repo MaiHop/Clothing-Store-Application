@@ -1,6 +1,5 @@
 package com.example.myapplication.Presentation.Cart.Activity;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
@@ -9,32 +8,20 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.myapplication.Presentation.Cart.Apdapter.CartAdapter;
 import com.example.myapplication.Presentation.Cart.Model.DonHang;
 import com.example.myapplication.Presentation.Cart.Model.DonHangChiTiet;
-import com.example.myapplication.Presentation.Cart.Repository.CartRepository;
 import com.example.myapplication.Presentation.Cart.ViewModel.CartVM;
 import com.example.myapplication.R;
-import com.google.android.material.search.SearchBar;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 public class GioHangActivity extends AppCompatActivity {
     private RecyclerView rv_ListCart;
@@ -47,7 +34,7 @@ public class GioHangActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cart);
+        setContentView(R.layout.mh_activity_cart);
 
         init();
         this.rv_ListCart =findViewById(R.id.rv_ListCart);
@@ -65,7 +52,7 @@ public class GioHangActivity extends AppCompatActivity {
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_toolbar_cart, menu);
+        getMenuInflater().inflate(R.menu.mh_menu_toolbar_cart, menu);
 
         searchView = (SearchView) menu.findItem(R.id.item_search_cart).getActionView();
         searchView.setQueryHint("Nhập tên sản phẩm");
@@ -106,7 +93,7 @@ public class GioHangActivity extends AppCompatActivity {
         this.btn_DatHang = findViewById(R.id.btn_DatHang);
         this.toolbar_cart = findViewById(R.id.toolbar_cart);
         setSupportActionBar(toolbar_cart);
-        toolbar_cart.setLogo(R.drawable.baseline_check_box_outline_blank_24);
+        toolbar_cart.setLogo(R.drawable.mh_baseline_check_box_outline_blank_24);
 
 
 

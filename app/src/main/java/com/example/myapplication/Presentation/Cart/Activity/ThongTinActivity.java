@@ -2,7 +2,6 @@ package com.example.myapplication.Presentation.Cart.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -54,7 +53,7 @@ public class ThongTinActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_choose_info);
+        setContentView(R.layout.mh_activity_choose_info);
 
         init();
         HienThiDanhSach();
@@ -63,9 +62,9 @@ public class ThongTinActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         if (type.equals("DiaChi") || type.equals("ThanhToan")) {
-            getMenuInflater().inflate(R.menu.menu_toolbar_cho_inf_add, menu);
+            getMenuInflater().inflate(R.menu.mh_menu_toolbar_cho_inf_add, menu);
         } else if (type.equals("KhuyenMai")) {
-            getMenuInflater().inflate(R.menu.menu_toolbar_cho_inf_find, menu);
+            getMenuInflater().inflate(R.menu.mh_menu_toolbar_cho_inf_find, menu);
         }
         return true;
     }

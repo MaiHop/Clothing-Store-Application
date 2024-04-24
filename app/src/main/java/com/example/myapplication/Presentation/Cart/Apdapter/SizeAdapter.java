@@ -1,18 +1,14 @@
 package com.example.myapplication.Presentation.Cart.Apdapter;
 
 import android.content.Context;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.Presentation.Cart.Model.KichThuoc;
-import com.example.myapplication.Presentation.Cart.Model.Mau;
 import com.example.myapplication.Presentation.Cart.ViewHolder.SizeVH;
 import com.example.myapplication.R;
 
@@ -34,7 +30,7 @@ public class SizeAdapter extends RecyclerView.Adapter<SizeVH> {
     @Override
     public SizeVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = minflater.inflate(
-                R.layout.item_size, parent, false);
+                R.layout.mh_item_size, parent, false);
 
         return new SizeVH(itemView);
     }

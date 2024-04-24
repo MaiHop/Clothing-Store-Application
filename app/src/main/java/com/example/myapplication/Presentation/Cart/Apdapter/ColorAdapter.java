@@ -1,20 +1,14 @@
 package com.example.myapplication.Presentation.Cart.Apdapter;
 
 import android.content.Context;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Presentation.Cart.Model.DiaChi;
-import com.example.myapplication.Presentation.Cart.Model.KichThuoc;
 import com.example.myapplication.Presentation.Cart.Model.Mau;
-import com.example.myapplication.Presentation.Cart.Model.SanPham;
 import com.example.myapplication.Presentation.Cart.ViewHolder.MauVH;
 import com.example.myapplication.Presentation.Cart.ViewModel.KichThuocVM;
 import com.example.myapplication.R;
@@ -41,7 +35,7 @@ public class ColorAdapter extends RecyclerView.Adapter<MauVH>{
     @Override
     public MauVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = minflater.inflate(
-                R.layout.item_color, parent, false);
+                R.layout.mh_item_color, parent, false);
 
         return new MauVH(itemView);
     }

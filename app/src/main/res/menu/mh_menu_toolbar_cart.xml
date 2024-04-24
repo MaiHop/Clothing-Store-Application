@@ -6,7 +6,7 @@
         android:title="search"
         android:id="@+id/item_search_cart"
         app:showAsAction="ifRoom|collapseActionView"
-        android:icon="@drawable/baseline_check_box_outline_blank_24"
+        android:icon="@drawable/mh_baseline_check_box_outline_blank_24"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         />
 </menu>

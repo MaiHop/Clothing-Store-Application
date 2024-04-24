@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.Presentation.Cart.Model.KichThuoc;
@@ -28,10 +27,10 @@ public class SizeVH extends RecyclerView.ViewHolder{
             tv_Size_cart.setEnabled(true);
             tv_line_item_size.setVisibility(View.GONE);
             if(size.isChecked()){
-                tv_Size_cart.setBackgroundResource(R.drawable.item_size_selected);
+                tv_Size_cart.setBackgroundResource(R.drawable.mh_item_size_selected);
                 tv_Size_cart.setTextColor(ColorStateList.valueOf(Color.parseColor("#ffffff")));
             }else{
-                tv_Size_cart.setBackgroundResource(R.drawable.item_size_defaut);
+                tv_Size_cart.setBackgroundResource(R.drawable.mh_item_size_defaut);
                 tv_Size_cart.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")));
             }
         }else{

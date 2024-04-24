@@ -100,7 +100,7 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:visibility="visible"
-            app:srcCompat="@drawable/baseline_check_box_outline_blank_24" />
+            app:srcCompat="@drawable/mh_baseline_check_box_outline_blank_24" />
 
     </LinearLayout>
 

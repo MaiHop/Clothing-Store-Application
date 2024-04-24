@@ -63,7 +63,7 @@
                         android:id="@+id/iv_location_1"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:src="@drawable/baseline_check_box_outline_blank_24" />
+                        android:src="@drawable/mh_baseline_check_box_outline_blank_24" />
 
                     <TextView
                         android:id="@+id/tv_Delivery_Address"
@@ -80,7 +80,7 @@
                         android:id="@+id/iv_DanhSachDiaChiGiaoHang"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:src="@drawable/baseline_check_box_outline_blank_24" />
+                        android:src="@drawable/mh_baseline_check_box_outline_blank_24" />
                 </LinearLayout>
 
 
@@ -108,7 +108,7 @@
                             android:id="@+id/iv_location_2"
                             android:layout_width="60dp"
                             android:layout_height="match_parent"
-                            android:src="@drawable/baseline_check_box_outline_blank_24" />
+                            android:src="@drawable/mh_baseline_check_box_outline_blank_24" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -161,7 +161,7 @@
                         android:id="@+id/iv_checkout_bag"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:src="@drawable/baseline_check_box_outline_blank_24" />
+                        android:src="@drawable/mh_baseline_check_box_outline_blank_24" />
 
                     <TextView
                         android:id="@+id/tv_Checkout_TieuDeDonHang"
@@ -210,7 +210,7 @@
                         android:id="@+id/iv_delivery_1"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:src="@drawable/baseline_check_box_outline_blank_24" />
+                        android:src="@drawable/mh_baseline_check_box_outline_blank_24" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -226,7 +226,7 @@
                         android:id="@+id/iv_DanhSachVanChuyen"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:src="@drawable/baseline_check_box_outline_blank_24" />
+                        android:src="@drawable/mh_baseline_check_box_outline_blank_24" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -253,7 +253,7 @@
                             android:id="@+id/iv_delivery_2"
                             android:layout_width="60dp"
                             android:layout_height="match_parent"
-                            android:src="@drawable/baseline_check_box_outline_blank_24" />
+                            android:src="@drawable/mh_baseline_check_box_outline_blank_24" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -303,7 +303,7 @@
                         android:id="@+id/iv_payment_method_1"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:src="@drawable/baseline_check_box_outline_blank_24" />
+                        android:src="@drawable/mh_baseline_check_box_outline_blank_24" />
 
                     <TextView
                         android:id="@+id/tv_Payment"
@@ -320,7 +320,7 @@
                         android:id="@+id/iv_DanhSachThanhToan"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:src="@drawable/baseline_check_box_outline_blank_24" />
+                        android:src="@drawable/mh_baseline_check_box_outline_blank_24" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -347,7 +347,7 @@
                             android:id="@+id/iv_payment_method_2"
                             android:layout_width="60dp"
                             android:layout_height="match_parent"
-                            android:src="@drawable/baseline_check_box_outline_blank_24" />
+                            android:src="@drawable/mh_baseline_check_box_outline_blank_24" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -396,7 +396,7 @@
                         android:id="@+id/iv_promos_vouchers_1"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:src="@drawable/baseline_check_box_outline_blank_24" />
+                        android:src="@drawable/mh_baseline_check_box_outline_blank_24" />
 
                     <TextView
                         android:id="@+id/tv_Promos_Vouchers"
@@ -413,7 +413,7 @@
                         android:id="@+id/iv_DanhSachKhuyenMai"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:src="@drawable/baseline_check_box_outline_blank_24" />
+                        android:src="@drawable/mh_baseline_check_box_outline_blank_24" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -440,7 +440,7 @@
                             android:id="@+id/iv_promos_vouchers_2"
                             android:layout_width="60dp"
                             android:layout_height="match_parent"
-                            android:src="@drawable/baseline_check_box_outline_blank_24" />
+                            android:src="@drawable/mh_baseline_check_box_outline_blank_24" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -474,7 +474,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="1"
                             android:visibility="visible"
-                            app:srcCompat="@drawable/baseline_check_box_outline_blank_24" />
+                            app:srcCompat="@drawable/mh_baseline_check_box_outline_blank_24" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -499,7 +499,7 @@
                         android:id="@+id/iv_review_summary_1"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:src="@drawable/baseline_check_box_outline_blank_24" />
+                        android:src="@drawable/mh_baseline_check_box_outline_blank_24" />
 
                     <TextView
                         android:id="@+id/tv_Review_Summary"

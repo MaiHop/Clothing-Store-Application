@@ -9,16 +9,18 @@
         android:id="@+id/tv_Size_cart"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:text="XS"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:gravity="center"
         android:layout_margin="10dp"
-        android:background="@drawable/item_size_defaut"
+        android:background="@drawable/mh_item_size_defaut"
+        android:gravity="center"
+        android:text="XS"
+        android:textColor="#EDEBEB"
+        android:textSize="20dp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
-        android:id="@+id/tv_line_item_size"
+        android:id="@+id/textView17"
         android:layout_width="50dp"
         android:layout_height="2dp"
         android:layout_marginBottom="24dp"
@@ -28,4 +30,5 @@
         android:text=""
         app:layout_constraintBottom_toBottomOf="@+id/tv_Size_cart"
         app:layout_constraintStart_toStartOf="@+id/tv_Size_cart" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

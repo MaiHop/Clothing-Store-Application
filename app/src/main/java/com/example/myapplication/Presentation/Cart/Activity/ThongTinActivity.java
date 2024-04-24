@@ -2,6 +2,7 @@ package com.example.myapplication.Presentation.Cart.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -49,6 +50,7 @@ public class ThongTinActivity extends AppCompatActivity {
     private PTThanhToanVM pmVM;
     private KhuyenMaiVM kmVM;
     private DonHang dh;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,11 +59,12 @@ public class ThongTinActivity extends AppCompatActivity {
         init();
         HienThiDanhSach();
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        if(type.equals("DiaChi")||type.equals("ThanhToan")){
+        if (type.equals("DiaChi") || type.equals("ThanhToan")) {
             getMenuInflater().inflate(R.menu.menu_toolbar_cho_inf_add, menu);
-        }else if(type.equals("KhuyenMai")) {
+        } else if (type.equals("KhuyenMai")) {
             getMenuInflater().inflate(R.menu.menu_toolbar_cho_inf_find, menu);
         }
         return true;
@@ -70,25 +73,46 @@ public class ThongTinActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-        if(id == R.id.item_cho_inf_add){
-            if(type.equals("DiaChi")){
+        if (id == R.id.item_cho_inf_add) {
+            if (type.equals("DiaChi")) {
                 daVM.addDiaChi();
-            }else if(type.equals("ThanhToan")){
+            } else if (type.equals("ThanhToan")) {
                 pmVM.addPTThanhToan();
             }
-            Toast.makeText(this,    "Add",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Add", Toast.LENGTH_SHORT).show();
             return true;
-        }else if(id == R.id.item_cho_inf_find){
-            Toast.makeText(this,    "Find",Toast.LENGTH_SHORT).show();
+        } else if (id == R.id.item_cho_inf_find) {
+            Toast.makeText(this, "Find", Toast.LENGTH_SHORT).show();
             return true;
-        }else {
+        } else if (id == android.R.id.home) {
+            switch (type) {
+                case "DiaChi":
+                    dh.setDiachi(null);
+                    break;
+                case "VanChuyen":
+                    dh.setVanchuyen(null);
+                    break;
+                case "ThanhToan":
+                    dh.setThanhToan(null);
+                    break;
+                case "KhuyenMai":
+                    dh.setKhuyenmai(null);
+                    break;
+            }
+            Intent intent = new Intent(ThongTinActivity.this, ThanhToanActivity.class);
+            intent.putExtra("DonHang", dh);
+            startActivity(intent);
+            return true;
+        } else {
             return super.onOptionsItemSelected(item);
         }
     }
-    private void init(){
+
+    private void init() {
         toolbar_choose_info = findViewById(R.id.toolbar_choose_info);
         setSupportActionBar(toolbar_choose_info);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         toolbar_choose_info.setTitle("");
         toolbar_thongtin_title = findViewById(R.id.toolbar_thongtin_title);
         ed_NhapCode = findViewById(R.id.ed_NhapCode);
@@ -106,11 +130,12 @@ public class ThongTinActivity extends AppCompatActivity {
         ll_Promo_Code = findViewById((R.id.ll_Promo_Code));
         ll_Promo_Code.setVisibility(View.GONE);
     }
-    private void HienThiDanhSach(){
+
+    private void HienThiDanhSach() {
         Intent i = getIntent();
         type = i.getStringExtra("Loai");
         dh = (DonHang) i.getSerializableExtra("DonHang");
-        switch (type){
+        switch (type) {
             case "DiaChi":
                 toolbar_thongtin_title.setText("Choose Delivery Address");
                 this.rv_Choose_info.setLayoutManager(new LinearLayoutManager(this));
@@ -179,6 +204,6 @@ public class ThongTinActivity extends AppCompatActivity {
                     }
                 });
                 return;
-            }
+        }
     }
 }

@@ -37,7 +37,7 @@ public class MauVH extends RecyclerView.ViewHolder{
             iv_color.setEnabled(false);
         }
         if(mau.isChecked()){
-            iv_color.setStrokeColor(ColorStateList.valueOf(Color.parseColor("#6750A4")));
+            iv_color.setStrokeColor(ColorStateList.valueOf(Color.parseColor("#528F65")));
         }else{
             iv_color.setStrokeColor(ColorStateList.valueOf(Color.parseColor("#EFEFEF")));
         }

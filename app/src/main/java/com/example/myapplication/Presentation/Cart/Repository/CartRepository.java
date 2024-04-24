@@ -142,7 +142,7 @@ public class CartRepository {
 
         SanPham sp1 = new SanPham();
         sp1.setIdSanPham("1");
-        sp1.setImageUrl("https://inkythuatso.com/uploads/thumbnails/800/2023/05/logo-viettelpost-inkythuatso-27-14-52-01.jpg");
+        sp1.setImageUrl("https://image.uniqlo.com/UQ/ST3/vn/imagesgoods/471281/item/vngoods_09_471281.jpg?width=750");
         sp1.setTenSanPham("Miracle Air Áo Khoác (AirSense Áo Khoác) (Wool Like)");
         sp1.setGiaban(120);
         sp1.setSoLuong(10);
@@ -156,7 +156,7 @@ public class CartRepository {
 
         SanPham sp2 = new SanPham();
         sp2.setIdSanPham("2");
-        sp2.setImageUrl("https://inkythuatso.com/uploads/thumbnails/800/2023/05/logo-viettelpost-inkythuatso-27-14-52-01.jpg");
+        sp2.setImageUrl("https://image.uniqlo.com/UQ/ST3/vn/imagesgoods/471281/item/vngoods_09_471281.jpg?width=750");
         sp2.setTenSanPham("Miracle Air Áo Khoác (AirSense Áo Khoác) (Wool Like)");
         sp2.setGiaban(120);
         sp2.setSoLuong(20);
@@ -170,7 +170,7 @@ public class CartRepository {
 
         SanPham sp3 = new SanPham();
         sp3.setIdSanPham("3");
-        sp3.setImageUrl("https://inkythuatso.com/uploads/thumbnails/800/2023/05/logo-viettelpost-inkythuatso-27-14-52-01.jpg");
+        sp3.setImageUrl("https://image.uniqlo.com/UQ/ST3/vn/imagesgoods/471281/item/vngoods_09_471281.jpg?width=750");
         sp3.setTenSanPham("Miracle Air Áo Khoác (AirSense Áo Khoác) (Wool Like)");
         sp3.setGiaban(120);
         sp3.setSoLuong(30);
@@ -184,7 +184,7 @@ public class CartRepository {
 
         SanPham sp4 = new SanPham();
         sp4.setIdSanPham("4");
-        sp4.setImageUrl("https://inkythuatso.com/uploads/thumbnails/800/2023/05/logo-viettelpost-inkythuatso-27-14-52-01.jpg");
+        sp4.setImageUrl("https://image.uniqlo.com/UQ/ST3/vn/imagesgoods/471281/item/vngoods_09_471281.jpg?width=750");
         sp4.setTenSanPham("Miracle Air Áo Khoác (AirSense Áo Khoác) (Wool Like)");
         sp4.setGiaban(120);
         sp4.setSoLuong(40);
@@ -198,7 +198,7 @@ public class CartRepository {
 
         SanPham sp5 = new SanPham();
         sp5.setIdSanPham("5");
-        sp5.setImageUrl("https://inkythuatso.com/uploads/thumbnails/800/2023/05/logo-viettelpost-inkythuatso-27-14-52-01.jpg");
+        sp5.setImageUrl("https://image.uniqlo.com/UQ/ST3/vn/imagesgoods/471281/item/vngoods_09_471281.jpg?width=750");
         sp5.setTenSanPham("Miracle Air Áo Khoác (AirSense Áo Khoác) (Wool Like)");
         sp5.setGiaban(120);
         sp5.setSoLuong(50);
@@ -212,7 +212,7 @@ public class CartRepository {
 
         SanPham sp6 = new SanPham();
         sp6.setIdSanPham("6");
-        sp6.setImageUrl("https://inkythuatso.com/uploads/thumbnails/800/2023/05/logo-viettelpost-inkythuatso-27-14-52-01.jpg");
+        sp6.setImageUrl("https://image.uniqlo.com/UQ/ST3/vn/imagesgoods/471281/item/vngoods_09_471281.jpg?width=750");
         sp6.setTenSanPham("Miracle Air Áo Khoác (AirSense Áo Khoác) (Wool Like)");
         sp6.setGiaban(120);
         sp6.setSoLuong(0);
@@ -226,7 +226,7 @@ public class CartRepository {
 
         SanPham sp7 = new SanPham();
         sp7.setIdSanPham("7");
-        sp7.setImageUrl("https://inkythuatso.com/uploads/thumbnails/800/2023/05/logo-viettelpost-inkythuatso-27-14-52-01.jpg");
+        sp7.setImageUrl("https://image.uniqlo.com/UQ/ST3/vn/imagesgoods/471281/item/vngoods_09_471281.jpg?width=750");
         sp7.setTenSanPham("Z");
         sp7.setGiaban(120);
         sp7.setSoLuong(0);

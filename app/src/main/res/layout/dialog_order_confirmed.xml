@@ -40,11 +40,14 @@
         android:layout_height="60dp"
         android:text="View My Order"
         android:textStyle="bold"/>
+
     <Button
         android:id="@+id/btn_BackToHome"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:backgroundTint="#F1F6F3"
         android:text="Back To Home"
-        android:textStyle="bold"/>
+        android:textColor="?attr/colorPrimary"
+        android:textStyle="bold" />
 
 </LinearLayout>

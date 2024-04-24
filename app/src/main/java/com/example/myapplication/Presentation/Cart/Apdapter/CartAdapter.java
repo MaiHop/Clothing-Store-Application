@@ -64,7 +64,8 @@ public class CartAdapter extends RecyclerView.Adapter<GioHangVH> {
         holder.cb_Selected.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                donHangChiTiet.setChecked(isChecked);
+                DonHangChiTiet dh_edit = list.get(holder.getAdapterPosition());
+                dh_edit.setChecked(isChecked);
                 holder.updateTotal(list, btn_DatHang);
             }
         });

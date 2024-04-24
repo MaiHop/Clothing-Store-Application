@@ -46,7 +46,7 @@ public class category_women extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.women_layout);
+        setContentView(R.layout.hoi_women_layout);
 
         imageViewBack = findViewById(R.id.imageViewBack);
         imageViewBack.setOnClickListener(new View.OnClickListener() {
@@ -104,7 +104,7 @@ public class category_women extends AppCompatActivity {
     public void showdialog(Context context, int dialogType) {
         Dialog dialog = new Dialog(context);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(dialogType == 1 ? R.layout.sort2 : R.layout.filter_dialog);
+        dialog.setContentView(dialogType == 1 ? R.layout.hoi_sort2 : R.layout.hoi_filter_dialog);
         dialog.show();
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));

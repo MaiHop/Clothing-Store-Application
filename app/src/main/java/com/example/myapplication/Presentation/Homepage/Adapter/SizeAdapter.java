@@ -9,7 +9,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Presentation.Homepage.DTO.Boloc;
 import com.example.myapplication.Presentation.Homepage.DTO.Size;
 import com.example.myapplication.R;
 
@@ -24,7 +23,7 @@ public class SizeAdapter extends RecyclerView.Adapter<SizeAdapter.ViewHolder>{
     @Override
     public SizeAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
-        View view = LayoutInflater.from(context).inflate(R.layout.item_size, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.hoi_item_size, parent, false);
         return new SizeAdapter.ViewHolder(view);
     }
 

@@ -25,7 +25,7 @@ public class BoclocAdapter extends RecyclerView.Adapter<BoclocAdapter.ViewHolder
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
-        View view = LayoutInflater.from(context).inflate(R.layout.item_boloc, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.hoi_item_boloc, parent, false);
         return new ViewHolder(view);
     }
 

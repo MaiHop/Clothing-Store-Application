@@ -7,7 +7,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -27,7 +26,7 @@ public class Homepage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.homepage);
+        setContentView(R.layout.hoi_homepage);
 
         // chuyển trang search
         search = findViewById(R.id.search);
@@ -35,7 +34,7 @@ public class Homepage extends AppCompatActivity {
             @Override
             public void onFocusChange(View view, boolean hasFocus) {
                 if (hasFocus) {
-                    setContentView(R.layout.search_layout); // Chuyển sang layout tìm kiếm
+                    setContentView(R.layout.hoi_search_layout); // Chuyển sang layout tìm kiếm
                     setupBackButton();
                 }
             }
@@ -61,18 +60,18 @@ public class Homepage extends AppCompatActivity {
             }
         };
 
-        // Gán goToPageClickListener cho các ConstraintLayout cần xử lý sự kiện
-        ConstraintLayout constraintLayout1 = findViewById(R.id.constraintLayout1);
-        ConstraintLayout constraintLayout2 = findViewById(R.id.constraintLayout2);
-        ConstraintLayout constraintLayout3 = findViewById(R.id.constraintLayout3);
-        ConstraintLayout constraintLayout4 = findViewById(R.id.constraintLayout4);
-        ConstraintLayout constraintLayout5 = findViewById(R.id.constraintLayout5);
+//        // Gán goToPageClickListener cho các ConstraintLayout cần xử lý sự kiện
+//        ConstraintLayout constraintLayout1 = findViewById(R.id.constraintLayout1);
+//        ConstraintLayout constraintLayout2 = findViewById(R.id.constraintLayout2);
+//        ConstraintLayout constraintLayout3 = findViewById(R.id.constraintLayout3);
+//        ConstraintLayout constraintLayout4 = findViewById(R.id.constraintLayout4);
+//        ConstraintLayout constraintLayout5 = findViewById(R.id.constraintLayout5);
 
-        constraintLayout1.setOnClickListener(goToPageClickListener);
-        constraintLayout2.setOnClickListener(goToPageClickListener);
-        constraintLayout3.setOnClickListener(goToPageClickListener);
-        constraintLayout4.setOnClickListener(goToPageClickListener);
-        constraintLayout5.setOnClickListener(goToPageClickListener);
+//        constraintLayout1.setOnClickListener(goToPageClickListener);
+//        constraintLayout2.setOnClickListener(goToPageClickListener);
+//        constraintLayout3.setOnClickListener(goToPageClickListener);
+//        constraintLayout4.setOnClickListener(goToPageClickListener);
+//        constraintLayout5.setOnClickListener(goToPageClickListener);
 
 
         initRecyclerView();

@@ -27,7 +27,7 @@ public class SortListAdapter extends RecyclerView.Adapter<SortListAdapter.ViewHo
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
-        View view = LayoutInflater.from(context).inflate(R.layout.sort, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.hoi_sort, parent, false);
         return new ViewHolder(view);
     }
 

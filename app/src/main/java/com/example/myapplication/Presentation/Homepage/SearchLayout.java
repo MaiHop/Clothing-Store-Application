@@ -35,7 +35,7 @@
 
         private void init(Context context) {
             LayoutInflater inflater = LayoutInflater.from(context);
-            inflater.inflate(R.layout.search_layout, this);
+            inflater.inflate(R.layout.hoi_search_layout, this);
 
             // Thêm dòng này để chỉ định rằng bạn đang tìm các thành phần trong layout của chính lớp SearchLayout
             imageViewBack = findViewById(R.id.imageViewBack);

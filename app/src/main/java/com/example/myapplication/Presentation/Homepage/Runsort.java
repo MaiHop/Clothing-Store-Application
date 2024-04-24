@@ -20,7 +20,7 @@ public class Runsort extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.sort2);
+        setContentView(R.layout.hoi_sort2);
         initRecyclerView();
 
     }

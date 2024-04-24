@@ -2,23 +2,43 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="CartActivity">
-        <State />
-      </entry>
-      <entry key="Homepage">
-        <State />
-      </entry>
-      <entry key="MainActivity">
-        <State />
-      </entry>
       <entry key="Rusort">
         <State />
+      </entry>
+      <entry key="SanPhamActivity">
+        <State>
+          <targetSelectedWithDropDown>
+            <Target>
+              <type value="QUICK_BOOT_TARGET" />
+              <deviceKey>
+                <Key>
+                  <type value="VIRTUAL_DEVICE_PATH" />
+                  <value value="C:\Users\MY COMPUTER\.android\avd\Pixel_7_API_30.avd" />
+                </Key>
+              </deviceKey>
+            </Target>
+          </targetSelectedWithDropDown>
+          <timeTargetWasSelectedWithDropDown value="2024-04-23T06:17:41.476968400Z" />
+        </State>
       </entry>
       <entry key="app">
         <State />
       </entry>
       <entry key="category_women">
-        <State />
+        <State>
+          <targetSelectedWithDropDown>
+            <Target>
+              <type value="QUICK_BOOT_TARGET" />
+              <deviceKey>
+                <Key>
+                  <type value="VIRTUAL_DEVICE_PATH" />
+                  <value value="C:\Users\MY COMPUTER\.android\avd\Pixel_7_Pro_API_30.avd" />
+                </Key>
+              </deviceKey>
+            </Target>
+          </targetSelectedWithDropDown>
+          <timeTargetWasSelectedWithDropDown value="2024-04-23T06:21:00.733923100Z" />
+        </State>
       </entry>
     </value>
   </component>

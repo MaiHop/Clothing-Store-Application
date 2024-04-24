@@ -5,15 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.example.myapplication.Presentation.Homepage.DTO.MyColor;
-import com.example.myapplication.Presentation.Homepage.DTO.Price;
-import com.example.myapplication.Presentation.Homepage.DTO.Size;
 import com.example.myapplication.R;
 
 import java.util.ArrayList;
@@ -28,7 +25,7 @@ public class ColorAdapter extends RecyclerView.Adapter<ColorAdapter.ViewHolder>{
     @Override
     public ColorAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
-        View view = LayoutInflater.from(context).inflate(R.layout.item_color, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.hoi_item_color, parent, false);
 
         return new ColorAdapter.ViewHolder(view);
     }

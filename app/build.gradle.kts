@@ -39,6 +39,7 @@ dependencies {
     implementation("com.google.code.gson:gson:2.8.6")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
     implementation("com.tbuonomo:dotsindicator:4.2")
+    implementation ("com.squareup.picasso:picasso:2.71828")
 
 
 }

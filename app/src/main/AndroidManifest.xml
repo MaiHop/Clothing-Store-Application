@@ -35,7 +35,7 @@
             android:name=".UI.MainActivity"
             android:exported="true"/>
         <activity
-            android:name=".UI.GH.MainActivity"
+            android:name=".Presentation.GH.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -43,10 +43,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".UI.GH.CancelOrderActivity" />
-        <activity android:name=".UI.GH.OrderDetailsActivity"/>
-        <activity android:name=".UI.GH.ReviewActivity"/>
-        <activity android:name=".UI.GH.Test_arrived"
+        <activity android:name=".Presentation.GH.CancelOrderActivity" />
+        <activity android:name=".Presentation.GH.OrderDetailsActivity"/>
+        <activity android:name=".Presentation.GH.ReviewActivity"/>
+        <activity android:name=".Presentation.GH.Test_arrived"
             android:exported="true"/>
     </application>
 

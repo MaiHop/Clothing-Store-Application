@@ -1,4 +1,4 @@
-package com.example.myapplication.UI.GH;
+package com.example.myapplication.Presentation.GH;
 
 import java.io.Serializable;
 

@@ -10,7 +10,7 @@
         android:layout_marginRight="10dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
-        android:background="@drawable/rounded_border_wishlist"> <!-- Sử dụng drawable để tạo đường viền tròn -->
+        android:background="@drawable/c_hung_rounded_border_wishlist"> <!-- Sử dụng drawable để tạo đường viền tròn -->
         <TextView
             android:id="@+id/tenBoLoc"
             android:text="Item 1"

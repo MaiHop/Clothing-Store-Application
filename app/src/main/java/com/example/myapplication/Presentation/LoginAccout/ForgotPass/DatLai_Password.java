@@ -10,7 +10,6 @@ import android.widget.Button;
 
 import com.example.myapplication.Presentation.LoginAccout.HomeThamGia;
 import com.example.myapplication.Presentation.LoginAccout.Load_Dialog;
-import com.example.myapplication.Presentation.LoginAccout.OTP.SP_OTP;
 import com.example.myapplication.R;
 
 public class DatLai_Password extends AppCompatActivity {
@@ -20,7 +19,7 @@ public class DatLai_Password extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dat_lai_password);
+        setContentView(R.layout.c_hung_activity_dat_lai_password);
         btn = findViewById(R.id.btn_DatLai_Pass);
 
         btnOnClick(btn);

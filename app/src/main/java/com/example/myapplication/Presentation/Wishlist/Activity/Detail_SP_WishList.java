@@ -14,7 +14,7 @@ public class Detail_SP_WishList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail_sp_wish_list);
+        setContentView(R.layout.c_hung_activity_detail_sp_wish_list);
 
         Toolbar toolbar = findViewById(R.id.toolbar_Detail_SP_WisList);
         setSupportActionBar(toolbar);

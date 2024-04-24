@@ -12,7 +12,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.myapplication.Presentation.LoginAccout.OTP.SP_OTP;
 import com.example.myapplication.Presentation.LoginAccout.SignIn.logout;
 import com.example.myapplication.Presentation.LoginAccout.SignIn.sign_in;
 import com.example.myapplication.Presentation.LoginAccout.SingUp.sign_up;
@@ -47,7 +46,7 @@ public class HomeThamGia extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_tham_gia);
+        setContentView(R.layout.c_hung_activity_home_tham_gia);
 
         GGOption();
         initUI();

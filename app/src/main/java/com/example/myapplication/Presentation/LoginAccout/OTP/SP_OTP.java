@@ -3,7 +3,6 @@ package com.example.myapplication.Presentation.LoginAccout.OTP;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,18 +15,14 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.myapplication.Presentation.LoginAccout.ForgotPass.DatLai_Password;
 import com.example.myapplication.Presentation.LoginAccout.HomeThamGia;
 import com.example.myapplication.Presentation.LoginAccout.Load_Dialog;
 import com.example.myapplication.Presentation.LoginAccout.SignIn.logout;
-import com.example.myapplication.Presentation.LoginAccout.SignIn.sign_in;
-import com.example.myapplication.Presentation.LoginAccout.SingUp.sign_up;
 import com.example.myapplication.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class SP_OTP extends AppCompatActivity {
 
@@ -44,7 +39,7 @@ public class SP_OTP extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sup_otp);
+        setContentView(R.layout.c_hung_activity_sup_otp);
 
         editText1 = findViewById(R.id.editText1);
         editText2 = findViewById(R.id.editText2);

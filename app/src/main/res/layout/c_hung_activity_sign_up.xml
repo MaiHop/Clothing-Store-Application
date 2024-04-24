@@ -26,7 +26,7 @@
                         android:id="@+id/pack_signup"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:src="@drawable/ic_back_24"
+                        android:src="@drawable/c_hung_ic_back_24"
                         android:backgroundTint="@color/green"
                         android:layout_alignParentStart="true"
                         android:layout_centerVertical="true"/>
@@ -63,7 +63,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:boxBackgroundColor="@color/xam_x1"
-                    app:startIconDrawable="@drawable/ic_email_24"
+                    app:startIconDrawable="@drawable/c_hung_ic_email_24"
                     app:boxBackgroundMode="outline"
                     android:hint="Email">
                     <com.google.android.material.textfield.TextInputEditText
@@ -86,7 +86,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:boxBackgroundColor="@color/xam_x1"
-                    app:startIconDrawable="@drawable/ic_lock_24"
+                    app:startIconDrawable="@drawable/c_hung_ic_lock_24"
                     app:boxBackgroundMode="outline"
                     app:counterEnabled="true"
                     app:counterMaxLength="20"
@@ -193,7 +193,7 @@
                                 <RelativeLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="45dp"
-                                    android:background="@drawable/rounded_border_thamgia"><!-- Sử dụng drawable để tạo đường viền tròn -->
+                                    android:background="@drawable/c_hung_rounded_border_thamgia"><!-- Sử dụng drawable để tạo đường viền tròn -->
 
                                     <com.google.android.material.button.MaterialButton
                                         android:id="@+id/btn_GG"
@@ -211,7 +211,7 @@
                                         android:layout_marginLeft="15dp"
                                         android:layout_width="35dp"
                                         android:layout_height="wrap_content"
-                                        android:src="@drawable/ic_google"
+                                        android:src="@drawable/c_hung_ic_google"
                                         android:layout_gravity="left"
                                         />
                                 </RelativeLayout>
@@ -226,7 +226,7 @@
                                 <RelativeLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="45dp"
-                                    android:background="@drawable/rounded_border_thamgia"><!-- Sử dụng drawable để tạo đường viền tròn -->
+                                    android:background="@drawable/c_hung_rounded_border_thamgia"><!-- Sử dụng drawable để tạo đường viền tròn -->
 
                                     <com.google.android.material.button.MaterialButton
                                         android:id="@+id/btn_AP"
@@ -244,7 +244,7 @@
                                         android:layout_marginLeft="15dp"
                                         android:layout_width="35dp"
                                         android:layout_height="wrap_content"
-                                        android:src="@drawable/ic_apple"
+                                        android:src="@drawable/c_hung_ic_apple"
                                         android:layout_gravity="left"
                                         />
                                 </RelativeLayout>
@@ -259,7 +259,7 @@
                                 <RelativeLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="45dp"
-                                    android:background="@drawable/rounded_border_thamgia"><!-- Sử dụng drawable để tạo đường viền tròn -->
+                                    android:background="@drawable/c_hung_rounded_border_thamgia"><!-- Sử dụng drawable để tạo đường viền tròn -->
 
                                     <com.google.android.material.button.MaterialButton
                                         android:id="@+id/btn_FB"
@@ -277,7 +277,7 @@
                                         android:layout_marginLeft="15dp"
                                         android:layout_width="35dp"
                                         android:layout_height="wrap_content"
-                                        android:src="@drawable/ic_facebook"
+                                        android:src="@drawable/c_hung_ic_facebook"
                                         android:layout_gravity="left"
                                         />
                                 </RelativeLayout>
@@ -292,7 +292,7 @@
                                 <RelativeLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="45dp"
-                                    android:background="@drawable/rounded_border_thamgia"><!-- Sử dụng drawable để tạo đường viền tròn -->
+                                    android:background="@drawable/c_hung_rounded_border_thamgia"><!-- Sử dụng drawable để tạo đường viền tròn -->
 
                                     <Button
                                         android:id="@+id/btn_B"
@@ -310,7 +310,7 @@
                                         android:layout_marginLeft="15dp"
                                         android:layout_width="35dp"
                                         android:layout_height="wrap_content"
-                                        android:src="@drawable/ic_google"
+                                        android:src="@drawable/c_hung_ic_google"
                                         android:layout_gravity="left"
                                         />
                                 </RelativeLayout>
@@ -325,7 +325,7 @@
                                 <RelativeLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="45dp"
-                                    android:background="@drawable/rounded_border_thamgia"><!-- Sử dụng drawable để tạo đường viền tròn -->
+                                    android:background="@drawable/c_hung_rounded_border_thamgia"><!-- Sử dụng drawable để tạo đường viền tròn -->
 
                                     <Button
                                         android:id="@+id/btn_C"
@@ -343,7 +343,7 @@
                                         android:layout_marginLeft="15dp"
                                         android:layout_width="35dp"
                                         android:layout_height="wrap_content"
-                                        android:src="@drawable/ic_google"
+                                        android:src="@drawable/c_hung_ic_google"
                                         android:layout_gravity="left"
                                         />
                                 </RelativeLayout>
@@ -358,7 +358,7 @@
                                 <RelativeLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="45dp"
-                                    android:background="@drawable/rounded_border_thamgia"><!-- Sử dụng drawable để tạo đường viền tròn -->
+                                    android:background="@drawable/c_hung_rounded_border_thamgia"><!-- Sử dụng drawable để tạo đường viền tròn -->
 
                                     <Button
                                         android:id="@+id/btn_A"
@@ -376,7 +376,7 @@
                                         android:layout_marginLeft="15dp"
                                         android:layout_width="35dp"
                                         android:layout_height="wrap_content"
-                                        android:src="@drawable/ic_google"
+                                        android:src="@drawable/c_hung_ic_google"
                                         android:layout_gravity="left"
                                         />
                                 </RelativeLayout>
@@ -397,7 +397,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:layout_marginTop="10dp"
-                        android:background="@drawable/rounded_border_thamgia"
+                        android:background="@drawable/c_hung_rounded_border_thamgia"
                         android:backgroundTint="@color/green"> <!-- Sử dụng drawable để tạo đường viền tròn -->
                         <Button
                             android:id="@+id/btn_SignUp"

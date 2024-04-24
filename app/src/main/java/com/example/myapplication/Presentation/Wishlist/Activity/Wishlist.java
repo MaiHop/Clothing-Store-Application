@@ -23,7 +23,7 @@ public class Wishlist extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_wish_list);
+        setContentView(R.layout.c_hung_activity_wish_list);
 
         initUI();
         setSupportActionBar(toolbar);
@@ -47,19 +47,19 @@ public class Wishlist extends AppCompatActivity {
         arrayBoLocList.add(new BoLoc_WishList("Giay"));
 
         arraySPList = new ArrayList<>();
-        arraySPList.add(new SanPham_WishList("Ao Polo","200000",R.drawable.ic_apple));
-        arraySPList.add(new SanPham_WishList("Ao Polo","200000",R.drawable.ic_apple));
-        arraySPList.add(new SanPham_WishList("Ao Polo","200000",R.drawable.ic_apple));
-        arraySPList.add(new SanPham_WishList("Ao Polo","200000",R.drawable.ic_apple));
-        arraySPList.add(new SanPham_WishList("Ao Polo","200000",R.drawable.ic_apple));
-        arraySPList.add(new SanPham_WishList("Ao Polo","200000",R.drawable.ic_apple));
-        arraySPList.add(new SanPham_WishList("Ao Polo","200000",R.drawable.ic_apple));
-        arraySPList.add(new SanPham_WishList("Ao Polo","200000",R.drawable.ic_apple));
+        arraySPList.add(new SanPham_WishList("Ao Polo","200000",R.drawable.c_hung_ic_apple));
+        arraySPList.add(new SanPham_WishList("Ao Polo","200000",R.drawable.c_hung_ic_apple));
+        arraySPList.add(new SanPham_WishList("Ao Polo","200000",R.drawable.c_hung_ic_apple));
+        arraySPList.add(new SanPham_WishList("Ao Polo","200000",R.drawable.c_hung_ic_apple));
+        arraySPList.add(new SanPham_WishList("Ao Polo","200000",R.drawable.c_hung_ic_apple));
+        arraySPList.add(new SanPham_WishList("Ao Polo","200000",R.drawable.c_hung_ic_apple));
+        arraySPList.add(new SanPham_WishList("Ao Polo","200000",R.drawable.c_hung_ic_apple));
+        arraySPList.add(new SanPham_WishList("Ao Polo","200000",R.drawable.c_hung_ic_apple));
 
-        adapterItemBoLocWishList = new Adapter_Item_BoLoc_WishList(Wishlist.this,R.layout.item_boloc,arrayBoLocList);
+        adapterItemBoLocWishList = new Adapter_Item_BoLoc_WishList(Wishlist.this,R.layout.c_hung_item_boloc,arrayBoLocList);
         recyclerViewBoLoc.setAdapter(adapterItemBoLocWishList);
 
-        adapterItemSpWishList = new Adapter_Item_SP_WishList(Wishlist.this,R.layout.item_sp_wishlist,arraySPList);
+        adapterItemSpWishList = new Adapter_Item_SP_WishList(Wishlist.this,R.layout.c_hung_item_sp_wishlist,arraySPList);
         recyclerViewSP.setAdapter(adapterItemSpWishList);
 
 

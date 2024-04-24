@@ -26,7 +26,7 @@
                         android:id="@+id/img_pack_OTP"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:src="@drawable/ic_back_24"
+                        android:src="@drawable/c_hung_ic_back_24"
                         android:backgroundTint="@color/green"
                         android:layout_alignParentStart="true"
                         android:layout_centerVertical="true"/>
@@ -73,7 +73,7 @@
                         android:maxLength="1"
                         android:textSize="24sp"
                         android:gravity="center"
-                        android:background="@drawable/rounded_border_otp"
+                        android:background="@drawable/c_hung_rounded_border_otp"
 
                         /> <!-- Để giữ khoảng cách giữa văn bản và viền -->
                 </RelativeLayout>
@@ -91,7 +91,7 @@
                         android:maxLength="1"
                         android:textSize="24sp"
                         android:gravity="center"
-                        android:background="@drawable/rounded_border_otp"
+                        android:background="@drawable/c_hung_rounded_border_otp"
                         /> <!-- Để giữ khoảng cách giữa văn bản và viền -->
                 </RelativeLayout>
                 <RelativeLayout
@@ -108,7 +108,7 @@
                         android:maxLength="1"
                         android:textSize="24sp"
                         android:gravity="center"
-                        android:background="@drawable/rounded_border_otp"
+                        android:background="@drawable/c_hung_rounded_border_otp"
                         /> <!-- Để giữ khoảng cách giữa văn bản và viền -->
                 </RelativeLayout>
                 <RelativeLayout
@@ -125,7 +125,7 @@
                         android:maxLength="1"
                         android:textSize="24sp"
                         android:gravity="center"
-                        android:background="@drawable/rounded_border_otp"
+                        android:background="@drawable/c_hung_rounded_border_otp"
                         /> <!-- Để giữ khoảng cách giữa văn bản và viền -->
                 </RelativeLayout>
 
@@ -173,7 +173,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/rounded_border_thamgia"
+                    android:background="@drawable/c_hung_rounded_border_thamgia"
                     android:backgroundTint="@color/green"> <!-- Sử dụng drawable để tạo đường viền tròn -->
                     <Button
                         android:id="@+id/Confirm_code"

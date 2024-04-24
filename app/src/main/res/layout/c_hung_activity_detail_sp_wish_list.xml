@@ -25,7 +25,7 @@
                     <ImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:src="@drawable/ic_back_24"
+                        android:src="@drawable/c_hung_ic_back_24"
                         android:backgroundTint="@color/green"
                         android:layout_alignParentStart="true"
                         android:layout_centerVertical="true"
@@ -45,7 +45,7 @@
                         android:id="@+id/share_icon"
                         android:layout_width="28dp"
                         android:layout_height="28dp"
-                        android:src="@drawable/ic_share"
+                        android:src="@drawable/c_hung_ic_share"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:layout_marginEnd="8dp"/>
@@ -59,7 +59,7 @@
                 android:layout_height="wrap_content">
                 <ImageView
                     android:id="@+id/image_SP"
-                    android:src="@drawable/ic_apple"
+                    android:src="@drawable/c_hung_ic_apple"
                     android:layout_width="match_parent"
                     android:layout_height="400dp"/>
                 <TextView
@@ -100,7 +100,7 @@
                     android:layout_width="100dp"
                     android:layout_height="45dp"/>
                 <ImageView
-                    android:src="@drawable/ic_star"
+                    android:src="@drawable/c_hung_ic_star"
                     android:gravity="center"
                     android:layout_marginRight="5dp"
                     android:layout_marginLeft="5dp"

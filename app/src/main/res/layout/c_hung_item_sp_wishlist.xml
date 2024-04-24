@@ -22,7 +22,7 @@
                 android:id="@+id/item_imageSP"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:src="@drawable/ic_facebook" />
+                android:src="@drawable/c_hung_ic_facebook" />
 
             <TextView
                 android:id="@+id/item_tenSP"
@@ -46,7 +46,7 @@
         <CheckBox
             android:id="@+id/cbHeart"
             android:layout_gravity="top|right"
-            android:button="@drawable/selector_wishlist_item"
+            android:button="@drawable/c_hung_selector_wishlist_item"
             app:useMaterialThemeColors="false"
             android:layout_marginTop="5dp"
             android:layout_marginRight="5dp"
@@ -54,7 +54,7 @@
             android:layout_height="30dp" />
 
         <ImageView
-            android:src="@drawable/ic_star"
+            android:src="@drawable/c_hung_ic_star"
             android:layout_gravity="top|left"
             android:layout_marginTop="5dp"
             android:layout_marginLeft="5dp"

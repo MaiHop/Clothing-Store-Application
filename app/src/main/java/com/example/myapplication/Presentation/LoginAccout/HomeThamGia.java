@@ -12,7 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.myapplication.Presentation.LoginAccout.SignIn.logout;
+import com.example.myapplication.Presentation.Accout_Setting.Activity.Account;
 import com.example.myapplication.Presentation.LoginAccout.SignIn.sign_in;
 import com.example.myapplication.Presentation.LoginAccout.SingUp.sign_up;
 import com.example.myapplication.R;
@@ -123,7 +123,7 @@ public class HomeThamGia extends AppCompatActivity {
                                             map.put("profile",user.getPhotoUrl().toString());
                                             database.getReference().child("users").child(user.getUid()).setValue(map)
                                                     .addOnSuccessListener(aVoid -> {
-                                                        Intent intent = new Intent(HomeThamGia.this, logout.class);
+                                                        Intent intent = new Intent(HomeThamGia.this, Account.class);
                                                         startActivity(intent);
                                                     })
                                                     .addOnFailureListener(e -> {

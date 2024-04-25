@@ -3,6 +3,7 @@ package com.example.myapplication.Presentation.Accout_Setting.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,9 +15,12 @@ import com.example.myapplication.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import com.squareup.picasso.Picasso;
+
 public class Account extends AppCompatActivity {
     TextView tv_nameAccount,tv_mailAccount, tv_addrress;
     LinearLayout ln_address,ln_logout;
+    ImageView img_account;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,8 +29,9 @@ public class Account extends AppCompatActivity {
         initUI();
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         FirebaseUser mUser = mAuth.getCurrentUser();
+        Picasso.get().load(mUser.getPhotoUrl().toString()).into(img_account);
         tv_nameAccount.setText(mUser.getDisplayName());
-        tv_nameAccount.setText(mUser.getEmail());
+        tv_mailAccount.setText(mUser.getEmail());
         btnLinerLayout();
 
     }
@@ -36,6 +41,7 @@ public class Account extends AppCompatActivity {
         tv_addrress = findViewById(R.id.tv_address);
         ln_logout = findViewById(R.id.ln_logout);
         ln_address = findViewById(R.id.ln_address);
+        img_account = findViewById(R.id.imgAccout);
 
     }
     private void btnLinerLayout(){

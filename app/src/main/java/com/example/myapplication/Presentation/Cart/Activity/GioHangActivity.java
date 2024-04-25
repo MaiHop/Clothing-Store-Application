@@ -53,7 +53,6 @@ public class GioHangActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.mh_menu_toolbar_cart, menu);
-
         searchView = (SearchView) menu.findItem(R.id.item_search_cart).getActionView();
         searchView.setQueryHint("Nhập tên sản phẩm");
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {

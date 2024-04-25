@@ -10,7 +10,8 @@ public class OrderDetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.order_details);
+        setContentView(R.layout.gh_activity_order_detail);
         // Đoạn code để hiển thị chi tiết đơn hàng (nếu cần)
     }
+
 }

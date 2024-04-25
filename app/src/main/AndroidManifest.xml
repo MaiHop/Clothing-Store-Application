@@ -61,6 +61,38 @@
         <activity android:name=".Presentation.GH.ReviewActivity"/>
         <activity android:name=".Presentation.GH.Test_arrived"
             android:exported="true"/>
+        <activity
+            android:name=".Presentation.Accout_Setting.Activity.Account"
+            android:exported="true" />
+        <activity
+            android:name=".Presentation.LoginAccout.SignIn.logout"
+            android:exported="false" />
+        <activity
+            android:name=".Presentation.LoginAccout.ForgotPass.DatLai_Password"
+            android:exported="true" />
+        <activity
+            android:name=".Presentation.LoginAccout.ForgotPass.forgot_password"
+            android:exported="true" />
+        <activity
+            android:name=".Presentation.LoginAccout.SignIn.sign_in"
+            android:exported="true" />
+        <activity
+            android:name=".Presentation.Wishlist.Activity.Detail_SP_WishList"
+            android:exported="true" />
+        <activity
+            android:name=".Presentation.LoginAccout.OTP.SP_OTP"
+            android:exported="true" />
+        <activity
+            android:name=".Presentation.LoginAccout.SingUp.sign_up"
+            android:exported="true" /> <!-- <activity -->
+        <!-- android:name=".Presentation.LoginAccout.HomeThamGia" -->
+        <!-- android:exported="true" /> -->
+        <activity
+            android:name=".Presentation.Wishlist.Activity.Wishlist"
+            android:exported="true" />
+        <activity
+            android:name=".Presentation.LoginAccout.HomeThamGia"
+            android:exported="true" />
     </application>
 
 </manifest>

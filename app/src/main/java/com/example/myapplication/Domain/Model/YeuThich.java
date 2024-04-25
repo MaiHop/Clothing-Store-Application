@@ -1,11 +1,12 @@
 package com.example.myapplication.Domain.Model;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class YeuThich implements Serializable {
     private String IdYeuThich;
     private KhachHang khachhang;
-    private SanPham sanpham;
+    private List<SanPham> listsanpham;
 
     public YeuThich() {
     }
@@ -26,11 +27,11 @@ public class YeuThich implements Serializable {
         this.khachhang = khachhang;
     }
 
-    public SanPham getSanpham() {
-        return sanpham;
+    public List<SanPham> getListsanpham() {
+        return listsanpham;
     }
 
-    public void setSanpham(SanPham sanpham) {
-        this.sanpham = sanpham;
+    public void setListsanpham(List<SanPham> listsanpham) {
+        this.listsanpham = listsanpham;
     }
 }

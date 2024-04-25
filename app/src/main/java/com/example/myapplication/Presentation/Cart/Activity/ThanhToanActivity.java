@@ -16,6 +16,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myapplication.Domain.Model.DonHangChiTiet;
+import com.example.myapplication.Domain.Model.SanPham;
 import com.example.myapplication.Presentation.Cart.Apdapter.CheckOutAdapter;
 import com.example.myapplication.Domain.Model.DonHang;
 import com.example.myapplication.R;
@@ -93,7 +95,11 @@ public class ThanhToanActivity extends AppCompatActivity {
                 }
             });
         }
-        this.tv_Subtotal.setText("Subtotal ("+ dh.getListDonHangChiTiet().size()+")");
+        int tong =0;
+        for(DonHangChiTiet dhct : dh.getListDonHangChiTiet()){
+            tong+= dhct.getSoLuong();
+        }
+        this.tv_Subtotal.setText("Subtotal ("+ tong+")");
         this.tv_Checkout_ThanhTien.setText(String.valueOf("$"+dh.getThanhTien()));
         this.tv_Checkout_PhiDichVu.setText(String.valueOf("$"+dh.getPhiPhucVu()));
         this.tv_Checkout_PhiGiaoHang.setText(String.valueOf("$"+dh.getPhiGiaoHang()));

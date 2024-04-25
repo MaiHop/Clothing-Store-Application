@@ -10,16 +10,22 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.myapplication.Presentation.Cart.Apdapter.CartAdapter;
 import com.example.myapplication.Domain.Model.DonHang;
 import com.example.myapplication.Domain.Model.DonHangChiTiet;
 import com.example.myapplication.Presentation.Cart.ViewModel.CartVM;
 import com.example.myapplication.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
 
@@ -83,9 +89,24 @@ public class GioHangActivity extends AppCompatActivity {
     private void dathang() {
         DonHang dh =new DonHang();
         dh.setListDonHangChiTiet(list);
-        Intent intent = new Intent(this, ThanhToanActivity.class);
-        intent.putExtra("DonHang", dh);
-        startActivity(intent);
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("DonHangs")
+                .add(dh)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Toast.makeText(GioHangActivity.this, "OK", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(GioHangActivity.this, "Fail", Toast.LENGTH_SHORT).show();
+                    }
+                });
+//        Intent intent = new Intent(this, ThanhToanActivity.class);
+//        intent.putExtra("DonHang", dh);
+//        startActivity(intent);
     }
     private void init(){
         this.toolbar_title = findViewById((R.id.toolbar_cart_title));

@@ -3,4 +3,8 @@
     <style name="MyCheckbox" parent="Theme.AppCompat.NoActionBar">
         <item name="color">#528F65</item>
     </style>
+    <style name="AppTheme" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
+        <item name="colorControlHighlight">@android:color/white</item>
+        <!-- Các thuộc tính khác -->
+    </style>
 </resources>

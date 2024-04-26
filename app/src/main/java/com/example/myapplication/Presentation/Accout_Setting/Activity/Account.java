@@ -27,11 +27,11 @@ public class Account extends AppCompatActivity {
         setContentView(R.layout.c_hung_activity_acoout);
 
         initUI();
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        FirebaseUser mUser = mAuth.getCurrentUser();
-        Picasso.get().load(mUser.getPhotoUrl().toString()).into(img_account);
-        tv_nameAccount.setText(mUser.getDisplayName());
-        tv_mailAccount.setText(mUser.getEmail());
+//        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+//        FirebaseUser mUser = mAuth.getCurrentUser();
+//        Picasso.get().load(mUser.getPhotoUrl().toString()).into(img_account);
+//        tv_nameAccount.setText(mUser.getDisplayName());
+//        tv_mailAccount.setText(mUser.getEmail());
         btnLinerLayout();
 
     }

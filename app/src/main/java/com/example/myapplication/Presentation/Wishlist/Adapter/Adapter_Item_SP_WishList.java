@@ -12,46 +12,46 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Presentation.Wishlist.Model.SanPham_WishList;
+import com.example.myapplication.Domain.Model.SanPham;
+import com.example.myapplication.Domain.Model.YeuThich;
+import com.example.myapplication.Presentation.Wishlist.ViewHolder.WishListVH;
 import com.example.myapplication.R;
 
 import java.text.DecimalFormat;
 import java.util.List;
 
-public class Adapter_Item_SP_WishList extends RecyclerView.Adapter<Adapter_Item_SP_WishList.SPItemViewHolder> {
+public class Adapter_Item_SP_WishList extends RecyclerView.Adapter<WishListVH> {
 
     private Context context;
     private int layout;
-    private List<SanPham_WishList> arr_item_SP_WL;
+    private LayoutInflater minflater;
+    private List<SanPham> arr_item_SP_WL;
 
-    public Adapter_Item_SP_WishList(Context context, int layout, List<SanPham_WishList> arr_item_SP_WL) {
+
+    public Adapter_Item_SP_WishList(List<SanPham> arr_item_SP_WL, Context context, int layout) {
         this.context = context;
         this.layout = layout;
         this.arr_item_SP_WL = arr_item_SP_WL;
+        this.minflater = LayoutInflater.from(context);
     }
 
     @NonNull
     @Override
-    public SPItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public WishListVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(layout,parent,false);
-        return new SPItemViewHolder(itemView);
+        return new WishListVH(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull SPItemViewHolder holder, int position) {
-        SanPham_WishList sanPhamWishList =  arr_item_SP_WL.get(position);
-        holder.tenSP.setText(sanPhamWishList.getTenSP());
-        DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
-        holder.giaSP.setText(decimalFormat.format(Double.parseDouble(sanPhamWishList.getGia()))+" VND");
-        holder.hinhSP.setImageResource(sanPhamWishList.getHinh());
+    public void onBindViewHolder(@NonNull WishListVH holder, int position) {
+        SanPham sanPhamWishList =  arr_item_SP_WL.get(position);
+        holder.updateUI(sanPhamWishList);
         holder.checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (holder.checkBox.isChecked()){
-                    Toast.makeText(v.getContext(), "Add from Wishlist", Toast.LENGTH_SHORT).show();
-                }else {
-                    Toast.makeText(v.getContext(), "Removed from Wishlist", Toast.LENGTH_SHORT).show();
-                }
+                arr_item_SP_WL.remove(holder.getAdapterPosition());
+                notifyItemRemoved(holder.getAdapterPosition());
+                notifyItemRangeChanged(holder.getAdapterPosition(),arr_item_SP_WL.size());
             }
         });
     }
@@ -61,17 +61,9 @@ public class Adapter_Item_SP_WishList extends RecyclerView.Adapter<Adapter_Item_
         return arr_item_SP_WL.size();
     }
 
-    public class SPItemViewHolder extends RecyclerView.ViewHolder {
-        public TextView tenSP;
-        public TextView giaSP;
-        public ImageView hinhSP;
-        CheckBox checkBox;
-        public SPItemViewHolder(@NonNull View itemView) {
-            super(itemView);
-            tenSP = itemView.findViewById(R.id.item_tenSP);
-            giaSP = itemView.findViewById(R.id.item_giaSP);
-            hinhSP = itemView.findViewById(R.id.item_imageSP);
-            checkBox = itemView.findViewById(R.id.cbHeart);
-        }
+
+    public void setListProductWish(List<SanPham> productList) {
+        this.arr_item_SP_WL = productList;
+        notifyDataSetChanged(); // Thông báo cho RecyclerView biết là danh sách đã thay đổi
     }
 }

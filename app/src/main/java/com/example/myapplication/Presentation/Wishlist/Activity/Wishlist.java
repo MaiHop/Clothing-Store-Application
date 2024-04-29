@@ -4,31 +4,40 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.Domain.Model.SanPham;
+import com.example.myapplication.Domain.Model.YeuThich;
 import com.example.myapplication.Presentation.Accout_Setting.Activity.Account;
-import com.example.myapplication.Presentation.LoginAccout.HomeThamGia;
 import com.example.myapplication.Presentation.Wishlist.Adapter.Adapter_Item_BoLoc_WishList;
 import com.example.myapplication.Presentation.Wishlist.Adapter.Adapter_Item_SP_WishList;
 import com.example.myapplication.Presentation.Wishlist.Model.BoLoc_WishList;
 import com.example.myapplication.Presentation.Wishlist.Model.SanPham_WishList;
+import com.example.myapplication.Presentation.Wishlist.ViewModel.YeuThichVM;
 import com.example.myapplication.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Wishlist extends AppCompatActivity {
     private Toolbar toolbar;
     RecyclerView recyclerViewBoLoc,recyclerViewSP;
 
     BottomNavigationView btn_navigation;
+    TextView title;
+    private YeuThichVM YeuThichVM;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +48,6 @@ public class Wishlist extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         ArrayList<BoLoc_WishList> arrayBoLocList;
-        ArrayList<SanPham_WishList> arraySPList;
 
         Adapter_Item_BoLoc_WishList adapterItemBoLocWishList;
         Adapter_Item_SP_WishList adapterItemSpWishList;
@@ -56,21 +64,24 @@ public class Wishlist extends AppCompatActivity {
         arrayBoLocList.add(new BoLoc_WishList("Tui"));
         arrayBoLocList.add(new BoLoc_WishList("Giay"));
 
-        arraySPList = new ArrayList<>();
-        arraySPList.add(new SanPham_WishList("Ao Polo","200000",R.drawable.c_hung_ic_apple));
-        arraySPList.add(new SanPham_WishList("Ao Polo","200000",R.drawable.c_hung_ic_apple));
-        arraySPList.add(new SanPham_WishList("Ao Polo","200000",R.drawable.c_hung_ic_apple));
-        arraySPList.add(new SanPham_WishList("Ao Polo","200000",R.drawable.c_hung_ic_apple));
-        arraySPList.add(new SanPham_WishList("Ao Polo","200000",R.drawable.c_hung_ic_apple));
-        arraySPList.add(new SanPham_WishList("Ao Polo","200000",R.drawable.c_hung_ic_apple));
-        arraySPList.add(new SanPham_WishList("Ao Polo","200000",R.drawable.c_hung_ic_apple));
-        arraySPList.add(new SanPham_WishList("Ao Polo","200000",R.drawable.c_hung_ic_apple));
+        // Khởi tạo ViewModel1
+        adapterItemSpWishList = new Adapter_Item_SP_WishList(new ArrayList<>(),this,R.layout.c_hung_item_sp_wishlist);
+        recyclerViewSP.setAdapter(adapterItemSpWishList);
+        YeuThichVM = new ViewModelProvider(this).get(YeuThichVM.class);
+
+        // Lắng nghe LiveData để nhận danh sách sản phẩm
+        YeuThichVM.getProductListWishLiveData().observe(this, new Observer<List<SanPham>>() {
+            @Override
+            public void onChanged(List<SanPham> productList) {
+                // Cập nhật Adapter khi dữ liệu thay đổi
+                adapterItemSpWishList.setListProductWish(productList);
+            }
+        });
 
         adapterItemBoLocWishList = new Adapter_Item_BoLoc_WishList(Wishlist.this,R.layout.c_hung_item_boloc,arrayBoLocList);
         recyclerViewBoLoc.setAdapter(adapterItemBoLocWishList);
 
-        adapterItemSpWishList = new Adapter_Item_SP_WishList(Wishlist.this,R.layout.c_hung_item_sp_wishlist,arraySPList);
-        recyclerViewSP.setAdapter(adapterItemSpWishList);
+
 
 
         btn_navigation = findViewById(R.id.bottom_navigation);
@@ -107,6 +118,11 @@ public class Wishlist extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar_WishList);
         recyclerViewBoLoc = findViewById(R.id.RV_itemboloc_wishlist);
         recyclerViewSP = findViewById(R.id.RV_item_Sp_wishlist);
+        title = findViewById(R.id.title);
     }
 
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        return super.onContextItemSelected(item);
+    }
 }

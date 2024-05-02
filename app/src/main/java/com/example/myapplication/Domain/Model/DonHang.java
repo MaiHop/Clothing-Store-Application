@@ -22,8 +22,8 @@ public class DonHang implements Serializable {
         return IdDonHang;
     }
 
-    public void setIdDonHang(String idDonHang) {
-        IdDonHang = idDonHang;
+    public void setIdDonHang(String id) {
+        this.IdDonHang = id;
     }
 
     public String getTrangThai() {

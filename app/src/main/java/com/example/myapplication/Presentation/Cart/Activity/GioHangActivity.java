@@ -89,19 +89,16 @@ public class GioHangActivity extends AppCompatActivity {
     private void dathang() {
         DonHang dh =new DonHang();
         dh.setListDonHangChiTiet(list);
+        DocumentReference id = FirebaseFirestore.getInstance().collection("DonHangs").document();
+        dh.setIdDonHang(id.getId());
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("DonHangs")
-                .add(dh)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                .document(id.getId())
+                .set(dh)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Toast.makeText(GioHangActivity.this, "OK", Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(GioHangActivity.this, "Fail", Toast.LENGTH_SHORT).show();
+                    public void onSuccess(Void unused) {
+                        Toast.makeText(GioHangActivity.this,"OK",Toast.LENGTH_SHORT).show();
                     }
                 });
 //        Intent intent = new Intent(this, ThanhToanActivity.class);

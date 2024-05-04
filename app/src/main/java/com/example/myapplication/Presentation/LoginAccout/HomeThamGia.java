@@ -12,10 +12,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myapplication.Presentation.Accout_Setting.Activity.Account;
+import com.example.myapplication.Presentation.ButtonNavigation.Home;
 import com.example.myapplication.Presentation.LoginAccout.SignIn.sign_in;
 import com.example.myapplication.Presentation.LoginAccout.SingUp.sign_up;
-import com.example.myapplication.Presentation.Wishlist.Activity.Wishlist;
 import com.example.myapplication.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -124,14 +123,14 @@ public class HomeThamGia extends AppCompatActivity {
                                             map.put("profile",user.getPhotoUrl().toString());
                                             database.getReference().child("users").child(user.getUid()).setValue(map)
                                                     .addOnSuccessListener(aVoid -> {
-//                                                        Intent intent = new Intent(HomeThamGia.this, Wishlist.class);
-//                                                        startActivity(intent);
+                                                        Intent intent = new Intent(HomeThamGia.this, Home.class);
+                                                        startActivity(intent);
                                                     })
                                                     .addOnFailureListener(e -> {
                                                         Log.e("Firebase", "Failed to write user to database", e);
                                                     });
                                         }
-                                    },2000);
+                                    },7000);
 
                                 }
                                 else {

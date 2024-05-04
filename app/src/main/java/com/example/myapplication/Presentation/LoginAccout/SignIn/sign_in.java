@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.Presentation.ButtonNavigation.Home;
 import com.example.myapplication.Presentation.LoginAccout.ForgotPass.forgot_password;
 import com.example.myapplication.Presentation.LoginAccout.Load_Dialog;
 import com.example.myapplication.R;
@@ -75,7 +76,7 @@ public class sign_in extends AppCompatActivity {
                 .requestEmail().build();
         mGoogleSignInClinet = GoogleSignIn.getClient(this,gso);
     }
-    private void logout(){
+        private void logout(){
         mGoogleSignInClinet.signOut().addOnCompleteListener(this,
                 new OnCompleteListener<Void>() {
                     @Override
@@ -124,7 +125,7 @@ public class sign_in extends AppCompatActivity {
                                     @Override
                                     public void run() {
                                         loadDialog.dismissDialog();
-                                        Intent intent = new Intent(sign_in.this, logout.class);
+                                        Intent intent = new Intent(sign_in.this, Home.class);
                                         startActivity(intent);
                                     }
                                 },1000);
@@ -192,7 +193,7 @@ public class sign_in extends AppCompatActivity {
                                     map.put("profile",user.getPhotoUrl().toString());
                                     database.getReference().child("users").child(user.getUid()).setValue(map)
                                             .addOnSuccessListener(aVoid -> {
-                                                Intent intent = new Intent(sign_in.this, logout.class);
+                                                Intent intent = new Intent(sign_in.this, Home.class);
                                                 startActivity(intent);
                                             })
                                             .addOnFailureListener(e -> {

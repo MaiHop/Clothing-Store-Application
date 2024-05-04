@@ -20,7 +20,7 @@ import com.example.myapplication.R;
 import java.text.DecimalFormat;
 import java.util.List;
 
-public class Adapter_Item_SP_WishList extends RecyclerView.Adapter<WishListVH> {
+public class Adapter_Item_SP_WishList extends RecyclerView.Adapter<WishListVH>   {
 
     private Context context;
     private int layout;

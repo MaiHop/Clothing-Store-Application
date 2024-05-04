@@ -15,9 +15,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.Presentation.ButtonNavigation.Home;
 import com.example.myapplication.Presentation.LoginAccout.HomeThamGia;
 import com.example.myapplication.Presentation.LoginAccout.Load_Dialog;
-import com.example.myapplication.Presentation.LoginAccout.SignIn.logout;
 import com.example.myapplication.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -204,7 +204,7 @@ public class SP_OTP extends AppCompatActivity {
                                         @Override
                                         public void run() {
                                             loadDialog.dismissDialog();
-                                            intent = new Intent(SP_OTP.this, logout.class);
+                                            intent = new Intent(SP_OTP.this, Home.class);
                                             startActivity(intent);
                                         }
                                     },2000);

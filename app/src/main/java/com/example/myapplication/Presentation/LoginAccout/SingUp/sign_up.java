@@ -1,6 +1,7 @@
 package com.example.myapplication.Presentation.LoginAccout.SingUp;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -33,6 +34,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
@@ -107,51 +109,71 @@ public class sign_up extends AppCompatActivity {
                 mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        FirebaseUser user = mAuth.getCurrentUser();
                         if(task.isSuccessful()){
+                            FirebaseUser user = mAuth.getCurrentUser();
                             user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
-                                    String profileURL = "abc.jpg";
                                     if (task.isSuccessful()){
+                                        // Đợi 2 giây trước khi ẩn Dialog
                                         loadDialog.startLoadingDialog();
-                                        Handler handler = new Handler();
-                                        handler.postDelayed(new Runnable() {
+                                        new Handler().postDelayed(new Runnable() {
                                             @Override
                                             public void run() {
                                                 loadDialog.dismissDialog();
-                                                HashMap<String, Object> map = new HashMap<>();
-                                                map.put("id",user.getUid());
-                                                map.put("name",user.getEmail());
-                                                map.put("profile",profileURL);
 
-                                                database.getReference().child("users").child(user.getUid()).setValue(map)
-                                                        .addOnSuccessListener(aVoid -> {
-                                                            Intent intent = new Intent(sign_up.this,SP_OTP);
-                                                            intent.putExtra("confirm_code", "sign_up");
-                                                            intent.putExtra("Email", email);
-                                                            intent.putExtra("Password",password);
-                                                            Toast.makeText(sign_up.this,"Mời bạn xác thực bên email của bạn",Toast.LENGTH_SHORT).show();
-                                                            startActivity(intent);
-                                                        })
-                                                        .addOnFailureListener(e -> {
-                                                            Log.e("Firebase", "Failed to write user to database", e);
-                                                        });
+                                                // Thiết lập thông tin người dùng
+                                                String profileURL = "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/android-studio-icon.png";
+                                                String username = user.getEmail();
+                                                UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                                        .setPhotoUri(Uri.parse(profileURL))
+                                                        .setDisplayName(username)
+                                                        .build();
+
+                                                // Cập nhật profile của người dùng
+                                                user.updateProfile(profileUpdates).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<Void> task) {
+                                                        if (task.isSuccessful()) {
+                                                            // Tạo dữ liệu người dùng trên Firebase Realtime Database
+                                                            HashMap<String, Object> map = new HashMap<>();
+                                                            map.put("id", user.getUid());
+                                                            map.put("name", user.getDisplayName());
+                                                            map.put("profile", user.getPhotoUrl().toString());
+
+                                                            database.getReference().child("users").child(user.getUid()).setValue(map)
+                                                                    .addOnSuccessListener(aVoid -> {
+                                                                        Intent intent = new Intent(sign_up.this,SP_OTP);
+                                                                        intent.putExtra("confirm_code", "sign_up");
+                                                                        intent.putExtra("Email", email);
+                                                                        intent.putExtra("Password", password);
+                                                                        Toast.makeText(sign_up.this,"Mời bạn xác thực bên email của bạn",Toast.LENGTH_SHORT).show();
+                                                                        startActivity(intent);
+                                                                    })
+                                                                    .addOnFailureListener(e -> {
+                                                                        Log.e("Firebase", "Failed to write user to database", e);
+                                                                    });
+                                                        } else {
+                                                            // Đã xảy ra lỗi khi cập nhật profile
+                                                            Toast.makeText(sign_up.this, "Failed to update user profile", Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    }
+                                                });
                                             }
-                                        },2000);
-
-                                    }
-                                    else {
-                                        Toast.makeText(sign_up.this,"Hệ thống đang lỗi không thể nào gửi link xác nhận cho bạn.",Toast.LENGTH_SHORT).show();
+                                        }, 7000);
+                                    } else {
+                                        // Lỗi khi gửi email xác nhận
+                                        Toast.makeText(sign_up.this, "Hệ thống đang lỗi không thể gửi link xác nhận cho bạn.", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });
-                        }
-                        else {
-                            Toast.makeText(sign_up.this,"Email này đã tồn tại",Toast.LENGTH_SHORT).show();
+                        } else {
+                            // Đã xảy ra lỗi khi tạo tài khoản
+                            Toast.makeText(sign_up.this, "Email này đã tồn tại hoặc có lỗi xảy ra khi tạo tài khoản", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
+
 
 
             }

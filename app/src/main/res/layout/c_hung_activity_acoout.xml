@@ -223,6 +223,7 @@
                         android:layout_marginBottom="20dp"
                         android:background="@drawable/c_hung_rounded_border_accout">
                         <LinearLayout
+                            android:id="@+id/ln_myprofile"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"

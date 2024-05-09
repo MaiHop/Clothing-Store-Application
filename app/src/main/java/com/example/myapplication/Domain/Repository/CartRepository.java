@@ -125,7 +125,12 @@ public class CartRepository {
         nhomSP.setTen("Nam");
         nhomSP.setListLoaiSP(this.getListLoaiSP());
 
+        NhomSP nhomSP1 = new NhomSP();
+        nhomSP1.setId("2");
+        nhomSP1.setTen("Nữ");
+        nhomSP1.setListLoaiSP(this.getListLoaiSP());
         list.add(nhomSP);
+        list.add(nhomSP1);
         return list;
     }
     public List<SanPham> getSanPham(){
@@ -155,7 +160,7 @@ public class CartRepository {
         sp2.setIdSanPham("2");
         sp2.setImageUrl("https://image.uniqlo.com/UQ/ST3/vn/imagesgoods/471281/item/vngoods_09_471281.jpg?width=750");
         sp2.setTenSanPham("Miracle Air Áo Khoác (AirSense Áo Khoác) (Wool Like)");
-        sp2.setGiaban(120);
+        sp2.setGiaban(121);
         sp2.setSoLuong(20);
         sp2.setSoLuongBan(12);
         sp2.setNhomSanPham(listNhomSP.get(0));
@@ -169,7 +174,7 @@ public class CartRepository {
         sp3.setIdSanPham("3");
         sp3.setImageUrl("https://image.uniqlo.com/UQ/ST3/vn/imagesgoods/471281/item/vngoods_09_471281.jpg?width=750");
         sp3.setTenSanPham("Miracle Air Áo Khoác (AirSense Áo Khoác) (Wool Like)");
-        sp3.setGiaban(120);
+        sp3.setGiaban(122);
         sp3.setSoLuong(30);
         sp3.setSoLuongBan(12);
         sp3.setNhomSanPham(listNhomSP.get(0));
@@ -183,7 +188,7 @@ public class CartRepository {
         sp4.setIdSanPham("4");
         sp4.setImageUrl("https://image.uniqlo.com/UQ/ST3/vn/imagesgoods/471281/item/vngoods_09_471281.jpg?width=750");
         sp4.setTenSanPham("Miracle Air Áo Khoác (AirSense Áo Khoác) (Wool Like)");
-        sp4.setGiaban(120);
+        sp4.setGiaban(123);
         sp4.setSoLuong(40);
         sp4.setSoLuongBan(12);
         sp4.setNhomSanPham(listNhomSP.get(0));
@@ -197,7 +202,7 @@ public class CartRepository {
         sp5.setIdSanPham("5");
         sp5.setImageUrl("https://image.uniqlo.com/UQ/ST3/vn/imagesgoods/471281/item/vngoods_09_471281.jpg?width=750");
         sp5.setTenSanPham("Miracle Air Áo Khoác (AirSense Áo Khoác) (Wool Like)");
-        sp5.setGiaban(120);
+        sp5.setGiaban(124);
         sp5.setSoLuong(50);
         sp5.setSoLuongBan(12);
         sp5.setNhomSanPham(listNhomSP.get(0));
@@ -211,7 +216,7 @@ public class CartRepository {
         sp6.setIdSanPham("6");
         sp6.setImageUrl("https://image.uniqlo.com/UQ/ST3/vn/imagesgoods/471281/item/vngoods_09_471281.jpg?width=750");
         sp6.setTenSanPham("Miracle Air Áo Khoác (AirSense Áo Khoác) (Wool Like)");
-        sp6.setGiaban(120);
+        sp6.setGiaban(125);
         sp6.setSoLuong(0);
         sp6.setSoLuongBan(12);
         sp6.setNhomSanPham(listNhomSP.get(0));
@@ -225,10 +230,10 @@ public class CartRepository {
         sp7.setIdSanPham("7");
         sp7.setImageUrl("https://image.uniqlo.com/UQ/ST3/vn/imagesgoods/471281/item/vngoods_09_471281.jpg?width=750");
         sp7.setTenSanPham("Z");
-        sp7.setGiaban(120);
+        sp7.setGiaban(126);
         sp7.setSoLuong(0);
         sp7.setSoLuongBan(12);
-        sp7.setNhomSanPham(listNhomSP.get(0));
+        sp7.setNhomSanPham(listNhomSP.get(1));
         sp7.setLoaiSanPham(listLoaiSP.get(0));
         sp7.setKieuSanPham(listKieuSP.get(0));
         sp7.setKichThuoc(listsize.get(2));

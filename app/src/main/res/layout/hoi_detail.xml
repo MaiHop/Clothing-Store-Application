@@ -181,7 +181,7 @@
                 android:id="@+id/button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/green"
+                android:background="@drawable/hoi_green_button"
                 android:layout_margin="16dp"
                 android:text="ADD TO CART"
                 style="@android:style/Widget.Button"

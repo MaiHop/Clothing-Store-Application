@@ -15,9 +15,14 @@ import com.example.myapplication.Presentation.PhucHoi.Activity.ChiTietSanPhamAct
 import com.example.myapplication.Presentation.PhucHoi.ViewHolder.SanPhamVH;
 import com.example.myapplication.R;
 
+import android.widget.Filter;
+import android.widget.Filterable;
+
+import java.util.ArrayList;
 import java.util.List;
 public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamVH> {
     private List<SanPham> list_product;
+
 
     private Context context;
 
@@ -27,6 +32,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamVH> {
         this.list_product = list_product;
         this.context = context;
         this.minflater = minflater;
+
     }
 
     @NonNull
@@ -58,9 +64,15 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamVH> {
     public int getItemCount() {
         return list_product.size();
     }
+
+
+
     public void setListProduct(List<SanPham> productList) {
         this.list_product = productList;
         notifyDataSetChanged(); // Thông báo cho RecyclerView biết là danh sách đã thay đổi
     }
-
+    public void updateList(List<SanPham> sanPhamList) {
+        this.list_product = sanPhamList;
+        notifyDataSetChanged();
+    }
 }

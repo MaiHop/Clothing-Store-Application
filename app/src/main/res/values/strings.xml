@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">My Application</string>
+
+    <string name="action_home">Home</string>
+    <string name="action_wishlist">Wishlist</string>
+    <string name="action_cart">Cart</string>
+    <string name="action_myorder">My Order</string>
+    <string name="action_account">Account</string>
+
+    <string name="default_web_client_id" translatable="false">558658570783-q4rqhr6r2usmmmvfa67tfgdabqi23qi3.apps.googleusercontent.com</string>
+
 </resources>

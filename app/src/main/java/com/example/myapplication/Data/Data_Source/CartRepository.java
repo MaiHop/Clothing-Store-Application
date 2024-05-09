@@ -1,7 +1,9 @@
-package com.example.myapplication.Domain.Repository;
+package com.example.myapplication.Data.Data_Source;
 
+import com.example.myapplication.Domain.Model.DonHang;
 import com.example.myapplication.Domain.Model.DonHangChiTiet;
 import com.example.myapplication.Domain.Model.DiaChi;
+import com.example.myapplication.Domain.Model.KhachHang;
 import com.example.myapplication.Domain.Model.KhuyenMai;
 import com.example.myapplication.Domain.Model.KichThuoc;
 import com.example.myapplication.Domain.Model.KieuSP;
@@ -11,6 +13,7 @@ import com.example.myapplication.Domain.Model.NhomSP;
 import com.example.myapplication.Domain.Model.SanPham;
 import com.example.myapplication.Domain.Model.ThanhToan;
 import com.example.myapplication.Domain.Model.VanChuyen;
+import com.example.myapplication.Domain.Model.YeuThich;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -248,6 +251,111 @@ public class CartRepository {
         list.add(sp7);
         return list;
     }
+    public List<YeuThich> getYeuThich(){
+        List<YeuThich> list = new ArrayList<>();
+        CartRepository res = new CartRepository();
+        List<SanPham> list_sp = res.getSanPham();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+
+        KhachHang kh =new KhachHang();
+        kh.setIdKhachHang("1");
+        kh.setImageUrl("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLvMEg2PbVb_MVOChlQMhcg2G8A_LtTuXc4wVdqsbEcQ&s");
+        kh.setTen("Mr. Fresh");
+        kh.setEmail("mrfresh@gmail.com");
+        kh.setGioiTinh(0);
+        try {
+            kh.setNgaySinh(formatter.parse("10/02/2024"));
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+        kh.setMatKhau("123");
+
+        kh.setIdKhachHang("2");
+        kh.setImageUrl("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLvMEg2PbVb_MVOChlQMhcg2G8A_LtTuXc4wVdqsbEcQ&s");
+        kh.setTen("Mr. Fresh");
+        kh.setEmail("mrfresh@gmail.com");
+        kh.setGioiTinh(0);
+        try {
+            kh.setNgaySinh(formatter.parse("10/02/2024"));
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+        kh.setMatKhau("123");
+
+        YeuThich yt1 = new YeuThich();
+        yt1.setIdYeuThich("1");
+        yt1.setKhachhang(kh);
+        yt1.setListsanpham(list_sp);
+
+        YeuThich yt2 = new YeuThich();
+        yt2.setIdYeuThich("2");
+        yt2.setKhachhang(kh);
+        yt2.setListsanpham((List<SanPham>) list_sp.get(1));
+//
+//        YeuThich yt3 = new YeuThich();
+//        yt3.setIdYeuThich("3");
+//        yt3.setKhachhang(kh);
+//        yt3.setListsanpham(list_sp);
+//
+//        YeuThich yt4 = new YeuThich();
+//        yt4.setIdYeuThich("1");
+//        yt4.setKhachhang(kh);
+//        yt4.setListsanpham(list_sp);
+
+
+        list.add(yt1);
+        list.add(yt2);
+//        list.add(yt3);
+//        list.add(yt4);
+
+        return list;
+
+    }
+
+    public List<DonHang> getListDonHang(){
+        List<DonHang> list_dh = new ArrayList<>();
+        List<DonHangChiTiet> list = this.getGioHang();
+        KhachHang kh =new KhachHang();
+        kh.setIdKhachHang("1");
+        kh.setImageUrl("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLvMEg2PbVb_MVOChlQMhcg2G8A_LtTuXc4wVdqsbEcQ&s");
+        kh.setTen("Mr. Fresh");
+        kh.setEmail("mrfresh@gmail.com");
+        kh.setGioiTinh(0);
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            kh.setNgaySinh(formatter.parse("10/02/2024"));
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+        kh.setMatKhau("123");
+
+
+        DonHang dh1 = new DonHang();
+        dh1.setIdDonHang("1");
+        dh1.setKhachHang(kh);
+        dh1.setTongSoLuong(5);
+        dh1.setTrangThai("Cart");
+        dh1.setListDonHangChiTiet(list);
+
+        DonHang dh2 = new DonHang();
+        dh2.setIdDonHang("2");
+        dh2.setKhachHang(kh);
+        dh2.setTongSoLuong(0);
+        dh2.setTrangThai("Active");
+        dh2.setListDonHangChiTiet(null);
+
+        DonHang dh3 = new DonHang();
+        dh3.setIdDonHang("3");
+        dh3.setKhachHang(kh);
+        dh3.setTongSoLuong(0);
+        dh3.setTrangThai("Active");
+        dh3.setListDonHangChiTiet(null);
+
+        list_dh.add(dh1);
+        list_dh.add(dh2);
+        list_dh.add(dh3);
+        return list_dh;
+    }
 
     public  List<DonHangChiTiet> getGioHang(){
         List<DonHangChiTiet> list = new ArrayList<>();
@@ -263,7 +371,7 @@ public class CartRepository {
         dh1.setChecked(true);
 
         DonHangChiTiet dh2 = new DonHangChiTiet();
-        dh2.setIdDonHang("2");
+        dh2.setIdDonHang("1");
         dh2.setSanPham(listproduct.get(1));
         dh2.setSoLuong(1);
         dh2.setThanhTien(listproduct.get(1).getGiaban()*dh1.getSoLuong());
@@ -271,7 +379,7 @@ public class CartRepository {
         dh2.setChecked(true);
 
         DonHangChiTiet dh3 = new DonHangChiTiet();
-        dh3.setIdDonHang("3");
+        dh3.setIdDonHang("1");
         dh3.setSanPham(listproduct.get(2));
         dh3.setSoLuong(1);
         dh3.setThanhTien(listproduct.get(2).getGiaban()*dh1.getSoLuong());
@@ -279,7 +387,7 @@ public class CartRepository {
         dh3.setChecked(true);
 
         DonHangChiTiet dh4 = new DonHangChiTiet();
-        dh4.setIdDonHang("4");
+        dh4.setIdDonHang("1");
         dh4.setSanPham(listproduct.get(3));
         dh4.setSoLuong(1);
         dh4.setThanhTien(listproduct.get(3).getGiaban()*dh1.getSoLuong());
@@ -287,7 +395,7 @@ public class CartRepository {
         dh4.setChecked(true);
 
         DonHangChiTiet dh5 = new DonHangChiTiet();
-        dh5.setIdDonHang("4");
+        dh5.setIdDonHang("1");
         dh5.setSanPham(listproduct.get(6));
         dh5.setSoLuong(1);
         dh5.setThanhTien(listproduct.get(3).getGiaban()*dh1.getSoLuong());

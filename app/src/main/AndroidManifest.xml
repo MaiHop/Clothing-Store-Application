@@ -15,27 +15,33 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".Presentation.Accout_Setting.Activity.MyProfile"
+            android:exported="true" />
+        <activity
+            android:name=".Presentation.ButtonNavigation.Home"
+            android:exported="true" />
+        <activity
+            android:name=".Presentation.Cart.Activity.FirebaseActivity"
+            android:exported="false" />
+        <activity
             android:name=".Presentation.Cart.Activity.ThongTinActivity"
-            android:exported="true"
-           ></activity>
+            android:exported="true" />
         <activity
             android:name=".Presentation.Cart.Activity.ThanhToanActivity"
-            android:exported="true"
-          ></activity>
+            android:exported="true" />
         <activity
             android:name=".Presentation.PhucHoi.Activity.DanhMucActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustPan"
            ></activity>
+
+
         <activity
             android:name=".Presentation.PhucHoi.Activity.ChiTietSanPhamActivity"
-            android:exported="true"
-            ></activity>
+            android:exported="true" />
         <activity
             android:name=".Presentation.PhucHoi.Activity.SanPhamActivity"
-            android:exported="true"
-            ></activity>
-
+            android:exported="true" />
         <activity
             android:name=".Presentation.Cart.Activity.GioHangActivity"
             android:exported="true">
@@ -47,7 +53,7 @@
         </activity>
         <activity
             android:name=".UI.MainActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".Presentation.GH.MainActivity"
             android:exported="true">
@@ -58,10 +64,43 @@
             </intent-filter>
         </activity>
         <activity android:name=".Presentation.GH.CancelOrderActivity" />
-        <activity android:name=".Presentation.GH.OrderDetailsActivity"/>
-        <activity android:name=".Presentation.GH.ReviewActivity"/>
-        <activity android:name=".Presentation.GH.Test_arrived"
-            android:exported="true"/>
+        <activity android:name=".Presentation.GH.OrderDetailsActivity" />
+        <activity android:name=".Presentation.GH.ReviewActivity" />
+        <activity
+            android:name=".Presentation.GH.Test_arrived"
+            android:exported="true" />
+        <activity
+            android:name=".Presentation.Accout_Setting.Activity.Account"
+            android:exported="true" />
+        <activity
+            android:name=".Presentation.LoginAccout.SignIn.logout"
+            android:exported="true" />
+        <activity
+            android:name=".Presentation.LoginAccout.ForgotPass.DatLai_Password"
+            android:exported="true" />
+        <activity
+            android:name=".Presentation.LoginAccout.ForgotPass.forgot_password"
+            android:exported="true" />
+        <activity
+            android:name=".Presentation.LoginAccout.SignIn.sign_in"
+            android:exported="true" />
+        <activity
+            android:name=".Presentation.Wishlist.Activity.Detail_SP_WishList"
+            android:exported="true" />
+        <activity
+            android:name=".Presentation.LoginAccout.OTP.SP_OTP"
+            android:exported="true" />
+        <activity
+            android:name=".Presentation.LoginAccout.SingUp.sign_up"
+            android:exported="true" /> <!-- <activity -->
+        <!-- android:name=".Presentation.LoginAccout.HomeThamGia" -->
+        <!-- android:exported="true" /> -->
+        <activity
+            android:name=".Presentation.Wishlist.Activity.Wishlist"
+            android:exported="true" />
+        <activity
+            android:name=".Presentation.LoginAccout.HomeThamGia"
+            android:exported="true" />
     </application>
 
 </manifest>

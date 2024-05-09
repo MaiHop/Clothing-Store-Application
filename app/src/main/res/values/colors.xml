@@ -5,4 +5,10 @@
     <color name="green">#6fc276</color>
     <color name="grey">#ababab</color>
     <color name="lightGrey">#EFEFEF</color>
+
+<!--    hung-->
+    <color name="green_x1">#E6F1D8</color>
+    <color name="xam">#888888</color>
+    <color name="xam_x1">#EEEEEE</color>
+    <color name="red">#FF0000</color>
 </resources>

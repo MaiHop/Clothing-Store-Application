@@ -5,8 +5,8 @@ import java.io.Serializable;
 public class DonHangChiTiet implements Serializable {
     private String  IdDonHang;
     private SanPham SanPham;
-    private int SoLuong;
-    private double ThanhTien, ThanhTienKhuyenMai;
+    private int SoLuong=1;
+    private double ThanhTien=0, ThanhTienKhuyenMai=0;
     private boolean checked;
 
     public DonHangChiTiet() {

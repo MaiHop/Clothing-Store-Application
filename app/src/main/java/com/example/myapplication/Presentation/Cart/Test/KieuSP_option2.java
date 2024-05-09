@@ -9,16 +9,24 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class KieuSP_Res {
+public class KieuSP_option2 {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private List<KieuSP> list_kieu = new ArrayList<>();
-    KieuSP kieuSP ;
-    OnKieuSPAvaiableInFirestore onKieuSPAvaiableInFirestore;
-    public KieuSP_Res(OnKieuSPAvaiableInFirestore onKieuSPAvaiableInFirestore) {
-        this.onKieuSPAvaiableInFirestore = onKieuSPAvaiableInFirestore;
+
+
+
+    public List<KieuSP> returnListKieuSP(List<KieuSP> list_test){
+        readListKieuSP(new OnKieuSPAvaiableInFirestore() {
+            @Override
+            public void getListKieuSP(List<KieuSP> list) {
+                returnListKieuSP(list);
+
+            }
+        });
+        return list_test;
     }
 
-    public void readListKieuSP(){
+    public void readListKieuSP(OnKieuSPAvaiableInFirestore onKieuSPAvaiableInFirestore){
         list_kieu.clear();
         db.collection("KieuSanPham").get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -40,22 +48,7 @@ public class KieuSP_Res {
                 });
     }
 
-    public void getKieuSanPham(String id){
-        kieuSP = new KieuSP();
-        db.collection("KieuSanPham").document(id).get()
-                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                    @Override
-                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        if(documentSnapshot != null){
-                            kieuSP.setId(documentSnapshot.getId());
-                            kieuSP.setTen(documentSnapshot.getString("Ten"));
-                        }
-                        onKieuSPAvaiableInFirestore.getKieuSP(kieuSP);
-                    }
-                });
-    }
     public interface OnKieuSPAvaiableInFirestore {
         void getListKieuSP(List<KieuSP> list);
-        void getKieuSP(KieuSP kieusp);
     }
 }

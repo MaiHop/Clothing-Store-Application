@@ -1,21 +1,30 @@
 package com.example.myapplication.Domain.Model;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 public class SanPham implements Serializable {
     private String IdSanPham, ImageUrl, TenSanPham, ThongTin;
     private double Giaban;
-    private int SoLuong, SoLuongBan;
+    private int SoLuong=0, SoLuongBan=0;
+    private Date NgayTao;
     private NhomSP NhomSanPham = null;
     private LoaiSP LoaiSanPham = null;
     private KieuSP KieuSanPham = null;
     private KichThuoc KichThuoc = null;
     private Mau Mau= null;
-    private List<DanhGia> ListDanhGia= null;
-    private List<KhuyenMai> ListKhuyenMai= null;
+
 
     public SanPham() {
+    }
+
+    public Date getNgayTao() {
+        return NgayTao;
+    }
+
+    public void setNgayTao(Date ngayTao) {
+        NgayTao = ngayTao;
     }
 
     public LoaiSP getLoaiSanPham() {
@@ -114,19 +123,5 @@ public class SanPham implements Serializable {
         Mau = mau;
     }
 
-    public List<DanhGia> getListDanhGia() {
-        return ListDanhGia;
-    }
 
-    public void setListDanhGia(List<DanhGia> listDanhGia) {
-        ListDanhGia = listDanhGia;
-    }
-
-    public List<KhuyenMai> getListKhuyenMai() {
-        return ListKhuyenMai;
-    }
-
-    public void setListKhuyenMai(List<KhuyenMai> listKhuyenMai) {
-        ListKhuyenMai = listKhuyenMai;
-    }
 }

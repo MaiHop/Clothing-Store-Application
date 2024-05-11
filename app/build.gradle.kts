@@ -52,5 +52,8 @@ dependencies {
 //    implementation("com.google.firebase:firebase-auth")
     implementation("com.google.android.gms:play-services-auth:21.0.0")
 
+//  circleindicator
+    implementation ("me.relex:circleindicator:2.1.6")
+
 
 }

@@ -6,6 +6,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import com.example.myapplication.Presentation.Accout_Setting.Activity.Account_Fragment;
+
+import com.example.myapplication.Presentation.Cart.Fragment.GioHangFragment;
+import com.example.myapplication.Presentation.GH.MainFragment;
 import com.example.myapplication.Presentation.PhucHoi.Activity.SanPham_Fragment;
 import com.example.myapplication.Presentation.Wishlist.Activity.WishList_Fragment;
 
@@ -23,9 +26,9 @@ public class ViewPageAdapter extends FragmentStatePagerAdapter {
             case 1:
                 return new WishList_Fragment();
             case 2:
-                return new Account_Fragment();
+                return new GioHangFragment();
             case 3:
-                return new Account_Fragment();
+                return new MainFragment();
             case 4:
                 return new Account_Fragment();
             default:

@@ -15,10 +15,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.Presentation.ButtonNavigation.Home;
 import com.example.myapplication.Presentation.LoginAccout.HomeThamGia;
 import com.example.myapplication.Presentation.LoginAccout.Load_Dialog;
 import com.example.myapplication.Presentation.LoginAccout.OTP.SP_OTP;
-import com.example.myapplication.Presentation.LoginAccout.SignIn.logout;
 import com.example.myapplication.Presentation.LoginAccout.SignIn.sign_in;
 import com.example.myapplication.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -212,7 +212,7 @@ public class sign_up extends AppCompatActivity {
                                             map.put("profile",user.getPhotoUrl().toString());
                                             database.getReference().child("users").child(user.getUid()).setValue(map)
                                                     .addOnSuccessListener(aVoid -> {
-                                                        Intent intent = new Intent(sign_up.this, logout.class);
+                                                        Intent intent = new Intent(sign_up.this, Home.class);
                                                         startActivity(intent);
                                                     })
                                                     .addOnFailureListener(e -> {

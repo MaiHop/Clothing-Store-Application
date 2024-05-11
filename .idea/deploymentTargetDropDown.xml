@@ -2,19 +2,22 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
+      <entry key="GioHangActivity">
+        <State />
+      </entry>
       <entry key="HomeThamGia">
+        <State />
+      </entry>
+      <entry key="MainActivity">
         <State />
       </entry>
       <entry key="MyProfile">
         <State />
       </entry>
-      <entry key="SanPhamActivity">
+      <entry key="OnBoarding">
         <State />
       </entry>
-      <entry key="Wishlist">
-        <State />
-      </entry>
-      <entry key="c_hung_buttonNavigation">
+      <entry key="app">
         <State />
       </entry>
     </value>

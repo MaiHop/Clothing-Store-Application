@@ -8,5 +8,10 @@
     <string name="action_account">Account</string>
 
     <string name="default_web_client_id" translatable="false">558658570783-q4rqhr6r2usmmmvfa67tfgdabqi23qi3.apps.googleusercontent.com</string>
-
+    <string-array name="gender_array">
+        <item>Nam</item>
+        <item>Nữ</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

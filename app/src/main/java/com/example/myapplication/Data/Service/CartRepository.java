@@ -1,4 +1,4 @@
-package com.example.myapplication.Data.Data_Source;
+package com.example.myapplication.Data.Service;
 
 import com.example.myapplication.Domain.Model.DonHang;
 import com.example.myapplication.Domain.Model.DonHangChiTiet;
@@ -11,7 +11,6 @@ import com.example.myapplication.Domain.Model.LoaiSP;
 import com.example.myapplication.Domain.Model.Mau;
 import com.example.myapplication.Domain.Model.NhomSP;
 import com.example.myapplication.Domain.Model.SanPham;
-import com.example.myapplication.Domain.Model.ThanhToan;
 import com.example.myapplication.Domain.Model.VanChuyen;
 
 import java.text.ParseException;

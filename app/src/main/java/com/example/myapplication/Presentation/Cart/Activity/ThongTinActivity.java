@@ -76,7 +76,7 @@ public class ThongTinActivity extends AppCompatActivity {
             if (type.equals("DiaChi")) {
                 daVM.addDiaChi();
             } else if (type.equals("ThanhToan")) {
-                pmVM.addPTThanhToan();
+//                pmVM.addPTThanhToan();
             }
             Toast.makeText(this, "Add", Toast.LENGTH_SHORT).show();
             return true;
@@ -95,7 +95,7 @@ public class ThongTinActivity extends AppCompatActivity {
                     dh.setThanhToan(null);
                     break;
                 case "KhuyenMai":
-                    dh.setKhuyenmai(null);
+//                    dh.setKhuyenmai(null);
                     break;
             }
             Intent intent = new Intent(ThongTinActivity.this, ThanhToanActivity.class);
@@ -196,7 +196,7 @@ public class ThongTinActivity extends AppCompatActivity {
                         KhuyenMaiAdapter adapter_km = new KhuyenMaiAdapter(ThongTinActivity.this, khuyenMais, new KhuyenMaiAdapter.ItemClickListener() {
                             @Override
                             public void onItemClick(KhuyenMai khuyenMai) {
-                                dh.setKhuyenmai(khuyenMai);
+//                                dh.setKhuyenmai(khuyenMai);
                             }
                         });
                         rv_Choose_info.setAdapter(adapter_km);

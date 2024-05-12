@@ -44,75 +44,75 @@ public class ThanhToanActivity extends AppCompatActivity {
         setContentView(R.layout.mh_activity_checkout);
 
         init();
-        loadinfo();
+//        loadinfo();
     }
 
-    private void loadinfo() {
-        Intent i = getIntent();
-        dh = (DonHang) i.getSerializableExtra("DonHang");
-        if(dh.getDiachi() == null || dh.getVanchuyen() == null || dh.getThanhToan() == null){
-            this.btn_XacNhanDonHang.setEnabled(false);
-        }
-
-        if (dh.getDiachi() == null){
-            this.ll_Delivery_Address.setVisibility(View.GONE);
-        }else {
-            this.tv_Checkout_TenDiaChiGiaoHang.setText(dh.getDiachi().getTenDiaChi()+" ("+dh.getDiachi().getNguoiNhan()+")");
-            this.tv_Checkout_DiaChiGiaoHang.setText(dh.getDiachi().getDiaChi());
-            this.ll_Delivery_Address.setVisibility(View.VISIBLE);
-        }
-        if (dh.getVanchuyen() == null){
-            this.ll_Delivery.setVisibility(View.GONE);
-        }else {
-            this.tv_Checkout_TenDonViGiaoHang.setText(dh.getVanchuyen().getTen());
-            this.tv_Checkout_ThoiGianGiaoHang.setText("Ngày giao dự kiến: "+dh.getVanchuyen().getNgayGiao());
-            this.ll_Delivery.setVisibility(View.VISIBLE);
-        }
-        if (dh.getThanhToan() == null){
-            this.ll_Payment_Method.setVisibility(View.GONE);
-        }else {
-            this.tv_TenPhuongThucThanhToan.setText(dh.getThanhToan().getLoai());
-            if(dh.getThanhToan().getTenThanhToan() == null){
-                this.tv_SoThe.setVisibility(View.GONE);
-            }else {
-                this.tv_SoThe.setText(dh.getThanhToan().getTenThanhToan());
-            }
-        }
-        if (dh.getKhuyenmai() == null){
-            this.ll_Promos_Vouchers.setVisibility(View.GONE);
-        }else {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
-            this.tv_TenKhuyenMai.setText(dh.getKhuyenmai().getTenKhuyenMai());
-            this.tv_ThongTinKhuyenMai.setText(dh.getKhuyenmai().getDieuKien()+" * Tối đa giảm : "+dh.getKhuyenmai().getToiDaGiam()+" * "+dateFormat.format(dh.getKhuyenmai().getHanSuDung()));
-            this.iv_PV_Remove.setVisibility(View.VISIBLE);
-            this.ll_Promos_Vouchers.setVisibility(View.VISIBLE);
-            this.iv_PV_Remove.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    dh.setKhuyenmai(null);
-                    loadinfo();
-//                    Toast.makeText(ThanhToanActivity.this, "OK",Toast.LENGTH_SHORT).show();
-                }
-            });
-        }
-        int tong =0;
-        for(DonHangChiTiet dhct : dh.getListDonHangChiTiet()){
-            tong+= dhct.getSoLuong();
-        }
-        this.tv_Subtotal.setText("Subtotal ("+ tong+")");
-        this.tv_Checkout_ThanhTien.setText(String.valueOf("$"+dh.getThanhTien()));
-        this.tv_Checkout_PhiDichVu.setText(String.valueOf("$"+dh.getPhiPhucVu()));
-        this.tv_Checkout_PhiGiaoHang.setText(String.valueOf("$"+dh.getPhiGiaoHang()));
-        this.tv_Checkout_TienThue.setText(String.valueOf("$"+dh.getThue()));
-        this.tv_Checkout_TienKhuyenMai.setText(String.valueOf("-$"+dh.getTienKhuyenMai()));
-        this.tv_Checkout_TongTien.setText(String.valueOf("$"+dh.getTongTien()));
-
-
-
-        CheckOutAdapter cartAdapter =new CheckOutAdapter(this, dh.getListDonHangChiTiet(), this.order_title);
-        this.rv_ListOrder.setAdapter(cartAdapter);
-        this.rv_ListOrder.setLayoutManager(new LinearLayoutManager(this));
-    }
+//    private void loadinfo() {
+//        Intent i = getIntent();
+//        dh = (DonHang) i.getSerializableExtra("DonHang");
+//        if(dh.getDiachi() == null || dh.getVanchuyen() == null || dh.getThanhToan() == null){
+//            this.btn_XacNhanDonHang.setEnabled(false);
+//        }
+//
+//        if (dh.getDiachi() == null){
+//            this.ll_Delivery_Address.setVisibility(View.GONE);
+//        }else {
+//            this.tv_Checkout_TenDiaChiGiaoHang.setText(dh.getDiachi().getTenDiaChi()+" ("+dh.getDiachi().getNguoiNhan()+")");
+//            this.tv_Checkout_DiaChiGiaoHang.setText(dh.getDiachi().getDiaChi());
+//            this.ll_Delivery_Address.setVisibility(View.VISIBLE);
+//        }
+//        if (dh.getVanchuyen() == null){
+//            this.ll_Delivery.setVisibility(View.GONE);
+//        }else {
+//            this.tv_Checkout_TenDonViGiaoHang.setText(dh.getVanchuyen().getTen());
+//            this.tv_Checkout_ThoiGianGiaoHang.setText("Ngày giao dự kiến: "+dh.getVanchuyen().getNgayGiao());
+//            this.ll_Delivery.setVisibility(View.VISIBLE);
+//        }
+//        if (dh.getThanhToan() == null){
+//            this.ll_Payment_Method.setVisibility(View.GONE);
+//        }else {
+//            this.tv_TenPhuongThucThanhToan.setText(dh.getThanhToan().getLoai());
+//            if(dh.getThanhToan().getTenThanhToan() == null){
+//                this.tv_SoThe.setVisibility(View.GONE);
+//            }else {
+//                this.tv_SoThe.setText(dh.getThanhToan().getTenThanhToan());
+//            }
+//        }
+////        if (dh.getKhuyenmai() == null){
+////            this.ll_Promos_Vouchers.setVisibility(View.GONE);
+////        }else {
+////            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
+////            this.tv_TenKhuyenMai.setText(dh.getKhuyenmai().getTenKhuyenMai());
+////            this.tv_ThongTinKhuyenMai.setText(dh.getKhuyenmai().getDieuKien()+" * Tối đa giảm : "+dh.getKhuyenmai().getToiDaGiam()+" * "+dateFormat.format(dh.getKhuyenmai().getHanSuDung()));
+////            this.iv_PV_Remove.setVisibility(View.VISIBLE);
+////            this.ll_Promos_Vouchers.setVisibility(View.VISIBLE);
+////            this.iv_PV_Remove.setOnClickListener(new View.OnClickListener() {
+////                @Override
+////                public void onClick(View v) {
+////                    dh.setKhuyenmai(null);
+////                    loadinfo();
+//////                    Toast.makeText(ThanhToanActivity.this, "OK",Toast.LENGTH_SHORT).show();
+////                }
+////            });
+////        }
+//        int tong =0;
+//        for(DonHangChiTiet dhct : dh.getListDonHangChiTiet()){
+//            tong+= dhct.getSoLuong();
+//        }
+//        this.tv_Subtotal.setText("Subtotal ("+ tong+")");
+//        this.tv_Checkout_ThanhTien.setText(String.valueOf("$"+dh.getThanhTien()));
+//        this.tv_Checkout_PhiDichVu.setText(String.valueOf("$"+dh.getPhiDichVu()));
+//        this.tv_Checkout_PhiGiaoHang.setText(String.valueOf("$"+dh.getPhiGiaoHang()));
+//        this.tv_Checkout_TienThue.setText(String.valueOf("$"+dh.getThue()));
+//        this.tv_Checkout_TienKhuyenMai.setText(String.valueOf("-$"+dh.getTienKhuyenMai()));
+//        this.tv_Checkout_TongTien.setText(String.valueOf("$"+dh.getTongTien()));
+//
+//
+//
+//        CheckOutAdapter cartAdapter =new CheckOutAdapter(this, dh.getListDonHangChiTiet(), this.order_title);
+//        this.rv_ListOrder.setAdapter(cartAdapter);
+//        this.rv_ListOrder.setLayoutManager(new LinearLayoutManager(this));
+//    }
 
     private void init(){
         //ToolBar

@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 public class KieuSP implements Serializable {
     private String id, ten;
-
     public KieuSP() {
     }
 

@@ -24,7 +24,7 @@ public class DiaChiGHVH extends RecyclerView.ViewHolder{
 
     public void updateUI(DiaChi diachi){
         tv_TenDiaChi.setText(diachi.getTenDiaChi());
-        if (diachi.isDiaChiChinh()){
+        if (diachi.isMacDinh()){
             tv_DiaChiChinh.setVisibility(View.VISIBLE);
             diachi.setChecked(true);
         }else {

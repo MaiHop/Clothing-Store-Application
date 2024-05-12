@@ -4,11 +4,28 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class KhuyenMai implements Serializable {
-    private String IdKhuyenMai,TenKhuyenMai, NoiDung, DieuKien, ToiDaGiam;
+    private String IdKhuyenMai,TenKhuyenMai, NoiDung,Loai, DieuKien, ToiDaGiam;
+    private SanPham sanPham;
     private Date HanSuDung;
     private boolean checked, TrangThai;
 
     public KhuyenMai() {
+    }
+
+    public String getLoai() {
+        return Loai;
+    }
+
+    public void setLoai(String loai) {
+        Loai = loai;
+    }
+
+    public SanPham getSanPham() {
+        return sanPham;
+    }
+
+    public void setSanPham(SanPham sanPham) {
+        this.sanPham = sanPham;
     }
 
     public boolean isTrangThai() {

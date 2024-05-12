@@ -3,10 +3,27 @@ package com.example.myapplication.Domain.Model;
 import java.io.Serializable;
 
 public class ThanhToan implements Serializable {
-    private String IdThanhToan,TenThanhToan, HanSuDung, CVV, Loai, ImageUrl;
+    private String IdThanhToan, Loai, ImageUrl, TrangThai;
+    private KhachHang khachHang;
     private boolean checked;
 
     public ThanhToan() {
+    }
+
+    public String getTrangThai() {
+        return TrangThai;
+    }
+
+    public void setTrangThai(String trangThai) {
+        TrangThai = trangThai;
+    }
+
+    public KhachHang getKhachHang() {
+        return khachHang;
+    }
+
+    public void setKhachHang(KhachHang khachHang) {
+        this.khachHang = khachHang;
     }
 
     public String getIdThanhToan() {
@@ -15,30 +32,6 @@ public class ThanhToan implements Serializable {
 
     public void setIdThanhToan(String idThanhToan) {
         IdThanhToan = idThanhToan;
-    }
-
-    public String getTenThanhToan() {
-        return TenThanhToan;
-    }
-
-    public void setTenThanhToan(String tenThanhToan) {
-        TenThanhToan = tenThanhToan;
-    }
-
-    public String getHanSuDung() {
-        return HanSuDung;
-    }
-
-    public void setHanSuDung(String hanSuDung) {
-        HanSuDung = hanSuDung;
-    }
-
-    public String getCVV() {
-        return CVV;
-    }
-
-    public void setCVV(String CVV) {
-        this.CVV = CVV;
     }
 
     public String getLoai() {

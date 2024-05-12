@@ -1,6 +1,7 @@
 package com.example.myapplication.Domain.Model;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 public class DonHang implements Serializable {
@@ -9,13 +10,34 @@ public class DonHang implements Serializable {
     private DiaChi diachi = null;
     private VanChuyen vanchuyen= null;
     private ThanhToan thanhToan = null;
-    private KhuyenMai khuyenmai= null;
-    private int TongSoLuong;
-    private double ThanhTien =0, PhiPhucVu=0, PhiGiaoHang=0, Thue=0, TienKhuyenMai=0, TongTien=0;
+    private int TongSoLuong = 0;
+    private double ThanhTien =0, PhiDichVu=0, PhiGiaoHang=0, Thue=0, TienKhuyenMai=0, TongTien=0;
+    private boolean ThanhToan = false;
+    private Date NgayThanhToan;
     private List<DonHangChiTiet> ListDonHangChiTiet = null;
     private List<KhuyenMai> ListKhuyenMai = null;
 
     public DonHang() {
+    }
+
+    public Date getNgayThanhToan() {
+        return NgayThanhToan;
+    }
+
+    public void setNgayThanhToan(Date ngayThanhToan) {
+        NgayThanhToan = ngayThanhToan;
+    }
+
+    public double getTienKhuyenMai() {
+        return TienKhuyenMai;
+    }
+
+    public boolean isThanhToan() {
+        return ThanhToan;
+    }
+
+    public void setThanhToan(boolean ThanhToan) {
+        this.ThanhToan = ThanhToan;
     }
 
     public String getIdDonHang() {
@@ -66,13 +88,7 @@ public class DonHang implements Serializable {
         this.thanhToan = thanhToan;
     }
 
-    public KhuyenMai getKhuyenmai() {
-        return khuyenmai;
-    }
 
-    public void setKhuyenmai(KhuyenMai khuyenmai) {
-        this.khuyenmai = khuyenmai;
-    }
 
     public int getTongSoLuong() {
         return TongSoLuong;
@@ -94,13 +110,13 @@ public class DonHang implements Serializable {
         ThanhTien = thanhTien;
     }
 
-    public double getPhiPhucVu() {
-        PhiPhucVu = ThanhTien * 0.08;
-        return PhiPhucVu;
+    public double getPhiDichVu() {
+        PhiDichVu = ThanhTien * 0.08;
+        return PhiDichVu;
     }
 
-    public void setPhiPhucVu(double phiPhucVu) {
-        PhiPhucVu = phiPhucVu;
+    public void setPhiDichVu(double phiDichVu) {
+        PhiDichVu = phiDichVu;
     }
 
     public double getPhiGiaoHang() {
@@ -120,15 +136,15 @@ public class DonHang implements Serializable {
         Thue = thue;
     }
 
-    public double getTienKhuyenMai() {
-        if(khuyenmai != null){
-            TienKhuyenMai = Double.parseDouble(khuyenmai.getToiDaGiam());
-        }else {
-            TienKhuyenMai =0;
-        }
-
-        return TienKhuyenMai;
-    }
+//    public double getTienKhuyenMai() {
+//        if(khuyenmai != null){
+//            TienKhuyenMai = Double.parseDouble(khuyenmai.getToiDaGiam());
+//        }else {
+//            TienKhuyenMai =0;
+//        }
+//
+//        return TienKhuyenMai;
+//    }
 
     public void setTienKhuyenMai(double tienKhuyenMai) {
         TienKhuyenMai = tienKhuyenMai;
@@ -136,7 +152,7 @@ public class DonHang implements Serializable {
 
     public double getTongTien() {
         TongTien = 0;
-        TongTien = ThanhTien + PhiPhucVu + PhiGiaoHang + Thue - TienKhuyenMai;
+        TongTien = ThanhTien + PhiDichVu + PhiGiaoHang + Thue - TienKhuyenMai;
         return TongTien;
     }
 

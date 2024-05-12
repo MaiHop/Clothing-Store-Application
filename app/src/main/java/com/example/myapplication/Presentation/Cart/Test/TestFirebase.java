@@ -48,58 +48,16 @@ public class TestFirebase extends AppCompatActivity {
         setContentView(R.layout.activity_test_firebase);
 
 
-        getNhomSanPham();
-        getListMau();
+//        getNhomSanPham();
+//        getListMau();
 
-//        FirebaseFirestore db = FirebaseFirestore.getInstance();
-//        FirebaseFirestore db1 = FirebaseFirestore.getInstance();
-//
-//        db1.collection("NhomSanPham").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-//            @Override
-//            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-//                if (!queryDocumentSnapshots.isEmpty()) {
-//                    List<DocumentSnapshot> list_doc = queryDocumentSnapshots.getDocuments();
-//                    for (DocumentSnapshot doc : list_doc) {
-//                        NhomSP nhom = doc.toObject(NhomSP.class);
-//                        list_nhomsp.add(nhom);
-//                    }
-//                }
-//                List<SanPham> list_sp = new ArrayList<>();
-//                db.collection("SanPham").whereEqualTo("tenSanPham", "Quần Dài Xếp Ly Ống Rộng").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-//                    @Override
-//                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-//                        if (!queryDocumentSnapshots.isEmpty()) {
-//                            List<DocumentSnapshot> list_doc = queryDocumentSnapshots.getDocuments();
-//                            String id = FirebaseFirestore.getInstance().collection("SanPham").document().getId();
-//                            for (DocumentSnapshot doc : list_doc) {
-//                                java.util.Date date = new java.util.Date();
-//                                SanPham sanpham = doc.toObject(SanPham.class);
-//                                sanpham.setNgayTao(date);
-//                                sanpham.setNhomSanPham(list_nhomsp.get(0));
-//                                sanpham.setLoaiSanPham(list_nhomsp.get(0).getListLoaiSP().get(8));
-//                                sanpham.setKieuSanPham(list_nhomsp.get(0).getListLoaiSP().get(8).getListKieuSP().get(7));
-//
-//                                FirebaseFirestore.getInstance().collection("SanPham").add(sanpham).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-//                                    @Override
-//                                    public void onSuccess(DocumentReference documentReference) {
-//                                        Toast.makeText(TestFirebase.this, "OK", Toast.LENGTH_SHORT).show();
-//                                    }
-//                                });
-//                            }
-//                        }
-//                    }
-//                });
-//            }
-//        });
-
-
-
-
-
-
-
-
-
+        FirebaseFirestore.getInstance().collection("SanPham").document("1").get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                KieuSP kieuSP = documentSnapshot.toObject(KieuSP.class);
+                Log.d("ID", kieuSP.getTen());
+            }
+        });
 
     }
 
@@ -115,6 +73,34 @@ public class TestFirebase extends AppCompatActivity {
                     }
                 }
                 getListKichThuoc();
+//                NhomSP nhomSP = list_nhomsp.get(1);
+//                LoaiSP loaiSP = list_nhomsp.get(1).getListLoaiSP().get(3);
+//                KieuSP kieuSP = list_nhomsp.get(1).getListLoaiSP().get(3).getListKieuSP().get(7);
+//                FirebaseFirestore db = FirebaseFirestore.getInstance();
+//                FirebaseFirestore db1 = FirebaseFirestore.getInstance();
+//                db.collection("SanPham").whereEqualTo("kieuSanPham.ten",kieuSP.getTen()).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+//                    @Override
+//                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+//                        if (!queryDocumentSnapshots.isEmpty()) {
+//                            List<DocumentSnapshot> list_doc = queryDocumentSnapshots.getDocuments();
+//                            for (DocumentSnapshot doc : list_doc) {
+//                                java.util.Date date = new java.util.Date();
+//                                SanPham sp = doc.toObject(SanPham.class);
+//                                sp.setNhomSanPham(nhomSP);
+//                                sp.setLoaiSanPham(loaiSP);
+//                                sp.setKieuSanPham(kieuSP);
+//                                sp.setNgayTao(date);
+//                                db1.collection("SanPham").add(sp).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+//                                    @Override
+//                                    public void onSuccess(DocumentReference documentReference) {
+//                                            Toast.makeText(TestFirebase.this,"OK", Toast.LENGTH_SHORT).show();
+//                                    }
+//                                });
+//
+//                            }
+//                        }
+//                    }
+//                });
             }
         });
     }
@@ -132,87 +118,134 @@ public class TestFirebase extends AppCompatActivity {
                         list_kt.add(kt);
                     }
                 }
-                addSanPham();
+                addSanPham_V2();
             }
         });
     }
 
-    private void getListMau() {
-        Mau m1 = new Mau();
-        m1.setId("00");
-        m1.setTen("White");
-        m1.setImgUrl("https://firebasestorage.googleapis.com/v0/b/otp-verification-e3b3e.appspot.com/o/mau%2F00_White.jpg?alt=media&token=e292099f-dc37-4564-a0c4-bac4321ccaa9");
+    private  void addSanPham_V2(){
+        NhomSP nhomSP = list_nhomsp.get(3);
+        LoaiSP loaiSP = list_nhomsp.get(3).getListLoaiSP().get(1);
+        KieuSP kieuSP = list_nhomsp.get(3).getListLoaiSP().get(1).getListKieuSP().get(4);
 
-        Mau m2 = new Mau();
-        m2.setId("09");
-        m2.setTen("Black");
-        m2.setImgUrl("https://firebasestorage.googleapis.com/v0/b/otp-verification-e3b3e.appspot.com/o/mau%2F09_Black.jpg?alt=media&token=4340cb1d-d378-4eb8-9d8c-c2e9b37f8815");
-//
-        Mau m3 = new Mau();
-        m3.setId("05");
-        m3.setTen("Gray");
-        m3.setImgUrl("https://firebasestorage.googleapis.com/v0/b/otp-verification-e3b3e.appspot.com/o/mau%2F05_Gray.jpg?alt=media&token=c1aa326c-0049-437b-b4f3-f00e74880b8f");
 
-        Mau m4 = new Mau();
-        m4.setId("56");
-        m4.setTen("Olive");
-        m4.setImgUrl("https://firebasestorage.googleapis.com/v0/b/otp-verification-e3b3e.appspot.com/o/mau%2F56_Olive.jpg?alt=media&token=936438bf-3a72-457e-b0ec-d99d4c5e552e");
+//        List<Mau> list_m_1 = new ArrayList<>();
+////        list_m_1.add(new Mau("00","White","https://firebasestorage.googleapis.com/v0/b/otp-verification-e3b3e.appspot.com/o/mau%2F00_White.jpg?alt=media&token=e292099f-dc37-4564-a0c4-bac4321ccaa9"));
+////        list_m_1.add(new Mau("09","Black","https://firebasestorage.googleapis.com/v0/b/otp-verification-e3b3e.appspot.com/o/mau%2F09_Black.jpg?alt=media&token=4340cb1d-d378-4eb8-9d8c-c2e9b37f8815"));
+////        list_m_1.add(new Mau("01","Gray","https://firebasestorage.googleapis.com/v0/b/otp-verification-e3b3e.appspot.com/o/mau%2F01_Gray.jpg?alt=media&token=12a52472-0553-44ea-a2a2-1aa5d1e62534"));
+////        list_m_1.add(new Mau("38","Brown","https://firebasestorage.googleapis.com/v0/b/otp-verification-e3b3e.appspot.com/o/mau%2F38_Brown.jpg?alt=media&token=cad41440-5780-473c-9aa3-ec0f5f8f39ca"));
+////        list_m_1.add(new Mau("41","Yellow","https://firebasestorage.googleapis.com/v0/b/otp-verification-e3b3e.appspot.com/o/mau%2F45_Yellow.jpg?alt=media&token=9fd2bfa8-4aa0-47d7-a494-b2857fccc238"));
+//        list_m_1.add(new Mau("34","Khaki","https://firebasestorage.googleapis.com/v0/b/otp-verification-e3b3e.appspot.com/o/mau%2F34_Khaki.jpg?alt=media&token=0b4eb3f5-14ed-44e2-b437-41fa2a6d93ce"));
+//        list_m_1.add(new Mau("70","Blue","https://firebasestorage.googleapis.com/v0/b/otp-verification-e3b3e.appspot.com/o/mau%2F70_Blue.jpg?alt=media&token=ea1561a6-1b93-4e5e-ab64-ca99a06dfe82"));
+//        List<String> list_img_1 = new ArrayList<>();
+//        list_img_1.add("https://firebasestorage.googleapis.com/v0/b/otp-verification-e3b3e.appspot.com/o/sanpham%2Fgoods_33_471166001.jpg?alt=media&token=3ac59403-8030-4770-8d7a-d12ae12e4bc1");
+//        list_img_1.add("https://firebasestorage.googleapis.com/v0/b/otp-verification-e3b3e.appspot.com/o/sanpham%2Fgoods_69_471166001.jpg?alt=media&token=74958ee3-3e86-426e-b333-caf9bcbfc6ad");
+//        String ten_sp_1 ="Áo Thun In Họa Tiết Ngắn Tay";
+//        double giaban_1 =196;
+//        String thongtin_1 =
+//        "Chất liệu:\nVẢI\n" +
+//        "Thân: 100% Bông/ Bo: 73% Bông, 27% Polyeste\n" +
+//                "HƯỚNG DẪN GIẶT\n" +
+//                "Giặt máy nước lạnh, Không giặt khô, Sấy khô ở nhiệt độ thấp\n" +
+//                "- Những hình ảnh sản phẩm có thể bao gồm những màu không có sẵn.\n" +
+//        "UNIQLO and Marimekko are pleased to announce the new limited-edition collection just in time for a joyful summer sun. The new collection offers a wide array of breezy, comfortable dress, cut and sewn and skirt made in cotton and linen, along with hats, shoes, and bags for easy coordination. This collection features Marimekko’s world-renowned prints: Melooni (melon), Ruukku (pot) by Maija Isola, Lirinä (sound of gurgling water), Asema (station) by Pentti Rinta, along with Demeter by Katsuji Wakisaka and Galleria (gallery) by Vuokko Eskolin-Nurmesniemi. These vibrant and colorful patterns, full of the feeling of summer fun, are available for women, kids, and babies.\n" +
+//                "\n" +
+//                "- Hypoallergenic plastic snap-fasteners. *Note: May not protect against all allergies.\n" +
+//                "- Comfortable, soft fabric.\n" +
+//                "- Quality care label inside the garment on the left side.\n" +
+//                "- Combines Marimekko’s signature bold print with an easy-to-wear silhouette.\n" +
+//                "- 70-90 cm sizes have snap button openings at the shoulders.\n" +
+//                "- 100-110 cm sizes do not have snap buttons at the shoulders.";
+//        SaveToFireStore("1",list_img_1,list_m_1,list_kt,ten_sp_1,giaban_1,thongtin_1,nhomSP,loaiSP,kieuSP);
 
-//        Mau m5 = new Mau();
-//        m5.setId("69");
-//        m5.setTen("Blue");
-//        m5.setImgUrl("https://firebasestorage.googleapis.com/v0/b/otp-verification-e3b3e.appspot.com/o/mau%2F69_Blue.jpg?alt=media&token=a1e96b92-faab-4607-9cb1-d7e05a6bcfe7");
+//        List<Mau> list_m_2 = new ArrayList<>();
+//        list_m_2.add(new Mau("00","White","https://firebasestorage.googleapis.com/v0/b/otp-verification-e3b3e.appspot.com/o/mau%2F00_White.jpg?alt=media&token=e292099f-dc37-4564-a0c4-bac4321ccaa9"));
+////        list_m_2.add(new Mau("09","Black","https://firebasestorage.googleapis.com/v0/b/otp-verification-e3b3e.appspot.com/o/mau%2F09_Black.jpg?alt=media&token=4340cb1d-d378-4eb8-9d8c-c2e9b37f8815"));
+////        list_m_2.add(new Mau("08","Dark Gray", "https://firebasestorage.googleapis.com/v0/b/otp-verification-e3b3e.appspot.com/o/mau%2F08_DrarkGray.jpg?alt=media&token=240e25ac-d00b-4965-ae6a-0bb63a3ea5fd"));
+////        list_m_2.add(new Mau("30","Natural","https://firebasestorage.googleapis.com/v0/b/otp-verification-e3b3e.appspot.com/o/mau%2F30_Natural.jpg?alt=media&token=47f82600-755b-481b-a8d3-acf304ccbd9b"));
+////        list_m_2.add(new Mau("56","Olive","https://firebasestorage.googleapis.com/v0/b/otp-verification-e3b3e.appspot.com/o/mau%2F56_Olive.jpg?alt=media&token=936438bf-3a72-457e-b0ec-d99d4c5e552e"));
+//        List<String> list_img_2 = new ArrayList<>();
+//        list_img_2.add("https://firebasestorage.googleapis.com/v0/b/otp-verification-e3b3e.appspot.com/o/sanpham%2Fgoods_00_464637.jpg?alt=media&token=313f1062-8a70-4299-aa06-59f815814bd7");
+//        String ten_sp_2 ="Áo Lót Ba Lỗ Vải Cotton Mắt Lưới 2 Chiếc";
+//        double giaban_2 =195;
+//        String thongtin_2 =
+//                "Chất liệu:\nVẢI\n" +
+//                "100% Bông\n" +
+//                "HƯỚNG DẪN GIẶT\n" +
+//                "Giặt máy nước lạnh, Không giặt khô, Sấy khô ở nhiệt độ thấp\n" +
+//                "- Những hình ảnh sản phẩm có thể bao gồm những màu không có sẵn.\n" +
+//                "- Chất liệu vải 100% cotton được làm từ những sợi siêu mịn mang lại cảm giác mềm mại, nhẹ nhàng.\n" +
+//                        "- Lưới thoáng khí với kết cấu bền bỉ có thể chịu được việc giặt nhiều lần.\n" +
+//                        "- Đường may phẳng nhẹ nhàng trên làn da mỏng manh của bé.\n" +
+//                        "- Đường khâu màu bên trong đường viền cổ áo giúp giữ mặt phải của trang phục.\n" +
+//                        "- Bộ 2 màu trơn tiện lợi.";
+//        SaveToFireStore("2",list_img_2,list_m_2,list_kt,ten_sp_2,giaban_2,thongtin_2,nhomSP,loaiSP,kieuSP);
 
-//        Mau m6 = new Mau();
-//        m6.setId("70");
-//        m6.setTen("Navy");
-//        m6.setImgUrl("https://firebasestorage.googleapis.com/v0/b/otp-verification-e3b3e.appspot.com/o/mau%2F70_Navy.jpg?alt=media&token=348d12a0-1086-45a4-9346-2b3a66ef1e8e");
-//
-//        Mau m7 = new Mau();
-//        m7.setId("38");
-//        m7.setTen("Dark Brown");
-//        m7.setImgUrl("https://firebasestorage.googleapis.com/v0/b/otp-verification-e3b3e.appspot.com/o/mau%2F38_DarkBrown.jpg?alt=media&token=fdbd61e5-2f6a-4caf-826e-6e1307d175d9");
-//
-//        Mau m8 = new Mau();
-//        m8.setId("59");
-//        m8.setTen("Dark Green");
-//        m8.setImgUrl("https://firebasestorage.googleapis.com/v0/b/otp-verification-e3b3e.appspot.com/o/mau%2F59_DarkGreen.jpg?alt=media&token=6b4e7033-0dd8-4452-aa18-e419e998ac7b");
-//
-//        Mau m9 = new Mau();
-//        m9.setId("62");
-//        m9.setTen("Blue");
-//        m9.setImgUrl("https://firebasestorage.googleapis.com/v0/b/otp-verification-e3b3e.appspot.com/o/mau%2F62_Blue.jpg?alt=media&token=0f4ff010-e9fc-47b5-bfa0-cc042d35ce2c");
+        List<Mau> list_m_3 = new ArrayList<>();
+        list_m_3.add(new Mau("00","White","https://firebasestorage.googleapis.com/v0/b/otp-verification-e3b3e.appspot.com/o/mau%2F00_White.jpg?alt=media&token=e292099f-dc37-4564-a0c4-bac4321ccaa9"));
+//        list_m_3.add(new Mau("09","Black","https://firebasestorage.googleapis.com/v0/b/otp-verification-e3b3e.appspot.com/o/mau%2F09_Black.jpg?alt=media&token=4340cb1d-d378-4eb8-9d8c-c2e9b37f8815"));
+//        list_m_3.add(new Mau("41","Yellow","https://firebasestorage.googleapis.com/v0/b/otp-verification-e3b3e.appspot.com/o/mau%2F41_Yellow.jpg?alt=media&token=f81e92ed-dd50-496e-bb97-5f6bdb77b5c7"));
+        list_m_3.add(new Mau("69","Navy","https://firebasestorage.googleapis.com/v0/b/otp-verification-e3b3e.appspot.com/o/mau%2F69_Navy.jpg?alt=media&token=f6b5529d-2575-4372-9679-14939b3fb623"));
+        List<String> list_img_3 = new ArrayList<>();
+        list_img_3.add("https://firebasestorage.googleapis.com/v0/b/otp-verification-e3b3e.appspot.com/o/sanpham%2Fgoods_00_454969.jpg?alt=media&token=1f38d22d-f167-4948-a731-e2bb24724331");
+        list_img_3.add("https://firebasestorage.googleapis.com/v0/b/otp-verification-e3b3e.appspot.com/o/sanpham%2Fgoods_68_454969.jpg?alt=media&token=cada6655-e2ae-4b98-bd23-e2677b9cc389");
+        String ten_sp_3 ="AIRism Áo Khoác Chống UV Dài Tay (Chống Nắng)";
+        double giaban_3 =391;
+        String thongtin_3 =
+                "Chất liệu:\nVẢI\n" +
+                        "Thân: 70% Bông, 30% Polyeste/ Bo: 55% Bông, 45% Polyeste\n" +
+                        "HƯỚNG DẪN GIẶT\n" +
+                        "Giặt máy nước lạnh, Giặt khô, Không sấy khô\n" +
+                        "- Những hình ảnh sản phẩm có thể bao gồm những màu không có sẵn.\n" +
+                        "- 'AIRism' cho cảm giác thoải mái tươi mát lâu dài.\n" +
+                        "- Công nghệ chống tia cực tím.\n" +
+                        "- Vải lưới thoáng khí.\n" +
+                        "- Bao gồm một miếng bảo vệ cằm để bảo vệ mặt khỏi dây kéo.\n" +
+                        "- Có nhãn tên và móc treo ở cổ.\n" +
+                        "- Nhãn chăm sóc chất lượng bên trong quần áo ở phía bên trái.\n" +
+                        "- Vải lưới UV 'AIRism' nhẹ và chống nhăn.\n" +
+                        "- UPF40.";
+        SaveToFireStore("3",list_img_3,list_m_3,list_kt,ten_sp_3,giaban_3,thongtin_3,nhomSP,loaiSP,kieuSP);
 
-//        Mau m10 = new Mau();
-//        m10.setId("66");
-//        m10.setTen("Blue");
-//        m10.setImgUrl("https://firebasestorage.googleapis.com/v0/b/otp-verification-e3b3e.appspot.com/o/mau%2F66_Blue.jpg?alt=media&token=03f04723-205a-4b59-aa5f-1af1b5f940a3");
-//
-//        Mau m11 = new Mau();
-//        m11.setId("67");
-//        m11.setTen("Blue");
-//        m11.setImgUrl("https://firebasestorage.googleapis.com/v0/b/otp-verification-e3b3e.appspot.com/o/mau%2F67_Blue.jpg?alt=media&token=543e8afd-e524-4acf-9bc5-dda1511823d8");
-
-        list_mau.add(m1);
-        list_mau.add(m2);
-        list_mau.add(m3);
-        list_mau.add(m4);
-//        list_mau.add(m5);
-//        list_mau.add(m6);
-//        list_mau.add(m7);
-//        list_mau.add(m8);
-//        list_mau.add(m9);
-//        list_mau.add(m10);
-//        list_mau.add(m11);
     }
+    private void SaveToFireStore(String num,List<String> list_img ,List<Mau> list_m, List<KichThuoc> list_k, String ten_sp, double giaban, String thongtin, NhomSP nhomSP, LoaiSP loaiSP, KieuSP kieuSP){
+        String id = FirebaseFirestore.getInstance().collection("SanPham").document().getId();
+        for(int i =0 ; i<list_img.size();i++){
+            for (KichThuoc kts : list_k) {
+                java.util.Date date = new java.util.Date();
 
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                SanPham sanpham = new SanPham();
+                sanpham.setIdSanPham(id);
+                sanpham.setImageUrl(list_img.get(i));
+                sanpham.setTenSanPham(ten_sp);
+                sanpham.setGiaban(giaban);
+                sanpham.setSoLuong(100);
+                sanpham.setSoLuongBan(0);
+                sanpham.setThongTin(thongtin);
+                sanpham.setNgayTao(date);
+                sanpham.setNhomSanPham(nhomSP);
+                sanpham.setLoaiSanPham(loaiSP);
+                sanpham.setKieuSanPham(kieuSP);
+                sanpham.setMau(list_m.get(i));
+
+                sanpham.setKichThuoc(kts);
+                db.collection("SanPham").add(sanpham).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Toast.makeText(TestFirebase.this, "OK "+num, Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+            }
+        }
+    }
 
     private void addSanPham() {
         List<String> list_img = new ArrayList<>();
-        list_img.add("https://firebasestorage.googleapis.com/v0/b/otp-verification-e3b3e.appspot.com/o/sanpham%2Fvngoods_01_464148.jpg?alt=media&token=ef205cc0-a94e-4b43-90f8-07559b238a03");
-        list_img.add("https://firebasestorage.googleapis.com/v0/b/otp-verification-e3b3e.appspot.com/o/sanpham%2Fvngoods_09_464148.jpg?alt=media&token=64fb1180-7e71-475d-b984-84e276cf75ea");
-        list_img.add("https://firebasestorage.googleapis.com/v0/b/otp-verification-e3b3e.appspot.com/o/sanpham%2Fvngoods_05_464148.jpg?alt=media&token=6353a24b-f011-4c90-a3fd-b6952233ab79");
-        list_img.add("https://firebasestorage.googleapis.com/v0/b/otp-verification-e3b3e.appspot.com/o/sanpham%2Fvngoods_56_464148.jpg?alt=media&token=374a3d56-74d7-45c7-bb31-2291ef2ed70d");
+        list_img.add("https://firebasestorage.googleapis.com/v0/b/otp-verification-e3b3e.appspot.com/o/sanpham%2Fvngoods_09_467544.jpg?alt=media&token=667d1c54-13d9-42ba-aee5-4e6e7187b627");
+        list_img.add("https://firebasestorage.googleapis.com/v0/b/otp-verification-e3b3e.appspot.com/o/sanpham%2Fvngoods_02_467544.jpg?alt=media&token=85a29324-ea87-4cb0-ac86-a61362b7568e");
+        list_img.add("https://firebasestorage.googleapis.com/v0/b/otp-verification-e3b3e.appspot.com/o/sanpham%2Fvngoods_56_467544.jpg?alt=media&token=3f0f3b71-21af-4a3f-a397-95fc1be07fe0");
         String id = FirebaseFirestore.getInstance().collection("SanPham").document().getId();
         for(int i =0 ; i<list_img.size();i++){
             for (KichThuoc kts : list_kt) {
@@ -222,23 +255,24 @@ public class TestFirebase extends AppCompatActivity {
                 SanPham sanpham = new SanPham();
                 sanpham.setIdSanPham(id);
                 sanpham.setImageUrl(list_img.get(i));
-                sanpham.setTenSanPham("Quần Leggings Siêu Co Giãn");
-                sanpham.setGiaban(588);
+                sanpham.setTenSanPham("DRY-EX Áo Thun Ngắn Tay");
+                sanpham.setGiaban(391);
                 sanpham.setSoLuong(100);
                 sanpham.setSoLuongBan(0);
                 sanpham.setThongTin("Chất liệu:\nVẢI\n" +
-                        "[01 OFF WHITE] 52% Bông, 33% Polyeste, 15% Elastan [05 GRAY, 09 BLACK, 34 BROWN, 56 OLIVE, 58 DARK GREEN] 51% Bông, 33% Polyeste, 16% Elastan\n" +
+                        "100% Polyeste ( 100% Sử Dụng Sợi Polyeste Tái Chế )\n" +
                         "HƯỚNG DẪN GIẶT\n" +
                         "Giặt máy nước lạnh, Giặt khô, Không sấy khô\n" +
                         "- Những hình ảnh sản phẩm có thể bao gồm những màu không có sẵn.\n" +
-                        "- Được nâng cấp lên loại vải mềm, siêu co giãn để mang lại sự thoải mái và tự do khi vận động.\n" +
-                        "- Thiết kế thời trang với các nút bấm, đường may và kích thước túi sau được thiết kế tỉ mỉ.\n" +
-                        "- Thắt lưng co giãn hoàn toàn.\n" +
-                        "- Có vòng đai để đeo thắt lưng.");
+                        "- Áo thun cổ tròn ngắn tay nam được làm từ những sợi vải mảnh, mỏng nhẹ, thoáng khí, mang lại cảm giác mịn màng và nhẹ hơn so với áo thun DRY-EX thông thường.\n" +
+                        "- Chất liệu vải dệt kim thoáng khí với họa tiết sọc dọc giúp lưu thông khí, mang lại cảm giác thoải mái, khô thoáng suốt cả ngày.\n" +
+                        "- Ngoài ra, chất liệu vải của chiếc áo thun này còn có khả năng nhanh chóng thấm hút mồ hôi, tạo cảm giác khô ráo và mịn màng, kéo dài suốt ngày.\n" +
+                        "- Tay áo được thiết kế đặc biệt, mang lại cảm giác mượt mà cùng đường may tinh tế\n" +
+                        "- Cổ áo thun nam này được may kỹ càng để tạo sự thoải mái, không gây gò bó cho người sử dụng.");
                 sanpham.setNgayTao(date);
-                sanpham.setNhomSanPham(list_nhomsp.get(0));
-                sanpham.setLoaiSanPham(list_nhomsp.get(0).getListLoaiSP().get(8));
-                sanpham.setKieuSanPham(list_nhomsp.get(0).getListLoaiSP().get(8).getListKieuSP().get(6));
+                sanpham.setNhomSanPham(list_nhomsp.get(1));
+                sanpham.setLoaiSanPham(list_nhomsp.get(0).getListLoaiSP().get(1));
+                sanpham.setKieuSanPham(list_nhomsp.get(0).getListLoaiSP().get(1).getListKieuSP().get(1));
                 sanpham.setMau(list_mau.get(i));
 
                 sanpham.setKichThuoc(kts);
@@ -248,6 +282,7 @@ public class TestFirebase extends AppCompatActivity {
                         Toast.makeText(TestFirebase.this, "OK", Toast.LENGTH_SHORT).show();
                     }
                 });
+
             }
         }
 

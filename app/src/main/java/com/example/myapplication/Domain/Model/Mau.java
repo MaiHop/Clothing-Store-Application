@@ -8,6 +8,12 @@ public class Mau implements Serializable {
     public Mau() {
     }
 
+    public Mau(String id, String ten, String imgUrl) {
+        Id = id;
+        Ten = ten;
+        ImgUrl = imgUrl;
+    }
+
     public boolean isAble() {
         return Able;
     }

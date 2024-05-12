@@ -26,7 +26,7 @@ public class PTThanhToanVH extends RecyclerView.ViewHolder{
     }
     public void updateUI(ThanhToan ptthanhtoan){
         Picasso.get().load(ptthanhtoan.getImageUrl()).into(this.iv_Logo_ThanhToanv);
-        tv_TenThanhToan.setText(ptthanhtoan.getTenThanhToan());
+//        tv_TenThanhToan.setText(ptthanhtoan.getTenThanhToan());
         if(ptthanhtoan.isChecked()){
             iv_PM_Checked.setVisibility(View.VISIBLE);
             item_payment_method.setBackgroundResource(R.drawable.solid_white_stroke_green_rad_5);

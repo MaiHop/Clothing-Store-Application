@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class DiaChi implements Serializable {
     private String IdDiaChi, TenDiaChi,NguoiNhan, SDT, DiaChi, GhiChu;
-    private boolean XacDinh, checked, DiaChiChinh;
+    private boolean XacDinh, checked, MacDinh = false;
 
     public DiaChi() {
     }
@@ -73,11 +73,11 @@ public class DiaChi implements Serializable {
         this.checked = checked;
     }
 
-    public boolean isDiaChiChinh() {
-        return DiaChiChinh;
+    public boolean isMacDinh() {
+        return MacDinh;
     }
 
-    public void setDiaChiChinh(boolean diaChiChinh) {
-        DiaChiChinh = diaChiChinh;
+    public void setMacDinh(boolean macDinh) {
+        MacDinh = macDinh;
     }
 }

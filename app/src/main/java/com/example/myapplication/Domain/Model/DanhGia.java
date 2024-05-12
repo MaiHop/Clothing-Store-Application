@@ -6,7 +6,7 @@ import java.util.List;
 
 public class DanhGia implements Serializable {
     private String IdDanhGia, NhanXet;
-    private KhachHang KhachHang;
+    private com.example.myapplication.Domain.Model.KhachHang KhachHang;
     private Date NgayDanhGia;
     private double DiemDanhGia;
     private SanPham sanpham;

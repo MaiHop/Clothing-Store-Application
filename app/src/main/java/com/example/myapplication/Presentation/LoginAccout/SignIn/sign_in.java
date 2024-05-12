@@ -32,6 +32,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 
 import java.util.HashMap;
 
@@ -42,7 +44,9 @@ public class sign_in extends AppCompatActivity {
             btn_signIn_GG;
     TextInputEditText txtip_email,txtip_password;
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
+//    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    FirebaseFirestore database = FirebaseFirestore.getInstance();
+
 
     GoogleSignInClient mGoogleSignInClinet;
     int RC_SignIn = 1234;
@@ -191,7 +195,9 @@ public class sign_in extends AppCompatActivity {
                                     map.put("id",user.getUid());
                                     map.put("name",user.getDisplayName());
                                     map.put("profile",user.getPhotoUrl().toString());
-                                    database.getReference().child("users").child(user.getUid()).setValue(map)
+//                                    database.getReference().child("users").child(user.getUid()).setValue(map)
+                                    database.collection("users").document(user.getUid())
+                                            .set(map, SetOptions.merge())
                                             .addOnSuccessListener(aVoid -> {
                                                 Intent intent = new Intent(sign_in.this, Home.class);
                                                 startActivity(intent);

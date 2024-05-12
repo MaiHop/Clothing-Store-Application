@@ -100,8 +100,6 @@
                         android:paddingLeft="10dp"
                         android:drawablePadding="10dp"/>
                 </com.google.android.material.textfield.TextInputLayout>
-
-
             </LinearLayout>
             <LinearLayout
                 android:orientation="horizontal"
@@ -382,9 +380,7 @@
                                 </RelativeLayout>
                             </LinearLayout>
                         </LinearLayout>
-
                     </ScrollView>
-
                 </LinearLayout>
                 <LinearLayout
                     android:orientation="vertical"

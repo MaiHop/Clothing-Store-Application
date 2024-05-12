@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_bg">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,33 +19,36 @@
             android:textColor="#ff0000"
             android:textSize="24sp"
             android:gravity="center"
-            android:layout_marginTop="15dp"/>
+            android:layout_marginTop="20dp"
+            android:textStyle="bold"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Are you sure you want to log out?"
             android:textSize="16sp"
             android:gravity="center"
+            android:textStyle="bold"
             android:layout_marginTop="10dp"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="30dp">
             <Button
                 android:id="@+id/btn_cancel"
-                android:text="Skip"
+                android:text="Cancel"
                 android:backgroundTint="@color/green_x1"
                 android:textColor="@color/green"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
+                android:layout_width="140dp"
+                android:layout_height="55dp"
                 android:layout_marginRight="10dp"/>
             <Button
                 android:id="@+id/btn_logout"
-                android:text="Logout"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
+                android:text="Yes, Logout"
+                android:layout_width="140dp"
+                android:layout_height="55dp"
                 android:layout_marginRight="10dp"/>
         </LinearLayout>
 

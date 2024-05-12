@@ -7,7 +7,7 @@ public class KhuyenMai implements Serializable {
     private String IdKhuyenMai,TenKhuyenMai, NoiDung,Loai, DieuKien, ToiDaGiam;
     private SanPham sanPham;
     private Date HanSuDung;
-    private boolean checked, TrangThai, TrangThaiSD;
+    private boolean checked, TrangThai= true, TrangThaiSD= false;
 
     public KhuyenMai() {
     }

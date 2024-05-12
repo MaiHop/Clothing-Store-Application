@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Presentation.Accout_Setting.Activity.MyProfile"
-    android:background="@color/white">
+    android:background="@color/white"
+    >
 
     <androidx.drawerlayout.widget.DrawerLayout
         android:layout_width="match_parent"
@@ -65,10 +66,9 @@
                             android:layout_height="120dp"
                             android:src="@drawable/c_hung_ic_facebook" />
                     </LinearLayout>
-                    <ImageView
-                        android:id="@+id/cbHeart"
+                    <Button
+                        android:id="@+id/btn_image"
                         android:layout_gravity="bottom|right"
-                        android:src="@drawable/c_hung_ic_apple"
                         android:layout_marginTop="20dp"
                         android:layout_width="40dp"
                         android:layout_height="40dp" />

@@ -11,8 +11,8 @@ public class SanPham implements Serializable {
     private NhomSP NhomSanPham = null;
     private LoaiSP LoaiSanPham = null;
     private KieuSP KieuSanPham = null;
-    private KichThuoc KichThuoc = null;
-    private Mau Mau= null;
+    private com.example.myapplication.Domain.Model.KichThuoc KichThuoc = null;
+    private com.example.myapplication.Domain.Model.Mau Mau= null;
     private List<DanhGia> ListDanhGia= null;
     private List<KhuyenMai> ListKhuyenMai= null;
 

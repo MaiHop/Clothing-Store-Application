@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Presentation.Accout_Setting.Activity.MyProfile"
-    android:background="@color/white">
+    android:background="@color/white"
+    >
 
     <androidx.drawerlayout.widget.DrawerLayout
         android:layout_width="match_parent"
@@ -24,10 +25,10 @@
                     android:layout_height="match_parent">
                     <!-- Logo -->
                     <ImageView
-                        android:id="@+id/logo"
+                        android:id="@+id/img_pack_myprofile"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/c_hung_baseline_dehaze_24"
+                        android:src="@drawable/c_hung_ic_back_24"
                         android:layout_alignParentStart="true"
                         android:layout_centerVertical="true"/>
                     <!-- Tiêu đề -->
@@ -59,31 +60,28 @@
                         android:orientation="vertical"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
-                        <ImageView
+                        <com.example.myapplication.Presentation.Accout_Setting.Activity.CircularImageView
                             android:id="@+id/img_Avata"
                             android:layout_width="120dp"
                             android:layout_height="120dp"
                             android:src="@drawable/c_hung_ic_facebook" />
                     </LinearLayout>
-                    <ImageView
-                        android:id="@+id/cbHeart"
+                    <Button
+                        android:id="@+id/btn_image"
                         android:layout_gravity="bottom|right"
-                        android:src="@drawable/c_hung_ic_apple"
                         android:layout_marginTop="20dp"
                         android:layout_width="40dp"
                         android:layout_height="40dp" />
                 </FrameLayout>
-
             </LinearLayout>
             <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="540dp"
                 >
                 <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
+                    android:layout_height="wrap_content">
                     <LinearLayout
                         android:orientation="vertical"
                         android:layout_width="match_parent"
@@ -102,7 +100,7 @@
                             android:stateListAnimator="@animator/textview_click_effect">
 
                             <TextView
-                                android:text="FullName"
+                                android:text="Full Name"
                                 android:textStyle="bold"
                                 android:textSize="18dp"
                                 android:gravity="center"
@@ -200,8 +198,8 @@
                                 android:gravity="center"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"/>
-                            <AutoCompleteTextView
-                                android:id="@+id/autoCompleteTextView"
+                            <Spinner
+                                android:id="@+id/spin_gender"
                                 android:layout_width="380dp"
                                 android:layout_height="wrap_content"
                                 android:inputType="none"
@@ -223,30 +221,35 @@
                                 android:gravity="center"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"/>
-                            <AutoCompleteTextView
-                                android:id="@+id/autoCompleteTextView1"
-                                android:layout_width="380dp"
+                            <EditText
+                                android:id="@+id/DP_Data"
+                                android:layout_width="250dp"
                                 android:layout_height="wrap_content"
-                                android:inputType="none"
-                                android:drawablePadding="10dp"/>
+                                android:hint="Chọn ngày tháng năm sinh"
+                                android:drawablePadding="10dp"
+                                android:focusable="false"
+                                android:clickable="true"
+                                android:focusableInTouchMode="false"/>
                         </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_marginBottom="20dp"
-                            android:gravity="center">
-                            <Button
-                                android:id="@+id/btn_saveUpdate"
-                                android:text="Save"
-                                android:textStyle="bold"
-                                android:textSize="18dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"/>
-                        </LinearLayout>
+
                     </LinearLayout>
                 </LinearLayout>
             </ScrollView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginBottom="20dp"
+                android:gravity="center"
+                android:layout_alignParentBottom="true">
+                <Button
+                    android:id="@+id/btn_saveUpdate"
+                    android:text="Save"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
+                    android:layout_width="100dp"
+                    android:layout_height="60dp"/>
+            </LinearLayout>
         </LinearLayout>
     </androidx.drawerlayout.widget.DrawerLayout>
 

@@ -157,47 +157,27 @@
                 android:layout_weight="1"
                 android:layout_gravity="center_vertical"
                 >
-                <RelativeLayout
+                <Button
+                    android:id="@+id/btn_SignUpThamGia"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/c_hung_rounded_border_thamgia"
-                    android:backgroundTint="@color/green"
-                    > <!-- Sử dụng drawable để tạo đường viền tròn -->
-
-                    <!-- TextView -->
-                    <Button
-                        android:id="@+id/btn_SignUpThamGia"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_centerInParent="true"
-                        android:backgroundTint="@color/green"
-                        android:padding="8dp"
-                        android:text="Sign Up"
-                        android:textColor="@color/white"
-                        android:textStyle="bold" />
-
-                </RelativeLayout>
-                <RelativeLayout
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:padding="8dp"
+                    android:text="Sign Up"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+                <Button
+                    android:id="@+id/btn_SignInThamGia"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/c_hung_rounded_border_thamgia"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
                     android:backgroundTint="@color/green_x1"
-                    > <!-- Sử dụng drawable để tạo đường viền tròn -->
-                    <!-- TextView -->
-                    <Button
-                        android:id="@+id/btn_SignInThamGia"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_centerInParent="true"
-                        android:backgroundTint="@color/green_x1"
-                        android:padding="8dp"
-                        android:text="Sign In"
-                        android:textColor="@color/green"
-                        android:textStyle="bold" />
-
-                </RelativeLayout>
+                    android:padding="8dp"
+                    android:text="Sign In"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/green"
+                    android:textStyle="bold" />
             </LinearLayout>
 
         </LinearLayout>

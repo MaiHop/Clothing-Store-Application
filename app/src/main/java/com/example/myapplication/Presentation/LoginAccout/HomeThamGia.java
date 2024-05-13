@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -29,6 +30,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 
 import java.util.HashMap;
 
@@ -38,10 +41,12 @@ public class HomeThamGia extends AppCompatActivity {
             sign_in = sign_in.class;
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
     FirebaseDatabase database = FirebaseDatabase.getInstance();
+    FirebaseFirestore database1 = FirebaseFirestore.getInstance();
 
     GoogleSignInClient mGoogleSignInClinet;
     int RC_SignIn = 1234;
     Load_Dialog loadDialog = new Load_Dialog(HomeThamGia.this);
+    TextView tv_loading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,7 +126,9 @@ public class HomeThamGia extends AppCompatActivity {
                                             map.put("id",user.getUid());
                                             map.put("name",user.getDisplayName());
                                             map.put("profile",user.getPhotoUrl().toString());
-                                            database.getReference().child("users").child(user.getUid()).setValue(map)
+//                                            database.getReference().child("users").child(user.getUid()).setValue(map)
+                                            database1.collection("users").document(user.getUid())
+                                                    .set(map, SetOptions.merge())
                                                     .addOnSuccessListener(aVoid -> {
                                                         Intent intent = new Intent(HomeThamGia.this, Home.class);
                                                         startActivity(intent);
@@ -134,7 +141,7 @@ public class HomeThamGia extends AppCompatActivity {
 
                                 }
                                 else {
-                                    Toast.makeText(HomeThamGia.this,"Loi",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(HomeThamGia.this,"Lỗi hệ thống, xin quý khách đợi hệ thống được Cập Nhật !!!",Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });

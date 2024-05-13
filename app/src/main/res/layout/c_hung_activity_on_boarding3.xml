@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/vpg_Onboarding"
+            android:layout_width="match_parent"
+            android:layout_height="640dp"/>
+        <me.relex.circleindicator.CircleIndicator
+            android:id="@+id/circlein_dicator"
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            app:ci_drawable="@drawable/c_hung_bg_circle_green"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center|bottom"
+            android:paddingBottom="20dp">
+            <Button
+                android:id="@+id/btn_start"
+                android:text="Lest's Get Started"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

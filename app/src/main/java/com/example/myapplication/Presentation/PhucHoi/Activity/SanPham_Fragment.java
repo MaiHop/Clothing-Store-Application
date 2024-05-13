@@ -83,7 +83,7 @@ public class SanPham_Fragment extends Fragment {
         // Khởi tạo Danh mục
         nhomSPViewModel = new ViewModelProvider(this).get(NhomSPVM.class);
         // Lắng nghe LiveData để nhận danh sách sản phẩm 2
-        nhomSPViewModel.getNhomSPListLiveData().observe(this, new Observer<List<NhomSP>>() {
+        nhomSPViewModel.getNhomSPListLiveData().observe(getViewLifecycleOwner(), new Observer<List<NhomSP>>() {
             @Override
             public void onChanged(List<NhomSP> NhomSPList) {
                 // Cập nhật Adapter khi dữ liệu thay đổi

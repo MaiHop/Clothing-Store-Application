@@ -6,9 +6,17 @@ import java.util.Date;
 public class KhuyenMai implements Serializable {
     private String IdKhuyenMai,TenKhuyenMai, NoiDung, DieuKien, ToiDaGiam;
     private Date HanSuDung;
-    private boolean checked, TrangThai;
+    private boolean checked, TrangThai= true,TrangThaiSD=false;
 
     public KhuyenMai() {
+    }
+
+    public boolean isTrangThaiSD() {
+        return TrangThaiSD;
+    }
+
+    public void setTrangThaiSD(boolean trangThaiSD) {
+        TrangThaiSD = trangThaiSD;
     }
 
     public boolean isTrangThai() {

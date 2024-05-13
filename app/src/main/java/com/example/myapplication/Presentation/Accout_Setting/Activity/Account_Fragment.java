@@ -1,10 +1,16 @@
 package com.example.myapplication.Presentation.Accout_Setting.Activity;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -51,9 +57,9 @@ public class Account_Fragment extends Fragment {
         ln_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(getContext(), HomeThamGia.class);
-                startActivity(intent);
+
+                showDialog();
+
             }
         });
         ln_myprofile.setOnClickListener(new View.OnClickListener() {
@@ -63,5 +69,36 @@ public class Account_Fragment extends Fragment {
                 startActivity(intent);
             }
         });
+    }
+    private void showDialog() {
+        final Dialog dialog = new Dialog(getActivity());
+//        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.c_hung_activity_logout);
+        Window window = dialog.getWindow();
+        if (window != null) {
+            window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            window.getAttributes().windowAnimations = R.style.DialogAnimation;
+            window.setGravity(Gravity.BOTTOM);
+        }
+
+        Button btnCancel = dialog.findViewById(R.id.btn_cancel);
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        Button btnConfirmLogout = dialog.findViewById(R.id.btn_logout);
+        btnConfirmLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(getContext(), HomeThamGia.class);
+                startActivity(intent);
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
     }
 }

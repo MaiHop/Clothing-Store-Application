@@ -1,11 +1,12 @@
 package com.example.myapplication.Domain.Model;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 public class DonHang implements Serializable {
     private String IdDonHang, TrangThai;
-    private KhachHang KhachHang= null;
+    private com.example.myapplication.Domain.Model.KhachHang KhachHang= null;
     private DiaChi diachi = null;
     private VanChuyen vanchuyen= null;
     private ThanhToan thanhToan = null;
@@ -14,8 +15,16 @@ public class DonHang implements Serializable {
     private double ThanhTien =0, PhiPhucVu=0, PhiGiaoHang=0, Thue=0, TienKhuyenMai=0, TongTien=0;
     private List<DonHangChiTiet> ListDonHangChiTiet = null;
     private List<KhuyenMai> ListKhuyenMai = null;
-
+    private Date NgayThanhToan;
     public DonHang() {
+    }
+
+    public Date getNgayThanhToan() {
+        return NgayThanhToan;
+    }
+
+    public void setNgayThanhToan(Date ngayThanhToan) {
+        NgayThanhToan = ngayThanhToan;
     }
 
     public String getIdDonHang() {

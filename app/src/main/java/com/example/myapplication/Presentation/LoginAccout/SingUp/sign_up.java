@@ -15,10 +15,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.Presentation.ButtonNavigation.Home;
 import com.example.myapplication.Presentation.LoginAccout.HomeThamGia;
 import com.example.myapplication.Presentation.LoginAccout.Load_Dialog;
 import com.example.myapplication.Presentation.LoginAccout.OTP.SP_OTP;
-import com.example.myapplication.Presentation.LoginAccout.SignIn.logout;
 import com.example.myapplication.Presentation.LoginAccout.SignIn.sign_in;
 import com.example.myapplication.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -36,6 +36,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 
 import java.util.HashMap;
 
@@ -48,7 +50,10 @@ public class sign_up extends AppCompatActivity {
             Sign_in= sign_in.class ;
     TextInputEditText txtip_email, txtip_password;
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
+//    FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+    FirebaseFirestore database = FirebaseFirestore.getInstance();
+
     GoogleSignInClient mGoogleSignInClinet;
     int RC_SignIn = 1234;
     Load_Dialog loadDialog = new Load_Dialog(sign_up.this);
@@ -141,7 +146,9 @@ public class sign_up extends AppCompatActivity {
                                                             map.put("name", user.getDisplayName());
                                                             map.put("profile", user.getPhotoUrl().toString());
 
-                                                            database.getReference().child("users").child(user.getUid()).setValue(map)
+//                                                            database.getReference().child("users").child(user.getUid()).setValue(map)
+                                                            database.collection("users").document(user.getUid())
+                                                                    .set(map, SetOptions.merge())
                                                                     .addOnSuccessListener(aVoid -> {
                                                                         Intent intent = new Intent(sign_up.this,SP_OTP);
                                                                         intent.putExtra("confirm_code", "sign_up");
@@ -173,9 +180,6 @@ public class sign_up extends AppCompatActivity {
                         }
                     }
                 });
-
-
-
             }
         });
         btn_signIn_GG.setOnClickListener(new View.OnClickListener() {
@@ -210,9 +214,11 @@ public class sign_up extends AppCompatActivity {
                                             map.put("id",user.getUid());
                                             map.put("name",user.getDisplayName());
                                             map.put("profile",user.getPhotoUrl().toString());
-                                            database.getReference().child("users").child(user.getUid()).setValue(map)
+//                                            database.getReference().child("users").child(user.getUid()).setValue(map)
+                                            database.collection("users").document(user.getUid())
+                                                    .set(map, SetOptions.merge())
                                                     .addOnSuccessListener(aVoid -> {
-                                                        Intent intent = new Intent(sign_up.this, logout.class);
+                                                        Intent intent = new Intent(sign_up.this, Home.class);
                                                         startActivity(intent);
                                                     })
                                                     .addOnFailureListener(e -> {

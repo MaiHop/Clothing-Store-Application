@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -14,9 +15,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
+
+        <activity
+            android:name=".Presentation.Onboarding.Activity.OnBoarding"
+            android:exported="true" />
         <activity
             android:name=".Presentation.PhucHoi.Activity.test"
             android:exported="true" />
+
         <activity
             android:name=".Presentation.Accout_Setting.Activity.MyProfile"
             android:exported="true" />
@@ -49,6 +55,9 @@
             android:exported="true" />
         <activity
             android:name=".Presentation.Cart.Activity.GioHangActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Presentation.Onboarding.Activity.SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -56,18 +65,30 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<!--        <activity-->
+<!--            android:name=".Presentation.Cart.Activity.GioHangActivity"-->
+<!--            android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
         <activity
             android:name=".UI.MainActivity"
             android:exported="true" />
+<!--        <activity-->
+<!--            android:name=".Presentation.GH.MainActivity"-->
+<!--            android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
         <activity
             android:name=".Presentation.GH.MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true" />
         <activity android:name=".Presentation.GH.CancelOrderActivity" />
         <activity android:name=".Presentation.GH.OrderDetailsActivity" />
         <activity android:name=".Presentation.GH.ReviewActivity" />

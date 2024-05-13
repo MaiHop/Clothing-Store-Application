@@ -18,7 +18,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.Domain.Model.DonHangChiTiet;
-import com.example.myapplication.Presentation.Cart.ViewModel.CartVM;
+import com.example.myapplication.Presentation.Cart.ViewModel.GioHangVM;
 import com.example.myapplication.R;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.squareup.picasso.Picasso;
@@ -33,7 +33,7 @@ public class GioHangVH extends RecyclerView.ViewHolder {
     public ShapeableImageView iv_Color_cart;
     public CheckBox cb_Selected;
     public ConstraintLayout layout_item_cart;
-    private CartVM cartVM;
+    private GioHangVM gioHangVM;
     private Button btn_Giam, btn_Tang, btn_Cancel, btn_Confirm;
     private Dialog dialog;
     public GioHangVH(@NonNull View itemView) {

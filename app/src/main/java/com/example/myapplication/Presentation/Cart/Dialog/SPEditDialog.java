@@ -26,7 +26,7 @@ import com.example.myapplication.Domain.Model.DonHangChiTiet;
 import com.example.myapplication.Domain.Model.KichThuoc;
 import com.example.myapplication.Domain.Model.Mau;
 import com.example.myapplication.Domain.Model.SanPham;
-import com.example.myapplication.Presentation.Cart.ViewModel.CartVM;
+import com.example.myapplication.Presentation.Cart.ViewModel.GioHangVM;
 import com.example.myapplication.Presentation.Cart.ViewModel.KichThuocVM;
 import com.example.myapplication.Presentation.Cart.ViewModel.MauVM;
 import com.example.myapplication.Presentation.Cart.ViewModel.SanPhamVM;
@@ -44,16 +44,16 @@ public class SPEditDialog {
     private TextView tv_TenSanPham_cart, tv_ThanhTien_cart,tv_SoLuongConLai;
     private Button btn_Giam, btn_Tang, btn_Cancel, btn_Confirm  ;
     private ImageView iv_Image_cart;
-    private CartVM cartVM;
+    private GioHangVM gioHangVM;
     private List<DonHangChiTiet> list;
     private int qty =1;
     private KichThuocVM size_vm;
     private MauVM color_vm;
     private SanPham sp_find;
-    public SPEditDialog(Context context, DonHangChiTiet donHangChiTiet, CartVM cartVM) {
+    public SPEditDialog(Context context, DonHangChiTiet donHangChiTiet, GioHangVM gioHangVM) {
         this.context = context;
         this.donHangChiTiet= donHangChiTiet;
-        this.cartVM = cartVM;
+        this.gioHangVM = gioHangVM;
         this.init_dialog(context,donHangChiTiet);
     }
     public void showEditSanPhamDialog(){
@@ -157,7 +157,7 @@ public class SPEditDialog {
                 donHangChiTiet.setThanhTien(Double.parseDouble(tv_ThanhTien_cart.getText().toString()));
                 donHangChiTiet.setSoLuong(Integer.parseInt(ed_SoLuongDat.getText().toString()));
 
-                cartVM.editCart(donHangChiTiet);
+                gioHangVM.editCart(donHangChiTiet);
                 dialog.hide();
             }
         });

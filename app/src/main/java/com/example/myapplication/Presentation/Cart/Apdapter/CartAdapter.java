@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.Presentation.Cart.Dialog.SPEditDialog;
 import com.example.myapplication.Domain.Model.DonHangChiTiet;
 import com.example.myapplication.Presentation.Cart.ViewHolder.GioHangVH;
-import com.example.myapplication.Presentation.Cart.ViewModel.CartVM;
+import com.example.myapplication.Presentation.Cart.ViewModel.GioHangVM;
 import com.example.myapplication.R;
 
 import java.util.ArrayList;
@@ -28,16 +28,16 @@ public class CartAdapter extends RecyclerView.Adapter<GioHangVH> {
     private Button btn_DatHang;
     private TextView toolbar_title;
     private DonHangChiTiet donHangChiTiet;
-    private CartVM cartVM;
+    private GioHangVM gioHangVM;
 
 
-    public CartAdapter(Context context, List<DonHangChiTiet> list, Button btn_DatHang, TextView toolbar_title, CartVM cartVM){
+    public CartAdapter(Context context, List<DonHangChiTiet> list, Button btn_DatHang, TextView toolbar_title, GioHangVM gioHangVM){
         this.list = list;
         this.context = context;
         this.minflater = LayoutInflater.from(context);
         this.btn_DatHang = btn_DatHang;
         this.toolbar_title = toolbar_title;
-        this.cartVM = cartVM;
+        this.gioHangVM = gioHangVM;
     }
 
     @NonNull
@@ -73,7 +73,7 @@ public class CartAdapter extends RecyclerView.Adapter<GioHangVH> {
             @Override
             public void onClick(View v) {
                 DonHangChiTiet dh_edit = list.get(holder.getAdapterPosition());
-                SPEditDialog dia = new SPEditDialog(context, dh_edit, cartVM);
+                SPEditDialog dia = new SPEditDialog(context, dh_edit, gioHangVM);
                 dia.showEditSanPhamDialog();
                 notifyDataSetChanged();
             }

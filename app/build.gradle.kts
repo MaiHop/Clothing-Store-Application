@@ -52,5 +52,13 @@ dependencies {
 //    implementation("com.google.firebase:firebase-auth")
     implementation("com.google.android.gms:play-services-auth:21.0.0")
 
+    //Retrofit 2
+    implementation ("com.google.code.gson:gson:2.8.5")
+    implementation ("com.squareup.retrofit2:retrofit:2.4.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.4.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.3.0")
+    // Logging
+    implementation ("com.squareup.okhttp3:logging-interceptor:3.9.0")
+
 
 }

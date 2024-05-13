@@ -51,11 +51,12 @@ public class TestFirebase extends AppCompatActivity {
 //        getNhomSanPham();
 //        getListMau();
 
-        FirebaseFirestore.getInstance().collection("SanPham").document("1").get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+        FirebaseFirestore.getInstance().collection("SanPham").document("0302TpRQuOUthwuJ9o0p").get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                KieuSP kieuSP = documentSnapshot.toObject(KieuSP.class);
-                Log.d("ID", kieuSP.getTen());
+                SanPham sp = documentSnapshot.toObject(SanPham.class);
+//                sp.setId(documentSnapshot.getId());
+                Log.d("ID", sp.getId()+" - "+ sp.getIdSanPham());
             }
         });
 

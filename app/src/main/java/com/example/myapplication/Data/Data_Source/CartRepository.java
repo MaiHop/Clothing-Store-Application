@@ -132,8 +132,13 @@ public class CartRepository {
         nhomSP1.setId("2");
         nhomSP1.setTen("Nữ");
         nhomSP1.setListLoaiSP(this.getListLoaiSP());
+
+
+
         list.add(nhomSP);
         list.add(nhomSP1);
+
+
         return list;
     }
     public List<SanPham> getSanPham(){
@@ -166,7 +171,7 @@ public class CartRepository {
         sp2.setGiaban(121);
         sp2.setSoLuong(20);
         sp2.setSoLuongBan(12);
-        sp2.setNhomSanPham(listNhomSP.get(0));
+        sp2.setNhomSanPham(listNhomSP.get(1));
         sp2.setLoaiSanPham(listLoaiSP.get(0));
         sp2.setKieuSanPham(listKieuSP.get(0));
         sp2.setKichThuoc(listsize.get(1));
@@ -180,10 +185,10 @@ public class CartRepository {
         sp3.setGiaban(122);
         sp3.setSoLuong(30);
         sp3.setSoLuongBan(12);
-        sp3.setNhomSanPham(listNhomSP.get(0));
+        sp3.setNhomSanPham(listNhomSP.get(1));
         sp3.setLoaiSanPham(listLoaiSP.get(0));
         sp3.setKieuSanPham(listKieuSP.get(0));
-        sp3.setKichThuoc(listsize.get(2));
+        sp3.setKichThuoc(listsize.get(1));
         sp3.setMau(listcolor.get(2));
         sp3.setThongTin("Chất liệu vải nhẹ, co giãn và nhanh khô mang lại sự thoải mái đáng kinh ngạc. Kiểu dáng đẹp mắt cho bất kỳ dịp nào.");
 

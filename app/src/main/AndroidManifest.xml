@@ -15,6 +15,9 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".Presentation.PhucHoi.Activity.test"
+            android:exported="true" />
+        <activity
             android:name=".Presentation.Accout_Setting.Activity.MyProfile"
             android:exported="true" />
         <activity
@@ -32,15 +35,17 @@
         <activity
             android:name=".Presentation.PhucHoi.Activity.DanhMucActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustPan"
-           ></activity>
-
-
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".Presentation.PhucHoi.Activity.ChiTietSanPhamActivity"
             android:exported="true" />
+
+
         <activity
             android:name=".Presentation.PhucHoi.Activity.SanPhamActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Presentation.PhucHoi.Activity.DanhMuc"
             android:exported="true" />
         <activity
             android:name=".Presentation.Cart.Activity.GioHangActivity"

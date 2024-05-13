@@ -31,9 +31,9 @@
             android:orientation="horizontal">
 
 
-            <EditText
-                android:id="@+id/search"
-                android:layout_width="wrap_content"
+            <SearchView
+                android:id="@+id/editTextText2"
+                android:layout_width="210dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:background="@drawable/hoi_edittext_bg"
@@ -136,7 +136,7 @@
                     android:textSize="25sp"/>
 
                 <TextView
-                    android:id="@+id/textView14"
+                    android:id="@+id/viewall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                    android:textColor="@color/green"

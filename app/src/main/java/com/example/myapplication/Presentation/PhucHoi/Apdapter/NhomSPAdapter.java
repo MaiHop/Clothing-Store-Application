@@ -35,12 +35,29 @@ public class NhomSPAdapter extends RecyclerView.Adapter<NhomSPVH>{
         return new NhomSPVH(itemView);
     }
 
-    @Override
+//    @Override
+//    public void onBindViewHolder(@NonNull NhomSPVH holder, int position) {
+//        NhomSP nhomSP = nhomSPList.get(position);
+//        holder.bind(nhomSP);
+//
+//        holder.itemView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Chuyển sang DanhMucActivity và truyền thông tin nhóm sản phẩm
+//                Intent intent = new Intent(context, DanhMucActivity.class);
+//                intent.putExtra("nhomSPId", nhomSP.getId());
+//                context.startActivity(intent);
+//            }
+//        });
+//
+//    }
+
     public void onBindViewHolder(@NonNull NhomSPVH holder, int position) {
         NhomSP nhomSP = nhomSPList.get(position);
         holder.bind(nhomSP);
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        // Đặt onClickListener cho tenBoloc thay vì itemView
+        holder.tenBoloc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Chuyển sang DanhMucActivity và truyền thông tin nhóm sản phẩm
@@ -49,8 +66,8 @@ public class NhomSPAdapter extends RecyclerView.Adapter<NhomSPVH>{
                 context.startActivity(intent);
             }
         });
-
     }
+
 
 
     @Override

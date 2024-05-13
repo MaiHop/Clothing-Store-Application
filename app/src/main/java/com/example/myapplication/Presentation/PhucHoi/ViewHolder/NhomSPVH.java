@@ -10,7 +10,7 @@ import com.example.myapplication.Domain.Model.NhomSP;
 import com.example.myapplication.R;
 
 public class NhomSPVH extends  RecyclerView.ViewHolder{
-    private TextView tenBoloc;
+    public  TextView tenBoloc;
     public NhomSPVH(@NonNull View itemView) {
         super(itemView);
         tenBoloc = itemView.findViewById(R.id.tenBoLoc);

@@ -75,4 +75,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamVH> {
         this.list_product = sanPhamList;
         notifyDataSetChanged();
     }
+    public List<SanPham> getListProduct() {
+        return list_product;
+    }
 }

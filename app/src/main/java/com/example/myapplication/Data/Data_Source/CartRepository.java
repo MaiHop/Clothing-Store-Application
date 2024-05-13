@@ -1,19 +1,19 @@
 package com.example.myapplication.Data.Data_Source;
 
-import com.example.myapplication.Domain.Model.DonHang;
-import com.example.myapplication.Domain.Model.DonHangChiTiet;
-import com.example.myapplication.Domain.Model.DiaChi;
-import com.example.myapplication.Domain.Model.KhachHang;
-import com.example.myapplication.Domain.Model.KhuyenMai;
-import com.example.myapplication.Domain.Model.KichThuoc;
-import com.example.myapplication.Domain.Model.KieuSP;
-import com.example.myapplication.Domain.Model.LoaiSP;
-import com.example.myapplication.Domain.Model.Mau;
-import com.example.myapplication.Domain.Model.NhomSP;
-import com.example.myapplication.Domain.Model.SanPham;
-import com.example.myapplication.Domain.Model.ThanhToan;
-import com.example.myapplication.Domain.Model.VanChuyen;
-import com.example.myapplication.Domain.Model.YeuThich;
+import com.example.myapplication.Model.DonHang;
+import com.example.myapplication.Model.DonHangChiTiet;
+import com.example.myapplication.Model.DiaChi;
+import com.example.myapplication.Model.KhachHang;
+import com.example.myapplication.Model.KhuyenMai;
+import com.example.myapplication.Model.KichThuoc;
+import com.example.myapplication.Model.KieuSP;
+import com.example.myapplication.Model.LoaiSP;
+import com.example.myapplication.Model.Mau;
+import com.example.myapplication.Model.NhomSP;
+import com.example.myapplication.Model.SanPham;
+import com.example.myapplication.Model.ThanhToan;
+import com.example.myapplication.Model.VanChuyen;
+import com.example.myapplication.Model.YeuThich;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

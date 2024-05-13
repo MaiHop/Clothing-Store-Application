@@ -17,8 +17,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.Presentation.Cart.Apdapter.CartAdapter;
-import com.example.myapplication.Domain.Model.DonHang;
-import com.example.myapplication.Domain.Model.DonHangChiTiet;
+import com.example.myapplication.Model.DonHang;
+import com.example.myapplication.Model.DonHangChiTiet;
 import com.example.myapplication.Presentation.Cart.ViewModel.GioHangVM;
 import com.example.myapplication.R;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -68,7 +68,7 @@ public class GioHangActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                gioHangVM.filterCart(newText.toLowerCase());
+//                gioHangVM.filterCart(newText.toLowerCase());
                 return false;
             }
         });

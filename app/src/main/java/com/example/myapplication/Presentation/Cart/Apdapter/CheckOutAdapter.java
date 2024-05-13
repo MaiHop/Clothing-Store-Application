@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Domain.Model.DonHangChiTiet;
+import com.example.myapplication.Model.DonHangChiTiet;
 import com.example.myapplication.Presentation.Cart.ViewHolder.ThanhToanVH;
 import com.example.myapplication.R;
 

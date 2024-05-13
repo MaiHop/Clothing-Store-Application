@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Domain.Model.SanPham;
+import com.example.myapplication.Model.SanPham;
 import com.example.myapplication.Presentation.PhucHoi.Activity.ChiTietSanPhamActivity;
 
 import com.example.myapplication.Presentation.PhucHoi.ViewHolder.SanPhamVH;

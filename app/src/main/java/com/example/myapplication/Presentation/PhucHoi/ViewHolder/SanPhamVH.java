@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.example.myapplication.Domain.Model.SanPham;
+import com.example.myapplication.Model.SanPham;
 import com.example.myapplication.R;
 import com.squareup.picasso.Picasso;
 public class SanPhamVH extends  RecyclerView.ViewHolder {

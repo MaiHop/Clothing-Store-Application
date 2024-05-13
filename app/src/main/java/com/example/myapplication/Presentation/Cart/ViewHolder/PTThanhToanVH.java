@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Domain.Model.ThanhToan;
+import com.example.myapplication.Model.ThanhToan;
 import com.example.myapplication.R;
 import com.squareup.picasso.Picasso;
 

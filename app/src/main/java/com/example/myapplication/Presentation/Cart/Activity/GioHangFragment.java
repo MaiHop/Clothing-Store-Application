@@ -21,8 +21,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.Presentation.Cart.Apdapter.CartAdapter;
-import com.example.myapplication.Domain.Model.DonHang;
-import com.example.myapplication.Domain.Model.DonHangChiTiet;
+import com.example.myapplication.Model.DonHang;
+import com.example.myapplication.Model.DonHangChiTiet;
 import com.example.myapplication.Presentation.Cart.ViewModel.GioHangVM;
 import com.example.myapplication.R;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -73,7 +73,7 @@ public class GioHangFragment extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                gioHangVM.filterCart(newText.toLowerCase());
+//                gioHangVM.filterCart(newText.toLowerCase());
                 return false;
             }
         });

@@ -16,10 +16,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.myapplication.Domain.Model.DonHangChiTiet;
-import com.example.myapplication.Domain.Model.SanPham;
+import com.example.myapplication.Model.DonHangChiTiet;
 import com.example.myapplication.Presentation.Cart.Apdapter.CheckOutAdapter;
-import com.example.myapplication.Domain.Model.DonHang;
+import com.example.myapplication.Model.DonHang;
 import com.example.myapplication.R;
 
 import java.text.SimpleDateFormat;

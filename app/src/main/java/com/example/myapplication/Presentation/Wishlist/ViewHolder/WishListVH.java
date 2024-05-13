@@ -1,22 +1,14 @@
 package com.example.myapplication.Presentation.Wishlist.ViewHolder;
 
-import android.content.Context;
-import android.view.ContextMenu;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Domain.Model.SanPham;
-import com.example.myapplication.Domain.Model.YeuThich;
+import com.example.myapplication.Model.SanPham;
 import com.example.myapplication.R;
 import com.squareup.picasso.Picasso;
 

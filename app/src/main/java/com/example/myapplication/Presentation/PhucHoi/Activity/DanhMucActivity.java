@@ -9,8 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Domain.Model.NhomSP;
-import com.example.myapplication.Domain.Model.SanPham;
+import com.example.myapplication.Model.NhomSP;
+import com.example.myapplication.Model.SanPham;
 import com.example.myapplication.Data.Data_Source.CartRepository;
 import com.example.myapplication.Presentation.PhucHoi.Apdapter.SanPhamAdapter;
 

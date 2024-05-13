@@ -23,28 +23,28 @@ public class GioHangUseCase {
         }
         return list;
     }
-//    public boolean AddGioHang(DonHangChiTiet dhct) {
+//    public boolean AddGioHang(DonHangChiTiet_api dhct) {
 //        return true;
 //    }
-//    public boolean UpdateGioHang(DonHangChiTiet dhct) {
+//    public boolean UpdateGioHang(DonHangChiTiet_api dhct) {
 //        return false;
 //    }
 //    public boolean DeleteGioHang(String IdDonHang) {
 //        return false;
 //    }
-//    public List<DonHangChiTiet> AddGioHang(DonHangChiTiet dhct, List<DonHangChiTiet> list) {
+//    public List<DonHangChiTiet_api> AddGioHang(DonHangChiTiet_api dhct, List<DonHangChiTiet_api> list) {
 //        list.add(dhct);
 //        return list;
 //    }
-//    public List<DonHangChiTiet> UpdateGioHang(DonHangChiTiet dhct, List<DonHangChiTiet> list) {
-//        for(DonHangChiTiet donHangChiTiet : list){
+//    public List<DonHangChiTiet_api> UpdateGioHang(DonHangChiTiet_api dhct, List<DonHangChiTiet_api> list) {
+//        for(DonHangChiTiet_api donHangChiTiet : list){
 //            if(donHangChiTiet.getSanPham().getIdSanPham().equals(dhct.getSanPham().getIdSanPham())){
 //
 //            }
 //        }
 //        return true;
 //    }
-//    public List<DonHangChiTiet> DeleteGioHang(DonHangChiTiet dhct, List<DonHangChiTiet> list) {
+//    public List<DonHangChiTiet_api> DeleteGioHang(DonHangChiTiet_api dhct, List<DonHangChiTiet_api> list) {
 //
 //        return true;
 //    }

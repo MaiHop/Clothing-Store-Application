@@ -11,9 +11,9 @@
 //
 //import com.example.myapplication.Presentation.Cart.Apdapter.ColorAdapterPH;
 //import com.example.myapplication.Presentation.Cart.Apdapter.SizeAdapterPH;
-//import com.example.myapplication.Presentation.Cart.Model.KichThuoc;
-//import com.example.myapplication.Presentation.Cart.Model.Mau;
-//import com.example.myapplication.Presentation.Cart.Model.SanPham;
+//import com.example.myapplication.Presentation.Cart.Model.KichThuoc_api;
+//import com.example.myapplication.Presentation.Cart.Model.Mau_api;
+//import com.example.myapplication.Presentation.Cart.Model.SanPham_api;
 //import com.example.myapplication.Presentation.Cart.Repository.CartRepository;
 //import com.example.myapplication.R;
 //import com.squareup.picasso.Picasso;
@@ -46,7 +46,7 @@
 //        recyclerViewMauSac = findViewById(R.id.recylerviewcolor);
 //
 //        // Lấy thông tin sản phẩm từ Intent
-//        SanPham product = (SanPham) getIntent().getSerializableExtra("product");
+//        SanPham_api product = (SanPham_api) getIntent().getSerializableExtra("product");
 //
 //        // Hiển thị thông tin sản phẩm lên các TextView và ImageView
 //        if (product != null) {
@@ -57,7 +57,7 @@
 //
 //            // Lấy danh sách kích thước từ CartRepository
 //            CartRepository cartRepository = new CartRepository();
-//            List<KichThuoc> danhSachKichThuoc = cartRepository.getListSize();
+//            List<KichThuoc_api> danhSachKichThuoc = cartRepository.getListSize();
 //
 //            // Khởi tạo và đặt adapter cho RecyclerView của kích thước
 //            kichThuocAdapter = new SizeAdapterPH(danhSachKichThuoc,this);
@@ -65,7 +65,7 @@
 //            recyclerViewKichThuoc.setAdapter(kichThuocAdapter);
 //
 //            // Lấy danh sách màu sắc từ sản phẩm
-//            List<Mau> danhSachMauSac = cartRepository.getListMau();
+//            List<Mau_api> danhSachMauSac = cartRepository.getListMau();
 //
 //            // Khởi tạo và đặt adapter cho RecyclerView của màu sắc
 //            mauAdapter = new ColorAdapterPH(danhSachMauSac,this);

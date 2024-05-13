@@ -43,7 +43,7 @@ public class WishListVH extends RecyclerView.ViewHolder{
     }
     public void updateUI(SanPham sanPham){
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
-//        SanPham sanPham = yeuThich.getListsanpham().get(0);
+//        SanPham_api sanPham = yeuThich.getListsanpham().get(0);
 
         Picasso.get().load(sanPham.getImageUrl()).into(this.hinhSP);
 //        this.tenSP.setText(sanPham.getTenSanPham());

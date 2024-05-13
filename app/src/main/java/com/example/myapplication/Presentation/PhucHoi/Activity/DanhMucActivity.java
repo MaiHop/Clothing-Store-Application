@@ -50,7 +50,7 @@ public class DanhMucActivity extends AppCompatActivity {
 //
 //        // Lọc danh sách sản phẩm tương ứng với nhóm sản phẩm được chọn (nhomSPId)
 //        String nhomSPId = getIntent().getStringExtra("nhomSPId");
-//        List<SanPham> filteredList = filterSanPhamByNhomSPId(sanPhamList, nhomSPId);
+//        List<SanPham_api> filteredList = filterSanPhamByNhomSPId(sanPhamList, nhomSPId);
 //
 //        // Khởi tạo và thiết lập adapter cho RecyclerView với danh sách sản phẩm đã lọc
 //        sanPhamAdapter = new SanPhamAdapter(filteredList, this, getLayoutInflater());
@@ -61,9 +61,9 @@ public class DanhMucActivity extends AppCompatActivity {
 //    }
 //
 //    // Phương thức lọc danh sách sản phẩm theo nhóm sản phẩm (nhomSPId)
-//    private List<SanPham> filterSanPhamByNhomSPId(List<SanPham> sanPhamList, String nhomSPId) {
-//        List<SanPham> filteredList = new ArrayList<>();
-//        for (SanPham sanPham : sanPhamList) {
+//    private List<SanPham_api> filterSanPhamByNhomSPId(List<SanPham_api> sanPhamList, String nhomSPId) {
+//        List<SanPham_api> filteredList = new ArrayList<>();
+//        for (SanPham_api sanPham : sanPhamList) {
 //            if (sanPham.getNhomSanPham().getId().equals(nhomSPId)) {
 //                filteredList.add(sanPham);
 //            }
@@ -91,7 +91,7 @@ protected void onCreate(Bundle savedInstanceState) {
     // Lấy nhomSPId từ Intent
     String nhomSPId = getIntent().getStringExtra("nhomSPId");
 
-    // Tìm và hiển thị tên của NhomSP lên tvNhomSPName
+    // Tìm và hiển thị tên của NhomSP_api lên tvNhomSPName
     NhomSP nhomSP = findNhomSPById(nhomSPId);
     if (nhomSP != null) {
         tvNhomSPName.setText(nhomSP.getTen());
@@ -118,7 +118,7 @@ protected void onCreate(Bundle savedInstanceState) {
         return filteredList;
     }
 
-    // Phương thức tìm NhomSP theo nhomSPId
+    // Phương thức tìm NhomSP_api theo nhomSPId
     private NhomSP findNhomSPById(String nhomSPId) {
         CartRepository cartRepository = new CartRepository();
         List<NhomSP> nhomSPList = cartRepository.getListNhomSP();

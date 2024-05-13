@@ -61,9 +61,9 @@ public class ThongTinActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        if (type.equals("DiaChi") || type.equals("ThanhToan")) {
+        if (type.equals("DiaChi_api") || type.equals("ThanhToan_api")) {
             getMenuInflater().inflate(R.menu.mh_menu_toolbar_cho_inf_add, menu);
-        } else if (type.equals("KhuyenMai")) {
+        } else if (type.equals("KhuyenMai_api")) {
             getMenuInflater().inflate(R.menu.mh_menu_toolbar_cho_inf_find, menu);
         }
         return true;
@@ -73,9 +73,9 @@ public class ThongTinActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.item_cho_inf_add) {
-            if (type.equals("DiaChi")) {
+            if (type.equals("DiaChi_api")) {
                 daVM.addDiaChi();
-            } else if (type.equals("ThanhToan")) {
+            } else if (type.equals("ThanhToan_api")) {
                 pmVM.addPTThanhToan();
             }
             Toast.makeText(this, "Add", Toast.LENGTH_SHORT).show();
@@ -85,21 +85,21 @@ public class ThongTinActivity extends AppCompatActivity {
             return true;
         } else if (id == android.R.id.home) {
             switch (type) {
-                case "DiaChi":
+                case "DiaChi_api":
                     dh.setDiachi(null);
                     break;
-                case "VanChuyen":
+                case "VanChuyen_api":
                     dh.setVanchuyen(null);
                     break;
-                case "ThanhToan":
+                case "ThanhToan_api":
                     dh.setThanhToan(null);
                     break;
-                case "KhuyenMai":
+                case "KhuyenMai_api":
                     dh.setKhuyenmai(null);
                     break;
             }
             Intent intent = new Intent(ThongTinActivity.this, ThanhToanActivity.class);
-            intent.putExtra("DonHang", dh);
+            intent.putExtra("DonHang_api", dh);
             startActivity(intent);
             return true;
         } else {
@@ -121,7 +121,7 @@ public class ThongTinActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ThongTinActivity.this, ThanhToanActivity.class);
-                intent.putExtra("DonHang", dh);
+                intent.putExtra("DonHang_api", dh);
                 startActivity(intent);
             }
         });
@@ -133,9 +133,9 @@ public class ThongTinActivity extends AppCompatActivity {
     private void HienThiDanhSach() {
         Intent i = getIntent();
         type = i.getStringExtra("Loai");
-        dh = (DonHang) i.getSerializableExtra("DonHang");
+        dh = (DonHang) i.getSerializableExtra("DonHang_api");
         switch (type) {
-            case "DiaChi":
+            case "DiaChi_api":
                 toolbar_thongtin_title.setText("Choose Delivery Address");
                 this.rv_Choose_info.setLayoutManager(new LinearLayoutManager(this));
                 daVM = new ViewModelProvider(this).get(DiaChiGHVM.class);
@@ -152,7 +152,7 @@ public class ThongTinActivity extends AppCompatActivity {
                     }
                 });
                 return;
-            case "VanChuyen":
+            case "VanChuyen_api":
                 toolbar_thongtin_title.setText("Choose Delivery");
                 this.rv_Choose_info.setLayoutManager(new LinearLayoutManager(this));
                 vcVM = new ViewModelProvider(this).get(VanChuyenVM.class);
@@ -169,7 +169,7 @@ public class ThongTinActivity extends AppCompatActivity {
                     }
                 });
                 return;
-            case "ThanhToan":
+            case "ThanhToan_api":
                 toolbar_thongtin_title.setText("Choose Payment Methods");
                 this.rv_Choose_info.setLayoutManager(new LinearLayoutManager(this));
                 pmVM = new ViewModelProvider(this).get(PTThanhToanVM.class);
@@ -186,7 +186,7 @@ public class ThongTinActivity extends AppCompatActivity {
                     }
                 });
                 return;
-            case "KhuyenMai":
+            case "KhuyenMai_api":
                 toolbar_thongtin_title.setText("Promos & Vouchers");
                 this.rv_Choose_info.setLayoutManager(new LinearLayoutManager(this));
                 kmVM = new ViewModelProvider(this).get(KhuyenMaiVM.class);

@@ -11,7 +11,7 @@ import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Query;
 
-public interface DanhGia {
+public interface DanhGia_api {
     @GET("DanhGia/readAll")
     Call<List<DanhGia>> readallDanhGia();
 

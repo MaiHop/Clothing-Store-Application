@@ -1,5 +1,7 @@
 package com.example.myapplication.Data.Data_Source.Api;
 
+import com.example.myapplication.Domain.Model.KhachHang;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -9,7 +11,7 @@ import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Query;
 
-public interface KhachHang {
+public interface KhachHang_api {
     @GET("KhachHang/readAll")
     Call<List<KhachHang>> readallKhachHang();
 

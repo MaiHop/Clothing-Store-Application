@@ -1,5 +1,7 @@
 package com.example.myapplication.Data.Data_Source.Api;
 
+import com.example.myapplication.Domain.Model.DanhGia;
+
 import java.util.List;
 
 import retrofit2.Call;

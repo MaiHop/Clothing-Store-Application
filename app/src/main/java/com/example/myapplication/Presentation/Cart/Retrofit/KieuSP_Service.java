@@ -25,10 +25,9 @@ public interface KieuSP_Service {
     @POST("KieuSP/create")
     Call<KieuSP> createKieuSP(@Body KieuSP kieu);
 
-    @FormUrlEncoded
     @PUT("KieuSP/update")
     Call<KieuSP> updateKieuSP(@Body KieuSP kieu);
 
-    @DELETE("KieuSP/delete")
-    Call<Void> deleteIdea(@Query("id")int id);
+    @PUT("KieuSP/delete")
+    Call<KieuSP> deleteKieuSP(@Query("id")String id);
 }

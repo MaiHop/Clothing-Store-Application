@@ -50,13 +50,21 @@ public class TestFirebase extends AppCompatActivity {
 
 //        getNhomSanPham();
 //        getListMau();
-
-        FirebaseFirestore.getInstance().collection("SanPham").document("0302TpRQuOUthwuJ9o0p").get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+        List<SanPham> list = new ArrayList<>();
+        FirebaseFirestore.getInstance().collection("SanPham").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                SanPham sp = documentSnapshot.toObject(SanPham.class);
-//                sp.setId(documentSnapshot.getId());
-                Log.d("ID", sp.getId()+" - "+ sp.getIdSanPham());
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                if (!queryDocumentSnapshots.isEmpty()) {
+                    List<DocumentSnapshot> list_doc = queryDocumentSnapshots.getDocuments();
+                    int i = 1;
+                    for (DocumentSnapshot doc : list_doc) {
+                        SanPham sp = doc.toObject(SanPham.class);
+                        sp.setId(doc.getId());
+                        Log.d("Test", String.valueOf(sp.getTenSanPham())+" "+sp.getNhomSanPham().getTen()+" "+ i);
+                        i++;
+                    }
+                }
+
             }
         });
 

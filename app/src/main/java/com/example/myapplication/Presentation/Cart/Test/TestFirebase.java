@@ -103,7 +103,7 @@ public class TestFirebase extends AppCompatActivity {
                 list.add(ct5);
 
                 for(DonHangChiTiet ct : list){
-                    db1.collection("GioHang").add(ct).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    db1.collection("DonHangChiTiet").add(ct).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                         @Override
                         public void onSuccess(DocumentReference documentReference) {
                             Toast.makeText(TestFirebase.this, "OK", Toast.LENGTH_SHORT).show();

@@ -17,7 +17,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class TestRetrofit extends AppCompatActivity {
-
+    List<KieuSP>list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +28,7 @@ public class TestRetrofit extends AppCompatActivity {
         req.enqueue(new Callback<List<KieuSP>>() {
             @Override
             public void onResponse(Call<List<KieuSP>> call, Response<List<KieuSP>> response) {
-                List<KieuSP>list = response.body();
+                list = response.body();
                 Log.d("Test Retrofit", String.valueOf(list.size()));
 
             }

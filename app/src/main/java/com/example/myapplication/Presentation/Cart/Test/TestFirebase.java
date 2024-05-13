@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.myapplication.Domain.Model.DonHangChiTiet;
 import com.example.myapplication.Domain.Model.KichThuoc;
 import com.example.myapplication.Domain.Model.KieuSP;
 import com.example.myapplication.Domain.Model.LoaiSP;
@@ -50,21 +51,65 @@ public class TestFirebase extends AppCompatActivity {
 
 //        getNhomSanPham();
 //        getListMau();
-        List<SanPham> list = new ArrayList<>();
-        FirebaseFirestore.getInstance().collection("SanPham").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        List<SanPham> list_sp = new ArrayList<>();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseFirestore db1 = FirebaseFirestore.getInstance();
+        db.collection("SanPham").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 if (!queryDocumentSnapshots.isEmpty()) {
                     List<DocumentSnapshot> list_doc = queryDocumentSnapshots.getDocuments();
-                    int i = 1;
                     for (DocumentSnapshot doc : list_doc) {
                         SanPham sp = doc.toObject(SanPham.class);
                         sp.setId(doc.getId());
-                        Log.d("Test", String.valueOf(sp.getTenSanPham())+" "+sp.getNhomSanPham().getTen()+" "+ i);
-                        i++;
+                        list_sp.add(sp);
                     }
                 }
+                List<DonHangChiTiet> list= new ArrayList<>();
+                DonHangChiTiet ct1 = new DonHangChiTiet();
+                ct1.setSanPham(list_sp.get(0));
+                ct1.setSoLuong(2);
+                ct1.setThanhTien(list_sp.get(0).getGiaban()*ct1.getSoLuong());
+                ct1.setThanhTienKhuyenMai(0);
 
+                DonHangChiTiet ct2 = new DonHangChiTiet();
+                ct2.setSanPham(list_sp.get(1));
+                ct2.setSoLuong(2);
+                ct2.setThanhTien(list_sp.get(1).getGiaban()*ct1.getSoLuong());
+                ct2.setThanhTienKhuyenMai(0);
+
+                DonHangChiTiet ct3 = new DonHangChiTiet();
+                ct3.setSanPham(list_sp.get(2));
+                ct3.setSoLuong(2);
+                ct3.setThanhTien(list_sp.get(2).getGiaban()*ct1.getSoLuong());
+                ct3.setThanhTienKhuyenMai(0);
+
+                DonHangChiTiet ct4 = new DonHangChiTiet();
+                ct4.setSanPham(list_sp.get(3));
+                ct4.setSoLuong(2);
+                ct4.setThanhTien(list_sp.get(3).getGiaban()*ct1.getSoLuong());
+                ct4.setThanhTienKhuyenMai(0);
+
+                DonHangChiTiet ct5 = new DonHangChiTiet();
+                ct5.setSanPham(list_sp.get(4));
+                ct5.setSoLuong(2);
+                ct5.setThanhTien(list_sp.get(4).getGiaban()*ct1.getSoLuong());
+                ct5.setThanhTienKhuyenMai(0);
+
+                list.add(ct1);
+                list.add(ct2);
+                list.add(ct3);
+                list.add(ct4);
+                list.add(ct5);
+
+                for(DonHangChiTiet ct : list){
+                    db1.collection("GioHang").add(ct).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                        @Override
+                        public void onSuccess(DocumentReference documentReference) {
+                            Toast.makeText(TestFirebase.this, "OK", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
             }
         });
 

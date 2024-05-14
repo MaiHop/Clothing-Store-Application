@@ -4,75 +4,59 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class KhuyenMai implements Serializable {
-    private String IdKhuyenMai,TenKhuyenMai, NoiDung, DieuKien, ToiDaGiam;
-    private Date HanSuDung;
-    private boolean checked, TrangThai= true,TrangThaiSD=false;
+    private String idKhuyenMai,tenKhuyenMai, noiDung, dieuKien, toiDaGiam;
+    private Date hanSuDung;
+    private boolean checked, trangThai= true,trangThaiSD=false;
 
     public KhuyenMai() {
     }
 
-    public boolean isTrangThaiSD() {
-        return TrangThaiSD;
-    }
-
-    public void setTrangThaiSD(boolean trangThaiSD) {
-        TrangThaiSD = trangThaiSD;
-    }
-
-    public boolean isTrangThai() {
-        return TrangThai;
-    }
-
-    public void setTrangThai(boolean trangThai) {
-        TrangThai = trangThai;
-    }
-
     public String getIdKhuyenMai() {
-        return IdKhuyenMai;
+        return idKhuyenMai;
     }
 
     public void setIdKhuyenMai(String idKhuyenMai) {
-        IdKhuyenMai = idKhuyenMai;
+        this.idKhuyenMai = idKhuyenMai;
     }
 
     public String getTenKhuyenMai() {
-        return TenKhuyenMai;
+        return tenKhuyenMai;
     }
 
     public void setTenKhuyenMai(String tenKhuyenMai) {
-        TenKhuyenMai = tenKhuyenMai;
+        this.tenKhuyenMai = tenKhuyenMai;
     }
 
     public String getNoiDung() {
-        return NoiDung;
+        return noiDung;
     }
 
     public void setNoiDung(String noiDung) {
-        NoiDung = noiDung;
+        this.noiDung = noiDung;
     }
 
     public String getDieuKien() {
-        return DieuKien;
+        return dieuKien;
     }
 
     public void setDieuKien(String dieuKien) {
-        DieuKien = dieuKien;
+        this.dieuKien = dieuKien;
     }
 
     public String getToiDaGiam() {
-        return ToiDaGiam;
+        return toiDaGiam;
     }
 
     public void setToiDaGiam(String toiDaGiam) {
-        ToiDaGiam = toiDaGiam;
+        this.toiDaGiam = toiDaGiam;
     }
 
     public Date getHanSuDung() {
-        return HanSuDung;
+        return hanSuDung;
     }
 
     public void setHanSuDung(Date hanSuDung) {
-        HanSuDung = hanSuDung;
+        this.hanSuDung = hanSuDung;
     }
 
     public boolean isChecked() {
@@ -81,5 +65,21 @@ public class KhuyenMai implements Serializable {
 
     public void setChecked(boolean checked) {
         this.checked = checked;
+    }
+
+    public boolean isTrangThai() {
+        return trangThai;
+    }
+
+    public void setTrangThai(boolean trangThai) {
+        this.trangThai = trangThai;
+    }
+
+    public boolean isTrangThaiSD() {
+        return trangThaiSD;
+    }
+
+    public void setTrangThaiSD(boolean trangThaiSD) {
+        this.trangThaiSD = trangThaiSD;
     }
 }

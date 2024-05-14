@@ -3,51 +3,51 @@ package com.example.myapplication.Model;
 import java.io.Serializable;
 
 public class VanChuyen implements Serializable {
-    private String Id, Ten, NgayGiao, ImageURL;
-    private double Gia;
+    private String id, ten, ngayGiao, imageURL;
+    private double gia;
     private boolean checked;
 
     public VanChuyen() {
     }
 
     public String getId() {
-        return Id;
+        return id;
     }
 
     public void setId(String id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getTen() {
-        return Ten;
+        return ten;
     }
 
     public void setTen(String ten) {
-        Ten = ten;
+        this.ten = ten;
     }
 
     public String getNgayGiao() {
-        return NgayGiao;
+        return ngayGiao;
     }
 
     public void setNgayGiao(String ngayGiao) {
-        NgayGiao = ngayGiao;
+        this.ngayGiao = ngayGiao;
     }
 
     public String getImageURL() {
-        return ImageURL;
+        return imageURL;
     }
 
     public void setImageURL(String imageURL) {
-        ImageURL = imageURL;
+        this.imageURL = imageURL;
     }
 
     public double getGia() {
-        return Gia;
+        return gia;
     }
 
     public void setGia(double gia) {
-        Gia = gia;
+        this.gia = gia;
     }
 
     public boolean isChecked() {

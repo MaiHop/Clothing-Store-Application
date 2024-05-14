@@ -3,25 +3,9 @@ package com.example.myapplication.Model;
 import java.io.Serializable;
 
 public class KichThuoc implements Serializable {
-    private String id, Ten;
-    private boolean Checked, Able;
+    private String id, ten;
+    private boolean checked, able;
     public KichThuoc() {
-    }
-
-    public boolean isAble() {
-        return Able;
-    }
-
-    public void setAble(boolean able) {
-        Able = able;
-    }
-
-    public boolean isChecked() {
-        return Checked;
-    }
-
-    public void setChecked(boolean checked) {
-        Checked = checked;
     }
 
     public String getId() {
@@ -33,10 +17,26 @@ public class KichThuoc implements Serializable {
     }
 
     public String getTen() {
-        return Ten;
+        return ten;
     }
 
     public void setTen(String ten) {
-        Ten = ten;
+        this.ten = ten;
+    }
+
+    public boolean isChecked() {
+        return checked;
+    }
+
+    public void setChecked(boolean checked) {
+        this.checked = checked;
+    }
+
+    public boolean isAble() {
+        return able;
+    }
+
+    public void setAble(boolean able) {
+        this.able = able;
     }
 }

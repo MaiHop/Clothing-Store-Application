@@ -4,129 +4,129 @@ import java.io.Serializable;
 import java.util.List;
 
 public class SanPham implements Serializable {
-    private String IdSanPham, ImageUrl, TenSanPham, ThongTin;
-    private double Giaban;
-    private int SoLuong, SoLuongBan;
-    private NhomSP NhomSanPham = null;
-    private LoaiSP LoaiSanPham = null;
-    private KieuSP KieuSanPham = null;
-    private com.example.myapplication.Model.KichThuoc KichThuoc = null;
-    private com.example.myapplication.Model.Mau Mau= null;
-    private List<DanhGia> ListDanhGia= null;
-    private List<KhuyenMai> ListKhuyenMai= null;
+    private String idSanPham, imageUrl, tenSanPham, thongTin;
+    private double giaban;
+    private int soLuong, soLuongBan;
+    private NhomSP nhomSanPham = null;
+    private LoaiSP loaiSanPham = null;
+    private KieuSP kieuSanPham = null;
+    private com.example.myapplication.Model.KichThuoc kichThuoc = null;
+    private com.example.myapplication.Model.Mau mau= null;
+    private List<DanhGia> listDanhGia= null;
+    private List<KhuyenMai> listKhuyenMai= null;
 
     public SanPham() {
     }
 
-    public LoaiSP getLoaiSanPham() {
-        return LoaiSanPham;
-    }
-
-    public void setLoaiSanPham(LoaiSP loaiSanPham) {
-        LoaiSanPham = loaiSanPham;
-    }
-
-    public KieuSP getKieuSanPham() {
-        return KieuSanPham;
-    }
-
-    public void setKieuSanPham(KieuSP kieuSanPham) {
-        KieuSanPham = kieuSanPham;
-    }
-
-    public com.example.myapplication.Model.KichThuoc getKichThuoc() {
-        return KichThuoc;
-    }
-
-    public void setKichThuoc(com.example.myapplication.Model.KichThuoc kichThuoc) {
-        KichThuoc = kichThuoc;
-    }
-
     public String getIdSanPham() {
-        return IdSanPham;
+        return idSanPham;
     }
 
     public void setIdSanPham(String idSanPham) {
-        IdSanPham = idSanPham;
+        this.idSanPham = idSanPham;
     }
 
     public String getImageUrl() {
-        return ImageUrl;
+        return imageUrl;
     }
 
     public void setImageUrl(String imageUrl) {
-        ImageUrl = imageUrl;
+        this.imageUrl = imageUrl;
     }
 
     public String getTenSanPham() {
-        return TenSanPham;
+        return tenSanPham;
     }
 
     public void setTenSanPham(String tenSanPham) {
-        TenSanPham = tenSanPham;
+        this.tenSanPham = tenSanPham;
     }
 
     public String getThongTin() {
-        return ThongTin;
+        return thongTin;
     }
 
     public void setThongTin(String thongTin) {
-        ThongTin = thongTin;
+        this.thongTin = thongTin;
     }
 
     public double getGiaban() {
-        return Giaban;
+        return giaban;
     }
 
     public void setGiaban(double giaban) {
-        Giaban = giaban;
+        this.giaban = giaban;
     }
 
     public int getSoLuong() {
-        return SoLuong;
+        return soLuong;
     }
 
     public void setSoLuong(int soLuong) {
-        SoLuong = soLuong;
+        this.soLuong = soLuong;
     }
 
     public int getSoLuongBan() {
-        return SoLuongBan;
+        return soLuongBan;
     }
 
     public void setSoLuongBan(int soLuongBan) {
-        SoLuongBan = soLuongBan;
+        this.soLuongBan = soLuongBan;
     }
 
     public NhomSP getNhomSanPham() {
-        return NhomSanPham;
+        return nhomSanPham;
     }
 
     public void setNhomSanPham(NhomSP nhomSanPham) {
-        NhomSanPham = nhomSanPham;
+        this.nhomSanPham = nhomSanPham;
     }
 
-    public com.example.myapplication.Model.Mau getMau() {
-        return Mau;
+    public LoaiSP getLoaiSanPham() {
+        return loaiSanPham;
     }
 
-    public void setMau(com.example.myapplication.Model.Mau mau) {
-        Mau = mau;
+    public void setLoaiSanPham(LoaiSP loaiSanPham) {
+        this.loaiSanPham = loaiSanPham;
+    }
+
+    public KieuSP getKieuSanPham() {
+        return kieuSanPham;
+    }
+
+    public void setKieuSanPham(KieuSP kieuSanPham) {
+        this.kieuSanPham = kieuSanPham;
+    }
+
+    public KichThuoc getKichThuoc() {
+        return kichThuoc;
+    }
+
+    public void setKichThuoc(KichThuoc kichThuoc) {
+        this.kichThuoc = kichThuoc;
+    }
+
+    public Mau getMau() {
+        return mau;
+    }
+
+    public void setMau(Mau mau) {
+        this.mau = mau;
     }
 
     public List<DanhGia> getListDanhGia() {
-        return ListDanhGia;
+        return listDanhGia;
     }
 
     public void setListDanhGia(List<DanhGia> listDanhGia) {
-        ListDanhGia = listDanhGia;
+        this.listDanhGia = listDanhGia;
     }
 
     public List<KhuyenMai> getListKhuyenMai() {
-        return ListKhuyenMai;
+        return listKhuyenMai;
     }
 
     public void setListKhuyenMai(List<KhuyenMai> listKhuyenMai) {
-        ListKhuyenMai = listKhuyenMai;
+        this.listKhuyenMai = listKhuyenMai;
     }
 }

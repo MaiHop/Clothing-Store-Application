@@ -33,8 +33,8 @@ public class FirebaseActivity extends AppCompatActivity {
         request.enqueue(new Callback<List<DonHangChiTiet>>() {
             @Override
             public void onResponse(Call<List<DonHangChiTiet>> call, Response<List<DonHangChiTiet>> response) {
-                response.body();
-                Log.d("TestExcute",String.valueOf(response.body().size()));
+                list= response.body();
+                Log.d("TestExcute",String.valueOf(list.get(0) == null));
             }
 
             @Override

@@ -5,102 +5,102 @@ import java.util.Date;
 import java.util.List;
 
 public class KhachHang implements Serializable {
-    private String IdKhachHang, ImageUrl, Ten, Email, MatKhau;
-    private int GioiTinh;
-    private Date NgaySinh;
-    private List<DiaChi> ListDiaChi = null;
-    private List<ThanhToan> ListThanhToan = null;
-    private List<SanPham> ListYeuThich = null;
-    private List<DonHang> ListDonHang = null;
+    private String idKhachHang, imageUrl, ten, email, matKhau;
+    private int gioiTinh;
+    private Date ngaySinh;
+    private List<DiaChi> listDiaChi = null;
+    private List<ThanhToan> listThanhToan = null;
+    private List<SanPham> listYeuThich = null;
+    private List<DonHang> listDonHang = null;
 
     public KhachHang() {
     }
 
     public String getIdKhachHang() {
-        return IdKhachHang;
+        return idKhachHang;
     }
 
     public void setIdKhachHang(String idKhachHang) {
-        IdKhachHang = idKhachHang;
+        this.idKhachHang = idKhachHang;
     }
 
     public String getImageUrl() {
-        return ImageUrl;
+        return imageUrl;
     }
 
     public void setImageUrl(String imageUrl) {
-        ImageUrl = imageUrl;
+        this.imageUrl = imageUrl;
     }
 
     public String getTen() {
-        return Ten;
+        return ten;
     }
 
     public void setTen(String ten) {
-        Ten = ten;
+        this.ten = ten;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
     public String getMatKhau() {
-        return MatKhau;
+        return matKhau;
     }
 
     public void setMatKhau(String matKhau) {
-        MatKhau = matKhau;
+        this.matKhau = matKhau;
     }
 
     public int getGioiTinh() {
-        return GioiTinh;
+        return gioiTinh;
     }
 
     public void setGioiTinh(int gioiTinh) {
-        GioiTinh = gioiTinh;
+        this.gioiTinh = gioiTinh;
     }
 
     public Date getNgaySinh() {
-        return NgaySinh;
+        return ngaySinh;
     }
 
     public void setNgaySinh(Date ngaySinh) {
-        NgaySinh = ngaySinh;
+        this.ngaySinh = ngaySinh;
     }
 
     public List<DiaChi> getListDiaChi() {
-        return ListDiaChi;
+        return listDiaChi;
     }
 
     public void setListDiaChi(List<DiaChi> listDiaChi) {
-        ListDiaChi = listDiaChi;
+        this.listDiaChi = listDiaChi;
     }
 
     public List<ThanhToan> getListThanhToan() {
-        return ListThanhToan;
+        return listThanhToan;
     }
 
     public void setListThanhToan(List<ThanhToan> listThanhToan) {
-        ListThanhToan = listThanhToan;
+        this.listThanhToan = listThanhToan;
     }
 
     public List<SanPham> getListYeuThich() {
-        return ListYeuThich;
+        return listYeuThich;
     }
 
     public void setListYeuThich(List<SanPham> listYeuThich) {
-        ListYeuThich = listYeuThich;
+        this.listYeuThich = listYeuThich;
     }
 
     public List<DonHang> getListDonHang() {
-        return ListDonHang;
+        return listDonHang;
     }
 
     public void setListDonHang(List<DonHang> listDonHang) {
-        ListDonHang = listDonHang;
+        this.listDonHang = listDonHang;
     }
 }

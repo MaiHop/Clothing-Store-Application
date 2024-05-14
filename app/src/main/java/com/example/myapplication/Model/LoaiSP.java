@@ -5,16 +5,16 @@ import java.util.List;
 
 public class LoaiSP implements Serializable {
     private String id, ten;
-    private List<KieuSP> ListKieuSP;
+    private List<KieuSP> listKieuSP;
     public LoaiSP() {
     }
 
     public List<KieuSP> getListKieuSP() {
-        return ListKieuSP;
+        return listKieuSP;
     }
 
     public void setListKieuSP(List<KieuSP> listKieuSP) {
-        ListKieuSP = listKieuSP;
+        this.listKieuSP = listKieuSP;
     }
 
     public String getId() {

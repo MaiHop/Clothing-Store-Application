@@ -49,9 +49,11 @@ public class GioHangActivity extends AppCompatActivity {
         gioHangVM.getListCartLiveData().observe(this, new Observer<List<DonHangChiTiet>>() {
             @Override
             public void onChanged(List<DonHangChiTiet> donHangChiTiets) {
-                list= donHangChiTiets;
-                CartAdapter adapter = new CartAdapter(GioHangActivity.this, donHangChiTiets, btn_DatHang, toolbar_title, gioHangVM);
-                rv_ListCart.setAdapter(adapter);
+                if(!donHangChiTiets.isEmpty()){
+                    list= donHangChiTiets;
+                    CartAdapter adapter = new CartAdapter(GioHangActivity.this, donHangChiTiets, btn_DatHang, toolbar_title, gioHangVM);
+                    rv_ListCart.setAdapter(adapter);
+                }
             }
         });
     }

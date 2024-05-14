@@ -3,53 +3,53 @@ package com.example.myapplication.Model;
 import java.io.Serializable;
 
 public class DonHangChiTiet implements Serializable {
-    private String  IdDonHang;
-    private com.example.myapplication.Model.SanPham SanPham;
-    private int SoLuong;
-    private double ThanhTien, ThanhTienKhuyenMai;
+    private String  idDonHang;
+    private com.example.myapplication.Model.SanPham sanPham;
+    private int soLuong;
+    private double thanhTien, thanhTienKhuyenMai;
     private boolean checked;
 
     public DonHangChiTiet() {
     }
 
     public String getIdDonHang() {
-        return IdDonHang;
+        return idDonHang;
     }
 
     public void setIdDonHang(String idDonHang) {
-        IdDonHang = idDonHang;
+        this.idDonHang = idDonHang;
     }
 
-    public com.example.myapplication.Model.SanPham getSanPham() {
-        return SanPham;
+    public SanPham getSanPham() {
+        return sanPham;
     }
 
-    public void setSanPham(com.example.myapplication.Model.SanPham sanPham) {
-        SanPham = sanPham;
+    public void setSanPham(SanPham sanPham) {
+        this.sanPham = sanPham;
     }
 
     public int getSoLuong() {
-        return SoLuong;
+        return soLuong;
     }
 
     public void setSoLuong(int soLuong) {
-        SoLuong = soLuong;
+        this.soLuong = soLuong;
     }
 
     public double getThanhTien() {
-        return ThanhTien;
+        return thanhTien;
     }
 
     public void setThanhTien(double thanhTien) {
-        ThanhTien = thanhTien;
+        this.thanhTien = thanhTien;
     }
 
     public double getThanhTienKhuyenMai() {
-        return ThanhTienKhuyenMai;
+        return thanhTienKhuyenMai;
     }
 
     public void setThanhTienKhuyenMai(double thanhTienKhuyenMai) {
-        ThanhTienKhuyenMai = thanhTienKhuyenMai;
+        this.thanhTienKhuyenMai = thanhTienKhuyenMai;
     }
 
     public boolean isChecked() {

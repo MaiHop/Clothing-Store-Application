@@ -1,16 +1,16 @@
 package com.example.myapplication.Domain.UseCase;
 
-import com.example.myapplication.Data.Repository.DonHangRepository;
+import com.example.myapplication.Data.Repository.DonHangRepository_Impl;
 import com.example.myapplication.Domain.Model.DonHang;
-import com.example.myapplication.Domain.Repository.DonHangInterface;
+import com.example.myapplication.Domain.Repository.DonHangRepository;
 
 import java.util.List;
 
 public class DonHangUseCase {
-    private DonHangInterface donhang;
+    private DonHangRepository donhang;
 
     public DonHangUseCase() {
-        this.donhang = new DonHangRepository();
+        this.donhang = new DonHangRepository_Impl();
     }
     public List<DonHang> getListDonHang() {
         List<DonHang> list = donhang.getListDonHang();

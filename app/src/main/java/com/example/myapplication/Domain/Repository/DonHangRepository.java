@@ -4,7 +4,7 @@ import com.example.myapplication.Domain.Model.DonHang;
 
 import java.util.List;
 
-public interface DonHangInterface {
+public interface DonHangRepository {
     public List<DonHang> getListDonHang();
     public DonHang getDonHang(String IdDonHang);
     public boolean AddDonHang(DonHang dh);

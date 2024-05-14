@@ -3,58 +3,58 @@ package com.example.myapplication.Domain.Model;
 import java.io.Serializable;
 
 public class ThanhToan implements Serializable {
-    private String IdThanhToan,TenThanhToan, HanSuDung, CVV, Loai, ImageUrl;
+    private String idThanhToan,tenThanhToan, hHanSuDung, cVV, loai, imageUrl;
     private boolean checked;
 
     public ThanhToan() {
     }
 
     public String getIdThanhToan() {
-        return IdThanhToan;
+        return idThanhToan;
     }
 
     public void setIdThanhToan(String idThanhToan) {
-        IdThanhToan = idThanhToan;
+        this.idThanhToan = idThanhToan;
     }
 
     public String getTenThanhToan() {
-        return TenThanhToan;
+        return tenThanhToan;
     }
 
     public void setTenThanhToan(String tenThanhToan) {
-        TenThanhToan = tenThanhToan;
+        this.tenThanhToan = tenThanhToan;
     }
 
-    public String getHanSuDung() {
-        return HanSuDung;
+    public String gethHanSuDung() {
+        return hHanSuDung;
     }
 
-    public void setHanSuDung(String hanSuDung) {
-        HanSuDung = hanSuDung;
+    public void sethHanSuDung(String hHanSuDung) {
+        this.hHanSuDung = hHanSuDung;
     }
 
-    public String getCVV() {
-        return CVV;
+    public String getcVV() {
+        return cVV;
     }
 
-    public void setCVV(String CVV) {
-        this.CVV = CVV;
+    public void setcVV(String cVV) {
+        this.cVV = cVV;
     }
 
     public String getLoai() {
-        return Loai;
+        return loai;
     }
 
     public void setLoai(String loai) {
-        Loai = loai;
+        this.loai = loai;
     }
 
     public String getImageUrl() {
-        return ImageUrl;
+        return imageUrl;
     }
 
     public void setImageUrl(String imageUrl) {
-        ImageUrl = imageUrl;
+        this.imageUrl = imageUrl;
     }
 
     public boolean isChecked() {

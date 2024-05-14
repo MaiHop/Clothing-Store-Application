@@ -23,11 +23,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.Presentation.Cart.Apdapter.CartAdapter;
 import com.example.myapplication.Domain.Model.DonHang;
 import com.example.myapplication.Domain.Model.DonHangChiTiet;
-import com.example.myapplication.Presentation.Cart.ViewModel.CartVM;
+import com.example.myapplication.Presentation.Cart.ViewModel.GioHangVM;
 import com.example.myapplication.R;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
@@ -38,7 +35,7 @@ public class GioHangFragment extends Fragment {
     private TextView toolbar_title;
     private Toolbar toolbar_cart;
     private List<DonHangChiTiet> list;
-    private CartVM cartVM;
+    private GioHangVM gioHangVM;
     private SearchView searchView;
 
     @Nullable
@@ -48,10 +45,10 @@ public class GioHangFragment extends Fragment {
         init(view);
         rv_ListCart = view.findViewById(R.id.rv_ListCart);
         rv_ListCart.setLayoutManager(new LinearLayoutManager(getContext()));
-        cartVM = new ViewModelProvider(this).get(CartVM.class);
-        cartVM.getListCartLiveData().observe(getViewLifecycleOwner(), donHangChiTiets -> {
+        gioHangVM = new ViewModelProvider(this).get(GioHangVM.class);
+        gioHangVM.getListCartLiveData().observe(getViewLifecycleOwner(), donHangChiTiets -> {
             list = donHangChiTiets;
-            CartAdapter adapter = new CartAdapter(getContext(), donHangChiTiets, btn_DatHang, toolbar_title, cartVM);
+            CartAdapter adapter = new CartAdapter(getContext(), donHangChiTiets, btn_DatHang, toolbar_title, gioHangVM);
             rv_ListCart.setAdapter(adapter);
         });
         return view;
@@ -76,7 +73,7 @@ public class GioHangFragment extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                cartVM.filterCart(newText.toLowerCase());
+                gioHangVM.filterCart(newText.toLowerCase());
                 return false;
             }
         });

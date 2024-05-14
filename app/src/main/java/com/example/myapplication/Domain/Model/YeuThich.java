@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 public class YeuThich implements Serializable {
-    private String IdYeuThich;
+    private String idYeuThich;
     private KhachHang khachhang;
     private List<SanPham> listsanpham;
 
@@ -12,11 +12,11 @@ public class YeuThich implements Serializable {
     }
 
     public String getIdYeuThich() {
-        return IdYeuThich;
+        return idYeuThich;
     }
 
     public void setIdYeuThich(String idYeuThich) {
-        IdYeuThich = idYeuThich;
+        this.idYeuThich = idYeuThich;
     }
 
     public KhachHang getKhachhang() {

@@ -3,24 +3,26 @@ package com.example.myapplication.Presentation.Cart.ViewModel;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.myapplication.Data.Repository.GioHangRepository_Impl;
 import com.example.myapplication.Domain.Model.DonHangChiTiet;
 import com.example.myapplication.Domain.Model.SanPham;
 import com.example.myapplication.Data.Data_Source.CartRepository;
+import com.example.myapplication.Domain.Repository.GioHangRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CartVM extends ViewModel {
+public class GioHangVM extends ViewModel {
     private MutableLiveData<List<DonHangChiTiet>> listCartLiveData;
     private List<DonHangChiTiet> listDonHangChiTiet;
-
-    public CartVM() {
+    private GioHangRepository res;
+    public GioHangVM() {
         listCartLiveData = new MutableLiveData<>();
         initData();
     }
 
     private void initData(){
-        CartRepository res = new CartRepository();
+        res = new GioHangRepository_Impl();
         listDonHangChiTiet = res.getGioHang();
 
         listCartLiveData.setValue(listDonHangChiTiet);

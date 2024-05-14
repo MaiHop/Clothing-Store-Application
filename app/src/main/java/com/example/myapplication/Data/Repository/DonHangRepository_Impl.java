@@ -2,14 +2,14 @@ package com.example.myapplication.Data.Repository;
 
 import com.example.myapplication.Data.Data_Source.CartRepository;
 import com.example.myapplication.Domain.Model.DonHang;
-import com.example.myapplication.Domain.Repository.DonHangInterface;
+import com.example.myapplication.Domain.Repository.DonHangRepository;
 
 import java.util.List;
 
-public class DonHangRepository implements DonHangInterface {
+public class DonHangRepository_Impl implements DonHangRepository {
     private CartRepository cartRepository;
 
-    public DonHangRepository() {
+    public DonHangRepository_Impl() {
         cartRepository = new CartRepository();
     }
 

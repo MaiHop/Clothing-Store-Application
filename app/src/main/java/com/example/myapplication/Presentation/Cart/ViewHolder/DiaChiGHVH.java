@@ -30,7 +30,7 @@ public class DiaChiGHVH extends RecyclerView.ViewHolder{
         }else {
             tv_DiaChiChinh.setVisibility(View.INVISIBLE);
         }
-        tv_TenNguoiNhan_Sdt.setText(diachi.getNguoiNhan()+"\t("+diachi.getSDT()+")");
+        tv_TenNguoiNhan_Sdt.setText(diachi.getNguoiNhan()+"\t("+diachi.getsDT()+")");
         tv_DiaChi.setText(diachi.getDiaChi());
         if(diachi.isXacDinh()){
             tv_XacDinh.setText("Pinpoint already");

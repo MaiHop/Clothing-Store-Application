@@ -100,7 +100,7 @@ public class ThanhToanActivity extends AppCompatActivity {
         }
         this.tv_Subtotal.setText("Subtotal ("+ tong+")");
         this.tv_Checkout_ThanhTien.setText(String.valueOf("$"+dh.getThanhTien()));
-        this.tv_Checkout_PhiDichVu.setText(String.valueOf("$"+dh.getPhiPhucVu()));
+        this.tv_Checkout_PhiDichVu.setText(String.valueOf("$"+dh.getphiDichVu()));
         this.tv_Checkout_PhiGiaoHang.setText(String.valueOf("$"+dh.getPhiGiaoHang()));
         this.tv_Checkout_TienThue.setText(String.valueOf("$"+dh.getThue()));
         this.tv_Checkout_TienKhuyenMai.setText(String.valueOf("-$"+dh.getTienKhuyenMai()));

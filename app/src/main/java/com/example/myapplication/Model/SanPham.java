@@ -1,6 +1,7 @@
 package com.example.myapplication.Model;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 public class SanPham implements Serializable {
@@ -10,12 +11,21 @@ public class SanPham implements Serializable {
     private NhomSP nhomSanPham = null;
     private LoaiSP loaiSanPham = null;
     private KieuSP kieuSanPham = null;
-    private com.example.myapplication.Model.KichThuoc kichThuoc = null;
-    private com.example.myapplication.Model.Mau mau= null;
+    private KichThuoc kichThuoc = null;
+    private Mau mau= null;
     private List<DanhGia> listDanhGia= null;
     private List<KhuyenMai> listKhuyenMai= null;
+    private Date ngayTao;
 
     public SanPham() {
+    }
+
+    public Date getNgayTao() {
+        return ngayTao;
+    }
+
+    public void setNgayTao(Date ngayTao) {
+        this.ngayTao = ngayTao;
     }
 
     public String getId() {

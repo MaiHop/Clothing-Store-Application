@@ -32,7 +32,7 @@ public class DiaChiGHVM extends ViewModel {
         dc2.setTenDiaChi("CC1");
         dc2.setDiaChiChinh(false);
         dc2.setNguoiNhan("Trung Hậu");
-        dc2.setSDT("0765328458");
+        dc2.setsDT("0765328458");
         dc2.setDiaChi("155/33 Nguyễn Trãi");
         dc2.setXacDinh(true);
         dc2.setChecked(false);

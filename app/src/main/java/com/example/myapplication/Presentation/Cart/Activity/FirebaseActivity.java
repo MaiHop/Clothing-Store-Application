@@ -34,7 +34,7 @@ public class FirebaseActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<DonHangChiTiet>> call, Response<List<DonHangChiTiet>> response) {
                 list= response.body();
-                Log.d("TestExcute",String.valueOf(list.get(0) == null));
+                Log.d("TestExcute",String.valueOf(list.get(0).getSanPham().getImageUrl()));
             }
 
             @Override

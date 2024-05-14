@@ -201,7 +201,7 @@
                     android:text="" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_Checkout_DanhSachDonHang"
+                    android:id="@+id/rvDanhSachDonHang"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
 

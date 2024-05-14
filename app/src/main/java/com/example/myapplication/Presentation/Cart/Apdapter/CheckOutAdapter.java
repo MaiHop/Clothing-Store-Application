@@ -23,7 +23,6 @@ public class CheckOutAdapter extends RecyclerView.Adapter<ThanhToanVH> {
     private Context context;
     private TextView order_title;
 
-
     public CheckOutAdapter(Context context, List<DonHangChiTiet> list, TextView order_title){
         this.list = list;
         this.context = context;
@@ -53,7 +52,6 @@ public class CheckOutAdapter extends RecyclerView.Adapter<ThanhToanVH> {
         holder.updateUI(donHangChiTiet);
 
     }
-
 
 
 }

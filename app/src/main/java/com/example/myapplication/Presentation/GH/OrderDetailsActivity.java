@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.Data.Data_Source.CartRepository;
 import com.example.myapplication.Data.Data_Source.Hung_test;
@@ -12,6 +14,7 @@ import com.example.myapplication.Domain.Model.DiaChi;
 import com.example.myapplication.Domain.Model.DonHang;
 import com.example.myapplication.Domain.Model.KhuyenMai;
 import com.example.myapplication.Domain.Model.VanChuyen;
+import com.example.myapplication.Presentation.Cart.Apdapter.CheckOutAdapter;
 import com.example.myapplication.R;
 
 import java.util.List;
@@ -19,7 +22,10 @@ import java.util.List;
 public class OrderDetailsActivity extends AppCompatActivity {
     private TextView  tvCheckoutTenDiaChiGiaoHang, tvCheckoutDiaChiGiaoHang, tvCheckoutTenDonViGiaoHang,
             tvCheckoutThoiGianGiaoHang,tvTenKhuyenMai,tvThongTinKhuyenMai,tvCheckoutPhiDichVu,tvCheckoutPhiGiaoHang,
-            tvCheckoutTienThue,tvCheckoutTienKhuyenMai,tvCheckoutTongTien,tv_Checkout_ThanhTien;
+            tvCheckoutTienThue,tvCheckoutTienKhuyenMai,tvCheckoutTongTien,tv_Checkout_ThanhTien,rv_Checkout_DanhSachDonHang;
+
+    private RecyclerView recyclerView;
+    private ODAdapter adapter;
 
 
     @Override
@@ -28,6 +34,10 @@ public class OrderDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.gh_activity_order_detail);
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
         DonHang donHang = (DonHang) getIntent().getSerializableExtra("DONHANG");
+
+        recyclerView = findViewById(R.id.rvDanhSachDonHang);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
 
         tvCheckoutTenDiaChiGiaoHang = findViewById(R.id.txtTenDiaChiGiaoHang);
         tvCheckoutDiaChiGiaoHang = findViewById(R.id.txtDiaChiGiaoHang);
@@ -55,6 +65,12 @@ public class OrderDetailsActivity extends AppCompatActivity {
         tvCheckoutTienKhuyenMai.setText(String.valueOf(donHang.getTienKhuyenMai()));
         tvCheckoutTongTien.setText(String.valueOf(donHang.getTongTien()));
         tv_Checkout_ThanhTien.setText(String.valueOf(donHang.getThanhTien()));
+
+        CartRepository repository = new CartRepository();
+        DonHang dh1 = repository.getListDH().get(0); // Assuming you're interested in the first order
+
+        adapter = new ODAdapter(dh1.getListDonHangChiTiet());
+        recyclerView.setAdapter(adapter);
 
 
     }

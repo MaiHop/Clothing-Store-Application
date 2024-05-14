@@ -7,7 +7,6 @@ import java.util.List;
 public class KhachHang implements Serializable {
     private String idKhachHang, imageUrl, ten, email, matKhau;
     private int gioiTinh;
-    private Date ngaySinh;
     private List<DiaChi> listDiaChi = null;
     private List<ThanhToan> listThanhToan = null;
     private List<SanPham> listYeuThich = null;
@@ -64,13 +63,6 @@ public class KhachHang implements Serializable {
         this.gioiTinh = gioiTinh;
     }
 
-    public Date getNgaySinh() {
-        return ngaySinh;
-    }
-
-    public void setNgaySinh(Date ngaySinh) {
-        this.ngaySinh = ngaySinh;
-    }
 
     public List<DiaChi> getListDiaChi() {
         return listDiaChi;

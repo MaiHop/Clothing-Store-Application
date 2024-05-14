@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.Model.KhachHang;
 import com.example.myapplication.Presentation.ButtonNavigation.Home;
 import com.example.myapplication.Presentation.LoginAccout.ForgotPass.forgot_password;
 import com.example.myapplication.Presentation.LoginAccout.Load_Dialog;
@@ -191,14 +192,14 @@ public class sign_in extends AppCompatActivity {
                                 public void run() {
                                     loadDialog.dismissDialog();
                                     FirebaseUser user = mAuth.getCurrentUser();
-                                    HashMap<String, Object> map = new HashMap<>();
-                                    map.put("id",user.getUid());
-                                    map.put("email",user.getEmail());
-                                    map.put("name",user.getDisplayName());
-                                    map.put("profile",user.getPhotoUrl().toString());
-//                                    database.getReference().child("users").child(user.getUid()).setValue(map)
-                                    database.collection("users").document(user.getUid())
-                                            .set(map, SetOptions.merge())
+                                    KhachHang kh = new KhachHang();
+                                    kh.setIdKhachHang(user.getUid());
+                                    kh.setEmail(user.getEmail());
+                                    kh.setImageUrl(user.getPhotoUrl().toString());
+                                    kh.setTen(user.getDisplayName());
+                                    kh.setGioiTinh(0);
+                                    database.collection("KhachHang").document(kh.getIdKhachHang())
+                                            .set(kh)
                                             .addOnSuccessListener(aVoid -> {
                                                 Intent intent = new Intent(sign_in.this, Home.class);
                                                 startActivity(intent);

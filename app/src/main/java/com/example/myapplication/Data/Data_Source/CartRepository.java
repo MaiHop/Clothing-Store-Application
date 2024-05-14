@@ -559,7 +559,6 @@ public class CartRepository {
         ThanhToan tt1 = new ThanhToan();
         tt1.setIdThanhToan("1");
         tt1.setTenThanhToan("Paypal");
-        tt1.setHanSuDung("22/01");
         tt1.setLoai("VISA");
         tt1.setImageUrl("https://inkythuatso.com/uploads/thumbnails/800/2023/05/logo-viettelpost-inkythuatso-27-14-52-01.jpg");
         tt1.setChecked(false);
@@ -574,7 +573,6 @@ public class CartRepository {
         ThanhToan tt3 = new ThanhToan();
         tt3.setIdThanhToan("3");
         tt3.setTenThanhToan("Paypal");
-        tt3.setHanSuDung("22/01");
         tt3.setLoai("VISA");
         tt3.setImageUrl("https://inkythuatso.com/uploads/thumbnails/800/2023/05/logo-viettelpost-inkythuatso-27-14-52-01.jpg");
         tt3.setChecked(false);

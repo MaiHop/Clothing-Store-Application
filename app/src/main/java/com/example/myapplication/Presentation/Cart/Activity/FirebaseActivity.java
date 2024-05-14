@@ -5,16 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.example.myapplication.Data.Data_Source.Api.KieuSP_api;
-import com.example.myapplication.Data.Data_Source.Api.Servicebuilder;
-import com.example.myapplication.Domain.Model.KieuSP;
+import com.example.myapplication.Api.KieuSP_api;
+import com.example.myapplication.Api.Servicebuilder;
+import com.example.myapplication.Model.KieuSP;
 import com.example.myapplication.R;
 
 import java.util.List;
 
 import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class FirebaseActivity extends AppCompatActivity {
 

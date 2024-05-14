@@ -13,7 +13,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Domain.Model.DonHang;
+import com.example.myapplication.Model.DonHang;
 import com.example.myapplication.R;
 import com.google.android.material.tabs.TabLayout;
 

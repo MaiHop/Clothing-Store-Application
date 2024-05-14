@@ -22,10 +22,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.Presentation.Cart.Apdapter.ColorAdapter;
 import com.example.myapplication.Presentation.Cart.Apdapter.SizeAdapter;
-import com.example.myapplication.Domain.Model.DonHangChiTiet;
-import com.example.myapplication.Domain.Model.KichThuoc;
-import com.example.myapplication.Domain.Model.Mau;
-import com.example.myapplication.Domain.Model.SanPham;
+import com.example.myapplication.Model.DonHangChiTiet;
+import com.example.myapplication.Model.KichThuoc;
+import com.example.myapplication.Model.Mau;
+import com.example.myapplication.Model.SanPham;
 import com.example.myapplication.Presentation.Cart.ViewModel.GioHangVM;
 import com.example.myapplication.Presentation.Cart.ViewModel.KichThuocVM;
 import com.example.myapplication.Presentation.Cart.ViewModel.MauVM;

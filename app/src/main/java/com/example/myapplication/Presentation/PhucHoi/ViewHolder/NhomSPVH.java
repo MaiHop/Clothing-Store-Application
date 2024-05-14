@@ -6,7 +6,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Domain.Model.NhomSP;
+import com.example.myapplication.Model.NhomSP;
 import com.example.myapplication.R;
 
 public class NhomSPVH extends  RecyclerView.ViewHolder{

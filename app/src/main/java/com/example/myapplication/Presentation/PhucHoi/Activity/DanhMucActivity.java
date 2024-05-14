@@ -2,10 +2,7 @@ package com.example.myapplication.Presentation.PhucHoi.Activity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -14,23 +11,20 @@ import android.widget.SearchView;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Domain.Model.KichThuoc;
-import com.example.myapplication.Domain.Model.Mau;
-import com.example.myapplication.Domain.Model.NhomSP;
-import com.example.myapplication.Domain.Model.SanPham;
+import com.example.myapplication.Model.KichThuoc;
+import com.example.myapplication.Model.Mau;
+import com.example.myapplication.Model.NhomSP;
+import com.example.myapplication.Model.SanPham;
 import com.example.myapplication.Data.Data_Source.CartRepository;
 import com.example.myapplication.Presentation.PhucHoi.Apdapter.SanPhamAdapter;
 
 import com.example.myapplication.R;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;

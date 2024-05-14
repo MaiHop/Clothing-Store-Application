@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Domain.Model.KhuyenMai;
+import com.example.myapplication.Model.KhuyenMai;
 import com.example.myapplication.R;
 
 public class KhuyenMaiVH extends RecyclerView.ViewHolder{

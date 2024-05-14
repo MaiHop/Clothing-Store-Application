@@ -1,12 +1,9 @@
 package com.example.myapplication.Presentation.Wishlist.Activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,13 +14,10 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Domain.Model.SanPham;
-import com.example.myapplication.Domain.Model.YeuThich;
-import com.example.myapplication.Presentation.Accout_Setting.Activity.Account;
+import com.example.myapplication.Model.SanPham;
 import com.example.myapplication.Presentation.Wishlist.Adapter.Adapter_Item_BoLoc_WishList;
 import com.example.myapplication.Presentation.Wishlist.Adapter.Adapter_Item_SP_WishList;
 import com.example.myapplication.Presentation.Wishlist.Model.BoLoc_WishList;
-import com.example.myapplication.Presentation.Wishlist.Model.SanPham_WishList;
 import com.example.myapplication.Presentation.Wishlist.ViewModel.YeuThichVM;
 import com.example.myapplication.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;

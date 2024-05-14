@@ -12,8 +12,8 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Domain.Model.NhomSP;
-import com.example.myapplication.Domain.Model.SanPham;
+import com.example.myapplication.Model.NhomSP;
+import com.example.myapplication.Model.SanPham;
 import com.example.myapplication.Presentation.PhucHoi.Apdapter.NhomSPAdapter;
 import com.example.myapplication.Presentation.PhucHoi.Apdapter.SanPhamAdapter;
 

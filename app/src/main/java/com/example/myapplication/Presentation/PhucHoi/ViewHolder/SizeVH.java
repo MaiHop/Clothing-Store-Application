@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.example.myapplication.Domain.Model.KichThuoc;
+import com.example.myapplication.Model.KichThuoc;
 import com.example.myapplication.R;
 
 public class SizeVH extends RecyclerView.ViewHolder{

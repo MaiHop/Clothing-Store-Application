@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Domain.Model.VanChuyen;
+import com.example.myapplication.Model.VanChuyen;
 import com.example.myapplication.Presentation.Cart.ViewHolder.VanChuyenVH;
 import com.example.myapplication.R;
 

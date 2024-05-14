@@ -9,16 +9,12 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Domain.Model.SanPham;
+import com.example.myapplication.Model.SanPham;
 import com.example.myapplication.Presentation.PhucHoi.Activity.ChiTietSanPhamActivity;
 
 import com.example.myapplication.Presentation.PhucHoi.ViewHolder.SanPhamVH;
 import com.example.myapplication.R;
 
-import android.widget.Filter;
-import android.widget.Filterable;
-
-import java.util.ArrayList;
 import java.util.List;
 public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamVH> {
     private List<SanPham> list_product;

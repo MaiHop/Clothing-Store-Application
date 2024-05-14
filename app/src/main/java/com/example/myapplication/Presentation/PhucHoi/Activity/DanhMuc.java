@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Domain.Model.SanPham;
+import com.example.myapplication.Model.SanPham;
 import com.example.myapplication.Presentation.PhucHoi.Apdapter.SanPhamAdapter;
 import com.example.myapplication.R;
 

@@ -81,7 +81,7 @@
                         android:src="@drawable/mh_baseline_check_box_outline_blank_24" />
 
                     <TextView
-                        android:id="@+id/tv_Delivery_Address"
+                        android:id="@+id/txtDeliveryAddress"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="20dp"
@@ -131,7 +131,7 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/tv_Checkout_TenDiaChiGiaoHang"
+                                android:id="@+id/txtTenDiaChiGiaoHang"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:padding="10dp"
@@ -141,7 +141,7 @@
                                 android:textStyle="bold" />
 
                             <TextView
-                                android:id="@+id/tv_Checkout_DiaChiGiaoHang"
+                                android:id="@+id/txtDiaChiGiaoHang"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:padding="10dp"
@@ -276,7 +276,7 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/tv_Checkout_TenDonViGiaoHang"
+                                android:id="@+id/txtDonViGiaoHang"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:padding="10dp"
@@ -286,7 +286,7 @@
                                 android:textStyle="bold" />
 
                             <TextView
-                                android:id="@+id/tv_Checkout_ThoiGianGiaoHang"
+                                android:id="@+id/txtThoiGianGiaoHang"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:padding="10dp"
@@ -464,7 +464,7 @@
                             android:layout_weight="5">
 
                             <TextView
-                                android:id="@+id/tv_TenKhuyenMai"
+                                android:id="@+id/txtTenKhuyenMai"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:padding="10dp"
@@ -474,7 +474,7 @@
                                 android:textStyle="bold" />
 
                             <TextView
-                                android:id="@+id/tv_ThongTinKhuyenMai"
+                                android:id="@+id/txtThongTinKhuyenMai"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:padding="10dp"

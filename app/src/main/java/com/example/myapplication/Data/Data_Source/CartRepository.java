@@ -69,7 +69,7 @@ public class CartRepository {
         try {
             dh1.setNgayThanhToan(formatter.parse("11/05/2024"));
         } catch (ParseException e) {
-            e.printStackTrace(); // Xử lý lỗi
+            e.printStackTrace();
         }
 
         DonHang dh2 = new DonHang();
@@ -78,7 +78,7 @@ public class CartRepository {
         try {
             dh2.setNgayThanhToan(formatter.parse("20/03/2024"));
         } catch (ParseException e) {
-            e.printStackTrace(); // Xử lý lỗi
+            e.printStackTrace();
         }
 
         DonHang dh3 = new DonHang();
@@ -87,7 +87,7 @@ public class CartRepository {
         try {
             dh3.setNgayThanhToan(formatter.parse("20/03/2023"));
         } catch (ParseException e) {
-            e.printStackTrace(); // Xử lý lỗi
+            e.printStackTrace();
         }
 
         list.add(dh1);

@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.example.myapplication.Api.KieuSP_api;
-import com.example.myapplication.Api.Servicebuilder;
+import com.example.myapplication.Api.ServiceBuilder;
 import com.example.myapplication.Model.KieuSP;
 import com.example.myapplication.R;
 
@@ -21,7 +21,7 @@ public class FirebaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mh_activity_firebase);
 
-        KieuSP_api kieuSPService = Servicebuilder.buildService(KieuSP_api.class);
+        KieuSP_api kieuSPService = ServiceBuilder.buildService(KieuSP_api.class);
         Call<List<KieuSP>> callSync = kieuSPService.readallKieuSP();
 
         try {

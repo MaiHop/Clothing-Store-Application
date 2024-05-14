@@ -14,7 +14,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class Servicebuilder {
+public class ServiceBuilder {
     private static final String URL = "http://192.168.1.7:8080/";
 
     // Create logger

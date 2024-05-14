@@ -14,4 +14,7 @@
     </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="facebook_app_id">1108476410440732</string>
+    <string name="fb_login_protocol_scheme">fb1108476410440732</string>
+    <string name="facebook_client_token">553dab35781bdbcd8503316eb906a170</string>
 </resources>

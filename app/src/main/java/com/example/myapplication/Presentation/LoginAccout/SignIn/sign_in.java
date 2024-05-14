@@ -193,6 +193,7 @@ public class sign_in extends AppCompatActivity {
                                     FirebaseUser user = mAuth.getCurrentUser();
                                     HashMap<String, Object> map = new HashMap<>();
                                     map.put("id",user.getUid());
+                                    map.put("email",user.getEmail());
                                     map.put("name",user.getDisplayName());
                                     map.put("profile",user.getPhotoUrl().toString());
 //                                    database.getReference().child("users").child(user.getUid()).setValue(map)

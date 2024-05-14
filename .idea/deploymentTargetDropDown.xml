@@ -5,6 +5,15 @@
       <entry key="GioHangActivity">
         <State />
       </entry>
+      <entry key="HomeThamGia">
+        <State />
+      </entry>
+      <entry key="SplashScreen">
+        <State />
+      </entry>
+      <entry key="app">
+        <State />
+      </entry>
     </value>
   </component>
 </project>

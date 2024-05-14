@@ -143,6 +143,7 @@ public class sign_up extends AppCompatActivity {
                                                             // Tạo dữ liệu người dùng trên Firebase Realtime Database
                                                             HashMap<String, Object> map = new HashMap<>();
                                                             map.put("id", user.getUid());
+                                                            map.put("email", user.getEmail());
                                                             map.put("name", user.getDisplayName());
                                                             map.put("profile", user.getPhotoUrl().toString());
 
@@ -174,7 +175,8 @@ public class sign_up extends AppCompatActivity {
                                     }
                                 }
                             });
-                        } else {
+                        }
+                        else {
                             // Đã xảy ra lỗi khi tạo tài khoản
                             Toast.makeText(sign_up.this, "Email này đã tồn tại hoặc có lỗi xảy ra khi tạo tài khoản", Toast.LENGTH_SHORT).show();
                         }
@@ -212,6 +214,7 @@ public class sign_up extends AppCompatActivity {
                                             FirebaseUser user = mAuth.getCurrentUser();
                                             HashMap<String, Object> map = new HashMap<>();
                                             map.put("id",user.getUid());
+                                            map.put("email", user.getEmail());
                                             map.put("name",user.getDisplayName());
                                             map.put("profile",user.getPhotoUrl().toString());
 //                                            database.getReference().child("users").child(user.getUid()).setValue(map)

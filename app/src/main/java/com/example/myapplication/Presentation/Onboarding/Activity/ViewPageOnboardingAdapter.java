@@ -24,7 +24,6 @@ public class ViewPageOnboardingAdapter extends FragmentStatePagerAdapter {
             case 1:
                 return new OnboardingFragment_2();
             case 2:
-
                 return new OnboardingFragment_3();
             default:
                 return new OnboardingFragment_1();

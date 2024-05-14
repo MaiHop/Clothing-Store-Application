@@ -57,9 +57,7 @@ public class Account_Fragment extends Fragment {
         ln_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 showDialog();
-
             }
         });
         ln_myprofile.setOnClickListener(new View.OnClickListener() {

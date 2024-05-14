@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.Data.Data_Source.CartRepository;
 import com.example.myapplication.Data.Data_Source.Hung_test;
 import com.example.myapplication.Domain.Model.DiaChi;
 import com.example.myapplication.Domain.Model.KhuyenMai;
@@ -32,20 +33,18 @@ public class OrderDetailsActivity extends AppCompatActivity {
         tvTenKhuyenMai = findViewById(R.id.txtTenKhuyenMai);
         tvThongTinKhuyenMai = findViewById(R.id.txtThongTinKhuyenMai);
 
-        Hung_test test = new Hung_test();
-        List<DiaChi> listdc = test.getListDC();
-        List<VanChuyen> listvc = test.getListVC();
-        List<KhuyenMai> listkm = test.getListKM();
+//        Hung_test test = new Hung_test();
+//        List<DiaChi> listdc = test.getListDC();
+//        List<VanChuyen> listvc = test.getListVC();
+//        List<KhuyenMai> listkm = test.getListKM();
 
-        DiaChi dc = listdc.get(0);
-        VanChuyen vc = listvc.get(0);
-        KhuyenMai km = listkm.get(0);
 
-        tvCheckoutDiaChiGiaoHang.setText(dc.getDiaChi());
-        tvCheckoutTenDiaChiGiaoHang.setText(dc.getTenDiaChi());
-        tvCheckoutTenDonViGiaoHang.setText(vc.getTen());
-        tvCheckoutThoiGianGiaoHang.setText(vc.getNgayGiao());
-        tvTenKhuyenMai.setText(km.getTenKhuyenMai());
-        tvThongTinKhuyenMai.setText(km.getDieuKien()+" * Tối đa giảm : "+km.getToiDaGiam()+" * "+dateFormat.format(km.getHanSuDung()));
+
+//        tvCheckoutDiaChiGiaoHang.setText(dc.getDiaChi());
+//        tvCheckoutTenDiaChiGiaoHang.setText(dc.getTenDiaChi());
+//        tvCheckoutTenDonViGiaoHang.setText(vc.getTen());
+//        tvCheckoutThoiGianGiaoHang.setText(vc.getNgayGiao());
+//        tvTenKhuyenMai.setText(km.getTenKhuyenMai());
+//        tvThongTinKhuyenMai.setText(km.getDieuKien()+" * Tối đa giảm : "+km.getToiDaGiam()+" * "+dateFormat.format(km.getHanSuDung()));
     }
 }

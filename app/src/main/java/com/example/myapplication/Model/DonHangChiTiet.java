@@ -7,7 +7,7 @@ public class DonHangChiTiet implements Serializable {
     private SanPham sanPham;
     private int soLuong;
     private double thanhTien, thanhTienKhuyenMai;
-    private boolean checked;
+    private boolean checked= true;
 
     public DonHangChiTiet() {
     }

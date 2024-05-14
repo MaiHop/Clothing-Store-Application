@@ -20,7 +20,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Presentation.Cart.Apdapter.CartAdapter;
+import com.example.myapplication.Presentation.Cart.Apdapter.GioHangAdapter;
 import com.example.myapplication.Model.DonHang;
 import com.example.myapplication.Model.DonHangChiTiet;
 import com.example.myapplication.Presentation.Cart.ViewModel.GioHangVM;
@@ -47,9 +47,12 @@ public class GioHangFragment extends Fragment {
         rv_ListCart.setLayoutManager(new LinearLayoutManager(getContext()));
         gioHangVM = new ViewModelProvider(this).get(GioHangVM.class);
         gioHangVM.getListCartLiveData().observe(getViewLifecycleOwner(), donHangChiTiets -> {
-            list = donHangChiTiets;
-            CartAdapter adapter = new CartAdapter(getContext(), donHangChiTiets, btn_DatHang, toolbar_title, gioHangVM);
-            rv_ListCart.setAdapter(adapter);
+            if (!(donHangChiTiets.isEmpty())){
+                list = donHangChiTiets;
+                GioHangAdapter adapter = new GioHangAdapter(getContext(), donHangChiTiets, btn_DatHang, toolbar_title, gioHangVM);
+                rv_ListCart.setAdapter(adapter);
+            }
+
         });
         return view;
     }

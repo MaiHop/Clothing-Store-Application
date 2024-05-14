@@ -15,7 +15,7 @@ import com.example.myapplication.R;
 
 import java.util.List;
 
-public class ColorAdapter extends RecyclerView.Adapter<MauVH>{
+public class MauAdapter extends RecyclerView.Adapter<MauVH>{
     private List<Mau> list_color;
     private Context context;
     private LayoutInflater minflater;
@@ -23,7 +23,7 @@ public class ColorAdapter extends RecyclerView.Adapter<MauVH>{
     private KichThuocVM kichThuocVM;
     private ItemClickListener itemClickListener;
 
-    public ColorAdapter(Context context, List<Mau> list_color, KichThuocVM kichThuocVM, ItemClickListener itemClickListener) {
+    public MauAdapter(Context context, List<Mau> list_color, KichThuocVM kichThuocVM, ItemClickListener itemClickListener) {
         this.list_color = list_color;
         this.context = context;
         this.kichThuocVM = kichThuocVM;

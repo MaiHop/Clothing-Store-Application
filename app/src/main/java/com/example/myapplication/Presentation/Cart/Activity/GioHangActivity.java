@@ -16,7 +16,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.myapplication.Presentation.Cart.Apdapter.CartAdapter;
+import com.example.myapplication.Presentation.Cart.Apdapter.GioHangAdapter;
 import com.example.myapplication.Model.DonHang;
 import com.example.myapplication.Model.DonHangChiTiet;
 import com.example.myapplication.Presentation.Cart.ViewModel.GioHangVM;
@@ -51,7 +51,7 @@ public class GioHangActivity extends AppCompatActivity {
             public void onChanged(List<DonHangChiTiet> donHangChiTiets) {
                 if(!donHangChiTiets.isEmpty()){
                     list= donHangChiTiets;
-                    CartAdapter adapter = new CartAdapter(GioHangActivity.this, donHangChiTiets, btn_DatHang, toolbar_title, gioHangVM);
+                    GioHangAdapter adapter = new GioHangAdapter(GioHangActivity.this, donHangChiTiets, btn_DatHang, toolbar_title, gioHangVM);
                     rv_ListCart.setAdapter(adapter);
                 }
             }

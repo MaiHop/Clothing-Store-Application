@@ -20,7 +20,7 @@ import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Presentation.Cart.Apdapter.ColorAdapter;
+import com.example.myapplication.Presentation.Cart.Apdapter.MauAdapter;
 import com.example.myapplication.Presentation.Cart.Apdapter.SizeAdapter;
 import com.example.myapplication.Model.DonHangChiTiet;
 import com.example.myapplication.Model.KichThuoc;
@@ -50,10 +50,12 @@ public class SPEditDialog {
     private KichThuocVM size_vm;
     private MauVM color_vm;
     private SanPham sp_find;
-    public SPEditDialog(Context context, DonHangChiTiet donHangChiTiet, GioHangVM gioHangVM) {
+    private List<DonHangChiTiet> list_ct;
+    public SPEditDialog(Context context,List<DonHangChiTiet> list_ct, DonHangChiTiet donHangChiTiet, GioHangVM gioHangVM) {
         this.context = context;
         this.donHangChiTiet= donHangChiTiet;
         this.gioHangVM = gioHangVM;
+        this.list_ct = list_ct;
         this.init_dialog(context,donHangChiTiet);
     }
     public void showEditSanPhamDialog(){
@@ -61,10 +63,10 @@ public class SPEditDialog {
 
         rv_color.setLayoutManager(new LinearLayoutManager(context,RecyclerView.HORIZONTAL,false));
         color_vm = new ViewModelProvider((ViewModelStoreOwner) context).get(MauVM.class);
-        color_vm.getListMauProductEditLiveData(donHangChiTiet.getSanPham()).observe((LifecycleOwner) context, new Observer<List<Mau>>() {
+        color_vm.getListMauProductEditLiveData(this.list_ct,donHangChiTiet.getSanPham()).observe((LifecycleOwner) context, new Observer<List<Mau>>() {
             @Override
             public void onChanged(List<Mau> maus) {
-                ColorAdapter adapter = new ColorAdapter(context, maus, size_vm, new ColorAdapter.ItemClickListener() {
+                MauAdapter adapter = new MauAdapter(context, maus, size_vm, new MauAdapter.ItemClickListener() {
                     @Override
                     public void onItemClick(Mau mau) {
                        if(mau.isAble()){

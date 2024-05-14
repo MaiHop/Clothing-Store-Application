@@ -3,48 +3,48 @@ package com.example.myapplication.Domain.Model;
 import java.io.Serializable;
 
 public class Mau implements Serializable {
-    private String Id, Ten, ImgUrl;
-    private boolean Checked, Able = true;
+    private String id, ten, imgUrl;
+    private boolean checked, able = true;
     public Mau() {
     }
 
-    public boolean isAble() {
-        return Able;
-    }
-
-    public void setAble(boolean able) {
-        Able = able;
-    }
-
-    public boolean isChecked() {
-        return Checked;
-    }
-
-    public void setChecked(boolean checked) {
-        Checked = checked;
-    }
-
     public String getId() {
-        return Id;
+        return id;
     }
 
     public void setId(String id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getTen() {
-        return Ten;
+        return ten;
     }
 
     public void setTen(String ten) {
-        Ten = ten;
+        this.ten = ten;
     }
 
     public String getImgUrl() {
-        return ImgUrl;
+        return imgUrl;
     }
 
     public void setImgUrl(String imgUrl) {
-        ImgUrl = imgUrl;
+        this.imgUrl = imgUrl;
+    }
+
+    public boolean isChecked() {
+        return checked;
+    }
+
+    public void setChecked(boolean checked) {
+        this.checked = checked;
+    }
+
+    public boolean isAble() {
+        return able;
+    }
+
+    public void setAble(boolean able) {
+        this.able = able;
     }
 }

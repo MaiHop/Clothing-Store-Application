@@ -5,16 +5,16 @@ import java.util.List;
 
 public class NhomSP implements Serializable {
     private String id, ten;
-    private List<LoaiSP> ListLoaiSP;
+    private List<LoaiSP> listLoaiSP;
     public NhomSP() {
     }
 
     public List<LoaiSP> getListLoaiSP() {
-        return ListLoaiSP;
+        return listLoaiSP;
     }
 
     public void setListLoaiSP(List<LoaiSP> listLoaiSP) {
-        ListLoaiSP = listLoaiSP;
+        this.listLoaiSP = listLoaiSP;
     }
 
     public String getId() {

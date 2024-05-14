@@ -21,7 +21,7 @@ public class DonHangVM extends ViewModel {
 
     private void initData() {
         CartRepository res = new CartRepository();
-//        listDonHang = res.getListDH();
+        listDonHang = res.getListDH();
         listCartLiveData.setValue(listDonHang);
 //        updateActiveCount();  // Cập nhật số lượng hoạt động ngay khi khởi tạo
     }

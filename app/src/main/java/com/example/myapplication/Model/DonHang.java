@@ -6,7 +6,7 @@ import java.util.List;
 
 public class DonHang implements Serializable {
     private String idDonHang, trangThai;
-    private com.example.myapplication.Model.KhachHang khachHang= null;
+    private KhachHang khachHang= null;
     private DiaChi diachi = null;
     private VanChuyen vanchuyen= null;
     private ThanhToan thanhToan = null;

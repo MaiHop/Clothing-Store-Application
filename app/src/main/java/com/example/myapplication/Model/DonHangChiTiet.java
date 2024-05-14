@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class DonHangChiTiet implements Serializable {
     private String  idDonHang;
-    private com.example.myapplication.Model.SanPham sanPham;
+    private SanPham sanPham;
     private int soLuong;
     private double thanhTien, thanhTienKhuyenMai;
     private boolean checked;

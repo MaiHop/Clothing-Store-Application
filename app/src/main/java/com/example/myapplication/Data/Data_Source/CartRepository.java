@@ -488,7 +488,7 @@ public class CartRepository {
         dc1.setTenDiaChi("Home");
         dc1.setDiaChiChinh(true);
         dc1.setNguoiNhan("Trung Hậu");
-        dc1.setSDT("0765328458");
+        dc1.setsDT("0765328458");
         dc1.setDiaChi("155/33 Nguyễn Trãi");
         dc1.setXacDinh(true);
         dc1.setChecked(false);
@@ -498,7 +498,7 @@ public class CartRepository {
          dc2.setTenDiaChi("CC1");
          dc2.setDiaChiChinh(false);
          dc2.setNguoiNhan("Trung Hậu");
-         dc2.setSDT("0765328458");
+         dc2.setsDT("0765328458");
          dc2.setDiaChi("155/33 Nguyễn Trãi");
          dc2.setXacDinh(true);
          dc2.setChecked(false);
@@ -508,7 +508,7 @@ public class CartRepository {
          dc3.setTenDiaChi("CC2");
          dc3.setDiaChiChinh(false);
          dc3.setNguoiNhan("Trung Hậu");
-         dc3.setSDT("0765328458");
+         dc3.setsDT("0765328458");
          dc3.setDiaChi("155/33 Nguyễn Trãi");
          dc3.setXacDinh(true);
          dc3.setChecked(false);
@@ -560,7 +560,6 @@ public class CartRepository {
         tt1.setIdThanhToan("1");
         tt1.setTenThanhToan("Paypal");
         tt1.setHanSuDung("22/01");
-        tt1.setCVV("101");
         tt1.setLoai("VISA");
         tt1.setImageUrl("https://inkythuatso.com/uploads/thumbnails/800/2023/05/logo-viettelpost-inkythuatso-27-14-52-01.jpg");
         tt1.setChecked(false);
@@ -568,8 +567,6 @@ public class CartRepository {
         ThanhToan tt2 = new ThanhToan();
         tt2.setIdThanhToan("2");
         tt2.setTenThanhToan("Paypal");
-        tt2.setHanSuDung("22/01");
-        tt2.setCVV("101");
         tt2.setLoai("VISA");
         tt2.setImageUrl("https://inkythuatso.com/uploads/thumbnails/800/2023/05/logo-viettelpost-inkythuatso-27-14-52-01.jpg");
         tt2.setChecked(false);
@@ -578,7 +575,6 @@ public class CartRepository {
         tt3.setIdThanhToan("3");
         tt3.setTenThanhToan("Paypal");
         tt3.setHanSuDung("22/01");
-        tt3.setCVV("101");
         tt3.setLoai("VISA");
         tt3.setImageUrl("https://inkythuatso.com/uploads/thumbnails/800/2023/05/logo-viettelpost-inkythuatso-27-14-52-01.jpg");
         tt3.setChecked(false);

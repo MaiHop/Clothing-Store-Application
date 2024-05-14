@@ -1,10 +1,5 @@
 package com.example.myapplication.Presentation.Cart.Activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,9 +11,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.myapplication.Model.DonHang;
 import com.example.myapplication.Model.DonHangChiTiet;
 import com.example.myapplication.Presentation.Cart.Apdapter.CheckOutAdapter;
-import com.example.myapplication.Model.DonHang;
 import com.example.myapplication.R;
 
 import java.text.SimpleDateFormat;
@@ -100,7 +100,7 @@ public class ThanhToanActivity extends AppCompatActivity {
         }
         this.tv_Subtotal.setText("Subtotal ("+ tong+")");
         this.tv_Checkout_ThanhTien.setText(String.valueOf("$"+dh.getThanhTien()));
-        this.tv_Checkout_PhiDichVu.setText(String.valueOf("$"+dh.getPhiPhucVu()));
+        this.tv_Checkout_PhiDichVu.setText(String.valueOf("$"+dh.getphiDichVu()));
         this.tv_Checkout_PhiGiaoHang.setText(String.valueOf("$"+dh.getPhiGiaoHang()));
         this.tv_Checkout_TienThue.setText(String.valueOf("$"+dh.getThue()));
         this.tv_Checkout_TienKhuyenMai.setText(String.valueOf("-$"+dh.getTienKhuyenMai()));

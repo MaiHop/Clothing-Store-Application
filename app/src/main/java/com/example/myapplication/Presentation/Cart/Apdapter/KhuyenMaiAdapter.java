@@ -18,10 +18,10 @@ public class KhuyenMaiAdapter extends RecyclerView.Adapter<KhuyenMaiVH>{
     private Context context;
     private List<KhuyenMai> list;
     private LayoutInflater minflater;
-    private KhuyenMaiAdapter.ItemClickListener itemClickListener;
+    private ItemClickListener itemClickListener;
     private int rowindex=-1;
 
-    public KhuyenMaiAdapter(Context context, List<KhuyenMai> list,KhuyenMaiAdapter.ItemClickListener itemClickListene) {
+    public KhuyenMaiAdapter(Context context, List<KhuyenMai> list, ItemClickListener itemClickListene) {
         this.context = context;
         this.list = list;
         this.minflater = LayoutInflater.from(context);

@@ -1,35 +1,45 @@
 package com.example.myapplication.Presentation.Cart.Activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.util.Log;
 
-import com.example.myapplication.Api.KieuSP_api;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.myapplication.Api.DonHangChiTiet_api;
 import com.example.myapplication.Api.ServiceBuilder;
-import com.example.myapplication.Model.KieuSP;
+import com.example.myapplication.Model.DonHangChiTiet;
 import com.example.myapplication.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class FirebaseActivity extends AppCompatActivity {
-
+    List<DonHangChiTiet> list = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mh_activity_firebase);
 
-        KieuSP_api kieuSPService = ServiceBuilder.buildService(KieuSP_api.class);
-        Call<List<KieuSP>> callSync = kieuSPService.readallKieuSP();
 
-        try {
-            List<KieuSP> list = callSync.execute().body();
-            Log.d("TestExcute",String.valueOf(list.size()));
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+
+        DonHangChiTiet_api api = ServiceBuilder.buildService(DonHangChiTiet_api.class);
+        Call<List<DonHangChiTiet>> request = api.readallDonHangChiTiet();
+        request.enqueue(new Callback<List<DonHangChiTiet>>() {
+            @Override
+            public void onResponse(Call<List<DonHangChiTiet>> call, Response<List<DonHangChiTiet>> response) {
+                list= response.body();
+                Log.d("TestExcute",String.valueOf(list.get(0).getSanPham().getImageUrl()));
+            }
+
+            @Override
+            public void onFailure(Call<List<DonHangChiTiet>> call, Throwable t) {
+
+            }
+        });
 //        callSync.enqueue(new Callback<List<KieuSP>>() {
 //            @Override
 //            public void onResponse(Call<List<KieuSP>> call, Response<List<KieuSP>> response) {

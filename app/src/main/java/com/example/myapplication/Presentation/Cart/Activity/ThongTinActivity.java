@@ -1,13 +1,5 @@
 package com.example.myapplication.Presentation.Cart.Activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -19,15 +11,23 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.myapplication.Presentation.Cart.Apdapter.DiaChiGHAdapter;
-import com.example.myapplication.Presentation.Cart.Apdapter.KhuyenMaiAdapter;
-import com.example.myapplication.Presentation.Cart.Apdapter.PTThanhToanAdapter;
-import com.example.myapplication.Presentation.Cart.Apdapter.VanChuyenAdapter;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.myapplication.Model.DiaChi;
 import com.example.myapplication.Model.DonHang;
 import com.example.myapplication.Model.KhuyenMai;
 import com.example.myapplication.Model.ThanhToan;
 import com.example.myapplication.Model.VanChuyen;
+import com.example.myapplication.Presentation.Cart.Apdapter.DiaChiGHAdapter;
+import com.example.myapplication.Presentation.Cart.Apdapter.KhuyenMaiAdapter;
+import com.example.myapplication.Presentation.Cart.Apdapter.PTThanhToanAdapter;
+import com.example.myapplication.Presentation.Cart.Apdapter.VanChuyenAdapter;
 import com.example.myapplication.Presentation.Cart.ViewModel.DiaChiGHVM;
 import com.example.myapplication.Presentation.Cart.ViewModel.KhuyenMaiVM;
 import com.example.myapplication.Presentation.Cart.ViewModel.PTThanhToanVM;

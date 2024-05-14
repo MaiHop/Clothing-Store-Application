@@ -7,7 +7,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import com.example.myapplication.Presentation.Accout_Setting.Activity.Account_Fragment;
 
-import com.example.myapplication.Presentation.Cart.Fragment.GioHangFragment;
+import com.example.myapplication.Presentation.Cart.Activity.GioHangFragment;
 import com.example.myapplication.Presentation.GH.MainFragment;
 import com.example.myapplication.Presentation.PhucHoi.Activity.SanPham_Fragment;
 import com.example.myapplication.Presentation.Wishlist.Activity.WishList_Fragment;

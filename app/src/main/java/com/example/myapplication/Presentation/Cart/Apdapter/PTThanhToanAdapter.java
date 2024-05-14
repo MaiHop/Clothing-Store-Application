@@ -18,10 +18,10 @@ public class PTThanhToanAdapter extends RecyclerView.Adapter<PTThanhToanVH>{
     private Context context;
     private List<ThanhToan> list;
     private LayoutInflater minflater;
-    private PTThanhToanAdapter.ItemClickListener itemClickListener;
+    private ItemClickListener itemClickListener;
     private int rowindex=-1;
 
-    public PTThanhToanAdapter(Context context, List<ThanhToan> list, PTThanhToanAdapter.ItemClickListener itemClickListener) {
+    public PTThanhToanAdapter(Context context, List<ThanhToan> list, ItemClickListener itemClickListener) {
         this.context = context;
         this.list = list;
         this.minflater = LayoutInflater.from(context);

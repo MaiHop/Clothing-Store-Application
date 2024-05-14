@@ -1,4 +1,4 @@
-package com.example.myapplication.Presentation.Cart.Fragment;
+package com.example.myapplication.Presentation.Cart.Activity;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -20,9 +20,9 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Presentation.Cart.Apdapter.CartAdapter;
 import com.example.myapplication.Model.DonHang;
 import com.example.myapplication.Model.DonHangChiTiet;
+import com.example.myapplication.Presentation.Cart.Apdapter.GioHangAdapter;
 import com.example.myapplication.Presentation.Cart.ViewModel.GioHangVM;
 import com.example.myapplication.R;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -47,9 +47,12 @@ public class GioHangFragment extends Fragment {
         rv_ListCart.setLayoutManager(new LinearLayoutManager(getContext()));
         gioHangVM = new ViewModelProvider(this).get(GioHangVM.class);
         gioHangVM.getListCartLiveData().observe(getViewLifecycleOwner(), donHangChiTiets -> {
-            list = donHangChiTiets;
-            CartAdapter adapter = new CartAdapter(getContext(), donHangChiTiets, btn_DatHang, toolbar_title, gioHangVM);
-            rv_ListCart.setAdapter(adapter);
+            if (!(donHangChiTiets.isEmpty())){
+                list = donHangChiTiets;
+                GioHangAdapter adapter = new GioHangAdapter(getContext(), donHangChiTiets, btn_DatHang, toolbar_title, gioHangVM);
+                rv_ListCart.setAdapter(adapter);
+            }
+
         });
         return view;
     }
@@ -73,7 +76,7 @@ public class GioHangFragment extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                gioHangVM.filterCart(newText.toLowerCase());
+//                gioHangVM.filterCart(newText.toLowerCase());
                 return false;
             }
         });

@@ -18,10 +18,10 @@ public class VanChuyenAdapter extends RecyclerView.Adapter<VanChuyenVH>{
     private Context context;
     private List<VanChuyen> list;
     private LayoutInflater minflater;
-    private VanChuyenAdapter.ItemClickListener itemClickListener;
+    private ItemClickListener itemClickListener;
     private int rowindex=-1;
 
-    public VanChuyenAdapter(Context context, List<VanChuyen> list,VanChuyenAdapter.ItemClickListener itemClickListener) {
+    public VanChuyenAdapter(Context context, List<VanChuyen> list, ItemClickListener itemClickListener) {
         this.context = context;
         this.list = list;
         this.minflater = LayoutInflater.from(context);

@@ -1,13 +1,5 @@
 package com.example.myapplication.Presentation.Cart.Activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
-import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.Menu;
@@ -16,9 +8,17 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.myapplication.Presentation.Cart.Apdapter.CartAdapter;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.myapplication.Model.DonHang;
 import com.example.myapplication.Model.DonHangChiTiet;
+import com.example.myapplication.Presentation.Cart.Apdapter.GioHangAdapter;
 import com.example.myapplication.Presentation.Cart.ViewModel.GioHangVM;
 import com.example.myapplication.R;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -49,9 +49,11 @@ public class GioHangActivity extends AppCompatActivity {
         gioHangVM.getListCartLiveData().observe(this, new Observer<List<DonHangChiTiet>>() {
             @Override
             public void onChanged(List<DonHangChiTiet> donHangChiTiets) {
-                list= donHangChiTiets;
-                CartAdapter adapter = new CartAdapter(GioHangActivity.this, donHangChiTiets, btn_DatHang, toolbar_title, gioHangVM);
-                rv_ListCart.setAdapter(adapter);
+                if(!donHangChiTiets.isEmpty()){
+                    list= donHangChiTiets;
+                    GioHangAdapter adapter = new GioHangAdapter(GioHangActivity.this, donHangChiTiets, btn_DatHang, toolbar_title, gioHangVM);
+                    rv_ListCart.setAdapter(adapter);
+                }
             }
         });
     }
@@ -68,7 +70,7 @@ public class GioHangActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                gioHangVM.filterCart(newText.toLowerCase());
+//                gioHangVM.filterCart(newText.toLowerCase());
                 return false;
             }
         });

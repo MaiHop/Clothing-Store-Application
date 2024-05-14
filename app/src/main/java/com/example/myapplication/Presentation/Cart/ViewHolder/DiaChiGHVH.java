@@ -1,9 +1,6 @@
 package com.example.myapplication.Presentation.Cart.ViewHolder;
 
 
-import com.example.myapplication.Model.DiaChi;
-import com.example.myapplication.R;
-
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -11,6 +8,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.myapplication.Model.DiaChi;
+import com.example.myapplication.R;
 
 public class DiaChiGHVH extends RecyclerView.ViewHolder{
     private TextView tv_TenDiaChi, tv_TenNguoiNhan_Sdt,tv_DiaChi,tv_XacDinh,tv_DiaChiChinh;
@@ -30,7 +30,7 @@ public class DiaChiGHVH extends RecyclerView.ViewHolder{
         }else {
             tv_DiaChiChinh.setVisibility(View.INVISIBLE);
         }
-        tv_TenNguoiNhan_Sdt.setText(diachi.getNguoiNhan()+"\t("+diachi.getSDT()+")");
+        tv_TenNguoiNhan_Sdt.setText(diachi.getNguoiNhan()+"\t("+diachi.getsDT()+")");
         tv_DiaChi.setText(diachi.getDiaChi());
         if(diachi.isXacDinh()){
             tv_XacDinh.setText("Pinpoint already");

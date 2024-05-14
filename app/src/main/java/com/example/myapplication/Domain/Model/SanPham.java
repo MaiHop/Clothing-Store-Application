@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 public class SanPham implements Serializable {
-    private String idSanPham, imageUrl, tenSanPham, thongTin;
+    private String id,idSanPham, imageUrl, tenSanPham, thongTin;
     private double giaban;
     private int soLuong, soLuongBan;
     private NhomSP nhomSanPham = null;
@@ -16,6 +16,14 @@ public class SanPham implements Serializable {
     private List<KhuyenMai> listKhuyenMai= null;
 
     public SanPham() {
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getIdSanPham() {

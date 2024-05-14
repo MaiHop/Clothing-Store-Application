@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 public class SanPham implements Serializable {
-<<<<<<< HEAD
+
     private  String Id;
     private String IdSanPham, ImageUrl, TenSanPham, ThongTin;
     private double Giaban;
@@ -18,8 +18,8 @@ public class SanPham implements Serializable {
     private List<DanhGia> ListDanhGia= null;
     private List<KhuyenMai> ListKhuyenMai= null;
 
-=======
-    private String id,idSanPham, imageUrl, tenSanPham, thongTin;
+
+    private String id, idSanPham, imageUrl, tenSanPham, thongTin;
     private double giaban;
     private int soLuong, soLuongBan;
     private NhomSP nhomSanPham = null;
@@ -30,7 +30,7 @@ public class SanPham implements Serializable {
     private List<DanhGia> listDanhGia= null;
     private List<KhuyenMai> listKhuyenMai= null;
     private Date ngayTao;
->>>>>>> a982132ae0525e588140d6aef892e3f647155fec
+
     public SanPham() {
     }
 
@@ -42,13 +42,13 @@ public class SanPham implements Serializable {
         this.ngayTao = ngayTao;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
+//    public String getId() {
+//        return id;
+//    }
+//
+//    public void setId(String id) {
+//        this.id = id;
+//    }
 
     public String getIdSanPham() {
         return idSanPham;

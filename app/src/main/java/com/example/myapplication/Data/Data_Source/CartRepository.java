@@ -297,12 +297,12 @@ public class CartRepository {
         yt2.setKhachhang(kh);
         yt2.setListsanpham((List<SanPham>) list_sp.get(1));
 //
-//        YeuThich yt3 = new YeuThich();
+//        YeuThich_api yt3 = new YeuThich_api();
 //        yt3.setIdYeuThich("3");
 //        yt3.setKhachhang(kh);
 //        yt3.setListsanpham(list_sp);
 //
-//        YeuThich yt4 = new YeuThich();
+//        YeuThich_api yt4 = new YeuThich_api();
 //        yt4.setIdYeuThich("1");
 //        yt4.setKhachhang(kh);
 //        yt4.setListsanpham(list_sp);

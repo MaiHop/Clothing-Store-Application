@@ -49,7 +49,7 @@ public class ThanhToanActivity extends AppCompatActivity {
 
     private void loadinfo() {
         Intent i = getIntent();
-        dh = (DonHang) i.getSerializableExtra("DonHang");
+        dh = (DonHang) i.getSerializableExtra("DonHang_api");
         if(dh.getDiachi() == null || dh.getVanchuyen() == null || dh.getThanhToan() == null){
             this.btn_XacNhanDonHang.setEnabled(false);
         }
@@ -152,7 +152,7 @@ public class ThanhToanActivity extends AppCompatActivity {
         this.iv_DanhSachDiaChiGiaoHang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                type = "DiaChi";
+                type = "DiaChi_api";
                 DanhSachThongTin(type);
             }
         });
@@ -160,7 +160,7 @@ public class ThanhToanActivity extends AppCompatActivity {
         this.iv_DanhSachVanChuyen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                type = "VanChuyen";
+                type = "VanChuyen_api";
                 DanhSachThongTin(type);
             }
         });
@@ -168,7 +168,7 @@ public class ThanhToanActivity extends AppCompatActivity {
         this.iv_DanhSachThanhToan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                type = "ThanhToan";
+                type = "ThanhToan_api";
                 DanhSachThongTin(type);
             }
         });
@@ -176,7 +176,7 @@ public class ThanhToanActivity extends AppCompatActivity {
         this.iv_DanhSachKhuyenMai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                type = "KhuyenMai";
+                type = "KhuyenMai_api";
                 DanhSachThongTin(type);
 
             }
@@ -226,7 +226,7 @@ public class ThanhToanActivity extends AppCompatActivity {
     private void DanhSachThongTin(String type) {
         Intent intent = new Intent(this, ThongTinActivity.class);
         intent.putExtra("Loai", type);
-        intent.putExtra("DonHang", dh);
+        intent.putExtra("DonHang_api", dh);
         startActivity(intent);
     }
 }

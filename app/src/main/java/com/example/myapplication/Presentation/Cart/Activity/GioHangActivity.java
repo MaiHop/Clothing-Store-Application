@@ -105,7 +105,7 @@ public class GioHangActivity extends AppCompatActivity {
                     }
                 });
 //        Intent intent = new Intent(this, ThanhToanActivity.class);
-//        intent.putExtra("DonHang", dh);
+//        intent.putExtra("DonHang_api", dh);
 //        startActivity(intent);
     }
     private void init(){

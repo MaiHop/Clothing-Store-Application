@@ -44,7 +44,7 @@ dependencies {
     implementation ("com.squareup.picasso:picasso:2.71828")
 
 //    hung
-    implementation ("com.facebook.android:facebook-android-sdk:latest.release")
+
 //    firebase
     implementation("com.google.firebase:firebase-storage:20.3.0")
     implementation(platform("com.google.firebase:firebase-bom:32.8.0"))

@@ -31,84 +31,7 @@ public class CartRepository {
 
     public CartRepository() {
     }
-    public List<DonHang> getListDH(){
-        List<DonHang> list = new ArrayList<>();
-        List<DiaChi> listdc = getListAddress();
-        List<VanChuyen> listvc = getListDelivery();
-        List<ThanhToan> listtt = getListMP();
-        List<KhuyenMai> listkm = getListKhuyenMai();
-        List<DonHangChiTiet> listdhct = getGioHang();
-        List<DonHangChiTiet> list_ct1 = new ArrayList<>();
-        List<DonHangChiTiet> list_ct2 = new ArrayList<>();
-        List<DonHangChiTiet> list_ct3 = new ArrayList<>();
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 
-        SanPham sp1 = new SanPham();
-        sp1.setTenSanPham("Urban long shirt");
-        sp1.setGiaban(120);
-
-        SanPham sp2 = new SanPham();
-        sp2.setTenSanPham("Tee shirt for summer");
-        sp2.setGiaban(50);
-
-        SanPham sp3 = new SanPham();
-        sp3.setTenSanPham("Short");
-        sp3.setGiaban(100);
-
-        DonHangChiTiet dhct1 = new DonHangChiTiet();
-        dhct1.setSanPham(sp1);
-        list_ct1.add(dhct1);
-
-        DonHangChiTiet dhct2 = new DonHangChiTiet();
-        dhct2.setSanPham(sp2);
-        list_ct2.add(dhct2);
-
-        DonHangChiTiet dhct3 = new DonHangChiTiet();
-        dhct3.setSanPham(sp3);
-        list_ct3.add(dhct3);
-
-        DonHang dh1 = new DonHang();
-        dh1.setListDonHangChiTiet(list_ct1);
-        dh1.setTrangThai("Active");
-        dh1.setphiDichVu(50.0);
-        try {
-            dh1.setNgayThanhToan(formatter.parse("11/05/2024"));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        dh1.setDiachi(listdc.get(0));
-        dh1.setVanchuyen(listvc.get(0));
-        dh1.setThanhToan(listtt.get(0));
-        dh1.setKhuyenmai(listkm.get(0));
-        dh1.setListDonHangChiTiet(listdhct);
-        dh1.setPhiGiaoHang(200);
-        dh1.setThue(0.1);
-
-        DonHang dh2 = new DonHang();
-        dh2.setListDonHangChiTiet(list_ct2);
-        dh2.setTrangThai("Completed");
-        try {
-            dh2.setNgayThanhToan(formatter.parse("20/03/2024"));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        DonHang dh3 = new DonHang();
-        dh3.setListDonHangChiTiet(list_ct3);
-        dh3.setTrangThai("Canceled");
-        try {
-            dh3.setNgayThanhToan(formatter.parse("20/03/2023"));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        list.add(dh1);
-        list.add(dh2);
-        list.add(dh3);
-
-
-        return list;
-    }
     public List<KichThuoc> getListSize(){
         List<KichThuoc> list = new ArrayList<>();
         KichThuoc kt1 = new KichThuoc();
@@ -186,6 +109,7 @@ public class CartRepository {
         kieuSP2.setTen("ÁO KHOÁC & ÁO BLAZER");
         list.add(kieuSP1);
         list.add(kieuSP2);
+
         return list;
     }
     public List<LoaiSP> getListLoaiSP(){
@@ -309,6 +233,7 @@ public class CartRepository {
         sp6.setKieuSanPham(listKieuSP.get(0));
         sp6.setKichThuoc(listsize.get(2));
         sp6.setMau(listcolor.get(5));
+
         sp6.setThongTin("Chất liệu vải nhẹ, co giãn và nhanh khô mang lại sự thoải mái đáng kinh ngạc. Kiểu dáng đẹp mắt cho bất kỳ dịp nào.");
 
         SanPham sp7 = new SanPham();
@@ -320,9 +245,10 @@ public class CartRepository {
         sp7.setSoLuongBan(12);
         sp7.setNhomSanPham(listNhomSP.get(1));
         sp7.setLoaiSanPham(listLoaiSP.get(0));
-        sp7.setKieuSanPham(listKieuSP.get(0));
+        sp7.setKieuSanPham(listKieuSP.get(1));
         sp7.setKichThuoc(listsize.get(2));
         sp7.setMau(listcolor.get(5));
+        sp6.setMau(listcolor.get(1));
         sp7.setThongTin("Chất liệu vải nhẹ, co giãn và nhanh khô mang lại sự thoải mái đáng kinh ngạc. Kiểu dáng đẹp mắt cho bất kỳ dịp nào.");
         list.add(sp1);
         list.add(sp2);

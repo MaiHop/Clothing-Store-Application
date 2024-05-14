@@ -48,6 +48,7 @@ public class Account extends AppCompatActivity {
         ln_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(Account.this, HomeThamGia.class);
                 startActivity(intent);
             }

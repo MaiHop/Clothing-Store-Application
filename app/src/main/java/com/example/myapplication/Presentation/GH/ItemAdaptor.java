@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.icu.text.SimpleDateFormat;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -13,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.Filter;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
@@ -21,21 +19,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Model.DonHang;
 import com.example.myapplication.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ItemAdaptor extends RecyclerView.Adapter<ItemAdaptor.Viewholder> {
-    private List<DonHang> item;
-    private ArrayList<DonHang> itemsFull;
+    private ArrayList<ItemDomain> item;
     private Context context;
 
-    public ItemAdaptor(Context context, List<DonHang> item) {
+    public ItemAdaptor(Context context, ArrayList<ItemDomain> item) {
         this.item = item;
         this.context = context;
-        this.itemsFull = new ArrayList<>(item);
     }
 
     @NonNull
@@ -48,13 +42,11 @@ public class ItemAdaptor extends RecyclerView.Adapter<ItemAdaptor.Viewholder> {
 
     @Override
     public void onBindViewHolder(@NonNull Viewholder holder, int position) {
-        DonHang donHang = item.get(position);
-
-        holder.tiltetxt.setText(donHang.getListDonHangChiTiet().get(0).getSanPham().getTenSanPham());
-        holder.pricetxt.setText("$" + donHang.getListDonHangChiTiet().get(0).getSanPham().getGiaban());
-        holder.datetxt.setText(new SimpleDateFormat("dd/MM/yyyy").format(donHang.getNgayThanhToan()));
-
-//        Picasso.get().load(donHang.getListDonHangChiTiet().get(0).getSanPham().getImageUrl()).into(pic);
+        ItemDomain itemlist = item.get(position);
+        holder.tiltetxt.setText(itemlist.getTitle());
+        holder.pricetxt.setText("$" + itemlist.getPrice());
+        holder.datetxt.setText(itemlist.getDate());
+        holder.pic.setImageResource(itemlist.getPic());
 
         holder.imageView3cham.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,7 +58,6 @@ public class ItemAdaptor extends RecyclerView.Adapter<ItemAdaptor.Viewholder> {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, OrderDetailsActivity.class);
-                intent.putExtra("DONHANG", donHang);
                 context.startActivity(intent);
             }
         });
@@ -92,40 +83,6 @@ public class ItemAdaptor extends RecyclerView.Adapter<ItemAdaptor.Viewholder> {
             btnTOrder = itemView.findViewById(R.id.btnTOrder);
         }
     }
-
-    public Filter getFilter() {
-        return itemFilter;
-    }
-
-    private Filter itemFilter = new Filter() {
-        @Override
-        protected FilterResults performFiltering(CharSequence constraint) {
-            ArrayList<DonHang> filteredList = new ArrayList<>();
-            if (constraint == null || constraint.length() == 0) {
-                filteredList.addAll(itemsFull);
-            } else {
-                String filterPattern = constraint.toString().toLowerCase().trim();
-
-                for (DonHang donHang : itemsFull) {
-                    // Tìm kiếm theo tên sản phẩm
-                    if (donHang.getListDonHangChiTiet().get(0).getSanPham().getTenSanPham().toLowerCase().contains(filterPattern)) {
-                        filteredList.add(donHang);
-                    }
-                }
-            }
-
-            FilterResults results = new FilterResults();
-            results.values = filteredList;
-            return results;
-        }
-
-        @Override
-        protected void publishResults(CharSequence constraint, FilterResults results) {
-            item.clear();
-            item.addAll((ArrayList) results.values);
-            notifyDataSetChanged();
-        }
-    };
 
     private void showPopupMenu(View view) {
         PopupMenu popupMenu = new PopupMenu(view.getContext(), view);
@@ -175,7 +132,6 @@ public class ItemAdaptor extends RecyclerView.Adapter<ItemAdaptor.Viewholder> {
         });
         dialog.show();
     }
-
     private void showYes(Context context) {
         final Dialog successDialog = new Dialog(context);
         successDialog.setContentView(R.layout.cancel_success);
@@ -199,3 +155,5 @@ public class ItemAdaptor extends RecyclerView.Adapter<ItemAdaptor.Viewholder> {
         successDialog.show();
     }
 }
+
+

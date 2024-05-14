@@ -35,10 +35,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="30dp"
             android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
-            android:gravity="center">
+            android:layout_marginLeft="20dp">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -79,45 +78,70 @@
             android:layout_marginLeft="20dp">
             <LinearLayout
                 android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:gravity="center">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/c_hung_rounded_border_thamgia"> <!-- Sử dụng drawable để tạo đường viền tròn -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_AP"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:padding="8dp"
+                        android:text="Đăng Nhập Bằng Apple"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        />
+                    <ImageView
+                        android:layout_marginLeft="15dp"
+                        android:layout_width="35dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/c_hung_ic_apple"
+                        android:layout_gravity="left"
+                        />
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp">
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center">
-                <com.facebook.login.widget.LoginButton
-                    android:id="@+id/btn_FB"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
-                    android:padding="8dp"
-                    android:text="Đăng Nhập Bằng Facebook"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    />
-<!--                <RelativeLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="45dp"-->
-<!--                    android:background="@drawable/c_hung_rounded_border_thamgia"> &lt;!&ndash; Sử dụng drawable để tạo đường viền tròn &ndash;&gt;-->
-<!--                    <com.google.android.material.button.MaterialButton-->
-<!--                        android:id="@+id/btn_FB"-->
-<!--                        style="@style/Widget.MaterialComponents.Button.TextButton"-->
-<!--                        android:padding="8dp"-->
-<!--                        android:text="Đăng Nhập Bằng Facebook"-->
-<!--                        android:textColor="@color/black"-->
-<!--                        android:textStyle="bold"-->
-<!--                        android:layout_marginRight="10dp"-->
-<!--                        android:layout_marginLeft="10dp"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="match_parent"-->
-<!--                        />-->
-<!--                    <ImageView-->
-<!--                        android:layout_marginLeft="15dp"-->
-<!--                        android:layout_width="35dp"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:src="@drawable/c_hung_ic_facebook"-->
-<!--                        android:layout_gravity="left"-->
-<!--                        />-->
-<!--                </RelativeLayout>-->
+                    android:layout_height="45dp"
+                    android:background="@drawable/c_hung_rounded_border_thamgia"> <!-- Sử dụng drawable để tạo đường viền tròn -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_FB"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:padding="8dp"
+                        android:text="Đăng Nhập Bằng Facebook"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        />
+                    <ImageView
+                        android:layout_marginLeft="15dp"
+                        android:layout_width="35dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/c_hung_ic_facebook"
+                        android:layout_gravity="left"
+                        />
+                </RelativeLayout>
             </LinearLayout>
         </LinearLayout>
         <LinearLayout

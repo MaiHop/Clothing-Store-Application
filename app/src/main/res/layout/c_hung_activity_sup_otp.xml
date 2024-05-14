@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    tools:context=".Presentation.LoginAccout.OTP.SP_OTP"
     android:background="@color/white"
     tools:ignore="MissingDefaultResource">
     <androidx.drawerlayout.widget.DrawerLayout

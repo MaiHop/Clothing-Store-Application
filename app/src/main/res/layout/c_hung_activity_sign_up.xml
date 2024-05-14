@@ -280,6 +280,105 @@
                                         />
                                 </RelativeLayout>
                             </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:paddingTop="10dp"
+                                android:paddingBottom="10dp"
+                                android:gravity="center">
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="45dp"
+                                    android:background="@drawable/c_hung_rounded_border_thamgia"><!-- Sử dụng drawable để tạo đường viền tròn -->
+
+                                    <Button
+                                        android:id="@+id/btn_B"
+                                        android:text="Đăng Nhập Bằng Google"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_marginRight="10dp"
+                                        android:backgroundTint="@color/white"
+                                        android:padding="8dp"
+                                        android:textColor="@color/black"
+                                        android:textStyle="bold"
+                                        />
+                                    <ImageView
+                                        android:layout_marginLeft="15dp"
+                                        android:layout_width="35dp"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/c_hung_ic_google"
+                                        android:layout_gravity="left"
+                                        />
+                                </RelativeLayout>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:paddingTop="10dp"
+                                android:paddingBottom="10dp"
+                                android:gravity="center">
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="45dp"
+                                    android:background="@drawable/c_hung_rounded_border_thamgia"><!-- Sử dụng drawable để tạo đường viền tròn -->
+
+                                    <Button
+                                        android:id="@+id/btn_C"
+                                        android:text="Đăng Nhập Bằng Google"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_marginRight="10dp"
+                                        android:backgroundTint="@color/white"
+                                        android:padding="8dp"
+                                        android:textColor="@color/black"
+                                        android:textStyle="bold"
+                                        />
+                                    <ImageView
+                                        android:layout_marginLeft="15dp"
+                                        android:layout_width="35dp"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/c_hung_ic_google"
+                                        android:layout_gravity="left"
+                                        />
+                                </RelativeLayout>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:paddingTop="10dp"
+                                android:paddingBottom="10dp"
+                                android:gravity="center">
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="45dp"
+                                    android:background="@drawable/c_hung_rounded_border_thamgia"><!-- Sử dụng drawable để tạo đường viền tròn -->
+
+                                    <Button
+                                        android:id="@+id/btn_A"
+                                        android:text="Đăng Nhập Bằng Google"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_marginRight="10dp"
+                                        android:backgroundTint="@color/white"
+                                        android:padding="8dp"
+                                        android:textColor="@color/black"
+                                        android:textStyle="bold"
+                                        />
+                                    <ImageView
+                                        android:layout_marginLeft="15dp"
+                                        android:layout_width="35dp"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/c_hung_ic_google"
+                                        android:layout_gravity="left"
+                                        />
+                                </RelativeLayout>
+                            </LinearLayout>
                         </LinearLayout>
                     </ScrollView>
                 </LinearLayout>

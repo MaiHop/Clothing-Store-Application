@@ -49,57 +49,6 @@ public class DanhMucActivity extends AppCompatActivity {
     private String nhomSPId;
     private Button sortButton, filterButton;
 
-//    private TextView tvNhomSPName;
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.women_layout);
-//        tvNhomSPName = findViewById(R.id.tendanhmuc);
-//
-//        ImageView backButton = findViewById(R.id.imageViewBack);
-//        backButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                // Xử lý khi người dùng nhấn vào nút back (ImageView backButton)
-//                // Ví dụ: Đóng Activity hiện tại khi nhấn nút back
-//                finish(); // Đóng Activity và trở về Activity trước đó (nếu có)
-//            }
-//        });
-//
-//        recyclerView = findViewById(R.id.viewwomen);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//
-//        // Lấy toàn bộ danh sách sản phẩm từ CartRepository
-//        CartRepository cartRepository = new CartRepository();
-//        sanPhamList = cartRepository.getSanPham();
-//
-//        // Lọc danh sách sản phẩm tương ứng với nhóm sản phẩm được chọn (nhomSPId)
-//        String nhomSPId = getIntent().getStringExtra("nhomSPId");
-//        List<SanPham_api> filteredList = filterSanPhamByNhomSPId(sanPhamList, nhomSPId);
-//
-//        // Khởi tạo và thiết lập adapter cho RecyclerView với danh sách sản phẩm đã lọc
-//        sanPhamAdapter = new SanPhamAdapter(filteredList, this, getLayoutInflater());
-//        recyclerView.setAdapter(sanPhamAdapter);
-//
-//        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
-//        recyclerView.setHasFixedSize(true);
-//    }
-//
-//    // Phương thức lọc danh sách sản phẩm theo nhóm sản phẩm (nhomSPId)
-//    private List<SanPham_api> filterSanPhamByNhomSPId(List<SanPham_api> sanPhamList, String nhomSPId) {
-//        List<SanPham_api> filteredList = new ArrayList<>();
-//        for (SanPham_api sanPham : sanPhamList) {
-//            if (sanPham.getNhomSanPham().getId().equals(nhomSPId)) {
-//                filteredList.add(sanPham);
-//            }
-//        }
-//        return filteredList;
-//    }
-//@Override
-//protected void onCreate(Bundle savedInstanceState) {
-//    super.onCreate(savedInstanceState);
-//    setContentView(R.layout.hoi_sanpham_layout);
-//
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

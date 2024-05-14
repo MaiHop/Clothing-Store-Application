@@ -63,6 +63,9 @@ dependencies {
     // Logging
     implementation ("com.squareup.okhttp3:logging-interceptor:3.9.0")
 
-
-
+    //hoi
+    implementation("androidx.paging:paging-runtime:3.0.0")
 }
+
+
+

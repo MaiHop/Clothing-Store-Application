@@ -15,7 +15,7 @@ import retrofit2.Response;
 
 public class SanPhamRepository {
     SanPhamInterface sanPhamInterface;
-    List<DonHangChiTiet> list = new ArrayList<>();
+    List<SanPham> list = new ArrayList<>();
 
     public SanPhamRepository(SanPhamInterface sanPhamInterface) {
         this.sanPhamInterface = sanPhamInterface;

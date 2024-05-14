@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.Model.KhachHang;
 import com.example.myapplication.Presentation.ButtonNavigation.Home;
 import com.example.myapplication.Presentation.LoginAccout.HomeThamGia;
 import com.example.myapplication.Presentation.LoginAccout.Load_Dialog;
@@ -39,6 +40,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 
+import java.util.Date;
 import java.util.HashMap;
 
 public class sign_up extends AppCompatActivity {
@@ -141,14 +143,19 @@ public class sign_up extends AppCompatActivity {
                                                     public void onComplete(@NonNull Task<Void> task) {
                                                         if (task.isSuccessful()) {
                                                             // Tạo dữ liệu người dùng trên Firebase Realtime Database
-                                                            HashMap<String, Object> map = new HashMap<>();
-                                                            map.put("id", user.getUid());
-                                                            map.put("name", user.getDisplayName());
-                                                            map.put("profile", user.getPhotoUrl().toString());
+                                                            KhachHang kh = new KhachHang();
+                                                            kh.setIdKhachHang(user.getUid());
+                                                            kh.setImageUrl(user.getPhotoUrl().toString());
+                                                            kh.setTen(user.getDisplayName());
+                                                            kh.setGioiTinh(0);
+//                                                            HashMap<String, Object> map = new HashMap<>();
+//                                                            map.put("id", user.getUid());
+//                                                            map.put("name", user.getDisplayName());
+//                                                            map.put("profile", user.getPhotoUrl().toString());
 
 //                                                            database.getReference().child("users").child(user.getUid()).setValue(map)
-                                                            database.collection("users").document(user.getUid())
-                                                                    .set(map, SetOptions.merge())
+                                                            database.collection("KhachHang").document(kh.getIdKhachHang())
+                                                                    .set(kh)
                                                                     .addOnSuccessListener(aVoid -> {
                                                                         Intent intent = new Intent(sign_up.this,SP_OTP);
                                                                         intent.putExtra("confirm_code", "sign_up");

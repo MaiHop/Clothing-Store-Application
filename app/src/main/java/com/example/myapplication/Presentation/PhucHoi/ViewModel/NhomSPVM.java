@@ -10,7 +10,7 @@ import com.example.myapplication.Data.Data_Source.CartRepository;
 
 import java.util.List;
 
-public class NhomSPVM extends ViewModel {
+public class NhomSPVM extends ViewModel implements Nho {
     private MutableLiveData<List<NhomSP>> nhomspListLiveData;
     public NhomSPVM() {
         nhomspListLiveData = new MutableLiveData<>();

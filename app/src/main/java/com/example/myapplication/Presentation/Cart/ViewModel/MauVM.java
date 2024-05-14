@@ -1,5 +1,7 @@
 package com.example.myapplication.Presentation.Cart.ViewModel;
 
+import android.util.Log;
+
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -36,31 +38,34 @@ public class MauVM extends ViewModel implements SanPhamRepository.SanPhamInterfa
             @Override
             public void onResponse(Call<List<SanPham>> call, Response<List<SanPham>> response) {
                 listMau = new ArrayList<>();
-                listMau_temp = new ArrayList<>();
                 if(response.isSuccessful()){
                     //Lấy danh sách màu của sản phẩm được edit
                     List<SanPham> listSP = response.body();
                     for(SanPham sp : listSP){
-                        listMau.add(sp.getMau());
-                    }
-                    for(Mau m : listMau){
-                        if(listMau_temp.contains(m)){
-                            listMau_temp.add(m);
+                        boolean alreadyExists = false;
+                        for (Mau mau : listMau) {
+                            if (sp.getMau().getId().equals(mau.getId())) {
+                                alreadyExists = true;
+                                break;  // Nếu đã tìm thấy một màu trùng lặp, thoát khỏi vòng lặp
+                            }
+                        }
+                        if (!alreadyExists) {
+                            listMau.add(sp.getMau());  // Chỉ thêm màu nếu nó chưa tồn tại trong danh sách test
                         }
                     }
                     //Kiểm tra màu sp edit có trong giỏ hàng ko, nếu có thì setEnable=false
-//                    for(Mau m : listMau){
-//                        for(DonHangChiTiet dh : listCart){
-//                            if(dh.getSanPham().getTenSanPham().equals(sanPham.getTenSanPham()) ){
-//                                if(m.getId().equals(dh.getSanPham().getMau().getId())){
-//                                    m.setAble(false);
-//                                }else if(m.getId().equals(sanPham.getMau().getId())){
-//                                    m.setAble(true);
-//                                    m.setChecked(true);
-//                                }
-//                            }
-//                        }
-//                    }
+                    for(Mau m : listMau){
+                        for(DonHangChiTiet dh : listCart){
+                            if(dh.getSanPham().getTenSanPham().equals(sanPham.getTenSanPham()) ){
+                                if(m.getId().equals(dh.getSanPham().getMau().getId())){
+                                    m.setAble(false);
+                                }else if(m.getId().equals(sanPham.getMau().getId())){
+                                    m.setAble(true);
+                                    m.setChecked(true);
+                                }
+                            }
+                        }
+                    }
                     listMauLiveData.setValue(listMau);
                 }
             }

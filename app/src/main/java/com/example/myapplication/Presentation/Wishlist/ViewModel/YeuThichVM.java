@@ -13,7 +13,6 @@ public class YeuThichVM extends ViewModel {
     private MutableLiveData<List<SanPham>> productListWishLiveData;
     public YeuThichVM() {
         productListWishLiveData = new MutableLiveData<>();
-
         loadData(); // Load data here from your repository or source
     }
 

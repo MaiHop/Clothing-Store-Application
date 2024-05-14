@@ -34,10 +34,10 @@ public class CartRepository {
     }
     public List<DonHang> getListDH(){
         List<DonHang> list = new ArrayList<>();
-        List<DiaChi> listdc = new ArrayList<>();
-        List<VanChuyen> listvc = new ArrayList<>();
-        List<ThanhToan> listtt = new ArrayList<>();
-        List<KhuyenMai> listkm = new ArrayList<>();
+        List<DiaChi> listdc = getListAddress();
+        List<VanChuyen> listvc = getListDelivery();
+        List<ThanhToan> listtt = getListMP();
+        List<KhuyenMai> listkm = getListKhuyenMai();
         List<DonHangChiTiet> list_ct1 = new ArrayList<>();
         List<DonHangChiTiet> list_ct2 = new ArrayList<>();
         List<DonHangChiTiet> list_ct3 = new ArrayList<>();
@@ -75,11 +75,10 @@ public class CartRepository {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        dh1.setDiachi(listdc.get(0));
-        dh1.setVanchuyen(listvc.get(0));
-        dh1.setThanhToan(listtt.get(0));
-        dh1.setKhuyenmai(listkm.get(0));
-
+            dh1.setDiachi(listdc.get(0));
+            dh1.setVanchuyen(listvc.get(0));
+            dh1.setThanhToan(listtt.get(0));
+            dh1.setKhuyenmai(listkm.get(0));
 
         DonHang dh2 = new DonHang();
         dh2.setListDonHangChiTiet(list_ct2);
@@ -102,6 +101,7 @@ public class CartRepository {
         list.add(dh1);
         list.add(dh2);
         list.add(dh3);
+
 
         return list;
     }

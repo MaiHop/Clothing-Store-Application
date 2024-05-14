@@ -48,7 +48,7 @@
             android:layout_marginBottom="8dp"
             android:layout_below="@id/spinner_color"/>
 
-    <com.example.myapplication.Presentation.PhucHoi.Activity.RangeSeekBar
+    <SeekBar
             android:id="@+id/seekbar_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

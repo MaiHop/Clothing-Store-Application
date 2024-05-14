@@ -35,21 +35,6 @@
                 android:textColor="@android:color/black"
                 android:textSize="20sp" />
         </androidx.appcompat.widget.Toolbar>
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Order Details" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Track Order" />
-        </com.google.android.material.tabs.TabLayout>
 
         <LinearLayout
             android:id="@+id/linearLayout2"

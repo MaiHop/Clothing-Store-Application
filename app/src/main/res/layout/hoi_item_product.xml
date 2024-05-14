@@ -89,7 +89,7 @@
         android:id="@+id/imgheart"
         android:layout_width="18dp"
         android:layout_height="14dp"
-        android:src="@drawable/hoi_ic_heart"
+        android:src="@drawable/c_hung_ic_heart_outlined"
         app:layout_constraintEnd_toEndOf="@+id/imgproduct"
         app:layout_constraintTop_toTopOf="parent" />
 

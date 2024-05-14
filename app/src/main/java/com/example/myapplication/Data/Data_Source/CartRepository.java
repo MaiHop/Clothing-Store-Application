@@ -109,6 +109,7 @@ public class CartRepository {
         kieuSP2.setTen("ÁO KHOÁC & ÁO BLAZER");
         list.add(kieuSP1);
         list.add(kieuSP2);
+
         return list;
     }
     public List<LoaiSP> getListLoaiSP(){
@@ -232,6 +233,7 @@ public class CartRepository {
         sp6.setKieuSanPham(listKieuSP.get(0));
         sp6.setKichThuoc(listsize.get(2));
         sp6.setMau(listcolor.get(5));
+
         sp6.setThongTin("Chất liệu vải nhẹ, co giãn và nhanh khô mang lại sự thoải mái đáng kinh ngạc. Kiểu dáng đẹp mắt cho bất kỳ dịp nào.");
 
         SanPham sp7 = new SanPham();
@@ -243,9 +245,10 @@ public class CartRepository {
         sp7.setSoLuongBan(12);
         sp7.setNhomSanPham(listNhomSP.get(1));
         sp7.setLoaiSanPham(listLoaiSP.get(0));
-        sp7.setKieuSanPham(listKieuSP.get(0));
+        sp7.setKieuSanPham(listKieuSP.get(1));
         sp7.setKichThuoc(listsize.get(2));
         sp7.setMau(listcolor.get(5));
+        sp6.setMau(listcolor.get(1));
         sp7.setThongTin("Chất liệu vải nhẹ, co giãn và nhanh khô mang lại sự thoải mái đáng kinh ngạc. Kiểu dáng đẹp mắt cho bất kỳ dịp nào.");
         list.add(sp1);
         list.add(sp2);

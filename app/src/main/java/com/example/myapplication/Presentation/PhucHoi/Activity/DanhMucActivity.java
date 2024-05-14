@@ -13,16 +13,24 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.Model.KichThuoc;
+import com.example.myapplication.Model.KieuSP;
 import com.example.myapplication.Model.Mau;
 import com.example.myapplication.Model.NhomSP;
 import com.example.myapplication.Model.SanPham;
 import com.example.myapplication.Data.Data_Source.CartRepository;
+import com.example.myapplication.Presentation.PhucHoi.Apdapter.KieuSPAdapter;
+import com.example.myapplication.Presentation.PhucHoi.Apdapter.NhomSPAdapter;
 import com.example.myapplication.Presentation.PhucHoi.Apdapter.SanPhamAdapter;
 
+import com.example.myapplication.Presentation.PhucHoi.ViewModel.KieuSPVM;
+import com.example.myapplication.Presentation.PhucHoi.ViewModel.NhomSPVM;
 import com.example.myapplication.R;
 
 import java.util.ArrayList;
@@ -32,7 +40,7 @@ import java.util.List;
 
 public class DanhMucActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerView;
+    private RecyclerView recyclerView,recyclerViewkieuSP;
 
     private SanPhamAdapter sanPhamAdapter;
     private List<SanPham> sanPhamList;
@@ -42,6 +50,9 @@ public class DanhMucActivity extends AppCompatActivity {
     private List<SanPham> originalSanPhamList = new ArrayList<>();
     private String nhomSPId;
     private Button sortButton, filterButton;
+    private KieuSPVM kieuSPViewModel;
+    private KieuSPAdapter kieuSPAdapter;
+    private boolean checkkieusp = false;
 
 
     @Override
@@ -58,6 +69,7 @@ public class DanhMucActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.viewwomen);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,7 +92,6 @@ public class DanhMucActivity extends AppCompatActivity {
         List<SanPham> filteredList = filterSanPhamByNhomSPId(sanPhamList, nhomSPId);
         sanPhamAdapter = new SanPhamAdapter(filteredList, this, getLayoutInflater());
         recyclerView.setAdapter(sanPhamAdapter);
-
 
         updateListAndEmptyView(filteredList);
 
@@ -112,6 +123,40 @@ public class DanhMucActivity extends AppCompatActivity {
                 showFilterDialog();
             }
         });
+
+
+        // Khởi tạo Danh mục
+        // Danh mục
+        recyclerView = findViewById(R.id.viewkieusp);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+
+        kieuSPAdapter = new KieuSPAdapter(new ArrayList<>(), this, getLayoutInflater());
+
+        recyclerView.setAdapter(kieuSPAdapter);
+        kieuSPViewModel = new ViewModelProvider(this).get(KieuSPVM.class);
+        // Lắng nghe LiveData để nhận danh sách sản phẩm 2
+        kieuSPViewModel.getNhomSPListLiveData().observe(this, new Observer<List<KieuSP>>() {
+            @Override
+            public void onChanged(List<KieuSP> kieuSPList) {
+                // Cập nhật Adapter khi dữ liệu thay đổi
+                if (kieuSPList != null && !kieuSPList.isEmpty()) {
+                    kieuSPAdapter.setListNhomSP(kieuSPList);
+                }
+
+            }
+        });
+
+        kieuSPAdapter.setOnItemClickListener(new KieuSPAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(String kieuSPId) {
+                // Tại đây bạn có thể cập nhật RecyclerView chính với danh sách sản phẩm mới dựa trên kieuSPId
+                List<SanPham> filteredList = getSanPhamByKieuSPId(kieuSPId, nhomSPId);
+                sanPhamAdapter.updateList(filteredList);
+                updateListAndEmptyView(filteredList);
+            }
+        });
+
+
 
 
 //        // Tìm và hiển thị tên của NhomSP_api lên tvNhomSPName
@@ -352,6 +397,17 @@ public class DanhMucActivity extends AppCompatActivity {
             }
             return filteredList;
         }
+
+    public List<SanPham> getSanPhamByKieuSPId(String kieuSPId, String nhomSPId) {
+        List<SanPham> filteredList = new ArrayList<>();
+        for (SanPham sanPham : sanPhamList) {
+            if (sanPham.getKieuSanPham().getId().equals(kieuSPId) &&
+                    sanPham.getNhomSanPham().getId().equals(nhomSPId)) {
+                filteredList.add(sanPham);
+            }
+        }
+        return filteredList;
+    }
 
     }
 

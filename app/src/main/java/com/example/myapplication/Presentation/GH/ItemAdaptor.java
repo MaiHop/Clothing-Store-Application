@@ -67,6 +67,7 @@ public class ItemAdaptor extends RecyclerView.Adapter<ItemAdaptor.Viewholder> {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, OrderDetailsActivity.class);
+                intent.putExtra("DONHANG", donHang);
                 context.startActivity(intent);
             }
         });

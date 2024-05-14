@@ -52,8 +52,6 @@ public class CheckOutAdapter extends RecyclerView.Adapter<ThanhToanVH> {
         donHangChiTiet.setThanhTien(donHangChiTiet.getSanPham().getGiaban()*donHangChiTiet.getSoLuong());
         holder.updateUI(donHangChiTiet);
 
-
-
     }
 
 

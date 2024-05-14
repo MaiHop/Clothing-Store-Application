@@ -38,6 +38,7 @@ public class CartRepository {
         List<VanChuyen> listvc = getListDelivery();
         List<ThanhToan> listtt = getListMP();
         List<KhuyenMai> listkm = getListKhuyenMai();
+        List<DonHangChiTiet> listdhct = getGioHang();
         List<DonHangChiTiet> list_ct1 = new ArrayList<>();
         List<DonHangChiTiet> list_ct2 = new ArrayList<>();
         List<DonHangChiTiet> list_ct3 = new ArrayList<>();
@@ -70,6 +71,7 @@ public class CartRepository {
         DonHang dh1 = new DonHang();
         dh1.setListDonHangChiTiet(list_ct1);
         dh1.setTrangThai("Active");
+        dh1.setPhiPhucVu(50.0);
         try {
             dh1.setNgayThanhToan(formatter.parse("11/05/2024"));
         } catch (ParseException e) {
@@ -79,6 +81,9 @@ public class CartRepository {
             dh1.setVanchuyen(listvc.get(0));
             dh1.setThanhToan(listtt.get(0));
             dh1.setKhuyenmai(listkm.get(0));
+            dh1.setListDonHangChiTiet(listdhct);
+            dh1.setPhiGiaoHang(200);
+            dh1.setThue(0.1);
 
         DonHang dh2 = new DonHang();
         dh2.setListDonHangChiTiet(list_ct2);

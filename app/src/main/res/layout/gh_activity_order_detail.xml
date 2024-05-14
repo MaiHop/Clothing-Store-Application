@@ -562,7 +562,7 @@
                                 android:textSize="16sp" />
 
                             <TextView
-                                android:id="@+id/tv_Checkout_ThanhTien"
+                                android:id="@+id/txtThanhTien"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:padding="10dp"
@@ -586,7 +586,7 @@
                                 android:textSize="16sp" />
 
                             <TextView
-                                android:id="@+id/tv_Checkout_PhiDichVu"
+                                android:id="@+id/txtPhiDichVu"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:padding="10dp"
@@ -610,7 +610,7 @@
                                 android:textSize="16sp" />
 
                             <TextView
-                                android:id="@+id/tv_Checkout_PhiGiaoHang"
+                                android:id="@+id/txtPhiGiaoHang"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:padding="10dp"
@@ -634,7 +634,7 @@
                                 android:textSize="16sp" />
 
                             <TextView
-                                android:id="@+id/tv_Checkout_TienThue"
+                                android:id="@+id/txtTienThue"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:padding="10dp"
@@ -658,7 +658,7 @@
                                 android:textSize="16sp" />
 
                             <TextView
-                                android:id="@+id/tv_Checkout_TienKhuyenMai"
+                                android:id="@+id/txtTienKhuyenMai"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:padding="10dp"
@@ -690,7 +690,7 @@
                                 android:textSize="16sp" />
 
                             <TextView
-                                android:id="@+id/tv_Checkout_TongTien"
+                                android:id="@+id/txtTongTien"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:padding="10dp"

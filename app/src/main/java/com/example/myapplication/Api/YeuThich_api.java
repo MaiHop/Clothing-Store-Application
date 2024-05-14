@@ -16,7 +16,7 @@ public interface YeuThich_api {
     Call<List<YeuThich>> readallYeuThich();
 
     @GET("YeuThich/get")
-    Call<YeuThich> getYeuThich(@Query("id") int id);
+    Call<YeuThich> getYeuThich(@Query("id") String id);
 
     @POST("YeuThich/create")
     Call<YeuThich> createYeuThich(@Body YeuThich yeuthich);

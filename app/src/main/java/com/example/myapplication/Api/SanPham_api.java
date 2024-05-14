@@ -16,10 +16,10 @@ public interface SanPham_api {
     Call<List<SanPham>> readallSanPham();
 
     @GET("SanPham/get")
-    Call<SanPham> getSanPhambyId(@Query("id") int id);
+    Call<SanPham> getSanPhambyId(@Query("id") String id);
 
     @GET("SanPham/getbyId")
-    Call<SanPham> getSanPhambyIdSanPham(@Query("id") int id);
+    Call<List<SanPham>> getSanPhambyIdSanPham(@Query("id") String id);
 
     @POST("SanPham/create")
     Call<SanPham> createSanPham(@Body SanPham sanpham);

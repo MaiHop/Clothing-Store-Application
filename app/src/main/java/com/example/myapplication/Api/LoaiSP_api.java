@@ -16,7 +16,7 @@ public interface LoaiSP_api {
     Call<List<LoaiSP>> readallLoaiSP();
 
     @GET("LoaiSP/get")
-    Call<LoaiSP> getLoaiSP(@Query("id") int id);
+    Call<LoaiSP> getLoaiSP(@Query("id") String id);
 
     @POST("LoaiSP/create")
     Call<LoaiSP> createLoaiSP(@Body LoaiSP loai);

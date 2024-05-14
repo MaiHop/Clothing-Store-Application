@@ -16,7 +16,7 @@ public interface KichThuoc_api {
     Call<List<KichThuoc>> readallKichThuoc();
 
     @GET("KichThuoc/get")
-    Call<KichThuoc> getKichThuoc(@Query("id") int id);
+    Call<KichThuoc> getKichThuoc(@Query("id") String id);
 
     @POST("KichThuoc/create")
     Call<KichThuoc> createKichThuoc(@Body KichThuoc kichthuoc);

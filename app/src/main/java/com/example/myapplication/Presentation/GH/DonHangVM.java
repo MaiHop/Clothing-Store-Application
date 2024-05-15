@@ -10,7 +10,7 @@ import java.util.List;
 
 public class DonHangVM extends ViewModel {
     private MutableLiveData<List<DonHang>> listCartLiveData;
-//    private MutableLiveData<Integer> activeCountLiveData = new MutableLiveData<>();
+    //    private MutableLiveData<Integer> activeCountLiveData = new MutableLiveData<>();
     private List<DonHang> listDonHang;
 
     public DonHangVM() {
@@ -21,7 +21,7 @@ public class DonHangVM extends ViewModel {
 
     private void initData() {
         CartRepository res = new CartRepository();
-//        listDonHang = res.getListDH();
+        listDonHang = res.getListDH();
         listCartLiveData.setValue(listDonHang);
 //        updateActiveCount();  // Cập nhật số lượng hoạt động ngay khi khởi tạo
     }
@@ -53,5 +53,3 @@ public class DonHangVM extends ViewModel {
 //        }
 //    }
 }
-
-

@@ -35,6 +35,21 @@
                 android:textColor="@android:color/black"
                 android:textSize="20sp" />
         </androidx.appcompat.widget.Toolbar>
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Order Details" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Track Order" />
+        </com.google.android.material.tabs.TabLayout>
 
         <LinearLayout
             android:id="@+id/linearLayout2"
@@ -66,7 +81,7 @@
                         android:src="@drawable/mh_baseline_check_box_outline_blank_24" />
 
                     <TextView
-                        android:id="@+id/tv_Delivery_Address"
+                        android:id="@+id/txtDeliveryAddress"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="20dp"
@@ -116,7 +131,7 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/tv_Checkout_TenDiaChiGiaoHang"
+                                android:id="@+id/txtTenDiaChiGiaoHang"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:padding="10dp"
@@ -126,7 +141,7 @@
                                 android:textStyle="bold" />
 
                             <TextView
-                                android:id="@+id/tv_Checkout_DiaChiGiaoHang"
+                                android:id="@+id/txtDiaChiGiaoHang"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:padding="10dp"
@@ -186,7 +201,7 @@
                     android:text="" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_Checkout_DanhSachDonHang"
+                    android:id="@+id/rvDanhSachDonHang"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
 
@@ -261,7 +276,7 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/tv_Checkout_TenDonViGiaoHang"
+                                android:id="@+id/txtDonViGiaoHang"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:padding="10dp"
@@ -271,7 +286,7 @@
                                 android:textStyle="bold" />
 
                             <TextView
-                                android:id="@+id/tv_Checkout_ThoiGianGiaoHang"
+                                android:id="@+id/txtThoiGianGiaoHang"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:padding="10dp"
@@ -449,7 +464,7 @@
                             android:layout_weight="5">
 
                             <TextView
-                                android:id="@+id/tv_TenKhuyenMai"
+                                android:id="@+id/txtTenKhuyenMai"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:padding="10dp"
@@ -459,7 +474,7 @@
                                 android:textStyle="bold" />
 
                             <TextView
-                                android:id="@+id/tv_ThongTinKhuyenMai"
+                                android:id="@+id/txtThongTinKhuyenMai"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:padding="10dp"
@@ -547,7 +562,7 @@
                                 android:textSize="16sp" />
 
                             <TextView
-                                android:id="@+id/tv_Checkout_ThanhTien"
+                                android:id="@+id/txtThanhTien"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:padding="10dp"
@@ -571,7 +586,7 @@
                                 android:textSize="16sp" />
 
                             <TextView
-                                android:id="@+id/tv_Checkout_PhiDichVu"
+                                android:id="@+id/txtPhiDichVu"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:padding="10dp"
@@ -595,7 +610,7 @@
                                 android:textSize="16sp" />
 
                             <TextView
-                                android:id="@+id/tv_Checkout_PhiGiaoHang"
+                                android:id="@+id/txtPhiGiaoHang"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:padding="10dp"
@@ -619,7 +634,7 @@
                                 android:textSize="16sp" />
 
                             <TextView
-                                android:id="@+id/tv_Checkout_TienThue"
+                                android:id="@+id/txtTienThue"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:padding="10dp"
@@ -643,7 +658,7 @@
                                 android:textSize="16sp" />
 
                             <TextView
-                                android:id="@+id/tv_Checkout_TienKhuyenMai"
+                                android:id="@+id/txtTienKhuyenMai"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:padding="10dp"
@@ -675,7 +690,7 @@
                                 android:textSize="16sp" />
 
                             <TextView
-                                android:id="@+id/tv_Checkout_TongTien"
+                                android:id="@+id/txtTongTien"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:padding="10dp"

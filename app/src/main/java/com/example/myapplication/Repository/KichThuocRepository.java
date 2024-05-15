@@ -1,9 +1,12 @@
 package com.example.myapplication.Repository;
 
 import com.example.myapplication.Api.DonHangChiTiet_api;
+import com.example.myapplication.Api.KichThuoc_api;
+import com.example.myapplication.Api.SanPham_api;
 import com.example.myapplication.Api.ServiceBuilder;
 import com.example.myapplication.Model.DonHangChiTiet;
 import com.example.myapplication.Model.KichThuoc;
+import com.example.myapplication.Model.SanPham;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,20 +23,35 @@ public class KichThuocRepository {
         this.kichThuocInterface = kichThuocInterface;
     }
 
-    public void readGioHang(){
-        DonHangChiTiet_api api = ServiceBuilder.buildService(DonHangChiTiet_api.class);
-        Call<List<DonHangChiTiet>> request = api.readallDonHangChiTiet();
-        request.enqueue(new Callback<List<DonHangChiTiet>>() {
+    public void readKichThuoc(){
+        KichThuoc_api api = ServiceBuilder.buildService(KichThuoc_api.class);
+        Call<List<KichThuoc>> request = api.readallKichThuoc();
+        request.enqueue(new Callback<List<KichThuoc>>() {
             @Override
-            public void onResponse(Call<List<DonHangChiTiet>> call, Response<List<DonHangChiTiet>> response) {
+            public void onResponse(Call<List<KichThuoc>> call, Response<List<KichThuoc>> response) {
                 if(response.isSuccessful()){
-                    gioHangInterface.getGioHang(response.body());
+                    kichThuocInterface.getListKichThuoc(response.body());
                 }
 
             }
 
             @Override
-            public void onFailure(Call<List<DonHangChiTiet>> call, Throwable t) {
+            public void onFailure(Call<List<KichThuoc>> call, Throwable t) {
+
+            }
+        });
+    }
+    public void readSanPhambyIdSanPham(String id){
+        SanPham_api api = ServiceBuilder.buildService(SanPham_api.class);
+        Call<List<SanPham>> request = api.getSanPhambyIdSanPham(id);
+        request.enqueue(new Callback<List<SanPham>>() {
+            @Override
+            public void onResponse(Call<List<SanPham>> call, Response<List<SanPham>> response) {
+                kichThuocInterface.getSanPhambyIdSanPham(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<List<SanPham>> call, Throwable t) {
 
             }
         });
@@ -41,6 +59,7 @@ public class KichThuocRepository {
 
     public interface KichThuocInterface{
         void getListKichThuoc(List<KichThuoc> list);
+        void getSanPhambyIdSanPham(List<SanPham> list);
     }
 
 }

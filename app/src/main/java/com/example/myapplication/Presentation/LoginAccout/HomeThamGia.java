@@ -123,13 +123,19 @@ public class HomeThamGia extends AppCompatActivity {
                                         public void run() {
                                             loadDialog.dismissDialog();
                                             FirebaseUser user = mAuth.getCurrentUser();
-                                            HashMap<String, Object> map = new HashMap<>();
-                                            map.put("id", user.getUid());
-                                            map.put("email", user.getEmail());
-                                            map.put("name", user.getDisplayName());
-                                            map.put("profile", user.getPhotoUrl().toString());
-                                            database.collection("users").document(user.getUid())
-                                                    .set(map, SetOptions.merge())
+//                                            HashMap<String, Object> map = new HashMap<>();
+//                                            map.put("id", user.getUid());
+//                                            map.put("email", user.getEmail());
+//                                            map.put("name", user.getDisplayName());
+//                                            map.put("profile", user.getPhotoUrl().toString());
+                                            KhachHang khachHang = new KhachHang();
+                                            khachHang.setIdKhachHang(user.getUid());
+                                            khachHang.setEmail(user.getEmail());
+                                            khachHang.setTen(user.getDisplayName());
+                                            khachHang.setImageUrl(user.getPhotoUrl().toString());
+                                            khachHang.setGioiTinh(0);
+                                            database.collection("KhachHang").document(khachHang.getIdKhachHang())
+                                                    .set(khachHang)
                                                     .addOnSuccessListener(aVoid -> {
                                                         Intent intent = new Intent(HomeThamGia.this, Home.class);
                                                         startActivity(intent);

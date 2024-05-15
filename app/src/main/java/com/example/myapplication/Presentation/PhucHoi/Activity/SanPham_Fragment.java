@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,6 +22,8 @@ import com.example.myapplication.Presentation.PhucHoi.ViewModel.NhomSPVM;
 import com.example.myapplication.Presentation.PhucHoi.ViewModel.SanPhamNewVM;
 import com.example.myapplication.Presentation.PhucHoi.ViewModel.SanPhamVM;
 import com.example.myapplication.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,10 +36,15 @@ public class SanPham_Fragment extends Fragment {
     private SanPhamVM sanPhamViewModel;
     private NhomSPVM nhomSPViewModel;
     private SanPhamNewVM sanPhamNewViewModel;
+//    FirebaseFirestore db = FirebaseFirestore.getInstance();
+//
+//    // Lấy ID của người dùng đang đăng nhập
+//    String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = getActivity().getLayoutInflater().inflate(R.layout.hoi_homepage, container, false);
+//        Toast.makeText(getContext(), "userID: "+userId, Toast.LENGTH_SHORT).show();
         recyclerView1 = view.findViewById(R.id.view2);
         recyclerView1.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
 

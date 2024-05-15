@@ -33,6 +33,8 @@ public class WishList_Fragment extends Fragment {
     private YeuThichVM YeuThichVM;
     View view;
     private Toolbar toolbar;
+    private YeuThichVM wishlist_VM;
+    private List<SanPham> list;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -40,39 +42,18 @@ public class WishList_Fragment extends Fragment {
 //        navigateToWishlist();
         initUI();
 //        setSupportActionBar(toolbar);
-        ArrayList<BoLoc_WishList> arrayBoLocList;
-
-        Adapter_Item_BoLoc_WishList adapterItemBoLocWishList;
-        Adapter_Item_SP_WishList adapterItemSpWishList;
-
-
-        recyclerViewBoLoc.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        imteBoLoc();
         recyclerViewSP.setLayoutManager(new GridLayoutManager(getContext(), 2));
         recyclerViewSP.setHasFixedSize(true);
-
-        arrayBoLocList = new ArrayList<>();
-        arrayBoLocList.add(new BoLoc_WishList("Ao"));
-        arrayBoLocList.add(new BoLoc_WishList("Quan"));
-        arrayBoLocList.add(new BoLoc_WishList("pop"));
-        arrayBoLocList.add(new BoLoc_WishList("Tui"));
-        arrayBoLocList.add(new BoLoc_WishList("Giay"));
-
-        // Khởi tạo ViewModel1
-        adapterItemSpWishList = new Adapter_Item_SP_WishList(new ArrayList<>(),getContext(),R.layout.c_hung_item_sp_wishlist);
-        recyclerViewSP.setAdapter(adapterItemSpWishList);
-        YeuThichVM = new ViewModelProvider(this).get(YeuThichVM.class);
-
-        // Lắng nghe LiveData để nhận danh sách sản phẩm
-        YeuThichVM.getProductListWishLiveData().observe(getViewLifecycleOwner(), new Observer<List<SanPham>>() {
-            @Override
-            public void onChanged(List<SanPham> productList) {
-                // Cập nhật Adapter khi dữ liệu thay đổi
-                adapterItemSpWishList.setListProductWish(productList);
+        wishlist_VM = new ViewModelProvider(this).get(YeuThichVM.class);
+        wishlist_VM.getProductListWishLiveData().observe(getViewLifecycleOwner(), wishlists -> {
+            if(!(wishlists.isEmpty())){
+                list = wishlists;
+                Adapter_Item_SP_WishList adapterItemSpWishList = new Adapter_Item_SP_WishList(getContext(),wishlists,title,wishlist_VM);
+                recyclerViewSP.setAdapter(adapterItemSpWishList);
             }
         });
 
-        adapterItemBoLocWishList = new Adapter_Item_BoLoc_WishList(getContext(),R.layout.c_hung_item_boloc,arrayBoLocList);
-        recyclerViewBoLoc.setAdapter(adapterItemBoLocWishList);
         return view;
     }
 
@@ -91,6 +72,24 @@ public class WishList_Fragment extends Fragment {
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         return super.onContextItemSelected(item);
+    }
+    public void imteBoLoc(){
+        ArrayList<BoLoc_WishList> arrayBoLocList;
+
+        Adapter_Item_BoLoc_WishList adapterItemBoLocWishList;
+
+        recyclerViewBoLoc.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+
+
+        arrayBoLocList = new ArrayList<>();
+        arrayBoLocList.add(new BoLoc_WishList("Ao"));
+        arrayBoLocList.add(new BoLoc_WishList("Quan"));
+        arrayBoLocList.add(new BoLoc_WishList("pop"));
+        arrayBoLocList.add(new BoLoc_WishList("Tui"));
+        arrayBoLocList.add(new BoLoc_WishList("Giay"));
+
+        adapterItemBoLocWishList = new Adapter_Item_BoLoc_WishList(getContext(),R.layout.c_hung_item_boloc,arrayBoLocList);
+        recyclerViewBoLoc.setAdapter(adapterItemBoLocWishList);
     }
 }
 

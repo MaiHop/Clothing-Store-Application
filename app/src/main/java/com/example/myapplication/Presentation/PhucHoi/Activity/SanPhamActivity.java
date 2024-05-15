@@ -21,6 +21,8 @@ import com.example.myapplication.Presentation.PhucHoi.ViewModel.NhomSPVM;
 import com.example.myapplication.Presentation.PhucHoi.ViewModel.SanPhamNewVM;
 import com.example.myapplication.Presentation.PhucHoi.ViewModel.SanPhamVM;
 import com.example.myapplication.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -41,7 +43,6 @@ public class SanPhamActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.hoi_homepage);
-
         Viewall_NewArrial = findViewById(R.id.viewall);
         Viewall_NewArrial.setOnClickListener(new View.OnClickListener() {
             @Override

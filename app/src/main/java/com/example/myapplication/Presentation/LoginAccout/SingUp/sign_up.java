@@ -143,13 +143,14 @@ public class sign_up extends AppCompatActivity {
                                                     public void onComplete(@NonNull Task<Void> task) {
                                                         if (task.isSuccessful()) {
                                                             // Tạo dữ liệu người dùng trên Firebase Realtime Database
-                                                            HashMap<String, Object> map = new HashMap<>();
-                                                            map.put("id", user.getUid());
-                                                            map.put("email", user.getEmail());
-                                                            map.put("name", user.getDisplayName());
-                                                            map.put("profile", user.getPhotoUrl().toString());
-                                                            database.collection("users").document(user.getUid())
-                                                                    .set(map, SetOptions.merge())
+                                                            KhachHang khachHang = new KhachHang();
+                                                            khachHang.setIdKhachHang(user.getUid());
+                                                            khachHang.setEmail(user.getEmail());
+                                                            khachHang.setTen(user.getDisplayName());
+                                                            khachHang.setImageUrl(user.getPhotoUrl().toString());
+                                                            khachHang.setGioiTinh(0);
+                                                            database.collection("KhachHang").document(khachHang.getIdKhachHang())
+                                                                    .set(khachHang)
                                                                     .addOnSuccessListener(aVoid -> {
                                                                         Intent intent = new Intent(sign_up.this,SP_OTP);
                                                                         intent.putExtra("confirm_code", "sign_up");
@@ -212,14 +213,14 @@ public class sign_up extends AppCompatActivity {
                                         public void run() {
                                             loadDialog.dismissDialog();
                                             FirebaseUser user = mAuth.getCurrentUser();
-                                            HashMap<String, Object> map = new HashMap<>();
-                                            map.put("id",user.getUid());
-                                            map.put("email", user.getEmail());
-                                            map.put("name",user.getDisplayName());
-                                            map.put("profile",user.getPhotoUrl().toString());
-//                                            database.getReference().child("users").child(user.getUid()).setValue(map)
-                                            database.collection("users").document(user.getUid())
-                                                    .set(map, SetOptions.merge())
+                                            KhachHang khachHang = new KhachHang();
+                                            khachHang.setIdKhachHang(user.getUid());
+                                            khachHang.setEmail(user.getEmail());
+                                            khachHang.setTen(user.getDisplayName());
+                                            khachHang.setImageUrl(user.getPhotoUrl().toString());
+                                            khachHang.setGioiTinh(0);
+                                            database.collection("KhachHang").document(khachHang.getIdKhachHang())
+                                                    .set(khachHang)
                                                     .addOnSuccessListener(aVoid -> {
                                                         Intent intent = new Intent(sign_up.this, Home.class);
                                                         startActivity(intent);

@@ -30,6 +30,7 @@ public class ServiceBuilder {
     private static OkHttpClient.Builder okHttp =
             new OkHttpClient.Builder()
                     .readTimeout(20, TimeUnit.SECONDS)
+                    .retryOnConnectionFailure(true)
                     .addInterceptor(new Interceptor() {
                         @Override
                         public Response intercept(Chain chain) throws IOException {

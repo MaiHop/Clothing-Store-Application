@@ -7,16 +7,11 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.example.myapplication.Presentation.ButtonNavigation.Home;
 import com.example.myapplication.Presentation.LoginAccout.HomeThamGia;
 import com.example.myapplication.R;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-
 
 public class SplashScreen extends AppCompatActivity {
-    private static int SPLASH_TINER = 3000;
-    FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    private static int SPLASH_TINER = 5000;
     SharedPreferences onBoardingScreen;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +23,7 @@ public class SplashScreen extends AppCompatActivity {
             boolean isFirstTime = onBoardingScreen.getBoolean("firsTime",true);
 
             if(isFirstTime){
+
                 SharedPreferences.Editor editor = onBoardingScreen.edit();
                 editor.putBoolean("firsTime",false);
                 editor.commit();
@@ -36,30 +32,12 @@ public class SplashScreen extends AppCompatActivity {
                 finish();
             }
             else {
-                FirebaseUser currentUser = mAuth.getCurrentUser();
-                if(currentUser !=null){
-                    Intent intent = new Intent(SplashScreen.this, Home.class);
-                    startActivity(intent);
-                }
-                else {
-                    Intent intent = new Intent(SplashScreen.this, HomeThamGia.class);
-                    startActivity(intent);
-                    finish();
-                }
-
+                Intent intent = new Intent(SplashScreen.this, HomeThamGia.class);
+                startActivity(intent);
+                finish();
             }
 
 
         },SPLASH_TINER);
-
     }
-//    @Override
-//    public void onStart() {
-//        super.onStart();
-//        // Check if user is signed in (non-null) and update UI accordingly.
-//        FirebaseUser currentUser = mAuth.getCurrentUser();
-//        if (currentUser != null){
-//
-//        }
-//    }
 }

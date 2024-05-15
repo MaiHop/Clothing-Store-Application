@@ -13,17 +13,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.Model.KhachHang;
 import com.example.myapplication.Presentation.ButtonNavigation.Home;
 import com.example.myapplication.Presentation.LoginAccout.SignIn.sign_in;
 import com.example.myapplication.Presentation.LoginAccout.SingUp.sign_up;
 import com.example.myapplication.R;
-import com.facebook.AccessToken;
-import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.FacebookSdk;
-import com.facebook.login.LoginResult;
-import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -40,7 +34,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 
-import java.util.Arrays;
 import java.util.HashMap;
 
 public class HomeThamGia extends AppCompatActivity {
@@ -56,18 +49,13 @@ public class HomeThamGia extends AppCompatActivity {
     Load_Dialog loadDialog = new Load_Dialog(HomeThamGia.this);
     TextView tv_loading;
 
-    LoginButton btn_signIn_FB;
-    CallbackManager mcallbackManager;
-    String TAG_LOGIN_FB = "Facebook_Login";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.c_hung_activity_home_tham_gia);
-        FacebookSdk.sdkInitialize(getApplicationContext());
-        initUI();
+
         GGOption();
-        FBOPtion();
+        initUI();
         Onclickbtn();
         logout();
     }
@@ -75,7 +63,6 @@ public class HomeThamGia extends AppCompatActivity {
         btnSignIn = findViewById(R.id.btn_SignInThamGia);
         btnSignUP = findViewById(R.id.btn_SignUpThamGia);
         btn_signIn_GG = findViewById(R.id.btn_GG);
-        btn_signIn_FB = findViewById(R.id.btn_FB);
     }
     private void GGOption(){
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -116,32 +103,8 @@ public class HomeThamGia extends AppCompatActivity {
             }
         });
     }
-
-    private void FBOPtion(){
-        mcallbackManager = CallbackManager.Factory.create();
-        btn_signIn_FB.setPermissions(Arrays.asList("email","public_profile"));
-        btn_signIn_FB.registerCallback(mcallbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                Log.d(TAG_LOGIN_FB,"Login_succes. Result= "+loginResult);
-            }
-
-            @Override
-            public void onCancel() {
-                Log.d(TAG_LOGIN_FB,"Login_cancel.");
-
-            }
-
-            @Override
-            public void onError(@NonNull FacebookException e) {
-                Log.d(TAG_LOGIN_FB,"Login_error. Result= "+e);
-
-            }
-        });
-    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        mcallbackManager.onActivityResult(requestCode,resultCode,data);
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RC_SignIn){
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
@@ -160,14 +123,14 @@ public class HomeThamGia extends AppCompatActivity {
                                         public void run() {
                                             loadDialog.dismissDialog();
                                             FirebaseUser user = mAuth.getCurrentUser();
-                                            HashMap<String, Object> map = new HashMap<>();
-                                            map.put("id",user.getUid());
-                                            map.put("eamil",user.getEmail());
-                                            map.put("name",user.getDisplayName());
-                                            map.put("profile",user.getPhotoUrl().toString());
-//                                            database.getReference().child("users").child(user.getUid()).setValue(map)
-                                            database.collection("users").document(user.getUid())
-                                                    .set(map, SetOptions.merge())
+                                            KhachHang kh = new KhachHang();
+                                            kh.setIdKhachHang(user.getUid());
+                                            kh.setEmail(user.getEmail());
+                                            kh.setImageUrl(user.getPhotoUrl().toString());
+                                            kh.setTen(user.getDisplayName());
+                                            kh.setGioiTinh(0);
+                                            database.collection("KhachHang").document(kh.getIdKhachHang())
+                                                    .set(kh)
                                                     .addOnSuccessListener(aVoid -> {
                                                         Intent intent = new Intent(HomeThamGia.this, Home.class);
                                                         startActivity(intent);
@@ -189,9 +152,8 @@ public class HomeThamGia extends AppCompatActivity {
             }
         }
         else {
-//            Toast.makeText(HomeThamGia.this,"Lỗi hệ thống, xin quý khách đợi hệ thống được Cập Nhật !!!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(HomeThamGia.this,"Lỗi hệ thống, xin quý khách đợi hệ thống được Cập Nhật !!!",Toast.LENGTH_SHORT).show();
 
         }
-
     }
 }

@@ -23,39 +23,35 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 public class SP_OTP extends AppCompatActivity {
 
-//    EditText editText1, editText2, editText3, editText4;
+    EditText editText1, editText2, editText3, editText4;
     ImageView img_back;
 
     Button btn_confirmCode;
 //    final String confirm_code = getIntent().getStringExtra("confirm_code");
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
     Intent intent;
-    FirebaseFirestore database = FirebaseFirestore.getInstance();
-
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.c_hung_activity_xacnhan);
+        setContentView(R.layout.c_hung_activity_sup_otp);
 
-//        editText1 = findViewById(R.id.editText1);
-//        editText2 = findViewById(R.id.editText2);
-//        editText3 = findViewById(R.id.editText3);
-//        editText4 = findViewById(R.id.editText4);
+        editText1 = findViewById(R.id.editText1);
+        editText2 = findViewById(R.id.editText2);
+        editText3 = findViewById(R.id.editText3);
+        editText4 = findViewById(R.id.editText4);
         img_back = findViewById(R.id.img_pack_OTP);
         btn_confirmCode = findViewById(R.id.Confirm_code);
 
-//        editText1.addTextChangedListener(new GenericTextWatcher(editText1));
-//        editText2.addTextChangedListener(new GenericTextWatcher(editText2));
-//        editText3.addTextChangedListener(new GenericTextWatcher(editText3));
-//        editText4.addTextChangedListener(new GenericTextWatcher(editText4));
+        editText1.addTextChangedListener(new GenericTextWatcher(editText1));
+        editText2.addTextChangedListener(new GenericTextWatcher(editText2));
+        editText3.addTextChangedListener(new GenericTextWatcher(editText3));
+        editText4.addTextChangedListener(new GenericTextWatcher(editText4));
 
 
         OnclickImage(img_back);
@@ -63,125 +59,122 @@ public class SP_OTP extends AppCompatActivity {
 
     }
 
-//    private class GenericTextWatcher implements TextWatcher {
-//        private View view;
-//
-//        private GenericTextWatcher(View view) {
-//            this.view = view;
-//        }
-//
-//        @Override
-//        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//        }
-//
-//        @Override
-//        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//            // Nếu độ dài của văn bản trong ô là 1, chuyển con trỏ tới ô tiếp theo
-//            if (charSequence.length() == 1) {
-//                //them
-//                editText1.addTextChangedListener(new TextWatcher() {
-//                    @Override
-//                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//                    }
-//
-//                    @Override
-//                    public void onTextChanged(CharSequence s, int start, int before, int count) {
-//                        if (s.length() == 1) {
-//                            editText2.requestFocus();
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void afterTextChanged(Editable s) {
-//                    }
-//                });
-//
-//                editText2.addTextChangedListener(new TextWatcher() {
-//                    @Override
-//                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//                    }
-//
-//                    @Override
-//                    public void onTextChanged(CharSequence s, int start, int before, int count) {
-//                        if (s.length() == 1) {
-//                            editText3.requestFocus();
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void afterTextChanged(Editable s) {
-//                    }
-//                });
-//
-//                editText3.addTextChangedListener(new TextWatcher() {
-//                    @Override
-//                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//                    }
-//
-//                    @Override
-//                    public void onTextChanged(CharSequence s, int start, int before, int count) {
-//                        if (s.length() == 1) {
-//                            editText4.requestFocus();
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void afterTextChanged(Editable s) {
-//                    }
-//                });
-//                //xoá
-//                editText2.setOnKeyListener(new View.OnKeyListener() {
-//                    @Override
-//                    public boolean onKey(View v, int keyCode, KeyEvent event) {
-//                        if (keyCode == KeyEvent.KEYCODE_DEL && event.getAction() == KeyEvent.ACTION_DOWN) {
-//                            if (editText2.getText().length() == 0) {
-//                                editText1.requestFocus();
-//                                return true;
-//                            }
-//                        }
-//                        return false;
-//                    }
-//                });
-//
-//                editText3.setOnKeyListener(new View.OnKeyListener() {
-//                    @Override
-//                    public boolean onKey(View v, int keyCode, KeyEvent event) {
-//                        if (keyCode == KeyEvent.KEYCODE_DEL && event.getAction() == KeyEvent.ACTION_DOWN) {
-//                            if (editText3.getText().length() == 0) {
-//                                editText2.requestFocus();
-//                                return true;
-//                            }
-//                        }
-//                        return false;
-//                    }
-//                });
-//
-//                editText4.setOnKeyListener(new View.OnKeyListener() {
-//                    @Override
-//                    public boolean onKey(View v, int keyCode, KeyEvent event) {
-//                        if (keyCode == KeyEvent.KEYCODE_DEL && event.getAction() == KeyEvent.ACTION_DOWN) {
-//                            if (editText4.getText().length() == 0) {
-//                                editText3.requestFocus();
-//                                return true;
-//                            }
-//                        }
-//                        return false;
-//                    }
-//                });
-//            }
-//
-//        }
-//        @Override
-//        public void afterTextChanged(Editable editable) {
-//        }
-//    }
+    private class GenericTextWatcher implements TextWatcher {
+        private View view;
+
+        private GenericTextWatcher(View view) {
+            this.view = view;
+        }
+
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            // Nếu độ dài của văn bản trong ô là 1, chuyển con trỏ tới ô tiếp theo
+            if (charSequence.length() == 1) {
+                //them
+                editText1.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        if (s.length() == 1) {
+                            editText2.requestFocus();
+                        }
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                    }
+                });
+
+                editText2.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        if (s.length() == 1) {
+                            editText3.requestFocus();
+                        }
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                    }
+                });
+
+                editText3.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        if (s.length() == 1) {
+                            editText4.requestFocus();
+                        }
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                    }
+                });
+                //xoá
+                editText2.setOnKeyListener(new View.OnKeyListener() {
+                    @Override
+                    public boolean onKey(View v, int keyCode, KeyEvent event) {
+                        if (keyCode == KeyEvent.KEYCODE_DEL && event.getAction() == KeyEvent.ACTION_DOWN) {
+                            if (editText2.getText().length() == 0) {
+                                editText1.requestFocus();
+                                return true;
+                            }
+                        }
+                        return false;
+                    }
+                });
+
+                editText3.setOnKeyListener(new View.OnKeyListener() {
+                    @Override
+                    public boolean onKey(View v, int keyCode, KeyEvent event) {
+                        if (keyCode == KeyEvent.KEYCODE_DEL && event.getAction() == KeyEvent.ACTION_DOWN) {
+                            if (editText3.getText().length() == 0) {
+                                editText2.requestFocus();
+                                return true;
+                            }
+                        }
+                        return false;
+                    }
+                });
+
+                editText4.setOnKeyListener(new View.OnKeyListener() {
+                    @Override
+                    public boolean onKey(View v, int keyCode, KeyEvent event) {
+                        if (keyCode == KeyEvent.KEYCODE_DEL && event.getAction() == KeyEvent.ACTION_DOWN) {
+                            if (editText4.getText().length() == 0) {
+                                editText3.requestFocus();
+                                return true;
+                            }
+                        }
+                        return false;
+                    }
+                });
+            }
+
+        }
+        @Override
+        public void afterTextChanged(Editable editable) {
+        }
+    }
     public void OnclickImage(ImageView imgv){
         imgv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                FirebaseUser user = mAuth.getCurrentUser();
-//                database.collection("users").document(user.getUid()).delete();
-                FirebaseAuth.getInstance().signOut();
                 finish();
             }
         });
@@ -192,7 +185,6 @@ public class SP_OTP extends AppCompatActivity {
         String confirm_code = getIntent().getStringExtra("confirm_code");
         String email = getIntent().getStringExtra("Email");
         String password = getIntent().getStringExtra("Password");
-
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -217,7 +209,7 @@ public class SP_OTP extends AppCompatActivity {
                                         }
                                     },2000);
                                 }
-                                else{
+                                else {
                                     loadDialog.startLoadingDialog();
                                     Handler handler = new Handler();
                                     handler.postDelayed(new Runnable() {
@@ -225,7 +217,6 @@ public class SP_OTP extends AppCompatActivity {
                                         public void run() {
                                             loadDialog.dismissDialog();
                                             Toast.makeText(SP_OTP.this,"Hãy xác nhận Email của bạn trước khi đăng nhập!",Toast.LENGTH_SHORT).show();
-                                            FirebaseAuth.getInstance().signOut();
                                         }
                                     },1000);
                                 }
@@ -240,9 +231,6 @@ public class SP_OTP extends AppCompatActivity {
                 }
             }
         });
-
-        FirebaseAuth.getInstance().signOut();
-
     }
 
 }

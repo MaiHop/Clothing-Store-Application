@@ -29,6 +29,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myapplication.Model.KhachHang;
 import com.example.myapplication.Presentation.LoginAccout.HomeThamGia;
 import com.example.myapplication.Presentation.LoginAccout.SingUp.sign_up;
 import com.example.myapplication.R;
@@ -166,16 +167,14 @@ public class MyProfile extends AppCompatActivity {
                 .setDisplayName(newName)
 //                .setPhotoUri(newPhotoUri)
                 .build();
-
         mUser.updateProfile(profileUpdates)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        HashMap<String, Object> map = new HashMap<>();
-                        map.put("name", mUser.getDisplayName());
-//                        map.put("profile", user.getPhotoUrl().toString());
-
-                        database.collection("users").document(mUser.getUid())
-                                .set(map, SetOptions.merge())
+                        KhachHang khachHang = new KhachHang();
+                        khachHang.setTen(mUser.getDisplayName());
+//                        khachHang.setGioiTinh(newGender);
+                        database.collection("KhachHang").document(khachHang.getIdKhachHang())
+                                .set(khachHang)
                                 .addOnSuccessListener(aVoid -> {
                                     Log.d("Firestore", "DocumentSnapshot successfully written!");
                                 })
@@ -185,6 +184,109 @@ public class MyProfile extends AppCompatActivity {
                     }
                 });
     }
+
+//    public void updateFirestoreDetails(String userId, int gender) {
+//        KhachHang khachHang = new KhachHang();
+//        khachHang.setGioiTinh(gender);
+//        database.collection("KhachHang").document(userId)
+//                .set(khachHang)
+//                .addOnSuccessListener(aVoid -> Log.d("Firestore", "DocumentSnapshot successfully written!"))
+//                .addOnFailureListener(e -> Log.w("Firestore", "Error writing document", e));
+//    }
+    public void btnUpdate(){
+        btn_UPdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String newName = txtip_fullname.getText().toString();
+                int newGender = Integer.parseInt(spinnerGender.getSelectedItem().toString());
+                updateProfile(newName);
+//                updateFirestoreDetails(mUser.getUid(), newGender);
+                if (mImageUri != null) {
+                    uploadImageToFirebase(mImageUri);
+                }
+            }
+        });
+    }
+    private void loadUserData() {
+        Picasso.get().load(mUser.getPhotoUrl().toString()).into(img_Avata);
+        txtip_fullname.setText(mUser.getDisplayName());
+        txtip_email.setText(mUser.getEmail());
+        if (mUser != null) {
+            DocumentReference docRef = database.collection("KhachHang").document(mUser.getUid());
+            docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        DocumentSnapshot document = task.getResult();
+                        if (document.exists()) {
+                            // Hiển thị giới tính
+//                            String gioiTinhString = document.getString("gioiTinh");
+//                            int gender = Integer.parseInt(gioiTinhString);
+//                            String genderString;
+//                            if (gender == 0) {
+//                                genderString = "Nam";
+//                            } else {
+//                                genderString = "Nữ";
+//                            }
+//                            int spinnerPosition = ((ArrayAdapter<String>) spinnerGender.getAdapter()).getPosition(genderString);
+//                            spinnerGender.setSelection(spinnerPosition);
+                        } else {
+                            Log.d("Firestore", "No such document");
+                        }
+                    } else {
+                        Log.d("Firestore", "get failed with ", task.getException());
+                    }
+                }
+            });
+        }
+    }
+
+    private void uploadImageToFirebase(Uri imageUri) {
+        if (imageUri != null) {
+            StorageReference fileReference = FirebaseStorage.getInstance().getReference("imageUrl")
+                    .child(System.currentTimeMillis() + "." + getFileExtension(imageUri));
+
+            fileReference.putFile(imageUri).continueWithTask(task -> {
+                if (!task.isSuccessful()) {
+                    throw task.getException();
+                }
+                return fileReference.getDownloadUrl();
+            }).addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    Uri downloadUri = task.getResult();
+                    updateFirebaseUserProfile(downloadUri);
+                } else {
+                    showDialogFailed();
+                }
+            });
+        }
+    }
+
+    private String getFileExtension(Uri uri) {
+        ContentResolver cR = getContentResolver();
+        MimeTypeMap mime = MimeTypeMap.getSingleton();
+        return mime.getExtensionFromMimeType(cR.getType(uri));
+    }
+
+    private void updateFirebaseUserProfile(Uri imageUrl) {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                    .setPhotoUri(imageUrl)
+                    .build();
+
+            user.updateProfile(profileUpdates)
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            Picasso.get().load(imageUrl).into(img_Avata);
+                            Log.d("Firestore", "No such document");
+                        } else {
+                            Log.d("Firestore", "get failed with ", task.getException());
+                        }
+                    });
+        }
+    }
+
     private void showDialogSuccess() {
         final Dialog successDialog = new Dialog(MyProfile.this);
         successDialog.setContentView(R.layout.cancel_success);
@@ -230,122 +332,4 @@ public class MyProfile extends AppCompatActivity {
 
         failedDialog.show();
     }
-    public void updateFirestoreDetails(String userId, String phone, String gender, String birthdate) {
-
-        Map<String, Object> user = new HashMap<>();
-        user.put("phone", phone);
-        user.put("gender", gender);
-        user.put("birthdate", birthdate);
-
-        database.collection("users").document(userId)
-                .set(user, SetOptions.merge())
-                .addOnSuccessListener(aVoid -> Log.d("Firestore", "DocumentSnapshot successfully written!"))
-                .addOnFailureListener(e -> Log.w("Firestore", "Error writing document", e));
-    }
-    public void btnUpdate(){
-        btn_UPdate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String newName = txtip_fullname.getText().toString();
-                String newPhone = txtip_phone.getText().toString();
-                String newGender = spinnerGender.getSelectedItem().toString();
-                String newBirthdate = DP_Data.getText().toString();
-
-                updateProfile(newName);
-                updateFirestoreDetails(mUser.getUid(), newPhone, newGender, newBirthdate);
-                if (mImageUri != null) {
-                    uploadImageToFirebase(mImageUri);
-                }
-            }
-        });
-    }
-    private void loadUserData() {
-        Picasso.get().load(mUser.getPhotoUrl().toString()).into(img_Avata);
-        txtip_fullname.setText(mUser.getDisplayName());
-        txtip_email.setText(mUser.getEmail());
-        txtip_phone.setText(mUser.getPhoneNumber());
-        if (mUser != null) {
-            DocumentReference docRef = database.collection("users").document(mUser.getUid());
-            docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                    if (task.isSuccessful()) {
-                        DocumentSnapshot document = task.getResult();
-                        if (document.exists()) {
-                            // Hiển thị số điện thoại
-                            String phone = document.getString("phone");
-                            if (phone != null) {
-                                txtip_phone.setText(phone);
-                            }
-
-                            // Hiển thị giới tính
-                            String gender = document.getString("gender");
-                            if (gender != null) {
-                                int spinnerPosition = ((ArrayAdapter<String>) spinnerGender.getAdapter()).getPosition(gender);
-                                spinnerGender.setSelection(spinnerPosition);
-                            }
-
-                            // Hiển thị ngày sinh
-                            String birthdate = document.getString("birthdate");
-                            if (birthdate != null) {
-                                DP_Data.setText(birthdate);
-                            }
-                        } else {
-                            Log.d("Firestore", "No such document");
-                        }
-                    } else {
-                        Log.d("Firestore", "get failed with ", task.getException());
-                    }
-                }
-            });
-        }
-    }
-
-    private void uploadImageToFirebase(Uri imageUri) {
-        if (imageUri != null) {
-            StorageReference fileReference = FirebaseStorage.getInstance().getReference("profile")
-                    .child(System.currentTimeMillis() + "." + getFileExtension(imageUri));
-
-            fileReference.putFile(imageUri).continueWithTask(task -> {
-                if (!task.isSuccessful()) {
-                    throw task.getException();
-                }
-                return fileReference.getDownloadUrl();
-            }).addOnCompleteListener(task -> {
-                if (task.isSuccessful()) {
-                    Uri downloadUri = task.getResult();
-                    updateFirebaseUserProfile(downloadUri);
-                } else {
-                    showDialogFailed();
-                }
-            });
-        }
-    }
-
-    private String getFileExtension(Uri uri) {
-        ContentResolver cR = getContentResolver();
-        MimeTypeMap mime = MimeTypeMap.getSingleton();
-        return mime.getExtensionFromMimeType(cR.getType(uri));
-    }
-
-    private void updateFirebaseUserProfile(Uri imageUrl) {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                    .setPhotoUri(imageUrl)
-                    .build();
-
-            user.updateProfile(profileUpdates)
-                    .addOnCompleteListener(task -> {
-                        if (task.isSuccessful()) {
-                            Picasso.get().load(imageUrl).into(img_Avata);
-                            Log.d("Firestore", "No such document");
-                        } else {
-                            Log.d("Firestore", "get failed with ", task.getException());
-                        }
-                    });
-        }
-    }
-
-
 }

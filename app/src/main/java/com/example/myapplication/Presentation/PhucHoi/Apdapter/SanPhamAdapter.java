@@ -38,6 +38,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamVH> {
         this.context = context;
         this.minflater = minflater;
 
+
     }
 
     @NonNull

@@ -16,7 +16,7 @@ public interface ThanhToan_api {
     Call<List<ThanhToan>> readallThanhToan();
 
     @GET("ThanhToan/get")
-    Call<ThanhToan> getThanhToan(@Query("id") int id);
+    Call<ThanhToan> getThanhToan(@Query("id") String id);
 
     @POST("ThanhToan/create")
     Call<ThanhToan> createThanhToan(@Body ThanhToan thanhtoan);

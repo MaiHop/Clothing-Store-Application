@@ -13,9 +13,9 @@
         android:layout_height="match_parent"
         android:background="@color/white">
         <ImageView
-            android:src="@drawable/c_hung_ic_apple"
+            android:src="@drawable/c_hung_logo"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="150dp"
             android:layout_marginTop="50dp"/>
         <TextView
             android:text="Let's Get Started"
@@ -26,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"/>
         <TextView
-            android:text="Let's Get Started"
+            android:text="Let's dive in into your account"
             android:textAlignment="center"
             android:layout_marginTop="8dp"
             android:textSize="20dp"

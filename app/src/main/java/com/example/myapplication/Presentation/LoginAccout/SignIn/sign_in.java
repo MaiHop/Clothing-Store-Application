@@ -40,7 +40,7 @@ import java.util.HashMap;
 
 public class sign_in extends AppCompatActivity {
     ImageView imagePack;
-    TextView tv_forgotPW;
+    TextView tv_forgotPW, tv_error;
     Button btn_signIn,
             btn_signIn_GG;
     TextInputEditText txtip_email,txtip_password;
@@ -73,6 +73,7 @@ public class sign_in extends AppCompatActivity {
         btn_signIn_GG = findViewById(R.id.btn_GG);
         txtip_email = findViewById(R.id.txtip_email);
         txtip_password = findViewById(R.id.txtip_password);
+        tv_error = findViewById(R.id.tv_error);
 
     }
     private void GGOption(){
@@ -112,11 +113,13 @@ public class sign_in extends AppCompatActivity {
                 String password = txtip_password.getText().toString();
                 final Load_Dialog loadDialog = new Load_Dialog(sign_in.this);
                 if (email.equals("") || password.equals("")){
-                    Toast.makeText(sign_in.this,"Không được để trống email hoặc password",Toast.LENGTH_SHORT).show();
+                    tv_error.setText("Không được để trống email hoặc password");
+                    tv_error.setVisibility(View.VISIBLE);
                     return;
                 }
                 if (password.length()<6){
-                    Toast.makeText(sign_in.this,"Password không được dưới 6 ký tự",Toast.LENGTH_SHORT).show();
+                    tv_error.setText("Password không được dưới 6 ký tự");
+                    tv_error.setVisibility(View.VISIBLE);
                     return;
                 }
                 mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -142,7 +145,8 @@ public class sign_in extends AppCompatActivity {
                                     @Override
                                     public void run() {
                                         loadDialog.dismissDialog();
-                                        Toast.makeText(sign_in.this,"Hãy xác nhận Email của bạn trước khi đăng nhập!",Toast.LENGTH_SHORT).show();
+                                        tv_error.setText("Hãy xác nhận Email của bạn trước khi đăng nhập!");
+                                        tv_error.setVisibility(View.VISIBLE);
                                     }
                                 },1000);
                             }
@@ -154,7 +158,8 @@ public class sign_in extends AppCompatActivity {
                                 @Override
                                 public void run() {
                                     loadDialog.dismissDialog();
-                                    Toast.makeText(sign_in.this,"Email hoặc Password không đúng",Toast.LENGTH_SHORT).show();
+                                    tv_error.setText("Email hoặc Password không đúng");
+                                    tv_error.setVisibility(View.VISIBLE);
                                 }
                             },1000);
 
@@ -212,7 +217,8 @@ public class sign_in extends AppCompatActivity {
 
                         }
                         else {
-                            Toast.makeText(sign_in.this,"Loi",Toast.LENGTH_SHORT).show();
+                            tv_error.setText("Lỗi hệ thống, xin quý khách đợi hệ thống được Cập Nhật !!!");
+                            tv_error.setVisibility(View.VISIBLE);
                         }
                     }
                 });
@@ -221,8 +227,8 @@ public class sign_in extends AppCompatActivity {
             }
         }
         else {
-            Toast.makeText(sign_in.this,"Lỗi hệ thống, xin quý khách đợi hệ thống được Cập Nhật !!!",Toast.LENGTH_SHORT).show();
-
+            tv_error.setText("Lỗi hệ thống, xin quý khách đợi hệ thống được Cập Nhật !!!");
+            tv_error.setVisibility(View.VISIBLE);
         }
     }
 }

@@ -15,10 +15,10 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ServiceBuilder {
-//    private static final String URL = "http://192.168.93.234:8080/";
+    private static final String URL = "http://192.168.93.234:8080/";
 
 //    hung
-    private static final String URL = "http://192.168.0.111:8080/";
+//    private static final String URL = "http://192.168.0.111:8080/";
 
 
 
@@ -30,6 +30,7 @@ public class ServiceBuilder {
     private static OkHttpClient.Builder okHttp =
             new OkHttpClient.Builder()
                     .readTimeout(20, TimeUnit.SECONDS)
+                    .retryOnConnectionFailure(true)
                     .addInterceptor(new Interceptor() {
                         @Override
                         public Response intercept(Chain chain) throws IOException {

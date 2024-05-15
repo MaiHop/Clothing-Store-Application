@@ -183,6 +183,9 @@ public class MyProfile extends AppCompatActivity {
                                     Log.e("Firebase", "Failed to write user to database", e);
                                 });
                     }
+                    else {
+                        showDialogFailed();
+                    }
                 });
     }
     private void showDialogSuccess() {
@@ -256,6 +259,7 @@ public class MyProfile extends AppCompatActivity {
                 if (mImageUri != null) {
                     uploadImageToFirebase(mImageUri);
                 }
+                showDialogSuccess();
             }
         });
     }

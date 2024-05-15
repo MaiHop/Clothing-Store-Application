@@ -37,7 +37,8 @@ import com.google.firebase.firestore.SetOptions;
 import java.util.HashMap;
 
 public class HomeThamGia extends AppCompatActivity {
-    Button btnSignIn, btnSignUP,btn_signIn_GG;
+    Button btnSignIn, btnSignUP,btn_signIn_GG,btn_AP,btn_FB;
+    TextView tv_error;
     Class<?> sign_up = sign_up.class,
             sign_in = sign_in.class;
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
@@ -63,6 +64,9 @@ public class HomeThamGia extends AppCompatActivity {
         btnSignIn = findViewById(R.id.btn_SignInThamGia);
         btnSignUP = findViewById(R.id.btn_SignUpThamGia);
         btn_signIn_GG = findViewById(R.id.btn_GG);
+        tv_error = findViewById(R.id.tv_error);
+        btn_AP = findViewById(R.id.btn_AP);
+        btn_FB = findViewById(R.id.btn_FB);
     }
     private void GGOption(){
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -100,6 +104,20 @@ public class HomeThamGia extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = mGoogleSignInClinet.getSignInIntent();
                 startActivityForResult(intent,RC_SignIn);
+            }
+        });
+        btn_AP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tv_error.setText("Hệ thống chưa được hổ trợ");
+                tv_error.setVisibility(View.VISIBLE);
+            }
+        });
+        btn_FB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tv_error.setText("Hệ thống chưa được hổ trợ");
+                tv_error.setVisibility(View.VISIBLE);
             }
         });
     }
@@ -148,17 +166,19 @@ public class HomeThamGia extends AppCompatActivity {
 
                                 }
                                 else {
-                                    Toast.makeText(HomeThamGia.this,"Lỗi hệ thống, xin quý khách đợi hệ thống được Cập Nhật !!!",Toast.LENGTH_SHORT).show();
+                                    tv_error.setText("Lỗi hệ thống, xin quý khách đợi hệ thống được Cập Nhật !!!");
+                                    tv_error.setVisibility(View.VISIBLE);
                                 }
                             }
                         });
             }catch (Exception e){
-                Toast.makeText(HomeThamGia.this,e.getMessage(),Toast.LENGTH_SHORT).show();
+                tv_error.setText("Lỗi hệ thống, xin quý khách đợi hệ thống được Cập Nhật !!!");
+                tv_error.setVisibility(View.VISIBLE);
             }
         }
         else {
-            Toast.makeText(HomeThamGia.this,"Lỗi hệ thống, xin quý khách đợi hệ thống được Cập Nhật !!!",Toast.LENGTH_SHORT).show();
-
+            tv_error.setText("Lỗi hệ thống, xin quý khách đợi hệ thống được Cập Nhật !!!");
+            tv_error.setVisibility(View.VISIBLE);
         }
     }
 }

@@ -16,7 +16,7 @@ public interface DonHangChiTiet_api {
     Call<List<DonHangChiTiet>> readallDonHangChiTiet();
 
     @GET("DonHangChiTiet/get")
-    Call<DonHangChiTiet> getDonHangChiTiet(@Query("id") int id);
+    Call<DonHangChiTiet> getDonHangChiTiet(@Query("id") String id);
 
     @POST("DonHangChiTiet/create")
     Call<DonHangChiTiet> createDonHangChiTiet(@Body DonHangChiTiet donHangChiTiet);

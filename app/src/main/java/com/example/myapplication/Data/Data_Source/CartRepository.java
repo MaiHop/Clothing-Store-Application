@@ -271,7 +271,6 @@ public class CartRepository {
         kh.setTen("Mr. Fresh");
         kh.setEmail("mrfresh@gmail.com");
         kh.setGioiTinh(0);
-
         kh.setMatKhau("123");
 
         kh.setIdKhachHang("2");
@@ -279,7 +278,6 @@ public class CartRepository {
         kh.setTen("Mr. Fresh");
         kh.setEmail("mrfresh@gmail.com");
         kh.setGioiTinh(0);
-
         kh.setMatKhau("123");
 
         YeuThich yt1 = new YeuThich();
@@ -322,11 +320,6 @@ public class CartRepository {
         kh.setEmail("mrfresh@gmail.com");
         kh.setGioiTinh(0);
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-//        try {
-//            kh.setNgaySinh(formatter.parse("10/02/2024"));
-//        } catch (ParseException e) {
-//            throw new RuntimeException(e);
-//        }
         kh.setMatKhau("123");
 
 

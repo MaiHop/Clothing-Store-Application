@@ -16,7 +16,7 @@ public interface VanChuyen_api {
     Call<List<VanChuyen>> readallVanChuyen();
 
     @GET("VanChuyen/get")
-    Call<VanChuyen> getVanChuyen(@Query("id") int id);
+    Call<VanChuyen> getVanChuyen(@Query("id") String id);
 
     @POST("VanChuyen/create")
     Call<VanChuyen> createVanChuyen(@Body VanChuyen vanchuyen);

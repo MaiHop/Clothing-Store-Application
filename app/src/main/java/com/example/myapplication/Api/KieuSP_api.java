@@ -16,7 +16,7 @@ public interface KieuSP_api {
     Call<List<KieuSP>> readallKieuSP();
 
     @GET("KieuSP/get")
-    Call<KieuSP> getKieuSP(@Query("id") int id);
+    Call<KieuSP> getKieuSP(@Query("id") String id);
 
     @POST("KieuSP/create")
     Call<KieuSP> createKieuSP(@Body KieuSP kieu);

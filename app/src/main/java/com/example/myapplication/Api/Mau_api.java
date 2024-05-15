@@ -16,7 +16,7 @@ public interface Mau_api {
     Call<List<Mau>> readallMau();
 
     @GET("Mau/get")
-    Call<Mau> getMau(@Query("id") int id);
+    Call<Mau> getMau(@Query("id") String id);
 
     @POST("Mau/create")
     Call<Mau> createMau(@Body Mau mau);

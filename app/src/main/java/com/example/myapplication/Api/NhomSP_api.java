@@ -16,7 +16,7 @@ public interface NhomSP_api {
     Call<List<NhomSP>> readallNhomSP();
 
     @GET("NhomSP/get")
-    Call<NhomSP> getNhomSP(@Query("id") int id);
+    Call<NhomSP> getNhomSP(@Query("id") String id);
 
     @POST("NhomSP/create")
     Call<NhomSP> createNhomSP(@Body NhomSP nhom);

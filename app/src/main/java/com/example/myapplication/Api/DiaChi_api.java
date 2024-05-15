@@ -16,7 +16,7 @@ public interface DiaChi_api {
     Call<List<DiaChi>> readallDiaChi();
 
     @GET("DiaChi/get")
-    Call<DiaChi> getDiaChi(@Query("id") int id);
+    Call<DiaChi> getDiaChi(@Query("id") String id);
 
     @POST("DiaChi/create")
     Call<DiaChi> createDiaChi(@Body DiaChi diachi);

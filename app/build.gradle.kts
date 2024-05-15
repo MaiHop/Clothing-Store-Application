@@ -65,7 +65,7 @@ dependencies {
 
     //hoi
     implementation("androidx.paging:paging-runtime:3.0.0")
-    implementation("com.github.denzcoskun:ImageSlideshow:0.1.2")
+    implementation ("com.github.denzcoskun:ImageSlideshow:0.1.2")
 }
 
 

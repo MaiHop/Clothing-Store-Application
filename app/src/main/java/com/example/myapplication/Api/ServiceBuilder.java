@@ -24,7 +24,7 @@ public class ServiceBuilder {
     // Create OkHttp Client
     private static OkHttpClient.Builder okHttp =
             new OkHttpClient.Builder()
-                    .readTimeout(15, TimeUnit.SECONDS)
+                    .readTimeout(20, TimeUnit.SECONDS)
                     .addInterceptor(new Interceptor() {
                         @Override
                         public Response intercept(Chain chain) throws IOException {

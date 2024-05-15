@@ -16,7 +16,7 @@ public interface DanhGia_api {
     Call<List<DanhGia>> readallDanhGia();
 
     @GET("DanhGia/get")
-    Call<DanhGia> getDanhGia(@Query("id") int id);
+    Call<DanhGia> getDanhGia(@Query("id") String id);
 
     @POST("DanhGia/create")
     Call<DanhGia> createDanhGia(@Body DanhGia danhgia);

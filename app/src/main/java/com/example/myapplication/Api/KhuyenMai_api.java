@@ -16,7 +16,7 @@ public interface KhuyenMai_api {
     Call<List<KhuyenMai>> readallKhuyenMai();
 
     @GET("KhuyenMai/get")
-    Call<KhuyenMai> getKhuyenMai(@Query("id") int id);
+    Call<KhuyenMai> getKhuyenMai(@Query("id") String id);
 
     @POST("KhuyenMai/create")
     Call<KhuyenMai> createKhuyenMai(@Body KhuyenMai khuyenmai);

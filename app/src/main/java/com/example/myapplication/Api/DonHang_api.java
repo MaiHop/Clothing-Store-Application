@@ -16,7 +16,7 @@ public interface DonHang_api {
     Call<List<DonHang>> readallDonHang();
 
     @GET("DonHang/get")
-    Call<DonHang> getDonHang(@Query("id") int id);
+    Call<DonHang> getDonHang(@Query("id") String id);
 
     @POST("DonHang/create")
     Call<DonHang> createDonHang(@Body DonHang donhang);

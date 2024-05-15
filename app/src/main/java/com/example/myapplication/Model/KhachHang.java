@@ -62,8 +62,6 @@ public class KhachHang implements Serializable {
     public void setGioiTinh(int gioiTinh) {
         this.gioiTinh = gioiTinh;
     }
-
-
     public List<DiaChi> getListDiaChi() {
         return listDiaChi;
     }

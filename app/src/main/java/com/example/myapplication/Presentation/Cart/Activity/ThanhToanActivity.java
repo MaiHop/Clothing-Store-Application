@@ -80,10 +80,10 @@ public class ThanhToanActivity extends AppCompatActivity {
         if (dh.getKhuyenmai() == null){
             this.ll_Promos_Vouchers.setVisibility(View.GONE);
         }else {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
-            this.tv_TenKhuyenMai.setText(dh.getKhuyenmai().getTenKhuyenMai());
-            this.tv_ThongTinKhuyenMai.setText(dh.getKhuyenmai().getDieuKien()+" * Tối đa giảm : "+dh.getKhuyenmai().getToiDaGiam()+" * "+dateFormat.format(dh.getKhuyenmai().getHanSuDung()));
-            this.iv_PV_Remove.setVisibility(View.VISIBLE);
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
+                this.tv_TenKhuyenMai.setText(dh.getKhuyenmai().getTenKhuyenMai());
+                this.tv_ThongTinKhuyenMai.setText(dh.getKhuyenmai().getDieuKien()+" * Tối đa giảm : "+dh.getKhuyenmai().getToiDaGiam()+" * "+dateFormat.format(dh.getKhuyenmai().getHanSuDung()));
+                this.iv_PV_Remove.setVisibility(View.VISIBLE);
             this.ll_Promos_Vouchers.setVisibility(View.VISIBLE);
             this.iv_PV_Remove.setOnClickListener(new View.OnClickListener() {
                 @Override

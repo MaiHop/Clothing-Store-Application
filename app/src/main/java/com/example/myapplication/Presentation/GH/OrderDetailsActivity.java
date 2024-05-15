@@ -2,6 +2,8 @@ package com.example.myapplication.Presentation.GH;
 
 import android.icu.text.SimpleDateFormat;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,8 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.Data.Data_Source.CartRepository;
 import com.example.myapplication.Model.DonHang;
 import com.example.myapplication.R;
-
-import java.util.List;
 
 public class OrderDetailsActivity extends AppCompatActivity {
     private TextView  tvCheckoutTenDiaChiGiaoHang, tvCheckoutDiaChiGiaoHang, tvCheckoutTenDonViGiaoHang,
@@ -27,6 +27,7 @@ public class OrderDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gh_activity_order_detail);
+        ImageView btnBack = findViewById(R.id.ODback);
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
         DonHang donHang = (DonHang) getIntent().getSerializableExtra("DONHANG");
 
@@ -67,6 +68,17 @@ public class OrderDetailsActivity extends AppCompatActivity {
         adapter = new ODAdapter(dh1.getListDonHangChiTiet());
         recyclerView.setAdapter(adapter);
 
-
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+    }
+    @Override
+    public void onBackPressed() {
+        // Nếu muốn thực hiện hành động đặc biệt khi nút back được ấn, bạn có thể thêm mã ở đây.
+        // Nếu không, gọi super.onBackPressed() để thực hiện hành động mặc định
+        super.onBackPressed();
     }
 }

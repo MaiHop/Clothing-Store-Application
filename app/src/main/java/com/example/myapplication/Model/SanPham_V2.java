@@ -4,26 +4,17 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class SanPham implements Serializable {
-    private String id, idSanPham, imageUrl, tenSanPham, thongTin;
-    private double giaban;
-    private int soLuong, soLuongBan;
+public class SanPham_V2 implements Serializable {
+
+    private String id, idSanPham, tenSanPham, thongTin;
     private NhomSP nhomSanPham = null;
     private LoaiSP loaiSanPham = null;
     private KieuSP kieuSanPham = null;
-    private KichThuoc kichThuoc = null;
     private Mau mau= null;
     private Date ngayTao;
+    private List<Kho> listKho;
 
-    public SanPham() {
-    }
-
-    public Date getNgayTao() {
-        return ngayTao;
-    }
-
-    public void setNgayTao(Date ngayTao) {
-        this.ngayTao = ngayTao;
+    public SanPham_V2() {
     }
 
     public String getId() {
@@ -42,14 +33,6 @@ public class SanPham implements Serializable {
         this.idSanPham = idSanPham;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
     public String getTenSanPham() {
         return tenSanPham;
     }
@@ -64,30 +47,6 @@ public class SanPham implements Serializable {
 
     public void setThongTin(String thongTin) {
         this.thongTin = thongTin;
-    }
-
-    public double getGiaban() {
-        return giaban;
-    }
-
-    public void setGiaban(double giaban) {
-        this.giaban = giaban;
-    }
-
-    public int getSoLuong() {
-        return soLuong;
-    }
-
-    public void setSoLuong(int soLuong) {
-        this.soLuong = soLuong;
-    }
-
-    public int getSoLuongBan() {
-        return soLuongBan;
-    }
-
-    public void setSoLuongBan(int soLuongBan) {
-        this.soLuongBan = soLuongBan;
     }
 
     public NhomSP getNhomSanPham() {
@@ -114,14 +73,6 @@ public class SanPham implements Serializable {
         this.kieuSanPham = kieuSanPham;
     }
 
-    public KichThuoc getKichThuoc() {
-        return kichThuoc;
-    }
-
-    public void setKichThuoc(KichThuoc kichThuoc) {
-        this.kichThuoc = kichThuoc;
-    }
-
     public Mau getMau() {
         return mau;
     }
@@ -130,4 +81,19 @@ public class SanPham implements Serializable {
         this.mau = mau;
     }
 
+    public Date getNgayTao() {
+        return ngayTao;
+    }
+
+    public void setNgayTao(Date ngayTao) {
+        this.ngayTao = ngayTao;
+    }
+
+    public List<Kho> getListKho() {
+        return listKho;
+    }
+
+    public void setListKho(List<Kho> listKho) {
+        this.listKho = listKho;
+    }
 }

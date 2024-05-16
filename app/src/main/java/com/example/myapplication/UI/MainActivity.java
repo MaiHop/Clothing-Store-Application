@@ -12,6 +12,7 @@ import com.example.myapplication.Presentation.LoginAccout.HomeThamGia;
 import com.example.myapplication.Presentation.Onboarding.Activity.OnBoarding;
 import com.example.myapplication.Presentation.Onboarding.Activity.SplashScreen;
 import com.example.myapplication.R;
+import com.example.myapplication.SharedPreferences.DataLocalManager;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -25,17 +26,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.c_hung_activity_splash_screen);
 
         new Handler().postDelayed(() ->{
-            onBoardingScreen = getSharedPreferences("onBoardingScreen",MODE_PRIVATE);
-            boolean isFirstTime = onBoardingScreen.getBoolean("firsTime",true);
-
-            if(isFirstTime){
-
-                SharedPreferences.Editor editor = onBoardingScreen.edit();
-                editor.putBoolean("firsTime",false);
-                editor.commit();
+            if(!DataLocalManager.getFirstInstall()){
                 Intent intent = new Intent(MainActivity.this, OnBoarding.class);
                 startActivity(intent);
-                finish();
+                DataLocalManager.setFirstInstall(true);
             }
             else {
                 FirebaseUser currentUser = mAuth.getCurrentUser();
@@ -48,10 +42,37 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 }
-
             }
-
-
         },SPLASH_TINER);
+
+//        new Handler().postDelayed(() ->{
+//            onBoardingScreen = getSharedPreferences("onBoardingScreen",MODE_PRIVATE);
+//            boolean isFirstTime = onBoardingScreen.getBoolean("firsTime",true);
+//
+//            if(isFirstTime){
+//
+//                SharedPreferences.Editor editor = onBoardingScreen.edit();
+//                editor.putBoolean("firsTime",false);
+//                editor.commit();
+//                Intent intent = new Intent(MainActivity.this, OnBoarding.class);
+//                startActivity(intent);
+//                finish();
+//            }
+//            else {
+//                FirebaseUser currentUser = mAuth.getCurrentUser();
+//                if(currentUser !=null){
+//                    Intent intent = new Intent(MainActivity.this, Home.class);
+//                    startActivity(intent);
+//                }
+//                else {
+//                    Intent intent = new Intent(MainActivity.this, HomeThamGia.class);
+//                    startActivity(intent);
+//                    finish();
+//                }
+//
+//            }
+//
+//
+//        },SPLASH_TINER);
     }
 }

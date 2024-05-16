@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,8 +13,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.Model.SanPham;
 import com.example.myapplication.Presentation.PhucHoi.Activity.ChiTietSanPhamActivity;
 
+import com.example.myapplication.Presentation.PhucHoi.Activity.SanPhamActivity;
 import com.example.myapplication.Presentation.PhucHoi.ViewHolder.SanPhamVH;
 import com.example.myapplication.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
 public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamVH> {
@@ -24,10 +28,16 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamVH> {
 
     private LayoutInflater minflater;
 
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+    // Lấy ID của người dùng đang đăng nhập
+    String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
     public SanPhamAdapter(List<SanPham> list_product, Context context, LayoutInflater minflater) {
         this.list_product = list_product;
         this.context = context;
         this.minflater = minflater;
+
 
     }
 
@@ -52,7 +62,14 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamVH> {
                 context.startActivity(intent);
             }
         });
-
+        holder.cb_wishlist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SanPham sanPham = new SanPham();
+                String idSanPham = sanPham.getTenSanPham();
+                Toast.makeText(context, "userID: "+idSanPham, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 

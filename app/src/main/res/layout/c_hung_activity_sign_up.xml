@@ -102,6 +102,26 @@
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/ln_error"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:gravity="center"
+                >
+                <TextView
+                    android:id="@+id/tv_error"
+                    android:text="Remember me"
+                    android:gravity="center"
+                    android:textSize="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:textColor="@color/red"
+                    android:visibility="gone"
+                    />
+            </LinearLayout>
+            <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

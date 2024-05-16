@@ -13,21 +13,27 @@
         android:gravity="center">
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/c_hung_ic_apple"
+            android:layout_height="250dp"
+            android:src="@drawable/c_hung_logo"
             android:layout_gravity="center"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Trendify"
+            android:text="Minor"
             android:textStyle="bold"
             android:textSize="45dp"
-            android:gravity="center"/>
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:layout_marginTop="-30dp"/>
+
         <ProgressBar
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="150dp"
+            android:indeterminateOnly="true"
+            android:backgroundTint="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

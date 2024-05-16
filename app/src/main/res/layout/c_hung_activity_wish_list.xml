@@ -5,7 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Presentation.Wishlist.Activity.Wishlist"
     android:background="@color/white">
     <androidx.drawerlayout.widget.DrawerLayout
         android:layout_width="match_parent"
@@ -24,9 +23,10 @@
                     <!-- Logo -->
                     <ImageView
                         android:id="@+id/logo"
-                        android:layout_width="wrap_content"
+                        android:layout_width="70dp"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/c_hung_baseline_dehaze_24"
+                        android:src="@drawable/c_hung_logo"
+                        android:paddingRight="5dp"
                         android:layout_alignParentStart="true"
                         android:layout_centerVertical="true"/>
                     <!-- Tiêu đề -->

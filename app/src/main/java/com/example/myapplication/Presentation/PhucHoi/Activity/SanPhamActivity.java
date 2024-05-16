@@ -12,6 +12,9 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.myapplication.Model.NhomSP;
 import com.example.myapplication.Model.SanPham;
 import com.example.myapplication.Presentation.PhucHoi.Apdapter.NhomSPAdapter;
@@ -21,6 +24,8 @@ import com.example.myapplication.Presentation.PhucHoi.ViewModel.NhomSPVM;
 import com.example.myapplication.Presentation.PhucHoi.ViewModel.SanPhamNewVM;
 import com.example.myapplication.Presentation.PhucHoi.ViewModel.SanPhamVM;
 import com.example.myapplication.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -41,8 +46,18 @@ public class SanPhamActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.hoi_homepage);
-
         Viewall_NewArrial = findViewById(R.id.viewall);
+
+        ArrayList<SlideModel> imageList = new ArrayList<>(); // Create image list
+
+// imageList.add(new SlideModel("String Url" or R.drawable));
+// imageList.add(new SlideModel("String Url" or R.drawable, "title")); You can add title
+
+        imageList.add(new SlideModel(R.drawable.hoi_slider1, ScaleTypes.CENTER_INSIDE));
+        imageList.add(new SlideModel(R.drawable.hoi_slider2,ScaleTypes.CENTER_INSIDE));
+        imageList.add(new SlideModel(R.drawable.hoi_slider3,ScaleTypes.CENTER_INSIDE));
+        ImageSlider imageSlider = findViewById(R.id.image_slider);
+        imageSlider.setImageList(imageList);
         Viewall_NewArrial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

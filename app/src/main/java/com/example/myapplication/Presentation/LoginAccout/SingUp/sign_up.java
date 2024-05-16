@@ -45,7 +45,7 @@ import java.util.HashMap;
 
 public class sign_up extends AppCompatActivity {
     ImageView imagePack;
-    TextView tv_sigin;
+    TextView tv_sigin,tv_error;
     Button btn_SignUp,btn_signIn_GG;
     Class<?> SP_OTP = SP_OTP.class,
             Home_ThamGia = HomeThamGia.class,
@@ -82,6 +82,7 @@ public class sign_up extends AppCompatActivity {
         btn_signIn_GG = findViewById(R.id.btn_GG);
         txtip_email = findViewById(R.id.txtip_email);
         txtip_password = findViewById(R.id.txtip_password);
+        tv_error = findViewById(R.id.tv_error);
     }
     private void GGOption(){
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -106,11 +107,13 @@ public class sign_up extends AppCompatActivity {
                 String email = txtip_email.getText().toString();
                 String password = txtip_password.getText().toString();
                 if (email.equals("") || password.equals("")){
-                    Toast.makeText(sign_up.this,"Không được để trống email hoặc password",Toast.LENGTH_SHORT).show();
+                    tv_error.setText("Không được để trống email hoặc password");
+                    tv_error.setVisibility(View.VISIBLE);
                     return;
                 }
                 if (password.length()<6){
-                    Toast.makeText(sign_up.this,"Password không được dưới 6 ký tự",Toast.LENGTH_SHORT).show();
+                    tv_error.setText("Password không được dưới 6 ký tự");
+                    tv_error.setVisibility(View.VISIBLE);
                     return;
                 }
                 mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -143,13 +146,14 @@ public class sign_up extends AppCompatActivity {
                                                     public void onComplete(@NonNull Task<Void> task) {
                                                         if (task.isSuccessful()) {
                                                             // Tạo dữ liệu người dùng trên Firebase Realtime Database
-                                                            HashMap<String, Object> map = new HashMap<>();
-                                                            map.put("id", user.getUid());
-                                                            map.put("email", user.getEmail());
-                                                            map.put("name", user.getDisplayName());
-                                                            map.put("profile", user.getPhotoUrl().toString());
-                                                            database.collection("users").document(user.getUid())
-                                                                    .set(map, SetOptions.merge())
+                                                            KhachHang khachHang = new KhachHang();
+                                                            khachHang.setIdKhachHang(user.getUid());
+                                                            khachHang.setEmail(user.getEmail());
+                                                            khachHang.setTen(user.getDisplayName());
+                                                            khachHang.setImageUrl(user.getPhotoUrl().toString());
+                                                            khachHang.setGioiTinh(0);
+                                                            database.collection("KhachHang").document(khachHang.getIdKhachHang())
+                                                                    .set(khachHang)
                                                                     .addOnSuccessListener(aVoid -> {
                                                                         Intent intent = new Intent(sign_up.this,SP_OTP);
                                                                         intent.putExtra("confirm_code", "sign_up");
@@ -171,14 +175,16 @@ public class sign_up extends AppCompatActivity {
                                         }, 7000);
                                     } else {
                                         // Lỗi khi gửi email xác nhận
-                                        Toast.makeText(sign_up.this, "Hệ thống đang lỗi không thể gửi link xác nhận cho bạn.", Toast.LENGTH_SHORT).show();
+                                        tv_error.setText("Hệ thống đang lỗi không thể gửi link xác nhận cho bạn.");
+                                        tv_error.setVisibility(View.VISIBLE);
                                     }
                                 }
                             });
                         }
                         else {
                             // Đã xảy ra lỗi khi tạo tài khoản
-                            Toast.makeText(sign_up.this, "Email này đã tồn tại hoặc có lỗi xảy ra khi tạo tài khoản", Toast.LENGTH_SHORT).show();
+                            tv_error.setText("Email này đã tồn tại hoặc có lỗi xảy ra khi tạo tài khoản");
+                            tv_error.setVisibility(View.VISIBLE);
                         }
                     }
                 });
@@ -212,14 +218,14 @@ public class sign_up extends AppCompatActivity {
                                         public void run() {
                                             loadDialog.dismissDialog();
                                             FirebaseUser user = mAuth.getCurrentUser();
-                                            HashMap<String, Object> map = new HashMap<>();
-                                            map.put("id",user.getUid());
-                                            map.put("email", user.getEmail());
-                                            map.put("name",user.getDisplayName());
-                                            map.put("profile",user.getPhotoUrl().toString());
-//                                            database.getReference().child("users").child(user.getUid()).setValue(map)
-                                            database.collection("users").document(user.getUid())
-                                                    .set(map, SetOptions.merge())
+                                            KhachHang khachHang = new KhachHang();
+                                            khachHang.setIdKhachHang(user.getUid());
+                                            khachHang.setEmail(user.getEmail());
+                                            khachHang.setTen(user.getDisplayName());
+                                            khachHang.setImageUrl(user.getPhotoUrl().toString());
+                                            khachHang.setGioiTinh(0);
+                                            database.collection("KhachHang").document(khachHang.getIdKhachHang())
+                                                    .set(khachHang)
                                                     .addOnSuccessListener(aVoid -> {
                                                         Intent intent = new Intent(sign_up.this, Home.class);
                                                         startActivity(intent);
@@ -240,7 +246,8 @@ public class sign_up extends AppCompatActivity {
             }
         }
         else {
-            Toast.makeText(sign_up.this,"Lỗi hệ thống, xin quý khách đợi hệ thống được Cập Nhật !!!",Toast.LENGTH_SHORT).show();
+            tv_error.setText("Lỗi hệ thống, xin quý khách đợi hệ thống được Cập Nhật !!!");
+            tv_error.setVisibility(View.VISIBLE);
 
         }
     }

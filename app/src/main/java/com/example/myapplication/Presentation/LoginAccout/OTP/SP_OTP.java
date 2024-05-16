@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -28,7 +29,7 @@ public class SP_OTP extends AppCompatActivity {
 
     EditText editText1, editText2, editText3, editText4;
     ImageView img_back;
-
+    TextView tv_error;
     Button btn_confirmCode;
 //    final String confirm_code = getIntent().getStringExtra("confirm_code");
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
@@ -47,7 +48,7 @@ public class SP_OTP extends AppCompatActivity {
 //        editText4 = findViewById(R.id.editText4);
         img_back = findViewById(R.id.img_pack_OTP);
         btn_confirmCode = findViewById(R.id.Confirm_code);
-
+        tv_error = findViewById(R.id.tv_error);
 //        editText1.addTextChangedListener(new GenericTextWatcher(editText1));
 //        editText2.addTextChangedListener(new GenericTextWatcher(editText2));
 //        editText3.addTextChangedListener(new GenericTextWatcher(editText3));
@@ -219,7 +220,8 @@ public class SP_OTP extends AppCompatActivity {
                                         @Override
                                         public void run() {
                                             loadDialog.dismissDialog();
-                                            Toast.makeText(SP_OTP.this,"Hãy xác nhận Email của bạn trước khi đăng nhập!",Toast.LENGTH_SHORT).show();
+                                            tv_error.setText("Hãy xác nhận Email của bạn trước khi đăng nhập!");
+                                            tv_error.setVisibility(View.VISIBLE);
                                             FirebaseAuth.getInstance().signOut();
 
                                         }

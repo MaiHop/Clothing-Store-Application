@@ -9,17 +9,17 @@ public class KhachHang implements Serializable {
     private int gioiTinh;
     private List<DiaChi> listDiaChi = null;
     private List<ThanhToan> listThanhToan = null;
-    private List<YeuThich> listYeuThich = null;
+    private List<SanPham_V2> listYeuThich = null;
     private List<DonHang> listDonHang = null;
 
     public KhachHang() {
     }
 
-    public List<YeuThich> getListYeuThich() {
+    public List<SanPham_V2> getListYeuThich() {
         return listYeuThich;
     }
 
-    public void setListYeuThich(List<YeuThich> listYeuThich) {
+    public void setListYeuThich(List<SanPham_V2> listYeuThich) {
         this.listYeuThich = listYeuThich;
     }
 

@@ -1,36 +1,16 @@
 package com.example.myapplication.Presentation.Cart.Activity;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LifecycleOwner;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelStoreOwner;
 
-import com.example.myapplication.Api.DonHangChiTiet_api;
-import com.example.myapplication.Api.SanPham_api;
-import com.example.myapplication.Api.ServiceBuilder;
 import com.example.myapplication.Model.DonHangChiTiet;
 import com.example.myapplication.Model.Mau;
 import com.example.myapplication.Model.SanPham;
-import com.example.myapplication.Model.YeuThich;
-import com.example.myapplication.Presentation.Cart.Apdapter.MauAdapter;
-import com.example.myapplication.Presentation.Cart.ViewModel.MauVM;
 import com.example.myapplication.R;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class FirebaseActivity extends AppCompatActivity {
     List<DonHangChiTiet> list = new ArrayList<>();

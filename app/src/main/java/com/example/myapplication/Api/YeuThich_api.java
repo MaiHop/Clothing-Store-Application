@@ -1,7 +1,5 @@
 package com.example.myapplication.Api;
 
-import com.example.myapplication.Model.YeuThich;
-
 import java.util.List;
 
 import retrofit2.Call;

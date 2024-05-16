@@ -13,7 +13,6 @@ import com.example.myapplication.Model.NhomSP;
 import com.example.myapplication.Model.SanPham;
 import com.example.myapplication.Model.ThanhToan;
 import com.example.myapplication.Model.VanChuyen;
-import com.example.myapplication.Model.YeuThich;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -335,56 +334,56 @@ public class CartRepository {
         list.add(sp7);
         return list;
     }
-    public List<YeuThich> getYeuThich(){
-        List<YeuThich> list = new ArrayList<>();
-        CartRepository res = new CartRepository();
-        List<SanPham> list_sp = res.getSanPham();
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-
-        KhachHang kh =new KhachHang();
-        kh.setIdKhachHang("1");
-        kh.setImageUrl("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLvMEg2PbVb_MVOChlQMhcg2G8A_LtTuXc4wVdqsbEcQ&s");
-        kh.setTen("Mr. Fresh");
-        kh.setEmail("mrfresh@gmail.com");
-        kh.setGioiTinh(0);
-        kh.setMatKhau("123");
-
-        kh.setIdKhachHang("2");
-        kh.setImageUrl("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLvMEg2PbVb_MVOChlQMhcg2G8A_LtTuXc4wVdqsbEcQ&s");
-        kh.setTen("Mr. Fresh");
-        kh.setEmail("mrfresh@gmail.com");
-        kh.setGioiTinh(0);
-        kh.setMatKhau("123");
-
-        YeuThich yt1 = new YeuThich();
-        yt1.setIdYeuThich("1");
-        yt1.setKhachhang(kh);
-        yt1.setListsanpham(list_sp);
-
-        YeuThich yt2 = new YeuThich();
-        yt2.setIdYeuThich("2");
-        yt2.setKhachhang(kh);
-        yt2.setListsanpham((List<SanPham>) list_sp.get(1));
+//    public List<YeuThich> getYeuThich(){
+//        List<YeuThich> list = new ArrayList<>();
+//        CartRepository res = new CartRepository();
+//        List<SanPham> list_sp = res.getSanPham();
+//        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 //
-//        YeuThich_api yt3 = new YeuThich_api();
-//        yt3.setIdYeuThich("3");
-//        yt3.setKhachhang(kh);
-//        yt3.setListsanpham(list_sp);
+//        KhachHang kh =new KhachHang();
+//        kh.setIdKhachHang("1");
+//        kh.setImageUrl("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLvMEg2PbVb_MVOChlQMhcg2G8A_LtTuXc4wVdqsbEcQ&s");
+//        kh.setTen("Mr. Fresh");
+//        kh.setEmail("mrfresh@gmail.com");
+//        kh.setGioiTinh(0);
+//        kh.setMatKhau("123");
 //
-//        YeuThich_api yt4 = new YeuThich_api();
-//        yt4.setIdYeuThich("1");
-//        yt4.setKhachhang(kh);
-//        yt4.setListsanpham(list_sp);
-
-
-        list.add(yt1);
-        list.add(yt2);
-//        list.add(yt3);
-//        list.add(yt4);
-
-        return list;
-
-    }
+//        kh.setIdKhachHang("2");
+//        kh.setImageUrl("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLvMEg2PbVb_MVOChlQMhcg2G8A_LtTuXc4wVdqsbEcQ&s");
+//        kh.setTen("Mr. Fresh");
+//        kh.setEmail("mrfresh@gmail.com");
+//        kh.setGioiTinh(0);
+//        kh.setMatKhau("123");
+//
+//        YeuThich yt1 = new YeuThich();
+//        yt1.setIdYeuThich("1");
+//        yt1.setKhachhang(kh);
+//        yt1.setListsanpham(list_sp);
+//
+//        YeuThich yt2 = new YeuThich();
+//        yt2.setIdYeuThich("2");
+//        yt2.setKhachhang(kh);
+//        yt2.setListsanpham((List<SanPham>) list_sp.get(1));
+////
+////        YeuThich_api yt3 = new YeuThich_api();
+////        yt3.setIdYeuThich("3");
+////        yt3.setKhachhang(kh);
+////        yt3.setListsanpham(list_sp);
+////
+////        YeuThich_api yt4 = new YeuThich_api();
+////        yt4.setIdYeuThich("1");
+////        yt4.setKhachhang(kh);
+////        yt4.setListsanpham(list_sp);
+//
+//
+//        list.add(yt1);
+//        list.add(yt2);
+////        list.add(yt3);
+////        list.add(yt4);
+//
+//        return list;
+//
+//    }
 
     public List<DonHang> getListDonHang(){
         List<DonHang> list_dh = new ArrayList<>();

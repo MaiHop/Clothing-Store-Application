@@ -1,5 +1,6 @@
 package com.example.myapplication.Presentation.GH;
 
+import android.content.Intent;
 import android.icu.text.SimpleDateFormat;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.Data.Data_Source.CartRepository;
 import com.example.myapplication.Model.DonHang;
 import com.example.myapplication.R;
+import com.google.android.material.tabs.TabLayout;
 
 public class OrderDetailsActivity extends AppCompatActivity {
     private TextView  tvCheckoutTenDiaChiGiaoHang, tvCheckoutDiaChiGiaoHang, tvCheckoutTenDonViGiaoHang,
@@ -30,7 +32,7 @@ public class OrderDetailsActivity extends AppCompatActivity {
         ImageView btnBack = findViewById(R.id.ODback);
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
         DonHang donHang = (DonHang) getIntent().getSerializableExtra("DONHANG");
-
+        TabLayout tabLayout = findViewById(R.id.od_tabLayout);
         recyclerView = findViewById(R.id.rvDanhSachDonHang);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -73,6 +75,29 @@ public class OrderDetailsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 onBackPressed();
             }
+        });
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                int position = tab.getPosition();
+                switch (position) {
+                    case 0:
+                        // Xử lý khi tab đầu tiên được chọn (ví dụ: không làm gì hoặc mở một giao diện khác)
+                        break;
+                    case 1:
+                        // Xử lý khi tab "Track Order" được chọn
+                        Intent intent = new Intent(OrderDetailsActivity.this, test.class);
+                        startActivity(intent);
+                        break;
+                    // Thêm các trường hợp xử lý cho các tab khác nếu cần thiết
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {}
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {}
         });
     }
     @Override

@@ -11,6 +11,7 @@ public class SanPham_V2 implements Serializable {
     private LoaiSP loaiSanPham = null;
     private KieuSP kieuSanPham = null;
     private Mau mau= null;
+    private KichThuoc kichThuoc = null;
     private Date ngayTao;
     private List<Kho> listKho;
 
@@ -81,6 +82,14 @@ public class SanPham_V2 implements Serializable {
         this.mau = mau;
     }
 
+    public KichThuoc getKichThuoc() {
+        return kichThuoc;
+    }
+
+    public void setKichThuoc(KichThuoc kichThuoc) {
+        this.kichThuoc = kichThuoc;
+    }
+
     public Date getNgayTao() {
         return ngayTao;
     }
@@ -96,4 +105,5 @@ public class SanPham_V2 implements Serializable {
     public void setListKho(List<Kho> listKho) {
         this.listKho = listKho;
     }
+
 }

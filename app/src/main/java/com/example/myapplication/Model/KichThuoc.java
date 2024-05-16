@@ -4,8 +4,13 @@ import java.io.Serializable;
 
 public class KichThuoc implements Serializable {
     private String id, ten;
-    private boolean checked, able;
+    private boolean checked = false, able = true;
     public KichThuoc() {
+    }
+
+    public KichThuoc(String id, String ten) {
+        this.id = id;
+        this.ten = ten;
     }
 
     public String getId() {

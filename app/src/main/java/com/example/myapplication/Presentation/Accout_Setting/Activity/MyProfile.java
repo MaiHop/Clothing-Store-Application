@@ -30,9 +30,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.Model.KhachHang;
+import com.example.myapplication.Model.SanPham;
+import com.example.myapplication.Model.SanPham_V2;
 import com.example.myapplication.Presentation.LoginAccout.HomeThamGia;
 import com.example.myapplication.Presentation.LoginAccout.SingUp.sign_up;
 import com.example.myapplication.R;
+import com.example.myapplication.SharedPreferences.DataLocalManager;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -48,6 +51,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class MyProfile extends AppCompatActivity {
@@ -264,45 +268,54 @@ public class MyProfile extends AppCompatActivity {
         });
     }
     private void loadUserData() {
-        Picasso.get().load(mUser.getPhotoUrl().toString()).into(img_Avata);
-        txtip_fullname.setText(mUser.getDisplayName());
-        txtip_email.setText(mUser.getEmail());
-        txtip_phone.setText(mUser.getPhoneNumber());
-        if (mUser != null) {
-            DocumentReference docRef = database.collection("users").document(mUser.getUid());
-            docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                    if (task.isSuccessful()) {
-                        DocumentSnapshot document = task.getResult();
-                        if (document.exists()) {
-                            // Hiển thị số điện thoại
-                            String phone = document.getString("phone");
-                            if (phone != null) {
-                                txtip_phone.setText(phone);
-                            }
-
-                            // Hiển thị giới tính
-                            String gender = document.getString("gender");
-                            if (gender != null) {
-                                int spinnerPosition = ((ArrayAdapter<String>) spinnerGender.getAdapter()).getPosition(gender);
-                                spinnerGender.setSelection(spinnerPosition);
-                            }
-
-                            // Hiển thị ngày sinh
-                            String birthdate = document.getString("birthdate");
-                            if (birthdate != null) {
-                                DP_Data.setText(birthdate);
-                            }
-                        } else {
-                            Log.d("Firestore", "No such document");
-                        }
-                    } else {
-                        Log.d("Firestore", "get failed with ", task.getException());
-                    }
-                }
-            });
+        Picasso.get().load(DataLocalManager.getUser().getImageUrl().toString()).into(img_Avata);
+        txtip_fullname.setText(DataLocalManager.getUser().getTen());
+        txtip_email.setText(DataLocalManager.getUser().getEmail());
+//        List<SanPham_V2> spyt = DataLocalManager.getUser().getListYeuThich();
+        int gioiTinhValue = DataLocalManager.getUser().getGioiTinh();
+        String gioiTinhString;
+        if (gioiTinhValue == 0) {
+            gioiTinhString = "Nam";
+        } else {
+            gioiTinhString = "Nữ";
         }
+        int spinnerPosition = ((ArrayAdapter<String>) spinnerGender.getAdapter()).getPosition(gioiTinhString);
+        spinnerGender.setSelection(spinnerPosition);
+//        if (mUser != null) {
+//            DocumentReference docRef = database.collection("users").document(mUser.getUid());
+//            docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+//                @Override
+//                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+//                    if (task.isSuccessful()) {
+//                        DocumentSnapshot document = task.getResult();
+//                        if (document.exists()) {
+//                            // Hiển thị số điện thoại
+//                            String phone = document.getString("phone");
+//                            if (phone != null) {
+//                                txtip_phone.setText(phone);
+//                            }
+//
+//                            // Hiển thị giới tính
+//                            String gender = document.getString("gender");
+//                            if (gender != null) {
+//                                int spinnerPosition = ((ArrayAdapter<String>) spinnerGender.getAdapter()).getPosition(gender);
+//                                spinnerGender.setSelection(spinnerPosition);
+//                            }
+//
+//                            // Hiển thị ngày sinh
+//                            String birthdate = document.getString("birthdate");
+//                            if (birthdate != null) {
+//                                DP_Data.setText(birthdate);
+//                            }
+//                        } else {
+//                            Log.d("Firestore", "No such document");
+//                        }
+//                    } else {
+//                        Log.d("Firestore", "get failed with ", task.getException());
+//                    }
+//                }
+//            });
+//        }
     }
 
     private void uploadImageToFirebase(Uri imageUri) {

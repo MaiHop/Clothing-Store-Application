@@ -16,7 +16,7 @@ public class YeuThichVM extends ViewModel implements WishListRepository.WishList
     private WishListRepository wishListRepository = new WishListRepository(this);
     public YeuThichVM() {
 
-        loadData(); // Load data here from your repository or source
+//        loadData(); // Load data here from your repository or source
     }
 
 
@@ -25,9 +25,9 @@ public class YeuThichVM extends ViewModel implements WishListRepository.WishList
 
     }
 
-    private void loadData() {
-       wishListRepository.readWishList();
-    }
+//    private void loadData() {
+//       wishListRepository.readWishList();
+//    }
 
     @Override
     public void getWishList(List<SanPham> list_sp_wishlist) {

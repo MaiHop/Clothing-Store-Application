@@ -20,8 +20,10 @@ import com.example.myapplication.Presentation.ButtonNavigation.Home;
 import com.example.myapplication.Presentation.LoginAccout.HomeThamGia;
 import com.example.myapplication.Presentation.LoginAccout.Load_Dialog;
 import com.example.myapplication.R;
+import com.example.myapplication.SharedPreferences.DataLocalManager;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -31,6 +33,7 @@ public class SP_OTP extends AppCompatActivity {
     ImageView img_back;
     TextView tv_error;
     Button btn_confirmCode;
+    TextInputEditText txtip_email;
 //    final String confirm_code = getIntent().getStringExtra("confirm_code");
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
     Intent intent;
@@ -40,7 +43,7 @@ public class SP_OTP extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.c_hung_activity_sup_otp);
+        setContentView(R.layout.c_hung_activity_sendrequest);
 
 //        editText1 = findViewById(R.id.editText1);
 //        editText2 = findViewById(R.id.editText2);
@@ -49,11 +52,12 @@ public class SP_OTP extends AppCompatActivity {
         img_back = findViewById(R.id.img_pack_OTP);
         btn_confirmCode = findViewById(R.id.Confirm_code);
         tv_error = findViewById(R.id.tv_error);
+        txtip_email = findViewById(R.id.txtip_email_request);
+        txtip_email.setText(DataLocalManager.getUser().getEmail());
 //        editText1.addTextChangedListener(new GenericTextWatcher(editText1));
 //        editText2.addTextChangedListener(new GenericTextWatcher(editText2));
 //        editText3.addTextChangedListener(new GenericTextWatcher(editText3));
 //        editText4.addTextChangedListener(new GenericTextWatcher(editText4));
-
 
         OnclickImage(img_back);
         Onclickbtn(btn_confirmCode);

@@ -43,39 +43,39 @@ public class FirebaseActivity extends AppCompatActivity {
 
 
 
-        DonHangChiTiet_api api = ServiceBuilder.buildService(DonHangChiTiet_api.class);
-        Call<List<DonHangChiTiet>> request = api.readallDonHangChiTiet();
-        request.enqueue(new Callback<List<DonHangChiTiet>>() {
-            @Override
-            public void onResponse(Call<List<DonHangChiTiet>> call, Response<List<DonHangChiTiet>> response) {
-                list= response.body();
-                MauVM color_vm = new ViewModelProvider((ViewModelStoreOwner) FirebaseActivity.this).get(MauVM.class);
-                color_vm.getListMauProductEditLiveData(list,list.get(0).getSanPham()).observe((LifecycleOwner) FirebaseActivity.this, new Observer<List<Mau>>() {
-                    @Override
-                    public void onChanged(List<Mau> maus) {
-                        for(Mau m : maus){
-                            boolean alreadyExists = false;
-                            for (Mau mau : list_m) {
-                                if (m.getId().equals(mau.getId())) {
-                                    alreadyExists = true;
-                                    break;  // Nếu đã tìm thấy một màu trùng lặp, thoát khỏi vòng lặp
-                                }
-                            }
-                            if (!alreadyExists) {
-                                list_m.add(m);  // Chỉ thêm màu nếu nó chưa tồn tại trong danh sách test
-                            }
-                        }
-                        Log.d("ADSSADASD",String.valueOf(list_m.size()));
-
-                    }
-                });
-            }
-
-            @Override
-            public void onFailure(Call<List<DonHangChiTiet>> call, Throwable t) {
-
-            }
-        });
+//        DonHangChiTiet_api api = ServiceBuilder.buildService(DonHangChiTiet_api.class);
+//        Call<List<DonHangChiTiet>> request = api.readallDonHangChiTiet();
+//        request.enqueue(new Callback<List<DonHangChiTiet>>() {
+//            @Override
+//            public void onResponse(Call<List<DonHangChiTiet>> call, Response<List<DonHangChiTiet>> response) {
+//                list= response.body();
+//                MauVM color_vm = new ViewModelProvider((ViewModelStoreOwner) FirebaseActivity.this).get(MauVM.class);
+//                color_vm.getListMauProductEditLiveData(list,list.get(0).getSanPham()).observe((LifecycleOwner) FirebaseActivity.this, new Observer<List<Mau>>() {
+//                    @Override
+//                    public void onChanged(List<Mau> maus) {
+//                        for(Mau m : maus){
+//                            boolean alreadyExists = false;
+//                            for (Mau mau : list_m) {
+//                                if (m.getId().equals(mau.getId())) {
+//                                    alreadyExists = true;
+//                                    break;  // Nếu đã tìm thấy một màu trùng lặp, thoát khỏi vòng lặp
+//                                }
+//                            }
+//                            if (!alreadyExists) {
+//                                list_m.add(m);  // Chỉ thêm màu nếu nó chưa tồn tại trong danh sách test
+//                            }
+//                        }
+//                        Log.d("ADSSADASD",String.valueOf(list_m.size()));
+//
+//                    }
+//                });
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<DonHangChiTiet>> call, Throwable t) {
+//
+//            }
+//        });
 //        callSync.enqueue(new Callback<List<KieuSP>>() {
 //            @Override
 //            public void onResponse(Call<List<KieuSP>> call, Response<List<KieuSP>> response) {
@@ -157,6 +157,8 @@ public class FirebaseActivity extends AppCompatActivity {
 //            }
 //        }
 //        Log.d("asdsdsfd", String.valueOf(test.size()));
+
+        
 
     }
 }

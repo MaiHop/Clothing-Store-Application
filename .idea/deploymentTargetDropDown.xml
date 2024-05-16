@@ -2,13 +2,13 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="FirebaseActivity">
-        <State />
-      </entry>
-      <entry key="GioHangActivity">
+      <entry key="MainActivity (1)">
         <State />
       </entry>
       <entry key="SanPhamActivity">
+        <State />
+      </entry>
+      <entry key="SplashScreen">
         <State />
       </entry>
     </value>

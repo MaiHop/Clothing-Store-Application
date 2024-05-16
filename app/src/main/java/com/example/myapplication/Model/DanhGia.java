@@ -10,7 +10,6 @@ public class DanhGia implements Serializable {
     private Date ngayDanhGia;
     private double diemDanhGia;
     private SanPham sanpham;
-    private List<String> listImage = null;
 
     public DanhGia() {
     }
@@ -61,13 +60,5 @@ public class DanhGia implements Serializable {
 
     public void setSanpham(SanPham sanpham) {
         this.sanpham = sanpham;
-    }
-
-    public List<String> getListImage() {
-        return listImage;
-    }
-
-    public void setListImage(List<String> listImage) {
-        this.listImage = listImage;
     }
 }

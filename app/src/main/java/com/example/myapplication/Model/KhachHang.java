@@ -5,14 +5,22 @@ import java.util.Date;
 import java.util.List;
 
 public class KhachHang implements Serializable {
-    private String idKhachHang, imageUrl, ten, email, matKhau;
+    private String idKhachHang, imageUrl, ten, email;
     private int gioiTinh;
     private List<DiaChi> listDiaChi = null;
     private List<ThanhToan> listThanhToan = null;
-    private List<SanPham> listYeuThich = null;
+    private List<YeuThich> listYeuThich = null;
     private List<DonHang> listDonHang = null;
 
     public KhachHang() {
+    }
+
+    public List<YeuThich> getListYeuThich() {
+        return listYeuThich;
+    }
+
+    public void setListYeuThich(List<YeuThich> listYeuThich) {
+        this.listYeuThich = listYeuThich;
     }
 
     public String getIdKhachHang() {
@@ -47,14 +55,6 @@ public class KhachHang implements Serializable {
         this.email = email;
     }
 
-    public String getMatKhau() {
-        return matKhau;
-    }
-
-    public void setMatKhau(String matKhau) {
-        this.matKhau = matKhau;
-    }
-
     public int getGioiTinh() {
         return gioiTinh;
     }
@@ -78,13 +78,6 @@ public class KhachHang implements Serializable {
         this.listThanhToan = listThanhToan;
     }
 
-    public List<SanPham> getListYeuThich() {
-        return listYeuThich;
-    }
-
-    public void setListYeuThich(List<SanPham> listYeuThich) {
-        this.listYeuThich = listYeuThich;
-    }
 
     public List<DonHang> getListDonHang() {
         return listDonHang;

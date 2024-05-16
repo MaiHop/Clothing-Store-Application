@@ -4,9 +4,17 @@ import java.io.Serializable;
 import java.util.List;
 
 public class NhomSP implements Serializable {
-    private String id, ten;
+    private String id, ten,imageURL;
     private List<LoaiSP> listLoaiSP;
     public NhomSP() {
+    }
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
     }
 
     public List<LoaiSP> getListLoaiSP() {

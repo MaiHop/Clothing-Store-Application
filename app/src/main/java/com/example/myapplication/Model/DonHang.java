@@ -16,7 +16,24 @@ public class DonHang implements Serializable {
     private List<DonHangChiTiet> listDonHangChiTiet = null;
     private List<KhuyenMai> listKhuyenMai = null;
     private Date ngayThanhToan;
+    private List<DonHangQuaTrinh>  listdonhangqt = null;
     public DonHang() {
+    }
+
+    public List<DonHangQuaTrinh> getListdonhangqt() {
+        return listdonhangqt;
+    }
+
+    public void setListdonhangqt(List<DonHangQuaTrinh> listdonhangqt) {
+        this.listdonhangqt = listdonhangqt;
+    }
+
+    public double getPhiDichVu() {
+        return phiDichVu;
+    }
+
+    public void setPhiDichVu(double phiDichVu) {
+        this.phiDichVu = phiDichVu;
     }
 
     public String getIdDonHang() {
@@ -88,7 +105,7 @@ public class DonHang implements Serializable {
     }
 
     public void setTongSoLuong(int tongSoLuong) {
-        tongSoLuong = tongSoLuong;
+        this.tongSoLuong = tongSoLuong;
     }
 
     public double getThanhTien() {

@@ -4,6 +4,13 @@ import java.util.Date;
 
 public class DonHangQuaTrinh {
     private String trangThai, moTa;
+
+    public DonHangQuaTrinh(String trangThai, String moTa, Date ngay) {
+        this.trangThai = trangThai;
+        this.moTa = moTa;
+        this.ngay = ngay;
+    }
+
     private Date ngay;
 
     public String getTrangThai() {

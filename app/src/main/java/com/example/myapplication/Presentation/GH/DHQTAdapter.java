@@ -49,13 +49,14 @@ public class DHQTAdapter extends RecyclerView.Adapter<DHQTAdapter.ViewHolder> {
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvDate, tvDescription, tvStatus;
+        TextView tvDate, tvDescription, tvStatus,tvTime;
         ImageView statusIndicator;
 
         public ViewHolder(View itemView) {
             super(itemView);
             tvDate = itemView.findViewById(R.id.od_ngay);
             tvDescription = itemView.findViewById(R.id.od_mota);
+//            tvTime = itemView.findViewById(R.id.od_time);
             tvStatus = itemView.findViewById(R.id.od_trangthai);
             statusIndicator = itemView.findViewById(R.id.statusIndicator);
         }

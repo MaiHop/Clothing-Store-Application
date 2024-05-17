@@ -19,6 +19,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class CartRepository {
     List<NhomSP> listNhomSP;
@@ -120,15 +121,16 @@ public class CartRepository {
 
     public List<DonHangQuaTrinh> getListDHQT(){
         List<DonHangQuaTrinh> list = new ArrayList<>();
+        SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm a", Locale.getDefault());
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 
         DonHangQuaTrinh qt1 = new DonHangQuaTrinh();
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         try {
             qt1.setNgay(formatter.parse("20/03/2024"));
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        qt1.setMoTa("4 Evergreen Street Lake Zurich, IL 60047");
+        qt1.setMoTa("08:60 AM");
         qt1.setTrangThai("Đang giao hàng");
 
         DonHangQuaTrinh qt2 = new DonHangQuaTrinh();
@@ -137,8 +139,8 @@ public class CartRepository {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        qt2.setMoTa("Đã thanh toán online");
-        qt2.setTrangThai("Khách hàng đã chuyển tiền");
+        qt2.setMoTa("11:20 AM");
+        qt2.setTrangThai("Đã thanh toán");
 
         DonHangQuaTrinh qt3 = new DonHangQuaTrinh();
         try {
@@ -146,7 +148,7 @@ public class CartRepository {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        qt3.setMoTa("Chờ");
+        qt3.setMoTa("11:30 PM");
         qt3.setTrangThai("Chưa thanh toán");
 
         list.add(qt1);

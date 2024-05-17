@@ -37,7 +37,7 @@ public class CartRepository {
         List<VanChuyen> listvc = getListDelivery();
         List<ThanhToan> listtt = getListMP();
         List<KhuyenMai> listkm = getListKhuyenMai();
-        List<DonHangQuaTrinh> listqt = getListDHQT();
+        List<DonHangQuaTrinh> listQT = getListDHQT();
         List<DonHangChiTiet> listdhct = getGioHang();
         List<DonHangChiTiet> list_ct1 = new ArrayList<>();
         List<DonHangChiTiet> list_ct2 = new ArrayList<>();
@@ -84,28 +84,7 @@ public class CartRepository {
         dh1.setListDonHangChiTiet(listdhct);
         dh1.setPhiGiaoHang(200);
         dh1.setThue(0.1);
-        List<DonHangQuaTrinh> listDHQT1 = new ArrayList<>();
-        DonHangQuaTrinh qt1 = new DonHangQuaTrinh();
-        try {
-            qt1.setNgay(formatter.parse("10/05/2024"));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        qt1.setMoTa("Order received");
-        qt1.setTrangThai("Processing");
-
-        DonHangQuaTrinh qt2 = new DonHangQuaTrinh();
-        try {
-            qt2.setNgay(formatter.parse("11/05/2024"));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        qt2.setMoTa("Order shipped");
-        qt2.setTrangThai("In Transit");
-
-        listDHQT1.add(qt1);
-        listDHQT1.add(qt2);
-        dh1.setListdonhangqt(listDHQT1);
+        dh1.setDonHangQuaTrinh(listQT.get(0));
 
         DonHang dh2 = new DonHang();
         dh2.setListDonHangChiTiet(list_ct2);
@@ -115,6 +94,14 @@ public class CartRepository {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+        dh2.setDiachi(listdc.get(1));
+        dh2.setVanchuyen(listvc.get(1));
+        dh2.setThanhToan(listtt.get(1));
+        dh2.setKhuyenmai(listkm.get(1));
+        dh2.setListDonHangChiTiet(listdhct);
+        dh2.setPhiGiaoHang(200);
+        dh2.setThue(0.1);
+        dh2.setDonHangQuaTrinh(listQT.get(0));
 
         DonHang dh3 = new DonHang();
         dh3.setListDonHangChiTiet(list_ct3);
@@ -134,6 +121,7 @@ public class CartRepository {
 
     public List<DonHangQuaTrinh> getListDHQT(){
         List<DonHangQuaTrinh> list = new ArrayList<>();
+
         DonHangQuaTrinh qt1 = new DonHangQuaTrinh();
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         try {
@@ -143,7 +131,18 @@ public class CartRepository {
         }
         qt1.setMoTa("4 Evergreen Street Lake Zurich, IL 60047");
         qt1.setTrangThai("Order is being Delivered");
+
+        DonHangQuaTrinh qt2 = new DonHangQuaTrinh();
+        try {
+            qt2.setNgay(formatter.parse("11/05/2024"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        qt2.setMoTa("Order shipped");
+        qt2.setTrangThai("In Transit");
+
         list.add(qt1);
+        list.add(qt2);
         return list;
     }
     public List<KichThuoc> getListSize(){

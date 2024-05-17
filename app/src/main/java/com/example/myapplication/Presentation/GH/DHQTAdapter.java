@@ -3,6 +3,7 @@ package com.example.myapplication.Presentation.GH;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -34,6 +35,12 @@ public class DHQTAdapter extends RecyclerView.Adapter<DHQTAdapter.ViewHolder> {
         holder.tvDate.setText(formattedDate);
         holder.tvDescription.setText(dhqt.getMoTa());
         holder.tvStatus.setText(dhqt.getTrangThai());
+
+        if (position == 0) { // Assuming the first item is the current status
+            holder.statusIndicator.setImageResource(R.drawable.hoi_ic_current_status);
+        } else {
+            holder.statusIndicator.setImageResource(R.drawable.hoi_ic_past_status);
+        }
     }
 
     @Override
@@ -43,12 +50,14 @@ public class DHQTAdapter extends RecyclerView.Adapter<DHQTAdapter.ViewHolder> {
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvDate, tvDescription, tvStatus;
+        ImageView statusIndicator;
 
         public ViewHolder(View itemView) {
             super(itemView);
             tvDate = itemView.findViewById(R.id.od_ngay);
             tvDescription = itemView.findViewById(R.id.od_mota);
             tvStatus = itemView.findViewById(R.id.od_trangthai);
+            statusIndicator = itemView.findViewById(R.id.statusIndicator);
         }
     }
 }

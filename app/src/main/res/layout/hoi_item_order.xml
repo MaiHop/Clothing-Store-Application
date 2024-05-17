@@ -51,13 +51,13 @@
                 android:textColor="@color/grey"
                 android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/orderTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="08:40 AM"
-                android:textColor="@color/grey"
-                android:textSize="14sp" />
+<!--            <TextView-->
+<!--                android:id="@+id/orderTime"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="08:40 AM"-->
+<!--                android:textColor="@color/grey"-->
+<!--                android:textSize="14sp" />-->
 
             <TextView
                 android:id="@+id/od_mota"

@@ -33,8 +33,8 @@ public class TrackOder extends AppCompatActivity {
         // Fetch the order from the intent
         DonHang donHang = (DonHang) getIntent().getSerializableExtra("DONHANG");
 
-        if (donHang != null && donHang.getDonHangQuaTrinh() != null) {
-            orderStatusList.add(donHang.getDonHangQuaTrinh());
+        if (donHang != null && donHang.getListdonhangqt() != null) {
+            orderStatusList.addAll(donHang.getListdonhangqt());
             adapter.notifyDataSetChanged();
         }
     }

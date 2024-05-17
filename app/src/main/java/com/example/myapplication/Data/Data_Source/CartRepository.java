@@ -140,7 +140,7 @@ public class CartRepository {
             e.printStackTrace();
         }
         qt2.setMoTa("11:20 AM");
-        qt2.setTrangThai("Khách hàng đã chuyển tiền");
+        qt2.setTrangThai("Đã thanh toán");
 
         DonHangQuaTrinh qt3 = new DonHangQuaTrinh();
         try {

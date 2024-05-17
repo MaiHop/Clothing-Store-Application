@@ -15,7 +15,6 @@ public class DonHangQuaTrinh implements Serializable {
 //        this.ngay = ngay;
 //    }
 
-
     private Date ngay;
 
     public String getTrangThai() {

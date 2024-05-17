@@ -1,16 +1,17 @@
 package com.example.myapplication.Presentation.GH;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.Model.DonHang;
 import com.example.myapplication.Model.DonHangQuaTrinh;
 import com.example.myapplication.R;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class TrackOder extends AppCompatActivity {
@@ -27,14 +28,14 @@ public class TrackOder extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycler_order_tracking);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // Initialize the order status list and add sample data
-        orderStatusList = new ArrayList<>();
-        orderStatusList.add(new DonHangQuaTrinh("Order is being Delivered", "4 Evergreen Street Lake Zurich, IL 60047", new Date()));
-        orderStatusList.add(new DonHangQuaTrinh("Order is being Delivered", "9177 Hillcrest Street Wheeling, WV 26003", new Date()));
-        orderStatusList.add(new DonHangQuaTrinh("Orders are in Transit", "891 Glen Ridge St. Gainesville, VA 20155", new Date()));
-        orderStatusList.add(new DonHangQuaTrinh("Order is being Delivered", "55 Summerhouse Dr. Apopka, FL 32703", new Date()));
-        orderStatusList.add(new DonHangQuaTrinh("Store Processing Orders", "Orders are being processed by the Store", new Date()));
-        orderStatusList.add(new DonHangQuaTrinh("Payments Verified", "Your payment has been confirmed", new Date()));
+        Intent intent = getIntent();
+        DonHang donHang = (DonHang) intent.getSerializableExtra("DONHANG");
+
+        if (donHang != null) {
+            orderStatusList = donHang.getListdonhangqt();
+        } else {
+            orderStatusList = new ArrayList<>();
+        }
 
         orderStatusAdapter = new DonHangChiTietAdapter(orderStatusList);
         recyclerView.setAdapter(orderStatusAdapter);

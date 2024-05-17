@@ -35,7 +35,7 @@
             android:paddingStart="16dp">
 
             <TextView
-                android:id="@+id/orderStatus"
+                android:id="@+id/od_trangthai"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Order Status"
@@ -44,7 +44,7 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/orderDate"
+                android:id="@+id/od_ngay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Dec 22"
@@ -60,7 +60,7 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/orderDescription"
+                android:id="@+id/od_mota"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Description"

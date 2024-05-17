@@ -1,15 +1,20 @@
 package com.example.myapplication.Model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class DonHangQuaTrinh {
+public class DonHangQuaTrinh implements Serializable {
     private String trangThai, moTa;
 
-    public DonHangQuaTrinh(String trangThai, String moTa, Date ngay) {
-        this.trangThai = trangThai;
-        this.moTa = moTa;
-        this.ngay = ngay;
+    public DonHangQuaTrinh() {
     }
+
+//    public DonHangQuaTrinh(String trangThai, String moTa, Date ngay) {
+//        this.trangThai = trangThai;
+//        this.moTa = moTa;
+//        this.ngay = ngay;
+//    }
+
 
     private Date ngay;
 

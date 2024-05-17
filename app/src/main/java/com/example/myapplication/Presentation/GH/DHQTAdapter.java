@@ -13,10 +13,10 @@ import com.example.myapplication.R;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-public class DonHangChiTietAdapter extends RecyclerView.Adapter<DonHangChiTietAdapter.ViewHolder> {
+public class DHQTAdapter extends RecyclerView.Adapter<DHQTAdapter.ViewHolder> {
     private List<DonHangQuaTrinh> orderStatusList;
 
-    public DonHangChiTietAdapter(List<DonHangQuaTrinh> orderStatusList) {
+    public DHQTAdapter(List<DonHangQuaTrinh> orderStatusList) {
         this.orderStatusList = orderStatusList;
     }
 
@@ -52,3 +52,4 @@ public class DonHangChiTietAdapter extends RecyclerView.Adapter<DonHangChiTietAd
         }
     }
 }
+

@@ -86,7 +86,8 @@ public class OrderDetailsActivity extends AppCompatActivity {
                         break;
                     case 1:
                         // Xử lý khi tab "Track Order" được chọn
-                        Intent intent = new Intent(OrderDetailsActivity.this, test.class);
+                        Intent intent = new Intent(OrderDetailsActivity.this, TrackOder.class);
+                        intent.putExtra("DONHANG", donHang); // Pass the DonHang object
                         startActivity(intent);
                         break;
                     // Thêm các trường hợp xử lý cho các tab khác nếu cần thiết

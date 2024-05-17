@@ -1,8 +1,6 @@
 package com.example.myapplication.Presentation.GH;
 
-import android.content.Intent;
 import android.os.Bundle;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,7 +15,7 @@ import java.util.List;
 public class TrackOder extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private DonHangChiTietAdapter orderStatusAdapter;
+    private DHQTAdapter adapter;
     private List<DonHangQuaTrinh> orderStatusList;
 
     @Override
@@ -28,17 +26,16 @@ public class TrackOder extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycler_order_tracking);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        Intent intent = getIntent();
-        DonHang donHang = (DonHang) intent.getSerializableExtra("DONHANG");
+        orderStatusList = new ArrayList<>();
+        adapter = new DHQTAdapter(orderStatusList);
+        recyclerView.setAdapter(adapter);
 
-        if (donHang != null) {
-            orderStatusList = donHang.getListdonhangqt();
-        } else {
-            orderStatusList = new ArrayList<>();
+        // Fetch the order from the intent
+        DonHang donHang = (DonHang) getIntent().getSerializableExtra("DONHANG");
+
+        if (donHang != null && donHang.getDonHangQuaTrinh() != null) {
+            orderStatusList.add(donHang.getDonHangQuaTrinh());
+            adapter.notifyDataSetChanged();
         }
-
-        orderStatusAdapter = new DonHangChiTietAdapter(orderStatusList);
-        recyclerView.setAdapter(orderStatusAdapter);
     }
 }
-

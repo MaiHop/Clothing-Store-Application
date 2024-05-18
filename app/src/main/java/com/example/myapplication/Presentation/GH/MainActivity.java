@@ -3,10 +3,10 @@ package com.example.myapplication.Presentation.GH;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import androidx.appcompat.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -21,11 +21,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private RecyclerView.Adapter adapter;
+    private ItemAdaptor itemAdaptor;
     private RecyclerView recyclerViewItemList;
     private SearchView searchView;
     private DonHangVM viewModel;
     private List<DonHang> list = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,81 +37,54 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerViewItemList = findViewById(R.id.rc_DonHang);
         recyclerViewItemList.setLayoutManager(new LinearLayoutManager(this));
+        itemAdaptor = new ItemAdaptor(this, new ArrayList<>());
+        recyclerViewItemList.setAdapter(itemAdaptor);
+
         viewModel = new ViewModelProvider(this).get(DonHangVM.class);
-        viewModel.getListCartLiveData().observe(MainActivity.this, new Observer<List<DonHang>>() {
+        viewModel.getListCartLiveData().observe(this, new Observer<List<DonHang>>() {
             @Override
             public void onChanged(List<DonHang> donHangs) {
                 list = donHangs;
                 setupTabs();
-                ItemAdaptor itemAdaptor = new ItemAdaptor(MainActivity.this, donHangs);
-//                recyclerViewItemList.setAdapter(itemAdaptor);
-                recyclerViewItem("Active");
+                filterList("Active");
             }
         });
-//        recyclerViewItem();
-//        setupSearchView();
-//        setupTabs();
     }
 
-    private void recyclerViewItem(String loai) {
-
-        viewModel.getListCartLiveData().observe(this, new Observer<List<DonHang>>() {
-            @Override
-            public void onChanged(List<DonHang> donHangs) {
-                List<DonHang> listcart = new ArrayList<>();
-                for (DonHang dh : donHangs) {
-                    switch (loai) {
-                        case "Active":
-                            if (dh.getTrangThai().equals("Active")) {
-                                listcart.add(dh);
-                            }
-                            break;
-                        case "Completed":
-                            if (dh.getTrangThai().equals("Completed")) {
-                                listcart.add(dh);
-                            }
-                            break;
-                        case "Canceled":
-                            if (dh.getTrangThai().equals("Canceled")) {
-                                listcart.add(dh);
-                            }
-                            break;
-                    }
-                }
-                list = donHangs;
-                ItemAdaptor itemAdaptor = new ItemAdaptor(MainActivity.this, listcart);
-                recyclerViewItemList.setAdapter(itemAdaptor);
+    private void filterList(String status) {
+        List<DonHang> filteredList = new ArrayList<>();
+        for (DonHang dh : list) {
+            if (dh.getTrangThai().equals(status)) {
+                filteredList.add(dh);
             }
-        });
+        }
+        itemAdaptor.updateList(filteredList);
     }
 
     private void setupTabs() {
-        int ac =0;
-        int co =0;
-        int ca =0;
-        for(DonHang dh : list){
+        int ac = 0;
+        int co = 0;
+        int ca = 0;
+        for (DonHang dh : list) {
             if (dh.getTrangThai().equals("Canceled")) {
-                ca+=1;
-            }else if (dh.getTrangThai().equals("Completed")) {
-                co+=1;
-            }else if (dh.getTrangThai().equals("Active")) {
-                ac+=1;
+                ca++;
+            } else if (dh.getTrangThai().equals("Completed")) {
+                co++;
+            } else if (dh.getTrangThai().equals("Active")) {
+                ac++;
             }
         }
+
         TabLayout tabLayout = findViewById(R.id.tabLayout);
-        // Xóa các tab cũ và tạo mới từ code
         tabLayout.removeAllTabs();
-        TabLayout.Tab activeTab = tabLayout.newTab().setText("Active "+ ac);
-        TabLayout.Tab completedTab = tabLayout.newTab().setText("Completed "+co);
-        TabLayout.Tab canceledTab = tabLayout.newTab().setText("Canceled "+ ca);
+        TabLayout.Tab activeTab = tabLayout.newTab().setText("Active " + ac);
+        TabLayout.Tab completedTab = tabLayout.newTab().setText("Completed " + co);
+        TabLayout.Tab canceledTab = tabLayout.newTab().setText("Canceled " + ca);
 
         tabLayout.addTab(activeTab);
         tabLayout.addTab(completedTab);
         tabLayout.addTab(canceledTab);
 
-//        viewModel.getActiveCount().observe(this, newCount -> {
-//            activeTab.setText("Active (" + newCount + ")");
-//        });
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -118,15 +92,15 @@ public class MainActivity extends AppCompatActivity {
                 switch (position) {
                     case 0:
                         showNotification("Active tab selected");
-                        recyclerViewItem("Active");
+                        filterList("Active");
                         break;
                     case 1:
                         showNotification("Completed tab selected");
-                        recyclerViewItem("Completed");
+                        filterList("Completed");
                         break;
                     case 2:
                         showNotification("Canceled tab selected");
-                        recyclerViewItem("Canceled");
+                        filterList("Canceled");
                         break;
                 }
             }
@@ -141,26 +115,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void showNotification(String message) {
-        // Hiển thị thông báo ở đây, ví dụ: Toast hoặc AlertDialog
-        // Ví dụ Toast:
-        Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
-    }
-//    private void setupSearchView() {
-//        searchView = findViewById(R.id.searchView);
-//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String newText) {
-//                ((ItemAdaptor) adapter).getFilter().filter(newText);
-//                return true;
-//            }
-//        });
-//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -171,16 +125,19 @@ public class MainActivity extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                // Handle search submit here
                 return true;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                // Handle text change here
+                itemAdaptor.getFilter().filter(newText);
                 return true;
             }
         });
         return true;
+    }
+
+    private void showNotification(String message) {
+        Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
     }
 }

@@ -53,6 +53,9 @@
         <activity
             android:name=".Presentation.PhucHoi.Activity.ChiTietSanPhamActivity"
             android:exported="true" />
+        <activity
+            android:name=".Presentation.GH.FragmentTab"
+            android:exported="true" />
 
 
         <activity

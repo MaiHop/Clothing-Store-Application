@@ -23,7 +23,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.Model.DonHang;
 import com.example.myapplication.R;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,7 +65,7 @@ public class ItemAdaptor extends RecyclerView.Adapter<ItemAdaptor.Viewholder> {
         holder.btnTOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, OrderDetailsActivity.class);
+                Intent intent = new Intent(context, FragmentTab.class);
                 intent.putExtra("DONHANG", donHang);
                 context.startActivity(intent);
             }

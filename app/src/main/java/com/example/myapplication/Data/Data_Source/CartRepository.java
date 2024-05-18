@@ -94,10 +94,10 @@ public class CartRepository {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        dh2.setDiachi(listdc.get(1));
-        dh2.setVanchuyen(listvc.get(1));
-        dh2.setThanhToan(listtt.get(1));
-        dh2.setKhuyenmai(listkm.get(1));
+        dh2.setDiachi(listdc.get(0));
+        dh2.setVanchuyen(listvc.get(0));
+        dh2.setThanhToan(listtt.get(0));
+        dh2.setKhuyenmai(listkm.get(0));
         dh2.setListDonHangChiTiet(listdhct);
         dh2.setPhiGiaoHang(200);
         dh2.setThue(0.1);

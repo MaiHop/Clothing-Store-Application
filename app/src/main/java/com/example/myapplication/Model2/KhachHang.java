@@ -6,7 +6,9 @@ import java.util.List;
 public class KhachHang implements Serializable {
 
     private Integer idKhachHang;
-    private String uID;
+
+
+    private String uid;
     private String imageUrl;
 
     private String ten;
@@ -29,12 +31,13 @@ public class KhachHang implements Serializable {
     public KhachHang() {
     }
 
-    public String getuID() {
-        return uID;
+
+    public String getUid() {
+        return uid;
     }
 
-    public void setuID(String uID) {
-        this.uID = uID;
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public Integer getIdKhachHang() {

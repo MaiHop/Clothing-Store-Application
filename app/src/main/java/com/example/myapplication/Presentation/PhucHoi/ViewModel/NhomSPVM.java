@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 
-import com.example.myapplication.Model.NhomSP;
+import com.example.myapplication.Model2.NhomSP;
 import com.example.myapplication.Data.Data_Source.CartRepository;
 import com.example.myapplication.Repository.DanhMucRepository;
 import com.example.myapplication.Repository.GioHangRepository;

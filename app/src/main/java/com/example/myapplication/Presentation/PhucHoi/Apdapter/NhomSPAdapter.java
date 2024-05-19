@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Model.NhomSP;
+import com.example.myapplication.Model2.NhomSP;
 
 import com.example.myapplication.Presentation.PhucHoi.Activity.DanhMucActivity;
 import com.example.myapplication.Presentation.PhucHoi.ViewHolder.NhomSPVH;
@@ -62,7 +62,7 @@ public class NhomSPAdapter extends RecyclerView.Adapter<NhomSPVH>{
             public void onClick(View v) {
                 // Chuyển sang DanhMucActivity và truyền thông tin nhóm sản phẩm
                 Intent intent = new Intent(context, DanhMucActivity.class);
-                intent.putExtra("nhomSPId", nhomSP.getId());
+                intent.putExtra("nhomSPId", nhomSP.getIdNhomSP());
                 context.startActivity(intent);
             }
         });

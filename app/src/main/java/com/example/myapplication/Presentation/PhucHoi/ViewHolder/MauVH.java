@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.example.myapplication.Model.Mau;
+import com.example.myapplication.Model2.Mau;
 import com.example.myapplication.R;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.squareup.picasso.Picasso;
@@ -26,7 +26,7 @@ public class MauVH extends RecyclerView.ViewHolder{
 
 
     public void updateUI(Mau mau){
-        Picasso.get().load(mau.getImgUrl()).into(iv_color);
+        Picasso.get().load(mau.getImageUrl()).into(iv_color);
         tv_color_name_cart.setText(mau.getTen()); // Hiển thị tên màu trong TextView tv_color_name_cart
 
     }

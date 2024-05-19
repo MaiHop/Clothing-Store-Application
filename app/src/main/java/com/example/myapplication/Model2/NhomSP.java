@@ -10,6 +10,38 @@ public class NhomSP implements Serializable {
     private String ten;
 
 
+    public Integer getIdNhomSP() {
+        return idNhomSP;
+    }
+
+    public void setIdNhomSP(Integer idNhomSP) {
+        this.idNhomSP = idNhomSP;
+    }
+
+    public String getTen() {
+        return ten;
+    }
+
+    public void setTen(String ten) {
+        this.ten = ten;
+    }
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
+
+    public List<LoaiSP> getListLoaiSP() {
+        return listLoaiSP;
+    }
+
+    public void setListLoaiSP(List<LoaiSP> listLoaiSP) {
+        this.listLoaiSP = listLoaiSP;
+    }
+
     private String imageURL;
 
 

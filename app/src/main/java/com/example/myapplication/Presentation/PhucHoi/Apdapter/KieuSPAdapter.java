@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Model.KieuSP;
+import com.example.myapplication.Model2.KieuSP;
 import com.example.myapplication.Presentation.PhucHoi.ViewHolder.KieuSPVH;
 import com.example.myapplication.R;
 
@@ -49,7 +49,7 @@ public class KieuSPAdapter extends RecyclerView.Adapter<KieuSPVH> {
                 notifyItemChanged(selectedPosition);
 
                 if (listener != null) {
-                    listener.onItemClick(kieuSP.getId());
+                    listener.onItemClick(String.valueOf(kieuSP.getIdKieuSP()));
                 }
             }
         });

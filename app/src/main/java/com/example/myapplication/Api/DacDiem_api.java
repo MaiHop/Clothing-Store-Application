@@ -1,7 +1,6 @@
 package com.example.myapplication.Api;
 
-import com.example.myapplication.Model.DacDiem;
-import com.example.myapplication.Model.DacDiem;
+import com.example.myapplication.Model2.DacDiem;
 
 import java.util.List;
 

@@ -1,7 +1,6 @@
 package com.example.myapplication.Api;
 
-import com.example.myapplication.Model.DanhGia;
-import com.example.myapplication.Model.DanhGia;
+import com.example.myapplication.Model2.DanhGia;
 
 import java.util.List;
 

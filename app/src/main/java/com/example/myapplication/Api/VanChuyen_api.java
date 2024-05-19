@@ -1,7 +1,6 @@
 package com.example.myapplication.Api;
 
-import com.example.myapplication.Model.VanChuyen;
-import com.example.myapplication.Model.VanChuyen;
+import com.example.myapplication.Model2.VanChuyen;
 
 import java.util.List;
 

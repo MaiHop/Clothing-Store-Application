@@ -1,7 +1,6 @@
 package com.example.myapplication.Api;
 
-import com.example.myapplication.Model.SanPham;
-import com.example.myapplication.Model.SanPham;
+import com.example.myapplication.Model2.SanPham;
 
 import java.util.List;
 

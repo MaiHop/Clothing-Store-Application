@@ -1,7 +1,6 @@
 package com.example.myapplication.Api;
 
-import com.example.myapplication.Model.DiaChi;
-import com.example.myapplication.Model.DiaChi;
+import com.example.myapplication.Model2.DiaChi;
 
 import java.util.List;
 

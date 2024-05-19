@@ -1,7 +1,6 @@
 package com.example.myapplication.Api;
 
-import com.example.myapplication.Model.KichThuoc;
-import com.example.myapplication.Model.KichThuoc;
+import com.example.myapplication.Model2.KichThuoc;
 
 import java.util.List;
 

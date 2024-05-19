@@ -23,6 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.Model.DonHang;
 import com.example.myapplication.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +54,7 @@ public class ItemAdaptor extends RecyclerView.Adapter<ItemAdaptor.Viewholder> im
         holder.priceText.setText("$" + donHang.getListDonHangChiTiet().get(0).getSanPham().getGiaban());
         holder.dateText.setText(new SimpleDateFormat("dd/MM/yyyy").format(donHang.getNgayThanhToan()));
 
-//        Picasso.get().load(donHang.getListDonHangChiTiet().get(0).getSanPham().getImageUrl()).into(holder.pic);
+        Picasso.get().load(donHang.getListDonHangChiTiet().get(0).getSanPham().getImageUrl()).into(holder.pic);
 
         holder.menuButton.setOnClickListener(v -> showPopupMenu(v, holder.getAdapterPosition()));
         holder.orderButton.setOnClickListener(v -> {

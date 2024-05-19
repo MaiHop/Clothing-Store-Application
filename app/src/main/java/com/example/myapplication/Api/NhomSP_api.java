@@ -1,7 +1,6 @@
 package com.example.myapplication.Api;
 
-import com.example.myapplication.Model.NhomSP;
-import com.example.myapplication.Model.NhomSP;
+import com.example.myapplication.Model2.NhomSP;
 
 import java.util.List;
 

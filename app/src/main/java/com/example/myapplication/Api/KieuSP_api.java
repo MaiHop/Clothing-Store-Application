@@ -1,7 +1,6 @@
 package com.example.myapplication.Api;
 
-import com.example.myapplication.Model.KieuSP;
-import com.example.myapplication.Model.KieuSP;
+import com.example.myapplication.Model2.KieuSP;
 
 import java.util.List;
 

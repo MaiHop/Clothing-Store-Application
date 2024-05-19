@@ -1,7 +1,6 @@
 package com.example.myapplication.Api;
 
-import com.example.myapplication.Model.KhuyenMai;
-import com.example.myapplication.Model.KhuyenMai;
+import com.example.myapplication.Model2.KhuyenMai;
 
 import java.util.List;
 

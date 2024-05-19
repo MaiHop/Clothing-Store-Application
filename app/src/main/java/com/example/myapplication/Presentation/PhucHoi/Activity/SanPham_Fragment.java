@@ -14,8 +14,8 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Model2.NhomSP;
-import com.example.myapplication.Model2.SanPham;
+import com.example.myapplication.Model.NhomSP;
+import com.example.myapplication.Model.SanPham;
 import com.example.myapplication.Presentation.PhucHoi.Apdapter.NhomSPAdapter;
 import com.example.myapplication.Presentation.PhucHoi.Apdapter.SanPhamAdapter;
 import com.example.myapplication.Presentation.PhucHoi.ViewModel.NhomSPVM;
@@ -36,7 +36,7 @@ public class SanPham_Fragment extends Fragment {
     private SanPhamVM sanPhamViewModel;
     private NhomSPVM nhomSPViewModel;
     private SanPhamNewVM sanPhamNewViewModel;
-//    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    //    FirebaseFirestore db = FirebaseFirestore.getInstance();
 //
 //    // Lấy ID của người dùng đang đăng nhập
 //    String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();

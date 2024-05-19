@@ -85,11 +85,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Model2.DacDiem;
-import com.example.myapplication.Model2.Kho;
-import com.example.myapplication.Model2.KichThuoc;
-import com.example.myapplication.Model2.Mau;
-import com.example.myapplication.Model2.SanPham;
+import com.example.myapplication.Model.KichThuoc;
+import com.example.myapplication.Model.Mau;
+import com.example.myapplication.Model.SanPham;
 import com.example.myapplication.Presentation.PhucHoi.Apdapter.ColorAdapterPH;
 import com.example.myapplication.Presentation.PhucHoi.Apdapter.SizeAdapterPH;
 
@@ -138,25 +136,15 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
 
         // Hiển thị thông tin sản phẩm lên các TextView và ImageView
         if (product != null) {
-            Picasso.get().load(product.getListKho().get(0).getImageURL()).into(imageViewProduct);
+            Picasso.get().load(product.getImageUrl()).into(imageViewProduct);
             textViewProductName.setText(product.getTenSanPham());
             textViewProductDescription.setText(product.getThongTin());
-            textViewProductPrice.setText(String.format("$%.2f", product.getListKho().get(0).getGiaBan()));
+            textViewProductPrice.setText(String.format("$%.2f", product.getGiaban()));
 
             // Khởi tạo và đặt adapter cho RecyclerView của kích thước
             // Tạo danh sách kích thước và thêm đối tượng vào danh sách
-//            List<KichThuoc> danhSachKichThuoc = new ArrayList<>();
-//            danhSachKichThuoc.add(product.getListKho().get(0).getListDacDiem().get(0).getKichThuoc());
             List<KichThuoc> danhSachKichThuoc = new ArrayList<>();
-
-// Lặp qua từng đối tượng Kho trong danh sách
-            for (Kho kho : product.getListKho()) {
-                // Lặp qua từng đối tượng DacDiem trong danh sách đặc điểm của Kho
-                for (DacDiem dacDiem : kho.getListDacDiem()) {
-                    // Thêm kích thước vào danh sách kích thước
-                    danhSachKichThuoc.add(dacDiem.getKichThuoc());
-                }
-            }
+            danhSachKichThuoc.add(product.getKichThuoc());
 
             // Khởi tạo adapter cho RecyclerView của kích thước
             kichThuocAdapter = new SizeAdapterPH(danhSachKichThuoc,getLayoutInflater());
@@ -165,9 +153,7 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
 
             // Khởi tạo và đặt adapter cho RecyclerView của màu sắc
             List<Mau> danhSachMauSac = new ArrayList<>();
-            for (Kho kho : product.getListKho()) {
-                danhSachMauSac.add(kho.getMau());
-            }
+            danhSachMauSac.add(product.getMau());
             mauAdapter = new ColorAdapterPH(danhSachMauSac,this,getLayoutInflater());
             recyclerViewMauSac.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
             recyclerViewMauSac.setAdapter(mauAdapter);

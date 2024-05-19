@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 
-import com.example.myapplication.Model2.SanPham;
+import com.example.myapplication.Model.SanPham;
 import com.example.myapplication.Data.Data_Source.CartRepository;
 
 import java.util.ArrayList;

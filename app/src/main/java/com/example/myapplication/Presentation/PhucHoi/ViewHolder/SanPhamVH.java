@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.example.myapplication.Model2.SanPham;
+import com.example.myapplication.Model.SanPham;
 import com.example.myapplication.R;
 import com.squareup.picasso.Picasso;
 public class SanPhamVH extends  RecyclerView.ViewHolder {
@@ -24,16 +24,10 @@ public class SanPhamVH extends  RecyclerView.ViewHolder {
         cb_wishlist = itemView.findViewById(R.id.cb_wishlist);
     }
     public void bind(SanPham product) {
-        if (product.getListKho() != null && !product.getListKho().isEmpty()) {
-            Double giaBan = product.getListKho().get(0).getGiaBan();
-            String formattedPrice = String.format("$%.2f", giaBan);
-            GiaSP.setText(formattedPrice);
-        }
+        TenSP.setText(product.getTenSanPham());
+        String formattedPrice = String.format("$%.2f", product.getGiaban());
+        GiaSP.setText(formattedPrice);
         // Load image using a library like Picasso or Glide
-//        Picasso.get().load(product.getImageUrl()).into(HinhSP);
-        String imageUrl = product.getListKho().get(0).getImageURL();
-
-        // Load image using a library like Picasso or Glide
-        Picasso.get().load(imageUrl).into(HinhSP);
+        Picasso.get().load(product.getImageUrl()).into(HinhSP);
     }
 }

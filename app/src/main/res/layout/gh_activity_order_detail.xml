@@ -16,44 +16,44 @@
         tools:context=".Presentation.Cart.Activity.ThanhToanActivity">
 
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_checkout_cart"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#00FFFFFF"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme">
-            <ImageView
-                android:id="@+id/ODback"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/back"/>
-            <TextView
-                android:id="@+id/toolbar_checkout_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="Order Detail"
-                android:textStyle="bold"
-                android:textColor="@android:color/black"
-                android:textSize="20sp" />
-        </androidx.appcompat.widget.Toolbar>
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+<!--        <androidx.appcompat.widget.Toolbar-->
+<!--            android:id="@+id/toolbar_checkout_cart"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="#00FFFFFF"-->
+<!--            android:minHeight="?attr/actionBarSize"-->
+<!--            android:theme="?attr/actionBarTheme">-->
+<!--            <ImageView-->
+<!--                android:id="@+id/ODback"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:src="@drawable/back"/>-->
+<!--            <TextView-->
+<!--                android:id="@+id/toolbar_checkout_title"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:gravity="center"-->
+<!--                android:text="Order Detail"-->
+<!--                android:textStyle="bold"-->
+<!--                android:textColor="@android:color/black"-->
+<!--                android:textSize="20sp" />-->
+<!--        </androidx.appcompat.widget.Toolbar>-->
+<!--        <com.google.android.material.tabs.TabLayout-->
+<!--            android:id="@+id/od_tabLayout"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent">-->
 
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Order Details" />
+<!--            <com.google.android.material.tabs.TabItem-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Order Details" />-->
 
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Track Order" />
-        </com.google.android.material.tabs.TabLayout>
+<!--            <com.google.android.material.tabs.TabItem-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Track Order" />-->
+<!--        </com.google.android.material.tabs.TabLayout>-->
 
         <LinearLayout
             android:id="@+id/linearLayout2"

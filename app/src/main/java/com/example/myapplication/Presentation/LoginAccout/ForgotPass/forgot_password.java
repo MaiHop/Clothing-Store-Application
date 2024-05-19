@@ -1,12 +1,16 @@
 package com.example.myapplication.Presentation.LoginAccout.ForgotPass;
 
+import static android.content.ContentValues.TAG;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -19,6 +23,11 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class forgot_password extends AppCompatActivity {
     TextInputEditText txtip_email_forgot;
@@ -26,6 +35,7 @@ public class forgot_password extends AppCompatActivity {
     Button btn_sendcode;
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
     String Email;
+    TextView tv_error;
     Load_Dialog loadDialog = new Load_Dialog(forgot_password.this);
 
     @Override
@@ -41,6 +51,7 @@ public class forgot_password extends AppCompatActivity {
         txtip_email_forgot = findViewById(R.id.txtip_email_forgot);
         pack_forgot = findViewById(R.id.pack_forgot);
         btn_sendcode = findViewById(R.id.btn_sendOTP);
+        tv_error = findViewById(R.id.tv_error);
     }
     private boolean isValidEmail(String email) {
         String emailPattern = "[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\\.+[a-z]+";
@@ -60,13 +71,32 @@ public class forgot_password extends AppCompatActivity {
                 Email = txtip_email_forgot.getText().toString().trim();
                 if (!TextUtils.isEmpty(Email)){
                     if(isValidEmail(Email)){
-                        ResetPassWord();
+                        DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("KhachHang");
+                        usersRef.orderByChild("email").equalTo(Email).addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                if (dataSnapshot.exists()) {
+                                    ResetPassWord();
+                                } else {
+                                    tv_error.setText("Email này chưa được đăng ký !!!");
+                                    tv_error.setVisibility(View.VISIBLE);
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+                                // Xử lý lỗi nếu có
+                                Log.e(TAG, "Lỗi khi kiểm tra email: " + databaseError.getMessage());
+                            }
+                        });
                     }
                     else {
-                        txtip_email_forgot.setError("Email sai định dạng !!!");
+                        tv_error.setText("Email sai định dạng !!!");
+                        tv_error.setVisibility(View.VISIBLE);
                     }
                 }else {
-                    txtip_email_forgot.setError("Mời bạn điền Email để bắt đầu đặt lại Password");
+                    tv_error.setText("Mời bạn điền Email để bắt đầu đặt lại Password");
+                    tv_error.setVisibility(View.VISIBLE);
                 }
             }
         });

@@ -31,7 +31,7 @@ public class NhomSPAdapter extends RecyclerView.Adapter<NhomSPVH>{
     @NonNull
     @Override
     public NhomSPVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.hoi_item_boloc, parent, false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.hoi_item_danhmuc, parent, false);
         return new NhomSPVH(itemView);
     }
 
@@ -57,7 +57,7 @@ public class NhomSPAdapter extends RecyclerView.Adapter<NhomSPVH>{
         holder.bind(nhomSP);
 
         // Đặt onClickListener cho tenBoloc thay vì itemView
-        holder.tenBoloc.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Chuyển sang DanhMucActivity và truyền thông tin nhóm sản phẩm

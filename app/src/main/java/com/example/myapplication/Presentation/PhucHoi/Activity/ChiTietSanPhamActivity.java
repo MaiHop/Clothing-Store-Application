@@ -147,14 +147,14 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
             danhSachKichThuoc.add(product.getKichThuoc());
 
             // Khởi tạo adapter cho RecyclerView của kích thước
-            kichThuocAdapter = new SizeAdapterPH(danhSachKichThuoc, this);
+            kichThuocAdapter = new SizeAdapterPH(danhSachKichThuoc,getLayoutInflater());
             recyclerViewKichThuoc.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
             recyclerViewKichThuoc.setAdapter(kichThuocAdapter);
 
             // Khởi tạo và đặt adapter cho RecyclerView của màu sắc
             List<Mau> danhSachMauSac = new ArrayList<>();
             danhSachMauSac.add(product.getMau());
-            mauAdapter = new ColorAdapterPH(danhSachMauSac,this);
+            mauAdapter = new ColorAdapterPH(danhSachMauSac,this,getLayoutInflater());
             recyclerViewMauSac.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
             recyclerViewMauSac.setAdapter(mauAdapter);
         }

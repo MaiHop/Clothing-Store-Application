@@ -22,6 +22,7 @@ import com.example.myapplication.Presentation.LoginAccout.Load_Dialog;
 import com.example.myapplication.Presentation.LoginAccout.OTP.SP_OTP;
 import com.example.myapplication.Presentation.LoginAccout.SignIn.sign_in;
 import com.example.myapplication.R;
+import com.example.myapplication.SharedPreferences.DataLocalManager;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -37,6 +38,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 
@@ -104,90 +106,7 @@ public class sign_up extends AppCompatActivity {
         btn_SignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = txtip_email.getText().toString();
-                String password = txtip_password.getText().toString();
-                if (email.equals("") || password.equals("")){
-                    tv_error.setText("Không được để trống email hoặc password");
-                    tv_error.setVisibility(View.VISIBLE);
-                    return;
-                }
-                if (password.length()<6){
-                    tv_error.setText("Password không được dưới 6 ký tự");
-                    tv_error.setVisibility(View.VISIBLE);
-                    return;
-                }
-                mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if (task.isSuccessful()){
-                                        // Đợi 2 giây trước khi ẩn Dialog
-                                        loadDialog.startLoadingDialog();
-                                        new Handler().postDelayed(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                loadDialog.dismissDialog();
-
-                                                // Thiết lập thông tin người dùng
-                                                String profileURL = "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/android-studio-icon.png";
-                                                String username = user.getEmail();
-                                                UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                                                        .setPhotoUri(Uri.parse(profileURL))
-                                                        .setDisplayName(username)
-                                                        .build();
-
-                                                // Cập nhật profile của người dùng
-                                                user.updateProfile(profileUpdates).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                    @Override
-                                                    public void onComplete(@NonNull Task<Void> task) {
-                                                        if (task.isSuccessful()) {
-                                                            // Tạo dữ liệu người dùng trên Firebase Realtime Database
-                                                            KhachHang khachHang = new KhachHang();
-                                                            khachHang.setIdKhachHang(user.getUid());
-                                                            khachHang.setEmail(user.getEmail());
-                                                            khachHang.setTen(user.getDisplayName());
-                                                            khachHang.setImageUrl(user.getPhotoUrl().toString());
-                                                            khachHang.setGioiTinh(0);
-                                                            database.collection("KhachHang").document(khachHang.getIdKhachHang())
-                                                                    .set(khachHang)
-                                                                    .addOnSuccessListener(aVoid -> {
-                                                                        Intent intent = new Intent(sign_up.this,SP_OTP);
-                                                                        intent.putExtra("confirm_code", "sign_up");
-                                                                        intent.putExtra("Email", email);
-                                                                        intent.putExtra("Password", password);
-                                                                        Toast.makeText(sign_up.this,"Mời bạn xác thực bên email của bạn",Toast.LENGTH_SHORT).show();
-                                                                        startActivity(intent);
-                                                                    })
-                                                                    .addOnFailureListener(e -> {
-                                                                        Log.e("Firebase", "Failed to write user to database", e);
-                                                                    });
-                                                        } else {
-                                                            // Đã xảy ra lỗi khi cập nhật profile
-                                                            Toast.makeText(sign_up.this, "Failed to update user profile", Toast.LENGTH_SHORT).show();
-                                                        }
-                                                    }
-                                                });
-                                            }
-                                        }, 7000);
-                                    } else {
-                                        // Lỗi khi gửi email xác nhận
-                                        tv_error.setText("Hệ thống đang lỗi không thể gửi link xác nhận cho bạn.");
-                                        tv_error.setVisibility(View.VISIBLE);
-                                    }
-                                }
-                            });
-                        }
-                        else {
-                            // Đã xảy ra lỗi khi tạo tài khoản
-                            tv_error.setText("Email này đã tồn tại hoặc có lỗi xảy ra khi tạo tài khoản");
-                            tv_error.setVisibility(View.VISIBLE);
-                        }
-                    }
-                });
+                SignUP();
             }
         });
         btn_signIn_GG.setOnClickListener(new View.OnClickListener() {
@@ -195,6 +114,112 @@ public class sign_up extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = mGoogleSignInClinet.getSignInIntent();
                 startActivityForResult(intent,RC_SignIn);
+            }
+        });
+    }
+    private void SignUP(){
+        String email = txtip_email.getText().toString();
+        String password = txtip_password.getText().toString();
+        if (email.equals("") || password.equals("")){
+            tv_error.setText("Không được để trống email hoặc password");
+            tv_error.setVisibility(View.VISIBLE);
+            return;
+        }
+        if (password.length()<6){
+            tv_error.setText("Password không được dưới 6 ký tự");
+            tv_error.setVisibility(View.VISIBLE);
+            return;
+        }
+        mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    FirebaseUser user = mAuth.getCurrentUser();
+                    user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()){
+                                // Đợi 2 giây trước khi ẩn Dialog
+                                loadDialog.startLoadingDialog();
+                                new Handler().postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        loadDialog.dismissDialog();
+
+                                        // Thiết lập thông tin người dùng
+                                        String profileURL = "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/android-studio-icon.png";
+                                        String username = user.getEmail();
+                                        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                                .setPhotoUri(Uri.parse(profileURL))
+                                                .setDisplayName(username)
+                                                .build();
+
+                                        // Cập nhật profile của người dùng
+                                        user.updateProfile(profileUpdates).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if (task.isSuccessful()) {
+                                                    // Tạo dữ liệu người dùng trên Firebase Realtime Database
+                                                    KhachHang khachHang = new KhachHang();
+                                                    khachHang.setIdKhachHang(user.getUid());
+                                                    khachHang.setEmail(user.getEmail());
+                                                    khachHang.setTen(user.getDisplayName());
+                                                    khachHang.setImageUrl(user.getPhotoUrl().toString());
+                                                    khachHang.setGioiTinh(0);
+                                                    DocumentReference docRef = database.collection("KhachHang").document(khachHang.getIdKhachHang());
+                                                    docRef.get().addOnSuccessListener(documentSnapshot -> {
+                                                                if (documentSnapshot.exists()) {
+
+                                                                    KhachHang khachHangsave = documentSnapshot.toObject(KhachHang.class);
+
+                                                                    // Lưu thông tin vào SharedPreferences
+                                                                    DataLocalManager.setUser(khachHangsave);
+
+                                                                    Intent intent = new Intent(sign_up.this,SP_OTP);
+                                                                    intent.putExtra("confirm_code", "sign_up");
+                                                                    intent.putExtra("Email", email);
+                                                                    intent.putExtra("Password", password);
+                                                                    Toast.makeText(sign_up.this,"Mời bạn xác thực bên email của bạn",Toast.LENGTH_SHORT).show();
+                                                                    startActivity(intent);
+                                                                }
+                                                            })
+                                                            .addOnFailureListener(e -> {
+                                                                Log.e("Firebase", "Failed to write user to database", e);
+                                                            });
+//                                                            database.collection("KhachHang").document(khachHang.getIdKhachHang())
+//                                                                    .set(khachHang)
+//                                                                    .addOnSuccessListener(aVoid -> {
+//                                                                        Intent intent = new Intent(sign_up.this,SP_OTP);
+//                                                                        intent.putExtra("confirm_code", "sign_up");
+//                                                                        intent.putExtra("Email", email);
+//                                                                        intent.putExtra("Password", password);
+//                                                                        Toast.makeText(sign_up.this,"Mời bạn xác thực bên email của bạn",Toast.LENGTH_SHORT).show();
+//                                                                        startActivity(intent);
+//                                                                    })
+//                                                                    .addOnFailureListener(e -> {
+//                                                                        Log.e("Firebase", "Failed to write user to database", e);
+//                                                                    });
+                                                } else {
+                                                    // Đã xảy ra lỗi khi cập nhật profile
+                                                    Toast.makeText(sign_up.this, "Failed to update user profile", Toast.LENGTH_SHORT).show();
+                                                }
+                                            }
+                                        });
+                                    }
+                                }, 7000);
+                            } else {
+                                // Lỗi khi gửi email xác nhận
+                                tv_error.setText("Hệ thống đang lỗi không thể gửi link xác nhận cho bạn.");
+                                tv_error.setVisibility(View.VISIBLE);
+                            }
+                        }
+                    });
+                }
+                else {
+                    // Đã xảy ra lỗi khi tạo tài khoản
+                    tv_error.setText("Email này đã tồn tại hoặc có lỗi xảy ra khi tạo tài khoản");
+                    tv_error.setVisibility(View.VISIBLE);
+                }
             }
         });
     }
@@ -224,11 +249,19 @@ public class sign_up extends AppCompatActivity {
                                             khachHang.setTen(user.getDisplayName());
                                             khachHang.setImageUrl(user.getPhotoUrl().toString());
                                             khachHang.setGioiTinh(0);
-                                            database.collection("KhachHang").document(khachHang.getIdKhachHang())
-                                                    .set(khachHang)
-                                                    .addOnSuccessListener(aVoid -> {
-                                                        Intent intent = new Intent(sign_up.this, Home.class);
-                                                        startActivity(intent);
+                                            DocumentReference docRef = database.collection("KhachHang").document(khachHang.getIdKhachHang());
+                                            docRef.get().addOnSuccessListener(documentSnapshot -> {
+                                                        if (documentSnapshot.exists()) {
+
+                                                            KhachHang khachHangsave = documentSnapshot.toObject(KhachHang.class);
+
+                                                            // Lưu thông tin vào SharedPreferences
+                                                            DataLocalManager.setUser(khachHangsave);
+
+                                                            Intent intent = new Intent(sign_up.this, Home.class);
+                                                            startActivity(intent);
+                                                            finish();
+                                                        }
                                                     })
                                                     .addOnFailureListener(e -> {
                                                         Log.e("Firebase", "Failed to write user to database", e);

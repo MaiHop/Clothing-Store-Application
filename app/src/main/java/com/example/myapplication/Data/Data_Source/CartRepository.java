@@ -1,8 +1,9 @@
 package com.example.myapplication.Data.Data_Source;
 
+import com.example.myapplication.Model.DiaChi;
 import com.example.myapplication.Model.DonHang;
 import com.example.myapplication.Model.DonHangChiTiet;
-import com.example.myapplication.Model.DiaChi;
+import com.example.myapplication.Model.DonHangQuaTrinh;
 import com.example.myapplication.Model.KhachHang;
 import com.example.myapplication.Model.KhuyenMai;
 import com.example.myapplication.Model.KichThuoc;
@@ -18,6 +19,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class CartRepository {
     List<NhomSP> listNhomSP;
@@ -25,7 +27,6 @@ public class CartRepository {
     List<KieuSP> listKieuSP;
     List<KichThuoc> listsize;
     List<Mau> listcolor;
-
 
 
     public CartRepository() {
@@ -36,6 +37,7 @@ public class CartRepository {
         List<VanChuyen> listvc = getListDelivery();
         List<ThanhToan> listtt = getListMP();
         List<KhuyenMai> listkm = getListKhuyenMai();
+        List<DonHangQuaTrinh> listQT = getListDHQT();
         List<DonHangChiTiet> listdhct = getGioHang();
         List<DonHangChiTiet> list_ct1 = new ArrayList<>();
         List<DonHangChiTiet> list_ct2 = new ArrayList<>();
@@ -82,6 +84,7 @@ public class CartRepository {
         dh1.setListDonHangChiTiet(listdhct);
         dh1.setPhiGiaoHang(200);
         dh1.setThue(0.1);
+        dh1.setListdonhangqt(listQT);
 
         DonHang dh2 = new DonHang();
         dh2.setListDonHangChiTiet(list_ct2);
@@ -91,6 +94,14 @@ public class CartRepository {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+        dh2.setDiachi(listdc.get(0));
+        dh2.setVanchuyen(listvc.get(0));
+        dh2.setThanhToan(listtt.get(0));
+        dh2.setKhuyenmai(listkm.get(0));
+        dh2.setListDonHangChiTiet(listdhct);
+        dh2.setPhiGiaoHang(200);
+        dh2.setThue(0.1);
+        dh2.setListdonhangqt(listQT);
 
         DonHang dh3 = new DonHang();
         dh3.setListDonHangChiTiet(list_ct3);
@@ -105,6 +116,44 @@ public class CartRepository {
         list.add(dh2);
         list.add(dh3);
 
+        return list;
+    }
+
+    public List<DonHangQuaTrinh> getListDHQT(){
+        List<DonHangQuaTrinh> list = new ArrayList<>();
+        SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm a", Locale.getDefault());
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+
+        DonHangQuaTrinh qt1 = new DonHangQuaTrinh();
+        try {
+            qt1.setNgay(formatter.parse("20/03/2024"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        qt1.setMoTa("08:60 AM");
+        qt1.setTrangThai("Đang giao hàng");
+
+        DonHangQuaTrinh qt2 = new DonHangQuaTrinh();
+        try {
+            qt2.setNgay(formatter.parse("18/03/2024"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        qt2.setMoTa("11:20 AM");
+        qt2.setTrangThai("Đã thanh toán");
+
+        DonHangQuaTrinh qt3 = new DonHangQuaTrinh();
+        try {
+            qt3.setNgay(formatter.parse("17/03/2024"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        qt3.setMoTa("11:30 PM");
+        qt3.setTrangThai("Chưa thanh toán");
+
+        list.add(qt1);
+        list.add(qt2);
+        list.add(qt3);
         return list;
     }
     public List<KichThuoc> getListSize(){
@@ -202,11 +251,13 @@ public class CartRepository {
         NhomSP nhomSP = new NhomSP();
         nhomSP.setId("1");
         nhomSP.setTen("Nam");
+        nhomSP.setImageURL("https://image.uniqlo.com/UQ/ST3/vn/imagesgoods/471281/item/vngoods_09_471281.jpg?width=750");
         nhomSP.setListLoaiSP(this.getListLoaiSP());
 
         NhomSP nhomSP1 = new NhomSP();
         nhomSP1.setId("2");
         nhomSP1.setTen("Nữ");
+        nhomSP1.setImageURL("https://image.uniqlo.com/UQ/ST3/vn/imagesgoods/471281/item/vngoods_09_471281.jpg?width=750");
         nhomSP1.setListLoaiSP(this.getListLoaiSP());
 
 
@@ -585,5 +636,6 @@ public class CartRepository {
 
         return list;
      }
+
 
 }

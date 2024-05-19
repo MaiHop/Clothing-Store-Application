@@ -11,4 +11,16 @@
     <color name="xam">#888888</color>
     <color name="xam_x1">#EEEEEE</color>
     <color name="red">#FF0000</color>
+
+    <!-- hoi-->
+    <color name="selected_color">#6fc276</color>
+    <color name="default_color">#FFFFFF</color>
+    <!-- ColorPrimary: Màu chính của ứng dụng -->
+    <color name="colorPrimary">#3F51B5</color>
+
+    <!-- ColorPrimaryDark: Màu chính tối cho thanh trạng thái -->
+    <color name="colorPrimaryDark">#303F9F</color>
+
+    <!-- ColorAccent: Màu nổi bật, thường được sử dụng cho các yếu tố tương tác như button -->
+    <color name="colorAccent">#FF4081</color>
 </resources>

@@ -19,6 +19,8 @@ import com.example.myapplication.Presentation.ButtonNavigation.Home;
 import com.example.myapplication.Presentation.LoginAccout.ForgotPass.forgot_password;
 import com.example.myapplication.Presentation.LoginAccout.Load_Dialog;
 import com.example.myapplication.R;
+import com.example.myapplication.SharedPreferences.DataLocalManager;
+import com.example.myapplication.UI.MainActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -33,6 +35,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 
@@ -109,63 +112,7 @@ public class sign_in extends AppCompatActivity {
         btn_signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = txtip_email.getText().toString();
-                String password = txtip_password.getText().toString();
-                final Load_Dialog loadDialog = new Load_Dialog(sign_in.this);
-                if (email.equals("") || password.equals("")){
-                    tv_error.setText("Không được để trống email hoặc password");
-                    tv_error.setVisibility(View.VISIBLE);
-                    return;
-                }
-                if (password.length()<6){
-                    tv_error.setText("Password không được dưới 6 ký tự");
-                    tv_error.setVisibility(View.VISIBLE);
-                    return;
-                }
-                mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()){
-                            if(mAuth.getCurrentUser().isEmailVerified()){
-                                loadDialog.startLoadingDialog();
-                                Handler handler = new Handler();
-                                handler.postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        loadDialog.dismissDialog();
-                                        Intent intent = new Intent(sign_in.this, Home.class);
-                                        startActivity(intent);
-                                    }
-                                },1000);
-                            }
-                            else {
-                                loadDialog.startLoadingDialog();
-                                Handler handler = new Handler();
-                                handler.postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        loadDialog.dismissDialog();
-                                        tv_error.setText("Hãy xác nhận Email của bạn trước khi đăng nhập!");
-                                        tv_error.setVisibility(View.VISIBLE);
-                                    }
-                                },1000);
-                            }
-                        }
-                        else {
-                            loadDialog.startLoadingDialog();
-                            Handler handler = new Handler();
-                            handler.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    loadDialog.dismissDialog();
-                                    tv_error.setText("Email hoặc Password không đúng");
-                                    tv_error.setVisibility(View.VISIBLE);
-                                }
-                            },1000);
-
-                        }
-                    }
-                });
+                SignIn();
             }
         });
         btn_signIn_GG.setOnClickListener(new View.OnClickListener() {
@@ -177,6 +124,82 @@ public class sign_in extends AppCompatActivity {
         });
     }
 
+    private void SignIn(){
+        String email = txtip_email.getText().toString();
+        String password = txtip_password.getText().toString();
+        final Load_Dialog loadDialog = new Load_Dialog(sign_in.this);
+        if (email.equals("") || password.equals("")){
+            tv_error.setText("Không được để trống email hoặc password");
+            tv_error.setVisibility(View.VISIBLE);
+            return;
+        }
+        if (password.length()<6){
+            tv_error.setText("Password không được dưới 6 ký tự");
+            tv_error.setVisibility(View.VISIBLE);
+            return;
+        }
+        mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()){
+                    if(mAuth.getCurrentUser().isEmailVerified()){
+                        loadDialog.startLoadingDialog();
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                loadDialog.dismissDialog();
+//                                        Intent intent = new Intent(sign_in.this, Home.class);
+//                                        startActivity(intent);
+                                DocumentReference docRef = database.collection("KhachHang").document(mAuth.getCurrentUser().getUid());
+                                docRef.get().addOnSuccessListener(documentSnapshot -> {
+                                            if (documentSnapshot.exists()) {
+
+                                                KhachHang khachHangsave = documentSnapshot.toObject(KhachHang.class);
+
+                                                // Lưu thông tin vào SharedPreferences
+                                                DataLocalManager.setUser(khachHangsave);
+
+                                                Intent intent = new Intent(sign_in.this, Home.class);
+                                                startActivity(intent);
+                                                finish();
+                                            }
+                                        })
+                                        .addOnFailureListener(e -> {
+                                            Log.e("Firebase", "Failed to write user to database", e);
+                                        });
+                            }
+                        },1000);
+                    }
+                    else {
+                        loadDialog.startLoadingDialog();
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                loadDialog.dismissDialog();
+                                tv_error.setText("Hãy xác nhận Email của bạn trước khi đăng nhập!");
+                                tv_error.setVisibility(View.VISIBLE);
+                            }
+                        },1000);
+                    }
+                }
+                else {
+                    loadDialog.startLoadingDialog();
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            loadDialog.dismissDialog();
+                            tv_error.setText("Email hoặc Password không đúng");
+                            tv_error.setVisibility(View.VISIBLE);
+                        }
+                    },1000);
+
+                }
+            }
+        });
+    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -203,11 +226,18 @@ public class sign_in extends AppCompatActivity {
                                     khachHang.setTen(user.getDisplayName());
                                     khachHang.setImageUrl(user.getPhotoUrl().toString());
                                     khachHang.setGioiTinh(0);
-                                    database.collection("KhachHang").document(khachHang.getIdKhachHang())
-                                            .set(khachHang)
-                                            .addOnSuccessListener(aVoid -> {
-                                                Intent intent = new Intent(sign_in.this, Home.class);
-                                                startActivity(intent);
+                                    DocumentReference docRef = database.collection("KhachHang").document(khachHang.getIdKhachHang());
+                                    docRef.get().addOnSuccessListener(documentSnapshot -> {
+                                                if (documentSnapshot.exists()) {
+
+                                                    KhachHang khachHangsave = documentSnapshot.toObject(KhachHang.class);
+
+                                                    // Lưu thông tin vào SharedPreferences
+                                                    DataLocalManager.setUser(khachHangsave);
+
+                                                    Intent intent = new Intent(sign_in.this, Home.class);
+                                                    startActivity(intent);
+                                                }
                                             })
                                             .addOnFailureListener(e -> {
                                                 Log.e("Firebase", "Failed to write user to database", e);

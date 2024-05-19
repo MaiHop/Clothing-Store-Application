@@ -19,23 +19,23 @@ public class WishListRepository {
         this.wishListInterface = wishListInterface;
     }
 
-    public void readWishList(){
-        SanPham_api sanPham_api = ServiceBuilder.buildService(SanPham_api.class);
-        Call<List<SanPham>> request = sanPham_api.readallSanPham();
-        request.enqueue(new Callback<List<SanPham>>() {
-            @Override
-            public void onResponse(Call<List<SanPham>> call, Response<List<SanPham>> response) {
-                if (response.isSuccessful()){
-                    wishListInterface.getWishList(response.body());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<SanPham>> call, Throwable t) {
-
-            }
-        });
-    }
+//    public void readWishList(){
+//        SanPham_api sanPham_api = ServiceBuilder.buildService(SanPham_api.class);
+//        Call<List<SanPham>> request = sanPham_api.readallSanPham();
+//        request.enqueue(new Callback<List<SanPham>>() {
+//            @Override
+//            public void onResponse(Call<List<SanPham>> call, Response<List<SanPham>> response) {
+//                if (response.isSuccessful()){
+//                    wishListInterface.getWishList(response.body());
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<SanPham>> call, Throwable t) {
+//
+//            }
+//        });
+//    }
 
 
 

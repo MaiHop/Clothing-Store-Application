@@ -1,0 +1,42 @@
+<!-- item_layout.xml -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:paddingTop="8dp"
+    android:layout_marginLeft="0dp"
+    android:paddingBottom="8dp">
+
+    <LinearLayout
+        android:layout_width="120dp"
+        android:layout_height="70dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:background="@color/grey"
+        android:elevation="4dp"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:gravity="top|start"> <!-- Giữ vị trí cố định -->
+
+        <TextView
+            android:id="@+id/tenBoLoc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nam"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginEnd="8dp" />
+
+        <ImageView
+            android:id="@+id/imageBoloc"
+            android:layout_width="40dp"
+            android:layout_height="60dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/polo"
+
+            android:layout_marginLeft="15dp"/> <!-- Cố định vị trí của ImageView -->
+
+    </LinearLayout>
+
+</RelativeLayout>

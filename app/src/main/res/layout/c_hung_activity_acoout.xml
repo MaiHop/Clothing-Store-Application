@@ -38,7 +38,7 @@
                         android:layout_centerInParent="true"
                         android:text="Account"
                         android:textColor="@android:color/black"
-                        android:textSize="25sp"
+                        android:textSize="27sp"
                         android:textStyle="bold" />
 
                 </RelativeLayout>
@@ -71,7 +71,7 @@
                     <TextView
                         android:id="@+id/tv_nameAccount"
                         android:textStyle="bold"
-                        android:textSize="18dp"
+                        android:textSize="20dp"
                         android:layout_marginBottom="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -80,7 +80,7 @@
                         android:id="@+id/tv_mailAccount"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="15dp"
+                        android:textSize="18dp"
                         android:text="hung95391@gmail.com"/>
 
                 </LinearLayout>

@@ -11,12 +11,22 @@ public class DonHang implements Serializable {
     private VanChuyen vanchuyen= null;
     private ThanhToan thanhToan = null;
     private KhuyenMai khuyenmai= null;
+    private DonHangQuaTrinh donHangQuaTrinh =null;
     private int tongSoLuong;
     private double thanhTien =0, phiDichVu=0, phiGiaoHang=0, thue=0, tienKhuyenMai=0, tongTien=0;
     private List<DonHangChiTiet> listDonHangChiTiet = null;
     private List<KhuyenMai> listKhuyenMai = null;
     private Date ngayThanhToan;
     private List<DonHangQuaTrinh>  listdonhangqt = null;
+
+    public DonHangQuaTrinh getDonHangQuaTrinh() {
+        return donHangQuaTrinh;
+    }
+
+    public void setDonHangQuaTrinh(DonHangQuaTrinh donHangQuaTrinh) {
+        this.donHangQuaTrinh = donHangQuaTrinh;
+    }
+
     public DonHang() {
     }
 

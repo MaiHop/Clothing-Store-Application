@@ -9,32 +9,29 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.Model.KieuSP;
-
-import com.example.myapplication.Model.NhomSP;
 import com.example.myapplication.Presentation.PhucHoi.ViewHolder.KieuSPVH;
-import com.example.myapplication.Presentation.PhucHoi.ViewHolder.NhomSPVH;
 import com.example.myapplication.R;
 
 import java.util.List;
 
-public class KieuSPAdapter extends RecyclerView.Adapter<KieuSPVH>{
+public class KieuSPAdapter extends RecyclerView.Adapter<KieuSPVH> {
 
     private List<KieuSP> kieuSPList;
     private Context context;
-    private LayoutInflater minflater;
+    private LayoutInflater inflater;
     private OnItemClickListener listener;
+    private int selectedPosition = RecyclerView.NO_POSITION;
 
-    public KieuSPAdapter(List<KieuSP> kieuSPList, Context context, LayoutInflater minflater) {
+    public KieuSPAdapter(List<KieuSP> kieuSPList, Context context, LayoutInflater inflater) {
         this.kieuSPList = kieuSPList;
         this.context = context;
-        this.minflater = minflater;
-
+        this.inflater = inflater;
     }
 
     @NonNull
     @Override
     public KieuSPVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.hoi_item_kieusp, parent, false);
+        View itemView = inflater.inflate(R.layout.hoi_item_kieusp, parent, false);
         return new KieuSPVH(itemView);
     }
 
@@ -42,17 +39,45 @@ public class KieuSPAdapter extends RecyclerView.Adapter<KieuSPVH>{
     public void onBindViewHolder(@NonNull KieuSPVH holder, int position) {
         KieuSP kieuSP = kieuSPList.get(position);
         holder.bind(kieuSP);
-        holder.tenkieuSP.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setSelected(selectedPosition == position);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                notifyItemChanged(selectedPosition);
+                selectedPosition = holder.getAdapterPosition();
+                notifyItemChanged(selectedPosition);
+
                 if (listener != null) {
                     listener.onItemClick(kieuSP.getId());
                 }
             }
         });
-
-
     }
+
+    @Override
+    public int getItemCount() {
+        return kieuSPList.size();
+    }
+
+    public void setListNhomSP(List<KieuSP> listkieusp) {
+        this.kieuSPList = listkieusp;
+        notifyDataSetChanged();
+    }
+
+    public KieuSP getSelectedKieuSP() {
+        if (selectedPosition != RecyclerView.NO_POSITION) {
+            return kieuSPList.get(selectedPosition);
+        }
+        return null;
+    }
+
+    public void clearSelection() {
+        int previousSelectedPosition = selectedPosition;
+        selectedPosition = RecyclerView.NO_POSITION;
+        notifyItemChanged(previousSelectedPosition);
+    }
+
     public interface OnItemClickListener {
         void onItemClick(String kieuSPId);
     }
@@ -60,14 +85,4 @@ public class KieuSPAdapter extends RecyclerView.Adapter<KieuSPVH>{
     public void setOnItemClickListener(OnItemClickListener listener) {
         this.listener = listener;
     }
-
-    @Override
-    public int getItemCount() {
-        return kieuSPList.size();
-    }
-    public void setListNhomSP(List<KieuSP> listkieusp) {
-        this.kieuSPList = listkieusp;
-        notifyDataSetChanged(); // Thông báo cho RecyclerView biết là danh sách đã thay đổi
-    }
-
 }

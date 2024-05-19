@@ -39,7 +39,7 @@
                         android:layout_centerInParent="true"
                         android:text="Account"
                         android:textColor="@android:color/black"
-                        android:textSize="25sp"
+                        android:textSize="27sp"
                         android:textStyle="bold" />
 
                 </RelativeLayout>
@@ -71,7 +71,7 @@
                         android:layout_gravity="bottom|right"
                         android:layout_marginTop="20dp"
                         android:layout_width="40dp"
-                        android:layout_height="40dp" />
+                        android:layout_height="40dp"/>
                 </FrameLayout>
             </LinearLayout>
             <ScrollView

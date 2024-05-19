@@ -15,8 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
-import com.example.myapplication.Model.NhomSP;
-import com.example.myapplication.Model.SanPham;
+import com.example.myapplication.Model2.NhomSP;
+import com.example.myapplication.Model2.SanPham;
 import com.example.myapplication.Presentation.PhucHoi.Apdapter.NhomSPAdapter;
 import com.example.myapplication.Presentation.PhucHoi.Apdapter.SanPhamAdapter;
 

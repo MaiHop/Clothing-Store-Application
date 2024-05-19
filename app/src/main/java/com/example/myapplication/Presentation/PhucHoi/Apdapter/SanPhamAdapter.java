@@ -10,7 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Model.SanPham;
+import com.example.myapplication.Model2.SanPham;
 import com.example.myapplication.Presentation.PhucHoi.Activity.ChiTietSanPhamActivity;
 
 import com.example.myapplication.Presentation.PhucHoi.Activity.SanPhamActivity;

@@ -5,8 +5,8 @@ import com.example.myapplication.Api.KichThuoc_api;
 import com.example.myapplication.Api.SanPham_api;
 import com.example.myapplication.Api.ServiceBuilder;
 import com.example.myapplication.Model.DonHangChiTiet;
-import com.example.myapplication.Model.KichThuoc;
-import com.example.myapplication.Model.SanPham;
+import com.example.myapplication.Model2.KichThuoc;
+import com.example.myapplication.Model2.SanPham;
 
 import java.util.ArrayList;
 import java.util.List;

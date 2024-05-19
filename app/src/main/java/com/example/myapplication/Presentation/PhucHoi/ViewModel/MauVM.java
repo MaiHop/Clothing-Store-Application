@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 
-import com.example.myapplication.Model.Mau;
+import com.example.myapplication.Model2.Mau;
 import com.example.myapplication.Data.Data_Source.CartRepository;
 
 import java.util.List;

@@ -1,6 +1,7 @@
 package com.example.myapplication.Api;
 
 import com.example.myapplication.Model.NhomSP;
+import com.example.myapplication.Model.NhomSP;
 
 import java.util.List;
 
@@ -16,15 +17,15 @@ public interface NhomSP_api {
     Call<List<NhomSP>> readallNhomSP();
 
     @GET("NhomSP/get")
-    Call<NhomSP> getNhomSP(@Query("id") String id);
+    Call<NhomSP> getNhomSP(@Query("id") Integer id);
 
     @POST("NhomSP/create")
-    Call<NhomSP> createNhomSP(@Body NhomSP nhom);
+    Call<NhomSP> createNhomSP(@Body NhomSP t);
 
     @PUT("NhomSP/update")
-    Call<NhomSP> updateNhomSP(@Body NhomSP nhom);
+    Call<NhomSP> updateNhomSP(@Body NhomSP t);
 
     @PUT("NhomSP/delete")
-    Call<NhomSP> deleteNhomSP(@Query("id")String id);
+    Call<NhomSP> deleteNhomSP(@Body NhomSP t);
 
 }

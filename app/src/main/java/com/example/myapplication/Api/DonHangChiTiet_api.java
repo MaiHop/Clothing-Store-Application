@@ -1,6 +1,7 @@
 package com.example.myapplication.Api;
 
 import com.example.myapplication.Model.DonHangChiTiet;
+import com.example.myapplication.Model.DonHangChiTiet;
 
 import java.util.List;
 
@@ -16,15 +17,15 @@ public interface DonHangChiTiet_api {
     Call<List<DonHangChiTiet>> readallDonHangChiTiet();
 
     @GET("DonHangChiTiet/get")
-    Call<DonHangChiTiet> getDonHangChiTiet(@Query("id") String id);
+    Call<DonHangChiTiet> getDonHangChiTiet(@Query("id") Integer id);
 
     @POST("DonHangChiTiet/create")
-    Call<DonHangChiTiet> createDonHangChiTiet(@Body DonHangChiTiet donHangChiTiet);
+    Call<DonHangChiTiet> createDonHangChiTiet(@Body DonHangChiTiet t);
 
     @PUT("DonHangChiTiet/update")
-    Call<DonHangChiTiet> updateDonHangChiTiet(@Body DonHangChiTiet donHangChiTiet);
+    Call<DonHangChiTiet> updateDonHangChiTiet(@Body DonHangChiTiet t);
 
     @PUT("DonHangChiTiet/delete")
-    Call<DonHangChiTiet> deleteDonHangChiTiet(@Query("id")String id);
+    Call<DonHangChiTiet> deleteDonHangChiTiet(@Body DonHangChiTiet t);
 
 }

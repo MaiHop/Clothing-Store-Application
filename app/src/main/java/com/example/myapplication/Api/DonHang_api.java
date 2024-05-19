@@ -1,6 +1,7 @@
 package com.example.myapplication.Api;
 
 import com.example.myapplication.Model.DonHang;
+import com.example.myapplication.Model.DonHang;
 
 import java.util.List;
 
@@ -16,15 +17,15 @@ public interface DonHang_api {
     Call<List<DonHang>> readallDonHang();
 
     @GET("DonHang/get")
-    Call<DonHang> getDonHang(@Query("id") String id);
+    Call<DonHang> getDonHang(@Query("id") Integer id);
 
     @POST("DonHang/create")
-    Call<DonHang> createDonHang(@Body DonHang donhang);
+    Call<DonHang> createDonHang(@Body DonHang t);
 
     @PUT("DonHang/update")
-    Call<DonHang> updateDonHang(@Body DonHang donhang);
+    Call<DonHang> updateDonHang(@Body DonHang t);
 
     @PUT("DonHang/delete")
-    Call<DonHang> deleteDonHang(@Query("id")String id);
+    Call<DonHang> deleteDonHang(@Body DonHang t);
 
 }

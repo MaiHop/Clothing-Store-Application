@@ -1,7 +1,6 @@
 package com.example.myapplication.Presentation.Cart.Activity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -91,7 +90,7 @@ public class FirebaseActivity extends AppCompatActivity {
                     sp2.setNgayTao(list_sp.get(0).getNgayTao());
                     sp2.setListKho(list_k);
 
-                    db1.collection("SanPham_V2").add(sp2).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    db1.collection("SanPham").add(sp2).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                         @Override
                         public void onSuccess(DocumentReference documentReference) {
                             Toast.makeText(FirebaseActivity.this, "OK", Toast.LENGTH_SHORT).show();

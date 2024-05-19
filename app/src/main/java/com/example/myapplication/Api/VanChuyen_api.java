@@ -1,6 +1,7 @@
 package com.example.myapplication.Api;
 
 import com.example.myapplication.Model.VanChuyen;
+import com.example.myapplication.Model.VanChuyen;
 
 import java.util.List;
 
@@ -16,15 +17,15 @@ public interface VanChuyen_api {
     Call<List<VanChuyen>> readallVanChuyen();
 
     @GET("VanChuyen/get")
-    Call<VanChuyen> getVanChuyen(@Query("id") String id);
+    Call<VanChuyen> getVanChuyen(@Query("id") Integer id);
 
     @POST("VanChuyen/create")
-    Call<VanChuyen> createVanChuyen(@Body VanChuyen vanchuyen);
+    Call<VanChuyen> createVanChuyen(@Body VanChuyen t);
 
     @PUT("VanChuyen/update")
-    Call<VanChuyen> updateVanChuyen(@Body VanChuyen vanchuyen);
+    Call<VanChuyen> updateVanChuyen(@Body VanChuyen t);
 
     @PUT("VanChuyen/delete")
-    Call<VanChuyen> deleteVanChuyen(@Query("id")String id);
+    Call<VanChuyen> deleteVanChuyen(@Body VanChuyen t);
 
 }

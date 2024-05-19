@@ -1,6 +1,7 @@
 package com.example.myapplication.Api;
 
 import com.example.myapplication.Model.KieuSP;
+import com.example.myapplication.Model.KieuSP;
 
 import java.util.List;
 
@@ -16,15 +17,15 @@ public interface KieuSP_api {
     Call<List<KieuSP>> readallKieuSP();
 
     @GET("KieuSP/get")
-    Call<KieuSP> getKieuSP(@Query("id") String id);
+    Call<KieuSP> getKieuSP(@Query("id") Integer id);
 
     @POST("KieuSP/create")
-    Call<KieuSP> createKieuSP(@Body KieuSP kieu);
+    Call<KieuSP> createKieuSP(@Body KieuSP t);
 
     @PUT("KieuSP/update")
-    Call<KieuSP> updateKieuSP(@Body KieuSP kieu);
+    Call<KieuSP> updateKieuSP(@Body KieuSP t);
 
     @PUT("KieuSP/delete")
-    Call<KieuSP> deleteKieuSP(@Query("id")String id);
+    Call<KieuSP> deleteKieuSP(@Body KieuSP t);
 
 }

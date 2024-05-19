@@ -1,6 +1,7 @@
 package com.example.myapplication.Api;
 
 import com.example.myapplication.Model.DanhGia;
+import com.example.myapplication.Model.DanhGia;
 
 import java.util.List;
 
@@ -16,15 +17,15 @@ public interface DanhGia_api {
     Call<List<DanhGia>> readallDanhGia();
 
     @GET("DanhGia/get")
-    Call<DanhGia> getDanhGia(@Query("id") String id);
+    Call<DanhGia> getDanhGia(@Query("id") Integer id);
 
     @POST("DanhGia/create")
-    Call<DanhGia> createDanhGia(@Body DanhGia danhgia);
+    Call<DanhGia> createDanhGia(@Body DanhGia t);
 
     @PUT("DanhGia/update")
-    Call<DanhGia> updateDanhGia(@Body DanhGia danhgia);
+    Call<DanhGia> updateDanhGia(@Body DanhGia t);
 
     @PUT("DanhGia/delete")
-    Call<DanhGia> deleteDanhGia(@Query("id")String id);
+    Call<DanhGia> deleteDanhGia(@Body DanhGia t);
 
 }

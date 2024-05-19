@@ -1,6 +1,7 @@
 package com.example.myapplication.Api;
 
 import com.example.myapplication.Model.SanPham;
+import com.example.myapplication.Model.SanPham;
 
 import java.util.List;
 
@@ -16,18 +17,15 @@ public interface SanPham_api {
     Call<List<SanPham>> readallSanPham();
 
     @GET("SanPham/get")
-    Call<SanPham> getSanPhambyId(@Query("id") String id);
-
-    @GET("SanPham/getbyId")
-    Call<List<SanPham>> getSanPhambyIdSanPham(@Query("id") String id);
+    Call<SanPham> getSanPham(@Query("id") Integer id);
 
     @POST("SanPham/create")
-    Call<SanPham> createSanPham(@Body SanPham sanpham);
+    Call<SanPham> createSanPham(@Body SanPham t);
 
     @PUT("SanPham/update")
-    Call<SanPham> updateSanPham(@Body SanPham sanpham);
+    Call<SanPham> updateSanPham(@Body SanPham t);
 
     @PUT("SanPham/delete")
-    Call<SanPham> deleteSanPham(@Query("id")String id);
+    Call<SanPham> deleteSanPham(@Body SanPham t);
 
 }

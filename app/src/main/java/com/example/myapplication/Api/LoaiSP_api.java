@@ -1,6 +1,7 @@
 package com.example.myapplication.Api;
 
 import com.example.myapplication.Model.LoaiSP;
+import com.example.myapplication.Model.LoaiSP;
 
 import java.util.List;
 
@@ -16,15 +17,15 @@ public interface LoaiSP_api {
     Call<List<LoaiSP>> readallLoaiSP();
 
     @GET("LoaiSP/get")
-    Call<LoaiSP> getLoaiSP(@Query("id") String id);
+    Call<LoaiSP> getLoaiSP(@Query("id") Integer id);
 
     @POST("LoaiSP/create")
-    Call<LoaiSP> createLoaiSP(@Body LoaiSP loai);
+    Call<LoaiSP> createLoaiSP(@Body LoaiSP t);
 
     @PUT("LoaiSP/update")
-    Call<LoaiSP> updateLoaiSP(@Body LoaiSP loai);
+    Call<LoaiSP> updateLoaiSP(@Body LoaiSP t);
 
     @PUT("LoaiSP/delete")
-    Call<LoaiSP> deleteLoaiSP(@Query("id")String id);
+    Call<LoaiSP> deleteLoaiSP(@Body LoaiSP t);
 
 }

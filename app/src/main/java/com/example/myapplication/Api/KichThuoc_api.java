@@ -1,6 +1,7 @@
 package com.example.myapplication.Api;
 
 import com.example.myapplication.Model.KichThuoc;
+import com.example.myapplication.Model.KichThuoc;
 
 import java.util.List;
 
@@ -16,15 +17,15 @@ public interface KichThuoc_api {
     Call<List<KichThuoc>> readallKichThuoc();
 
     @GET("KichThuoc/get")
-    Call<KichThuoc> getKichThuoc(@Query("id") String id);
+    Call<KichThuoc> getKichThuoc(@Query("id") Integer id);
 
     @POST("KichThuoc/create")
-    Call<KichThuoc> createKichThuoc(@Body KichThuoc kichthuoc);
+    Call<KichThuoc> createKichThuoc(@Body KichThuoc t);
 
     @PUT("KichThuoc/update")
-    Call<KichThuoc> updateKichThuoc(@Body KichThuoc kichthuoc);
+    Call<KichThuoc> updateKichThuoc(@Body KichThuoc t);
 
     @PUT("KichThuoc/delete")
-    Call<KichThuoc> deleteKichThuoc(@Query("id")String id);
+    Call<KichThuoc> deleteKichThuoc(@Body KichThuoc t);
 
 }

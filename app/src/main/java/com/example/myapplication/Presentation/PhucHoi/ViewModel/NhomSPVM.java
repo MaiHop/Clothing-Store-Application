@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 
-import com.example.myapplication.Model2.NhomSP;
+import com.example.myapplication.Model.NhomSP;
 import com.example.myapplication.Data.Data_Source.CartRepository;
 import com.example.myapplication.Repository.DanhMucRepository;
 import com.example.myapplication.Repository.GioHangRepository;
@@ -13,9 +13,9 @@ import com.example.myapplication.Repository.GioHangRepository;
 import java.util.List;
 
 public class NhomSPVM extends ViewModel {
-//    implements DanhMucRepository.DanhMucInterface
+    //    implements DanhMucRepository.DanhMucInterface
     private MutableLiveData<List<NhomSP>> nhomspListLiveData;
-//    private DanhMucRepository res = new DanhMucRepository(this);
+    //    private DanhMucRepository res = new DanhMucRepository(this);
     public NhomSPVM() {
         nhomspListLiveData = new MutableLiveData<>();
 //        res.readNhomSP();

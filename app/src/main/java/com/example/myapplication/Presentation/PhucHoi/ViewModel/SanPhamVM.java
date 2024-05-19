@@ -5,14 +5,14 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 
-import com.example.myapplication.Model2.SanPham;
+import com.example.myapplication.Model.SanPham;
 import com.example.myapplication.Data.Data_Source.CartRepository;
 import com.example.myapplication.Repository.SanPhamRepository;
 
 import java.util.List;
 
 public class SanPhamVM  extends ViewModel  {
-//    implements SanPhamRepository.SanPhamInterface
+    //    implements SanPhamRepository.SanPhamInterface
     private MutableLiveData<List<SanPham>> productListLiveData = new MutableLiveData<>();
 //    private SanPhamRepository res = new SanPhamRepository(this);
 

@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Model2.Mau;
+import com.example.myapplication.Model.Mau;
 import com.example.myapplication.Presentation.PhucHoi.ViewHolder.MauVH;
 import com.example.myapplication.R;
 
@@ -57,7 +57,7 @@ public class ColorAdapterPH extends RecyclerView.Adapter<MauVH> {
                 notifyItemChanged(selectedPosition);
 
                 if (listener != null) {
-                    listener.onItemClick(String.valueOf(mau.getIdMau()));
+                    listener.onItemClick(mau.getId());
                 }
             }
         });

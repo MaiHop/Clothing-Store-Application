@@ -165,11 +165,15 @@ public class sign_up extends AppCompatActivity implements KhachHangRepository.Kh
                                                     // Tạo dữ liệu người dùng trên Firebase Realtime Database
                                                     khachHangRepository = new KhachHangRepository(sign_up.this);
                                                     KhachHang khachHang = new KhachHang();
-                                                    khachHang.setIdKhachHang(Integer.parseInt(user.getUid()));
+                                                    khachHang.setUid(user.getUid());
                                                     khachHang.setEmail(user.getEmail());
                                                     khachHang.setTen(user.getDisplayName());
                                                     khachHang.setImageUrl(user.getPhotoUrl().toString());
                                                     khachHang.setGioiTinh(0);
+                                                    khachHang.setListDonHang(null);
+                                                    khachHang.setListDiaChi(null);
+                                                    khachHang.setListYeuThich(null);
+                                                    khachHang.setListThanhToan(null);
                                                     try {
                                                         khachHangRepository.createKhachHang(khachHang);
 //                                                        KhachHang khachHangsave = documentSnapshot.toObject(KhachHang.class);

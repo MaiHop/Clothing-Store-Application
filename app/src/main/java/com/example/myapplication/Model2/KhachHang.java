@@ -7,6 +7,8 @@ public class KhachHang implements Serializable {
 
     private Integer idKhachHang;
 
+    private String uid;
+
     private String imageUrl;
 
     private String ten;
@@ -27,6 +29,14 @@ public class KhachHang implements Serializable {
     private List<DonHang> listDonHang = null;
 
     public KhachHang() {
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public Integer getIdKhachHang() {

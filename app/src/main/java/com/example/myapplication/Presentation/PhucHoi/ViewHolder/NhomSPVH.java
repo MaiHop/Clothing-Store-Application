@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.Model.NhomSP;
 import com.example.myapplication.R;
 import com.squareup.picasso.Picasso;
-import com.bumptech.glide.Glide;
+//import com.bumptech.glide.Glide;
 public class NhomSPVH extends  RecyclerView.ViewHolder{
     public  TextView tenBoloc;
     public  ImageView imageBoloc;

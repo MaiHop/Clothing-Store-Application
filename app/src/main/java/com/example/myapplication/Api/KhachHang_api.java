@@ -19,6 +19,9 @@ public interface KhachHang_api {
     @GET("KhachHang/get")
     Call<KhachHang> getKhachHang(@Query("id") Integer id);
 
+    @GET("KhachHang/getbyUID")
+    Call<KhachHang> findKhachHangbyUID(@Query("uid") String id);
+
     @POST("KhachHang/create")
     Call<KhachHang> createKhachHang(@Body KhachHang t);
 

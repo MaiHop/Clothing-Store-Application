@@ -1,4 +1,3 @@
-// ColorAdapterPH.java
 package com.example.myapplication.Presentation.PhucHoi.Apdapter;
 
 import android.content.Context;
@@ -33,7 +32,7 @@ public class ColorAdapterPH extends RecyclerView.Adapter<MauVH> {
     @NonNull
     @Override
     public MauVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.hoi_item_color, parent, false);
+        View itemView = inflater.inflate(R.layout.hoi_item_color, parent, false);
         return new MauVH(itemView);
     }
 
@@ -42,16 +41,14 @@ public class ColorAdapterPH extends RecyclerView.Adapter<MauVH> {
         Mau mau = mauList.get(position);
         holder.updateUI(mau);
 
-        // Hiển thị trạng thái chọn
         holder.itemView.setSelected(selectedPosition == position);
 
-        // Cập nhật trạng thái hiển thị dựa trên vị trí chọn
         if (selectedPosition == position) {
             holder.iv_color.setStrokeColor(ColorStateList.valueOf(context.getResources().getColor(R.color.selected_color)));
         } else {
             holder.iv_color.setStrokeColor(ColorStateList.valueOf(context.getResources().getColor(R.color.default_color)));
         }
-        // Xử lý sự kiện click
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,13 +68,23 @@ public class ColorAdapterPH extends RecyclerView.Adapter<MauVH> {
         return mauList.size();
     }
 
-    public String getSelectedColorId() {
+    public Mau getSelectedColor() {
         if (selectedPosition != RecyclerView.NO_POSITION) {
-            return mauList.get(selectedPosition).getId();
+            return mauList.get(selectedPosition);
         }
         return null;
     }
 
+    public void clearSelection() {
+        int previousSelectedPosition = selectedPosition;
+        selectedPosition = RecyclerView.NO_POSITION;
+        notifyItemChanged(previousSelectedPosition);
+    }
+
+    public void setListMau(List<Mau> colorList) {
+        this.mauList = colorList;
+        notifyDataSetChanged();
+    }
 
     public interface OnItemClickListener {
         void onItemClick(String mauId);
@@ -85,10 +92,5 @@ public class ColorAdapterPH extends RecyclerView.Adapter<MauVH> {
 
     public void setOnItemClickListener(OnItemClickListener listener) {
         this.listener = listener;
-    }
-
-    public void setListMau(List<Mau> colorList) {
-        this.mauList = colorList;
-        notifyDataSetChanged(); // Thông báo cho RecyclerView biết là danh sách đã thay đổi
     }
 }

@@ -9,6 +9,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface KhachHang_api {
@@ -22,7 +23,7 @@ public interface KhachHang_api {
     Call<KhachHang> createKhachHang(@Body KhachHang t);
 
     @PUT("KhachHang/update")
-    Call<KhachHang> updateKhachHang(@Body KhachHang t);
+    Call<KhachHang> updateKhachHang(@Path("id") int id, @Body KhachHang t);
 
     @PUT("KhachHang/delete")
     Call<KhachHang> deleteKhachHang(@Body KhachHang t);

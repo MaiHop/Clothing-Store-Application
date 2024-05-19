@@ -207,18 +207,19 @@ public class DanhMucActivity extends AppCompatActivity {
         return null;
     }
 
-    private List<SanPham> filterSanPham(KichThuoc size, Mau color, KieuSP kieuSP) {
+    private List<SanPham> filterSanPham(KichThuoc size, Mau color, KieuSP kieuSP, float minPrice, float maxPrice) {
         List<SanPham> filteredList = new ArrayList<>();
         for (SanPham sanPham : sanPhamList) {
             if ((size == null || sanPham.getKichThuoc().getId().equals(size.getId())) &&
                     (color == null || sanPham.getMau().getId().equals(color.getId())) &&
-                    (kieuSP == null || sanPham.getKieuSanPham().getId().equals(kieuSP.getId())))
-                    {
+                    (kieuSP == null || sanPham.getKieuSanPham().getId().equals(kieuSP.getId())) &&
+                    (sanPham.getGiaban() >= minPrice && sanPham.getGiaban() <= maxPrice)) {
                 filteredList.add(sanPham);
             }
         }
         return filteredList;
     }
+
 
     public List<SanPham> getSanPhamByKieuSPId(String kieuSPId, String nhomSPId) {
         List<SanPham> filteredList = new ArrayList<>();
@@ -364,8 +365,10 @@ public class DanhMucActivity extends AppCompatActivity {
                 KichThuoc selectedSize = adapterSize.getSelectedSize();
                 Mau selectedColor = adapterColor.getSelectedColor();
                 KieuSP selectedKieuSP = adapterKieuSP.getSelectedKieuSP();
+                float minPrice = rangeSlider.getValues().get(0);
+                float maxPrice = rangeSlider.getValues().get(1);
 //                float maxPrice = rangeSlider.getValues().get(1);
-                List<SanPham> filteredList = filterSanPham(selectedSize, selectedColor, selectedKieuSP);
+                List<SanPham> filteredList = filterSanPham(selectedSize, selectedColor, selectedKieuSP,minPrice,maxPrice);
                 sanPhamAdapter.updateList(filteredList);
                 updateListAndEmptyView(filteredList);
                 dialog.dismiss();
@@ -382,5 +385,7 @@ public class DanhMucActivity extends AppCompatActivity {
                 adapterKieuSP.clearSelection();
             }
         });
+        rangeSlider.setValues(0.0f, 500.0f);
+
     }
 }

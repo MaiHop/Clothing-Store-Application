@@ -1,22 +1,17 @@
 package com.example.myapplication.Presentation.Cart.Activity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myapplication.Api.DonHang_api;
-import com.example.myapplication.Api.KhachHang_api;
-import com.example.myapplication.Api.ServiceBuilder;
 import com.example.myapplication.Model.DacDiem;
-import com.example.myapplication.Model2.DonHang;
-import com.example.myapplication.Model2.DonHangChiTiet;
-import com.example.myapplication.Model2.Kho;
-import com.example.myapplication.Model2.KichThuoc;
-import com.example.myapplication.Model2.Mau;
-import com.example.myapplication.Model2.SanPham;
-import com.example.myapplication.Model2.KhachHang;
+import com.example.myapplication.Model.DonHangChiTiet;
+import com.example.myapplication.Model.Kho;
+import com.example.myapplication.Model.KichThuoc;
+import com.example.myapplication.Model.Mau;
+import com.example.myapplication.Model.SanPham;
+import com.example.myapplication.Model.SanPham_V2;
 import com.example.myapplication.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
@@ -27,88 +22,85 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
 public class FirebaseActivity extends AppCompatActivity {
     List<DonHangChiTiet> list = new ArrayList<>();
     List<Mau> list_m;
     List<Kho> list_k = new ArrayList<>();
     List<SanPham> list_sp = new ArrayList<>();
+    List<SanPham_V2> list_sp2 = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.mh_activity_cart);
+        setContentView(R.layout.mh_activity_firebase);
 
 
-//        FirebaseFirestore db = FirebaseFirestore.getInstance();
-//        FirebaseFirestore db1 = FirebaseFirestore.getInstance();
-//
-//        db.collection("SanPham").whereEqualTo("idSanPham","rCiDI8qvYpdzaj9nzg1T").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-//            @Override
-//            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-//                if (!queryDocumentSnapshots.isEmpty()) {
-//                    List<DocumentSnapshot> list_doc = queryDocumentSnapshots.getDocuments();
-//                    for(DocumentSnapshot doc : list_doc){
-//                        SanPham sp = doc.toObject(SanPham.class);
-//                        sp.setId(doc.getId());
-//                        list_sp.add(sp);
-//                    }
-//                    list_m = new ArrayList<>();
-//                    //Có danh sách sản phẩm
-//                    for(SanPham sp : list_sp){
-//                        boolean alreadyExists = false;
-//                        for (Mau m : list_m) {
-//                            if (sp.getMau().getId().equals(m.getId())) {
-//                                alreadyExists = true;
-//                                break;  // Nếu đã tìm thấy một màu trùng lặp, thoát khỏi vòng lặp
-//                            }
-//                        }
-//                        if (!alreadyExists) {
-//                            list_m.add(sp.getMau());
-//                            //Tạo kho
-//                            Kho k = new Kho();
-//                            k.setImageURL(sp.getImageUrl());
-//                            k.setGiaBan(sp.getGiaban());
-//                            k.setMau(sp.getMau());
-//
-//                            //Tạo list Đặc điểm
-//                            List<DacDiem> list_dd = new ArrayList<>();
-//                            list_dd.add(new DacDiem(100,0,new KichThuoc("1","XS")));
-//                            list_dd.add(new DacDiem(100,0,new KichThuoc("2","S")));
-//                            list_dd.add(new DacDiem(100,0,new KichThuoc("3","M")));
-//                            list_dd.add(new DacDiem(100,0,new KichThuoc("4","L")));
-//                            list_dd.add(new DacDiem(100,0,new KichThuoc("5","XL")));
-//                            list_dd.add(new DacDiem(100,0,new KichThuoc("6","XXL")));
-//
-//                            k.setListDacDiem(list_dd);
-//                            list_k.add(k);  // Chỉ thêm màu nếu nó chưa tồn tại trong danh sách test
-//                        }
-//                    }
-//
-//                    SanPham_V2 sp2 = new SanPham_V2();
-//                    sp2.setId(list_sp.get(0).getId());
-//                    sp2.setIdSanPham(list_sp.get(0).getIdSanPham());
-//                    sp2.setTenSanPham(list_sp.get(0).getTenSanPham());
-//                    sp2.setNhomSanPham(list_sp.get(0).getNhomSanPham());
-//                    sp2.setLoaiSanPham(list_sp.get(0).getLoaiSanPham());
-//                    sp2.setThongTin(list_sp.get(0).getThongTin());
-//                    sp2.setNgayTao(list_sp.get(0).getNgayTao());
-//                    sp2.setListKho(list_k);
-//
-//                    db1.collection("SanPham").add(sp2).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-//                        @Override
-//                        public void onSuccess(DocumentReference documentReference) {
-//                            Toast.makeText(FirebaseActivity.this, "OK", Toast.LENGTH_SHORT).show();
-//                        }
-//                    });
-//                }
-//
-////                Log.d("TEstdadas",String.valueOf(list_sp.size()));
-//            }
-//        });
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseFirestore db1 = FirebaseFirestore.getInstance();
+
+        db.collection("SanPham").whereEqualTo("idSanPham","rCiDI8qvYpdzaj9nzg1T").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                if (!queryDocumentSnapshots.isEmpty()) {
+                    List<DocumentSnapshot> list_doc = queryDocumentSnapshots.getDocuments();
+                    for(DocumentSnapshot doc : list_doc){
+                        SanPham sp = doc.toObject(SanPham.class);
+                        sp.setId(doc.getId());
+                        list_sp.add(sp);
+                    }
+                    list_m = new ArrayList<>();
+                    //Có danh sách sản phẩm
+                    for(SanPham sp : list_sp){
+                        boolean alreadyExists = false;
+                        for (Mau m : list_m) {
+                            if (sp.getMau().getId().equals(m.getId())) {
+                                alreadyExists = true;
+                                break;  // Nếu đã tìm thấy một màu trùng lặp, thoát khỏi vòng lặp
+                            }
+                        }
+                        if (!alreadyExists) {
+                            list_m.add(sp.getMau());
+                            //Tạo kho
+                            Kho k = new Kho();
+                            k.setImageURL(sp.getImageUrl());
+                            k.setGiaBan(sp.getGiaban());
+                            k.setMau(sp.getMau());
+
+                            //Tạo list Đặc điểm
+                            List<DacDiem> list_dd = new ArrayList<>();
+                            list_dd.add(new DacDiem(100,0,new KichThuoc("1","XS")));
+                            list_dd.add(new DacDiem(100,0,new KichThuoc("2","S")));
+                            list_dd.add(new DacDiem(100,0,new KichThuoc("3","M")));
+                            list_dd.add(new DacDiem(100,0,new KichThuoc("4","L")));
+                            list_dd.add(new DacDiem(100,0,new KichThuoc("5","XL")));
+                            list_dd.add(new DacDiem(100,0,new KichThuoc("6","XXL")));
+
+                            k.setListDacDiem(list_dd);
+                            list_k.add(k);  // Chỉ thêm màu nếu nó chưa tồn tại trong danh sách test
+                        }
+                    }
+
+                    SanPham_V2 sp2 = new SanPham_V2();
+                    sp2.setId(list_sp.get(0).getId());
+                    sp2.setIdSanPham(list_sp.get(0).getIdSanPham());
+                    sp2.setTenSanPham(list_sp.get(0).getTenSanPham());
+                    sp2.setNhomSanPham(list_sp.get(0).getNhomSanPham());
+                    sp2.setLoaiSanPham(list_sp.get(0).getLoaiSanPham());
+                    sp2.setThongTin(list_sp.get(0).getThongTin());
+                    sp2.setNgayTao(list_sp.get(0).getNgayTao());
+                    sp2.setListKho(list_k);
+
+                    db1.collection("SanPham_V2").add(sp2).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                        @Override
+                        public void onSuccess(DocumentReference documentReference) {
+                            Toast.makeText(FirebaseActivity.this, "OK", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+
+//                Log.d("TEstdadas",String.valueOf(list_sp.size()));
+            }
+        });
 
 
 
@@ -227,24 +219,7 @@ public class FirebaseActivity extends AppCompatActivity {
 //        }
 //        Log.d("asdsdsfd", String.valueOf(test.size()));
 
-//        DonHang_api api = ServiceBuilder.buildService(DonHang_api.class);
-//        Call<List<DonHang>> request = api.readallDonHang();
-//        request.enqueue(new Callback<List<DonHang>>() {
-//            @Override
-//            public void onResponse(Call<List<DonHang>> call, Response<List<DonHang>> response) {
-//                List<DonHang> list = response.body();
-//                for(DonHang dh : list){
-//                    if(dh.getTrangThai().equals("Perpare")){
-//                        Log.d("ASDSAD",String.valueOf(dh.getListDonHangChiTiet().size()));
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<List<DonHang>> call, Throwable t) {
-//
-//            }
-//        });
+        
 
     }
 }

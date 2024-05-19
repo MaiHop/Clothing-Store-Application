@@ -1,7 +1,6 @@
 package com.example.myapplication.Api;
 
-import com.example.myapplication.Model.Mau;
-import com.example.myapplication.Model.Mau;
+import com.example.myapplication.Model2.Mau;
 
 import java.util.List;
 

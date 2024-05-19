@@ -1,7 +1,6 @@
     package com.example.myapplication.Api;
 
-import com.example.myapplication.Model.DonHangQuaTrinh;
-import com.example.myapplication.Model.DonHang;
+import com.example.myapplication.Model2.DonHangQuaTrinh;
 
 import java.util.List;
 

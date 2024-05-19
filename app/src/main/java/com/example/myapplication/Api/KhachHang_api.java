@@ -1,7 +1,6 @@
 package com.example.myapplication.Api;
 
-import com.example.myapplication.Model.KhachHang;
-import com.example.myapplication.Model.KhachHang;
+import com.example.myapplication.Model2.KhachHang;
 
 import java.util.List;
 

@@ -1,7 +1,6 @@
 package com.example.myapplication.Api;
 
-import com.example.myapplication.Model.DonHangChiTiet;
-import com.example.myapplication.Model.DonHangChiTiet;
+import com.example.myapplication.Model2.DonHangChiTiet;
 
 import java.util.List;
 

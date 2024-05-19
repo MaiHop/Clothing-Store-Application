@@ -1,7 +1,6 @@
 package com.example.myapplication.Api;
 
-import com.example.myapplication.Model.LoaiSP;
-import com.example.myapplication.Model.LoaiSP;
+import com.example.myapplication.Model2.LoaiSP;
 
 import java.util.List;
 

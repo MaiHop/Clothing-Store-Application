@@ -11,15 +11,29 @@ public class DonHangChiTiet implements Serializable {
     private Double thanhTien ;
 
     private Double thanhTienKhuyenMai;
-
-
     private DonHang  donhang;
-
     private SanPham sanPham;
+    private KichThuoc kichThuoc;
+    private Mau mau;
 
     public DonHangChiTiet() {
     }
 
+    public KichThuoc getKichThuoc() {
+        return kichThuoc;
+    }
+
+    public void setKichThuoc(KichThuoc kichThuoc) {
+        this.kichThuoc = kichThuoc;
+    }
+
+    public Mau getMau() {
+        return mau;
+    }
+
+    public void setMau(Mau mau) {
+        this.mau = mau;
+    }
 
     public Integer getId() {
         return id;

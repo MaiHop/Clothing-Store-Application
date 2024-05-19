@@ -37,21 +37,21 @@ public class SanPhamRepository {
         });
     }
 
-    public void readSanPhambyIdSanPham(String id){
-        SanPham_api api = ServiceBuilder.buildService(SanPham_api.class);
-        Call<List<SanPham>> request = api.getSanPhambyIdSanPham(id);
-        request.enqueue(new Callback<List<SanPham>>() {
-            @Override
-            public void onResponse(Call<List<SanPham>> call, Response<List<SanPham>> response) {
-                sanPhamInterface.getSanPhambyIdSanPham(response.body());
-            }
-
-            @Override
-            public void onFailure(Call<List<SanPham>> call, Throwable t) {
-
-            }
-        });
-    }
+//    public void readSanPhambyIdSanPham(String id){
+//        SanPham_api api = ServiceBuilder.buildService(SanPham_api.class);
+//        Call<List<SanPham>> request = api.getSanPhambyIdSanPham(id);
+//        request.enqueue(new Callback<List<SanPham>>() {
+//            @Override
+//            public void onResponse(Call<List<SanPham>> call, Response<List<SanPham>> response) {
+//                sanPhamInterface.getSanPhambyIdSanPham(response.body());
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<SanPham>> call, Throwable t) {
+//
+//            }
+//        });
+//    }
 
     public interface SanPhamInterface{
         void getListSanPham(List<SanPham> list);

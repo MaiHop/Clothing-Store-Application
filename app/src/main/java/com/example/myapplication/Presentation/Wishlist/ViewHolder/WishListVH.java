@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Model.SanPham;
+import com.example.myapplication.Model2.SanPham;
 import com.example.myapplication.R;
 import com.squareup.picasso.Picasso;
 
@@ -37,10 +37,12 @@ public class WishListVH extends RecyclerView.ViewHolder{
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
 //        SanPham_api sanPham = yeuThich.getListsanpham().get(0);
 
-        Picasso.get().load(sanPham.getImageUrl()).into(this.hinhSP);
+//        Picasso.get().load(sanPham.getImageUrl()).into(this.hinhSP);
+        Picasso.get().load(sanPham.getListKho().get(0).getImageURL()).into(hinhSP);
 //        this.tenSP.setText(sanPham.getTenSanPham());
         this.tenSP.setText(sanPham.getTenSanPham());
-        this.giaSP.setText(decimalFormat.format(sanPham.getGiaban())+" VND");
+//        this.giaSP.setText(decimalFormat.format(sanPham.getGiaban())+" VND");
+        this.giaSP.setText(decimalFormat.format(sanPham.getListKho().get(0).getImageURL())+" VND");
 
 
     }

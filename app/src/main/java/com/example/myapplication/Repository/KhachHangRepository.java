@@ -2,7 +2,7 @@ package com.example.myapplication.Repository;
 
 import com.example.myapplication.Api.KhachHang_api;
 import com.example.myapplication.Api.ServiceBuilder;
-import com.example.myapplication.Model.KhachHang;
+import com.example.myapplication.Model2.KhachHang;
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -34,7 +34,24 @@ public class KhachHangRepository {
             }
         });
     }
+    public void updateKhachHang(int id, KhachHang khachHang) {
+        KhachHang_api khachHangApi = ServiceBuilder.buildService(KhachHang_api.class);
+        Call<KhachHang> request = khachHangApi.updateKhachHang(id, khachHang);
 
+        request.enqueue(new Callback<KhachHang>() {
+            @Override
+            public void onResponse(Call<KhachHang> call, Response<KhachHang> response) {
+                if (response.isSuccessful()) {
+                    khachHangInterface.onKhachHangUpdated(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<KhachHang> call, Throwable t) {
+                khachHangInterface.onError(t);
+            }
+        });
+    }
     public void readAllKhachHang() {
         KhachHang_api khachHangApi = ServiceBuilder.buildService(KhachHang_api.class);
         Call<List<KhachHang>> request = khachHangApi.readallKhachHang();
@@ -56,6 +73,7 @@ public class KhachHangRepository {
 
     public interface KhachHangInterface {
         void onKhachHangCreated(KhachHang khachHang);
+        void onKhachHangUpdated(KhachHang khachHang);
         void onAllKhachHangRead(List<KhachHang> khachHangList);
         void onError(Throwable t);
     }

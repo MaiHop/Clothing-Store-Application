@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myapplication.Model.KhachHang;
+import com.example.myapplication.Model2.KhachHang;
 import com.example.myapplication.Presentation.ButtonNavigation.Home;
 import com.example.myapplication.Presentation.LoginAccout.SignIn.sign_in;
 import com.example.myapplication.Presentation.LoginAccout.SingUp.sign_up;
@@ -141,26 +141,21 @@ public class HomeThamGia extends AppCompatActivity {
                                         public void run() {
                                             loadDialog.dismissDialog();
                                             FirebaseUser user = mAuth.getCurrentUser();
-//                                            HashMap<String, Object> map = new HashMap<>();
-//                                            map.put("id", user.getUid());
-//                                            map.put("email", user.getEmail());
-//                                            map.put("name", user.getDisplayName());
-//                                            map.put("profile", user.getPhotoUrl().toString());
                                             KhachHang khachHang = new KhachHang();
-                                            khachHang.setIdKhachHang(user.getUid());
+                                            khachHang.setIdKhachHang(Integer.parseInt(user.getUid()));
                                             khachHang.setEmail(user.getEmail());
                                             khachHang.setTen(user.getDisplayName());
                                             khachHang.setImageUrl(user.getPhotoUrl().toString());
                                             khachHang.setGioiTinh(0);
-                                            database.collection("KhachHang").document(khachHang.getIdKhachHang())
-                                                    .set(khachHang)
-                                                    .addOnSuccessListener(aVoid -> {
-                                                        Intent intent = new Intent(HomeThamGia.this, Home.class);
-                                                        startActivity(intent);
-                                                    })
-                                                    .addOnFailureListener(e -> {
-                                                        Log.e("Firebase", "Failed to write user to database", e);
-                                                    });
+//                                            database.collection("KhachHang").document(khachHang.getIdKhachHang())
+//                                                    .set(khachHang)
+//                                                    .addOnSuccessListener(aVoid -> {
+//                                                        Intent intent = new Intent(HomeThamGia.this, Home.class);
+//                                                        startActivity(intent);
+//                                                    })
+//                                                    .addOnFailureListener(e -> {
+//                                                        Log.e("Firebase", "Failed to write user to database", e);
+//                                                    });
                                         }
                                     },7000);
 

@@ -1,5 +1,6 @@
 package com.example.myapplication.Presentation.Cart.Activity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.Menu;
@@ -16,8 +17,12 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Model.DonHang;
-import com.example.myapplication.Model.DonHangChiTiet;
+import com.example.myapplication.Api.DonHangChiTiet_api;
+import com.example.myapplication.Api.KhachHang_api;
+import com.example.myapplication.Api.ServiceBuilder;
+import com.example.myapplication.Model2.DonHang;
+import com.example.myapplication.Model2.DonHangChiTiet;
+import com.example.myapplication.Model2.KhachHang;
 import com.example.myapplication.Presentation.Cart.Apdapter.GioHangAdapter;
 import com.example.myapplication.Presentation.Cart.ViewModel.GioHangVM;
 import com.example.myapplication.R;
@@ -28,6 +33,10 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class GioHangActivity extends AppCompatActivity {
     private RecyclerView rv_ListCart;
     private Button btn_DatHang;
@@ -36,6 +45,7 @@ public class GioHangActivity extends AppCompatActivity {
     private List<DonHangChiTiet> list;
     private GioHangVM gioHangVM;
     private SearchView searchView;
+    SharedPreferences mPrefs = getPreferences(MODE_PRIVATE);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

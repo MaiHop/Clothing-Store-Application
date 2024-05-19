@@ -22,6 +22,7 @@ import com.example.myapplication.Presentation.LoginAccout.Load_Dialog;
 import com.example.myapplication.Presentation.LoginAccout.OTP.SP_OTP;
 import com.example.myapplication.Presentation.LoginAccout.SignIn.sign_in;
 import com.example.myapplication.R;
+import com.example.myapplication.Repository.KhachHangRepository;
 import com.example.myapplication.SharedPreferences.DataLocalManager;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -44,8 +45,9 @@ import com.google.firebase.firestore.SetOptions;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
-public class sign_up extends AppCompatActivity {
+public class sign_up extends AppCompatActivity implements KhachHangRepository.KhachHangInterface{
     ImageView imagePack;
     TextView tv_sigin,tv_error;
     Button btn_SignUp,btn_signIn_GG;
@@ -61,6 +63,7 @@ public class sign_up extends AppCompatActivity {
     GoogleSignInClient mGoogleSignInClinet;
     int RC_SignIn = 1234;
     Load_Dialog loadDialog = new Load_Dialog(sign_up.this);
+    private KhachHangRepository khachHangRepository;
 
 
     @Override
@@ -160,32 +163,38 @@ public class sign_up extends AppCompatActivity {
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 if (task.isSuccessful()) {
                                                     // Tạo dữ liệu người dùng trên Firebase Realtime Database
+                                                    khachHangRepository = new KhachHangRepository(sign_up.this);
                                                     KhachHang khachHang = new KhachHang();
                                                     khachHang.setIdKhachHang(user.getUid());
                                                     khachHang.setEmail(user.getEmail());
                                                     khachHang.setTen(user.getDisplayName());
                                                     khachHang.setImageUrl(user.getPhotoUrl().toString());
                                                     khachHang.setGioiTinh(0);
-                                                    DocumentReference docRef = database.collection("KhachHang").document(khachHang.getIdKhachHang());
-                                                    docRef.get().addOnSuccessListener(documentSnapshot -> {
-                                                                if (documentSnapshot.exists()) {
+                                                    try {
+                                                        khachHangRepository.createKhachHang(khachHang);
+                                                    }catch (Exception e){
 
-                                                                    KhachHang khachHangsave = documentSnapshot.toObject(KhachHang.class);
-
-                                                                    // Lưu thông tin vào SharedPreferences
-                                                                    DataLocalManager.setUser(khachHangsave);
-
-                                                                    Intent intent = new Intent(sign_up.this,SP_OTP);
-                                                                    intent.putExtra("confirm_code", "sign_up");
-                                                                    intent.putExtra("Email", email);
-                                                                    intent.putExtra("Password", password);
-                                                                    Toast.makeText(sign_up.this,"Mời bạn xác thực bên email của bạn",Toast.LENGTH_SHORT).show();
-                                                                    startActivity(intent);
-                                                                }
-                                                            })
-                                                            .addOnFailureListener(e -> {
-                                                                Log.e("Firebase", "Failed to write user to database", e);
-                                                            });
+                                                    }
+//                                                    DocumentReference docRef = database.collection("KhachHang").document(khachHang.getIdKhachHang());
+//                                                    docRef.get().addOnSuccessListener(documentSnapshot -> {
+//                                                                if (documentSnapshot.exists()) {
+//
+//                                                                    KhachHang khachHangsave = documentSnapshot.toObject(KhachHang.class);
+//
+//                                                                    // Lưu thông tin vào SharedPreferences
+//                                                                    DataLocalManager.setUser(khachHangsave);
+//
+//                                                                    Intent intent = new Intent(sign_up.this,SP_OTP);
+//                                                                    intent.putExtra("confirm_code", "sign_up");
+//                                                                    intent.putExtra("Email", email);
+//                                                                    intent.putExtra("Password", password);
+//                                                                    Toast.makeText(sign_up.this,"Mời bạn xác thực bên email của bạn",Toast.LENGTH_SHORT).show();
+//                                                                    startActivity(intent);
+//                                                                }
+//                                                            })
+//                                                            .addOnFailureListener(e -> {
+//                                                                Log.e("Firebase", "Failed to write user to database", e);
+//                                                            });
 //                                                            database.collection("KhachHang").document(khachHang.getIdKhachHang())
 //                                                                    .set(khachHang)
 //                                                                    .addOnSuccessListener(aVoid -> {
@@ -303,4 +312,18 @@ public class sign_up extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onKhachHangCreated(KhachHang khachHang) {
+
+    }
+
+    @Override
+    public void onAllKhachHangRead(List<KhachHang> khachHangList) {
+
+    }
+
+    @Override
+    public void onError(Throwable t) {
+
+    }
 }

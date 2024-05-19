@@ -13,6 +13,7 @@ import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -23,11 +24,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.Model.DonHangChiTiet;
 import com.example.myapplication.Model.KichThuoc;
 import com.example.myapplication.Model.KieuSP;
+import com.example.myapplication.Model.LoaiSP;
 import com.example.myapplication.Model.Mau;
 import com.example.myapplication.Model.NhomSP;
 import com.example.myapplication.Model.SanPham;
 import com.example.myapplication.Data.Data_Source.CartRepository;
-import com.example.myapplication.Presentation.Cart.ViewModel.SanPhamVM;
+//import com.example.myapplication.Presentation.Cart.ViewModel.SanPhamVM;
+import com.example.myapplication.Presentation.Cart.Apdapter.SizeAdapter;
+import com.example.myapplication.Presentation.PhucHoi.Apdapter.ColorAdapterPH;
+import com.example.myapplication.Presentation.PhucHoi.Apdapter.SizeAdapterPH;
+import com.example.myapplication.Presentation.PhucHoi.ViewModel.KichThuocVM;
+import com.example.myapplication.Presentation.PhucHoi.ViewModel.MauVM;
+import com.example.myapplication.Presentation.PhucHoi.ViewModel.SanPhamVM;
 import com.example.myapplication.Presentation.PhucHoi.Apdapter.KieuSPAdapter;
 import com.example.myapplication.Presentation.PhucHoi.Apdapter.NhomSPAdapter;
 import com.example.myapplication.Presentation.PhucHoi.Apdapter.SanPhamAdapter;
@@ -35,6 +43,7 @@ import com.example.myapplication.Presentation.PhucHoi.Apdapter.SanPhamAdapter;
 import com.example.myapplication.Presentation.PhucHoi.ViewModel.KieuSPVM;
 import com.example.myapplication.Presentation.PhucHoi.ViewModel.NhomSPVM;
 import com.example.myapplication.R;
+import com.google.android.material.slider.RangeSlider;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -56,6 +65,7 @@ public class DanhMucActivity extends AppCompatActivity {
     private Button sortButton, filterButton;
     private KieuSPVM kieuSPViewModel;
     private KieuSPAdapter kieuSPAdapter;
+
     private boolean checkkieusp = false;
 
 
@@ -83,6 +93,7 @@ public class DanhMucActivity extends AppCompatActivity {
         });
 
         nhomSPId = getIntent().getStringExtra("nhomSPId");
+        updateSanPhamList(nhomSPId);
 
         NhomSP nhomSP = findNhomSPById(nhomSPId);
         if (nhomSP != null) {
@@ -174,8 +185,26 @@ public class DanhMucActivity extends AppCompatActivity {
 
     }
 
-    private List<SanPham> filterSanPhamByNhomSPId (List < SanPham > sanPhamList, String nhomSPId)
-    {
+//    private List<SanPham> filterSanPhamByNhomSPId (List < SanPham > sanPhamList, String nhomSPId)
+//    {
+//        List<SanPham> filteredList = new ArrayList<>();
+//        for (SanPham sanPham : sanPhamList) {
+//            if (sanPham.getNhomSanPham().getId().equals(nhomSPId)) {
+//                filteredList.add(sanPham);
+//            }
+//        }
+//        return filteredList;
+//    }
+
+    private void updateSanPhamList(String nhomSPId) {
+        // Cập nhật danh sách sản phẩm dựa trên nhomSPId
+        CartRepository cartRepository = new CartRepository();
+        sanPhamList = filterSanPhamByNhomSPId(cartRepository.getSanPham(), nhomSPId);
+        originalSanPhamList.clear();
+        originalSanPhamList.addAll(sanPhamList);
+    }
+
+    private List<SanPham> filterSanPhamByNhomSPId(List<SanPham> sanPhamList, String nhomSPId) {
         List<SanPham> filteredList = new ArrayList<>();
         for (SanPham sanPham : sanPhamList) {
             if (sanPham.getNhomSanPham().getId().equals(nhomSPId)) {
@@ -185,7 +214,7 @@ public class DanhMucActivity extends AppCompatActivity {
         return filteredList;
     }
 
-    private void showSortDialog () {
+    private void showSortDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Chọn cách sắp xếp");
         String[] options = {"Giá tăng dần", "Giá giảm dần", "Tên A-Z", "Tên Z-A"};
@@ -213,7 +242,7 @@ public class DanhMucActivity extends AppCompatActivity {
 
 
     // Phương thức tìm kiếm đối tượng KichThuoc theo tên
-    private KichThuoc findSizeByName (List < KichThuoc > sizes, String name){
+    private KichThuoc findSizeByName(List<KichThuoc> sizes, String name) {
         for (KichThuoc size : sizes) {
             if (size.getTen().equals(name)) {
                 return size;
@@ -223,7 +252,7 @@ public class DanhMucActivity extends AppCompatActivity {
     }
 
     // Phương thức tìm kiếm đối tượng Mau theo tên
-    private Mau findColorByName (List < Mau > colors, String name){
+    private Mau findColorByName(List<Mau> colors, String name) {
         for (Mau color : colors) {
             if (color.getTen().equals(name)) {
                 return color;
@@ -233,7 +262,7 @@ public class DanhMucActivity extends AppCompatActivity {
     }
 
     // Phương thức lọc sản phẩm theo kích thước, màu và giá
-    private List<SanPham> filterSanPham (KichThuoc size, Mau color,int maxPrice){
+    private List<SanPham> filterSanPham(KichThuoc size, Mau color, int maxPrice) {
         List<SanPham> filteredList = new ArrayList<>();
         for (SanPham sanPham : sanPhamList) {
             // Kiểm tra nếu sản phẩm có kích thước được chọn, ID màu trùng khớp và giá không vượt quá giá tối đa
@@ -246,7 +275,7 @@ public class DanhMucActivity extends AppCompatActivity {
         return filteredList;
     }
 
-    public List<SanPham> getSanPhamByKieuSPId (String kieuSPId, String nhomSPId){
+    public List<SanPham> getSanPhamByKieuSPId(String kieuSPId, String nhomSPId) {
         List<SanPham> filteredList = new ArrayList<>();
         for (SanPham sanPham : sanPhamList) {
             if (sanPham.getKieuSanPham().getId().equals(kieuSPId) &&
@@ -260,7 +289,7 @@ public class DanhMucActivity extends AppCompatActivity {
 
     // Phương thức tìm NhomSP_api theo nhomSPId
 
-    private NhomSP findNhomSPById (String nhomSPId){
+    private NhomSP findNhomSPById(String nhomSPId) {
         CartRepository cartRepository = new CartRepository();
         List<NhomSP> nhomSPList = cartRepository.getListNhomSP();
         for (NhomSP nhomSP : nhomSPList) {
@@ -271,8 +300,8 @@ public class DanhMucActivity extends AppCompatActivity {
         return null;
     }
 
-    private List<SanPham> searchSanPhamByNhomSPId (List < SanPham > sanPhamList, String
-            nhomSPId, String keyword){
+    private List<SanPham> searchSanPhamByNhomSPId(List<SanPham> sanPhamList, String
+            nhomSPId, String keyword) {
         List<SanPham> searchedList = new ArrayList<>();
         for (SanPham sanPham : sanPhamList) {
             if (sanPham.getNhomSanPham().getId().equals(nhomSPId) && sanPham.getTenSanPham().toLowerCase().contains(keyword.toLowerCase())) {
@@ -282,7 +311,7 @@ public class DanhMucActivity extends AppCompatActivity {
         return searchedList;
     }
 
-    private void updateListAndEmptyView (List < SanPham > newList) {
+    private void updateListAndEmptyView(List<SanPham> newList) {
         if (newList.isEmpty()) {
             emptyTextView.setVisibility(View.VISIBLE);
         } else {
@@ -290,7 +319,7 @@ public class DanhMucActivity extends AppCompatActivity {
         }
     }
 
-    private void sortByPriceAscending () {
+    private void sortByPriceAscending() {
         List<SanPham> filteredList = filterSanPhamByNhomSPId(sanPhamList, nhomSPId);
         Collections.sort(filteredList, new Comparator<SanPham>() {
             @Override
@@ -301,7 +330,7 @@ public class DanhMucActivity extends AppCompatActivity {
         sanPhamAdapter.updateList(filteredList);
     }
 
-    private void sortByPriceDescending () {
+    private void sortByPriceDescending() {
         List<SanPham> filteredList = filterSanPhamByNhomSPId(sanPhamList, nhomSPId);
         Collections.sort(filteredList, new Comparator<SanPham>() {
             @Override
@@ -312,7 +341,7 @@ public class DanhMucActivity extends AppCompatActivity {
         sanPhamAdapter.updateList(filteredList);
     }
 
-    private void sortByNameAscending () {
+    private void sortByNameAscending() {
         List<SanPham> filteredList = filterSanPhamByNhomSPId(sanPhamList, nhomSPId);
         Collections.sort(filteredList, new Comparator<SanPham>() {
             @Override
@@ -323,7 +352,7 @@ public class DanhMucActivity extends AppCompatActivity {
         sanPhamAdapter.updateList(filteredList);
     }
 
-    private void sortByNameDescending () {
+    private void sortByNameDescending() {
         List<SanPham> filteredList = filterSanPhamByNhomSPId(sanPhamList, nhomSPId);
         Collections.sort(filteredList, new Comparator<SanPham>() {
             @Override
@@ -334,95 +363,81 @@ public class DanhMucActivity extends AppCompatActivity {
         sanPhamAdapter.updateList(filteredList);
     }
 
-    private void showFilterDialog () {
+    private void showFilterDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        View view = getLayoutInflater().inflate(R.layout.hoi_loc, null);
-        builder.setView(view);
+        View dialogView = getLayoutInflater().inflate(R.layout.hoi_filter, null);
+        RecyclerView viewLoaiSp = dialogView.findViewById(R.id.viewLoaiSP);
+        RecyclerView viewSize = dialogView.findViewById(R.id.viewSize);
+        RecyclerView viewColor = dialogView.findViewById(R.id.viewColor);
+        RangeSlider rangeSlider = dialogView.findViewById(R.id.range_slider);
+        Button apply = dialogView.findViewById(R.id.buttonApply);
 
-        Spinner spinnerSize = view.findViewById(R.id.spinner_size);
-        Spinner spinnerColor = view.findViewById(R.id.spinner_color);
-        Button btnApply = view.findViewById(R.id.btn_apply);
-        SeekBar seekBarPrice = view.findViewById(R.id.seekbar_price);
+        rangeSlider.addOnChangeListener(new RangeSlider.OnChangeListener() {
+            @Override
+            public void onValueChange(@NonNull RangeSlider slider, float value, boolean fromUser) {
+                // Xử lý khi giá trị thay đổi
+                float minValue = slider.getValues().get(0);
+                float maxValue = slider.getValues().get(1);
+                // Hiển thị giá trị hoặc thực hiện các hành động khác dựa trên giá trị minValue và maxValue
+            }
+        });
+        viewLoaiSp.setLayoutManager(new LinearLayoutManager(this));
 
-        TextView minValueTextView = view.findViewById(R.id.text_min_value);
-        TextView maxValueTextView = view.findViewById(R.id.text_max_value);
+        // Khởi tạo adapter và ViewModel
+        KieuSPAdapter adapterKieuSP = new KieuSPAdapter(new ArrayList<>(), this, getLayoutInflater());
+        KieuSPVM kieuSPViewModel = new ViewModelProvider(this).get(KieuSPVM.class);
 
-        CartRepository cartRepository = new CartRepository();
-        List<KichThuoc> listSize = cartRepository.getListSize();
-        List<Mau> listColor = cartRepository.getListMau();
+        // Lắng nghe LiveData từ ViewModel để cập nhật dữ liệu trong Adapter
+        kieuSPViewModel.getNhomSPListLiveData().observe(this, new Observer<List<KieuSP>>() {
+            @Override
+            public void onChanged(List<KieuSP> kieuSPList) {
+                adapterKieuSP.setListNhomSP(kieuSPList);
+            }
+        });
+
+        // Gán Adapter cho RecyclerView
+        viewLoaiSp.setAdapter(adapterKieuSP);
+
+        viewSize.setLayoutManager(new LinearLayoutManager(this));
+
+        SizeAdapterPH adapterSize = new SizeAdapterPH(new ArrayList<>(), getLayoutInflater());
+        KichThuocVM kichthuocSPViewModel = new ViewModelProvider(this).get(KichThuocVM.class);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        viewSize.setLayoutManager(layoutManager);
 
 
-        List<String> sizeNames = new ArrayList<>();
-        sizeNames.add("None");
-        for (KichThuoc size : listSize) {
-            sizeNames.add(size.getTen());
-        }
+        // Lắng nghe LiveData từ ViewModel để cập nhật dữ liệu trong Adapter
+        kichthuocSPViewModel.getKichThuocListLiveData().observe(this, new Observer<List<KichThuoc>>() {
+            @Override
+            public void onChanged(List<KichThuoc> kichThuocList) {
+                adapterSize.setListKichThuoc(kichThuocList);
+            }
+        });
 
-        List<String> colorNames = new ArrayList<>();
-        colorNames.add("None");
-        for (Mau color : listColor) {
-            colorNames.add(color.getTen());
-        }
+        // Gán Adapter cho RecyclerView
+        viewSize.setAdapter(adapterSize);
 
-        ArrayAdapter<String> sizeAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, sizeNames);
-        sizeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerSize.setAdapter(sizeAdapter);
+        viewColor.setLayoutManager(new LinearLayoutManager(this));
 
-        ArrayAdapter<String> colorAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, colorNames);
-        colorAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerColor.setAdapter(colorAdapter);
+        ColorAdapterPH adapterColor = new ColorAdapterPH(new ArrayList<>(),this,getLayoutInflater());
+        MauVM mauViewModel = new ViewModelProvider(this).get(MauVM.class);
+        LinearLayoutManager layoutManager1 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        viewColor.setLayoutManager(layoutManager1);
 
+
+        // Lắng nghe LiveData từ ViewModel để cập nhật dữ liệu trong Adapter
+        mauViewModel.getMauListLiveData().observe(this, new Observer<List<Mau>>() {
+            @Override
+            public void onChanged(List<Mau> mauList) {
+                adapterColor.setListMau(mauList);
+            }
+        });
+
+        // Gán Adapter cho RecyclerView
+        viewColor.setAdapter(adapterColor);
+
+        builder.setView(dialogView);
         AlertDialog dialog = builder.create();
         dialog.show();
-
-        btnApply.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Lấy tên kích thước đã chọn từ Spinner
-                String selectedSizeName = (String) spinnerSize.getSelectedItem();
-                // Lấy tên màu đã chọn từ Spinner
-                String selectedColorName = (String) spinnerColor.getSelectedItem();
-                // Kiểm tra nếu tùy chọn là "None" thì gán giá trị null
-                KichThuoc selectedSize = selectedSizeName.equals("None") ? null : findSizeByName(listSize, selectedSizeName);
-                Mau selectedColor = selectedColorName.equals("None") ? null : findColorByName(listColor, selectedColorName);
-
-                // Lấy giá trị hiện tại của thanh SeekBar giá
-                int maxPrice = seekBarPrice.getProgress();
-
-                // Lọc sản phẩm theo kích thước, màu và giá
-                List<SanPham> filteredList = filterSanPham(selectedSize, selectedColor, maxPrice);
-                sanPhamAdapter.updateList(filteredList);
-                dialog.dismiss();
-            }
-        });
-
-        // Xử lý sự kiện khi người dùng kéo thanh SeekBar
-        seekBarPrice.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                // Cập nhật giá trị hiển thị của hai đầu của khoảng giá trị được chọn
-                // Hiển thị giá trị tương ứng lên TextView
-                minValueTextView.setText(String.valueOf(progress));
-                maxValueTextView.setText(String.valueOf(progress + 200)); // Ví dụ: khoảng giá trị là 200
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-                // Không cần xử lý trong trường hợp này
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-                // Không cần xử lý trong trường hợp này
-            }
-        });
     }
-
-
 }
-
-
-
-
-
-

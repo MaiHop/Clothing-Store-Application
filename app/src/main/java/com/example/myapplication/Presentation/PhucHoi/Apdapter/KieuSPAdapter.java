@@ -23,13 +23,17 @@ public class KieuSPAdapter extends RecyclerView.Adapter<KieuSPVH>{
     private Context context;
     private LayoutInflater minflater;
     private OnItemClickListener listener;
+    private int selectedPosition = RecyclerView.NO_POSITION;
 
     public KieuSPAdapter(List<KieuSP> kieuSPList, Context context, LayoutInflater minflater) {
         this.kieuSPList = kieuSPList;
         this.context = context;
         this.minflater = minflater;
 
+
     }
+
+
 
     @NonNull
     @Override
@@ -42,9 +46,16 @@ public class KieuSPAdapter extends RecyclerView.Adapter<KieuSPVH>{
     public void onBindViewHolder(@NonNull KieuSPVH holder, int position) {
         KieuSP kieuSP = kieuSPList.get(position);
         holder.bind(kieuSP);
-        holder.tenkieuSP.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setSelected(selectedPosition == position);
+
+        // Xử lý sự kiện click
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                notifyItemChanged(selectedPosition);
+                selectedPosition = holder.getAdapterPosition();
+                notifyItemChanged(selectedPosition);
+
                 if (listener != null) {
                     listener.onItemClick(kieuSP.getId());
                 }
@@ -53,6 +64,8 @@ public class KieuSPAdapter extends RecyclerView.Adapter<KieuSPVH>{
 
 
     }
+
+
     public interface OnItemClickListener {
         void onItemClick(String kieuSPId);
     }

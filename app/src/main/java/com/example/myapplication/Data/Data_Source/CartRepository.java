@@ -251,11 +251,13 @@ public class CartRepository {
         NhomSP nhomSP = new NhomSP();
         nhomSP.setId("1");
         nhomSP.setTen("Nam");
+        nhomSP.setImageURL("https://image.uniqlo.com/UQ/ST3/vn/imagesgoods/471281/item/vngoods_09_471281.jpg?width=750");
         nhomSP.setListLoaiSP(this.getListLoaiSP());
 
         NhomSP nhomSP1 = new NhomSP();
         nhomSP1.setId("2");
         nhomSP1.setTen("Nữ");
+        nhomSP1.setImageURL("https://image.uniqlo.com/UQ/ST3/vn/imagesgoods/471281/item/vngoods_09_471281.jpg?width=750");
         nhomSP1.setListLoaiSP(this.getListLoaiSP());
 
 
@@ -634,5 +636,6 @@ public class CartRepository {
 
         return list;
      }
+
 
 }

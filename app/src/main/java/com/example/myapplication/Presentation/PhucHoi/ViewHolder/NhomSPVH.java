@@ -10,14 +10,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.Model.NhomSP;
 import com.example.myapplication.R;
 import com.squareup.picasso.Picasso;
-
+import com.bumptech.glide.Glide;
 public class NhomSPVH extends  RecyclerView.ViewHolder{
     public  TextView tenBoloc;
     public  ImageView imageBoloc;
     public NhomSPVH(@NonNull View itemView) {
         super(itemView);
         tenBoloc = itemView.findViewById(R.id.tenBoLoc);
-        imageBoloc = itemView.findViewById(R.id.img_boloc);
+        imageBoloc = itemView.findViewById(R.id.imageBoloc);
 
     }
 

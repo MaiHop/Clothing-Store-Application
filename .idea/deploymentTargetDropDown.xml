@@ -2,13 +2,13 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="MainActivity (1)">
+      <entry key="DanhMucActivity">
         <State />
       </entry>
-      <entry key="SanPhamActivity">
+      <entry key="Detail_SP_WishList">
         <State />
       </entry>
-      <entry key="SplashScreen">
+      <entry key="SanPhamActivity (1)">
         <State />
       </entry>
     </value>

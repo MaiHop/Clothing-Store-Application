@@ -12,13 +12,14 @@ import com.example.myapplication.Repository.GioHangRepository;
 
 import java.util.List;
 
-public class NhomSPVM extends ViewModel implements DanhMucRepository.DanhMucInterface {
+public class NhomSPVM extends ViewModel {
+//    implements DanhMucRepository.DanhMucInterface
     private MutableLiveData<List<NhomSP>> nhomspListLiveData;
-    private DanhMucRepository res = new DanhMucRepository(this);
+//    private DanhMucRepository res = new DanhMucRepository(this);
     public NhomSPVM() {
         nhomspListLiveData = new MutableLiveData<>();
-        res.readNhomSP();
-//        loadData(); // Load data here from your repository or source
+//        res.readNhomSP();
+        loadData(); // Load data here from your repository or source
     }
 
 
@@ -35,9 +36,9 @@ public class NhomSPVM extends ViewModel implements DanhMucRepository.DanhMucInte
 
 
     }
-
-    @Override
-    public void getListNhomSP(List<NhomSP> list) {
-        nhomspListLiveData.setValue(list);
-    }
+//
+//    @Override
+//    public void getListNhomSP(List<NhomSP> list) {
+//        nhomspListLiveData.setValue(list);
+//    }
 }

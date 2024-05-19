@@ -10,7 +10,7 @@ import com.example.myapplication.Repository.KichThuocRepository;
 
 import java.util.List;
 
-public class KichThuocVM extends ViewModel implements KichThuocRepository.KichThuocInterface {
+public class KichThuocVM extends ViewModel {
     private MutableLiveData<List<KichThuoc>> listKichThuocLiveData;
     private MutableLiveData<List<SanPham>> listSanPhamLiveData;
     private List<KichThuoc> listKichThuoc;
@@ -20,7 +20,7 @@ public class KichThuocVM extends ViewModel implements KichThuocRepository.KichTh
     }
 
     public MutableLiveData<List<KichThuoc>> getListKichThuocLiveData(SanPham sp){
-        kichThuocRepository.readKichThuoc();
+//        kichThuocRepository.readKichThuoc();
 //        kichThuocRepository.readSanPhambyIdSanPham(sp.getIdSanPham());
 //        listKichThuoc = listKichThuocLiveData.getValue();
 //        List<SanPham> list_sp = listSanPhamLiveData.getValue();
@@ -57,32 +57,24 @@ public class KichThuocVM extends ViewModel implements KichThuocRepository.KichTh
 //        }
         return listKichThuocLiveData;
     }
-    public void showListSize(SanPham sanPham){
-        kichThuocRepository.readKichThuoc();
-        kichThuocRepository.readSanPhambyIdSanPham(sanPham.getIdSanPham());
-        listKichThuoc = listKichThuocLiveData.getValue();
-        List<SanPham> list_sp = listSanPhamLiveData.getValue();
-        for (SanPham sp : list_sp){
-            if(sp.getTenSanPham().equals(sanPham.getTenSanPham()) && sp.getMau().getId().equals(sanPham.getMau().getId())){
-                for(KichThuoc kt : listKichThuoc){
-                    if(sp.getKichThuoc().getId().equals(kt.getId()) && sp.getSoLuong()>0){
-                        kt.setAble(true);
-                    }else {
-                        kt.setAble(false);
-                    }
-                }
-            }
-        }
-        listKichThuocLiveData.setValue(listKichThuoc);
-    }
+//    public void showListSize(SanPham sanPham){
+//        kichThuocRepository.readKichThuoc();
+//        kichThuocRepository.readSanPhambyIdSanPham(sanPham.getIdSanPham());
+//        listKichThuoc = listKichThuocLiveData.getValue();
+//        List<SanPham> list_sp = listSanPhamLiveData.getValue();
+//        for (SanPham sp : list_sp){
+//            if(sp.getTenSanPham().equals(sanPham.getTenSanPham()) && sp.getMau().getId().equals(sanPham.getMau().getId())){
+//                for(KichThuoc kt : listKichThuoc){
+//                    if(sp.getKichThuoc().getId().equals(kt.getId()) && sp.getSoLuong()>0){
+//                        kt.setAble(true);
+//                    }else {
+//                        kt.setAble(false);
+//                    }
+//                }
+//            }
+//        }
+//        listKichThuocLiveData.setValue(listKichThuoc);
+//    }
 
-    @Override
-    public void getListKichThuoc(List<KichThuoc> list) {
-        listKichThuocLiveData.setValue(list);
-    }
 
-    @Override
-    public void getSanPhambyIdSanPham(List<SanPham> list) {
-        listSanPhamLiveData.setValue(list);
-    }
 }

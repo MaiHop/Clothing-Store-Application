@@ -1,6 +1,7 @@
 package com.example.myapplication.Presentation.Wishlist.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.Model.SanPham;
+import com.example.myapplication.Presentation.PhucHoi.Activity.ChiTietSanPhamActivity;
 import com.example.myapplication.Presentation.Wishlist.ViewHolder.WishListVH;
 import com.example.myapplication.Presentation.Wishlist.ViewModel.YeuThichVM;
 import com.example.myapplication.R;
@@ -57,6 +59,15 @@ public class Adapter_Item_SP_WishList extends RecyclerView.Adapter<WishListVH>  
         sanPham =  arr_item_SP_WL.get(position);
         title.setText("Wishlist("+arr_item_SP_WL.size()+")");
         holder.updateUI(sanPham);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Chuyển sang màn hình chi tiết sản phẩm
+                Intent intent = new Intent(context, ChiTietSanPhamActivity.class);
+                intent.putExtra("product", sanPham); // Truyền dữ liệu sản phẩm qua Intent
+                context.startActivity(intent);
+            }
+        });
         holder.checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -70,11 +70,34 @@ public class KhachHangRepository {
             }
         });
     }
+    public void getKhachHang(String uid) {
+        KhachHang_api khachHangApi = ServiceBuilder.buildService(KhachHang_api.class);
+        Call<KhachHang> request = khachHangApi.findKhachHangbyUID(uid);
+
+        request.enqueue(new Callback<KhachHang>() {
+            @Override
+            public void onResponse(Call<KhachHang> call, Response<KhachHang> response) {
+                if (response.isSuccessful()) {
+                    khachHangInterface.onKhachHangReceived(response.body());
+                } else {
+                    khachHangInterface.onError(new Throwable("Failed to fetch KhachHang with UID: " + uid));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<KhachHang> call, Throwable t) {
+                khachHangInterface.onError(t);
+            }
+        });
+    }
+
 
     public interface KhachHangInterface {
         void onKhachHangCreated(KhachHang khachHang);
         void onKhachHangUpdated(KhachHang khachHang);
         void onAllKhachHangRead(List<KhachHang> khachHangList);
         void onError(Throwable t);
+
+        void onKhachHangReceived(KhachHang body);
     }
 }

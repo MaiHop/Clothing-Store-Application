@@ -3,7 +3,7 @@ package com.example.myapplication.Presentation.Cart.ViewModel;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.myapplication.Model.DonHangChiTiet;
+import com.example.myapplication.Model2.DonHangChiTiet;
 import com.example.myapplication.Repository.GioHangRepository;
 
 import java.util.List;
@@ -29,15 +29,7 @@ public class GioHangVM extends ViewModel implements GioHangRepository.GioHangInt
         listGioHangLiveData.setValue(listDonHangChiTiet);
     }
     public void editCart(DonHangChiTiet donHangChiTiet){
-        listDonHangChiTiet = listGioHangLiveData.getValue();
-        for(DonHangChiTiet ct : listDonHangChiTiet){
-            if(ct.getIdDonHang().equals(donHangChiTiet.getIdDonHang())){
-                ct.setSanPham(donHangChiTiet.getSanPham());
-                ct.setSoLuong(donHangChiTiet.getSoLuong());
-                ct.setThanhTien((donHangChiTiet.getThanhTien()));
-            }
-        }
-        listGioHangLiveData.setValue(listDonHangChiTiet);
+
     }
 
     @Override

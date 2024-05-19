@@ -1,6 +1,7 @@
 package com.example.myapplication.Api;
 
 import com.example.myapplication.Model.KhachHang;
+import com.example.myapplication.Model.KhachHang;
 
 import java.util.List;
 
@@ -16,15 +17,15 @@ public interface KhachHang_api {
     Call<List<KhachHang>> readallKhachHang();
 
     @GET("KhachHang/get")
-    Call<KhachHang> getKhachHang(@Query("id") String id);
+    Call<KhachHang> getKhachHang(@Query("id") Integer id);
 
     @POST("KhachHang/create")
-    Call<KhachHang> createKhachHang(@Body KhachHang khachhang);
+    Call<KhachHang> createKhachHang(@Body KhachHang t);
 
     @PUT("KhachHang/update")
-    Call<KhachHang> updateKhachHang(@Body KhachHang khachhang);
+    Call<KhachHang> updateKhachHang(@Body KhachHang t);
 
     @PUT("KhachHang/delete")
-    Call<KhachHang> deleteKhachHang(@Query("id")String id);
+    Call<KhachHang> deleteKhachHang(@Body KhachHang t);
 
 }

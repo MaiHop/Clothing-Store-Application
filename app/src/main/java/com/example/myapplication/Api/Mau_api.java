@@ -1,6 +1,7 @@
 package com.example.myapplication.Api;
 
 import com.example.myapplication.Model.Mau;
+import com.example.myapplication.Model.Mau;
 
 import java.util.List;
 
@@ -16,15 +17,15 @@ public interface Mau_api {
     Call<List<Mau>> readallMau();
 
     @GET("Mau/get")
-    Call<Mau> getMau(@Query("id") String id);
+    Call<Mau> getMau(@Query("id") Integer id);
 
     @POST("Mau/create")
-    Call<Mau> createMau(@Body Mau mau);
+    Call<Mau> createMau(@Body Mau t);
 
     @PUT("Mau/update")
-    Call<Mau> updateMau(@Body Mau mau);
+    Call<Mau> updateMau(@Body Mau t);
 
     @PUT("Mau/delete")
-    Call<Mau> deleteMau(@Query("id")String id);
+    Call<Mau> deleteMau(@Body Mau t);
 
 }

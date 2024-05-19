@@ -1,6 +1,7 @@
 package com.example.myapplication.Api;
 
 import com.example.myapplication.Model.DiaChi;
+import com.example.myapplication.Model.DiaChi;
 
 import java.util.List;
 
@@ -16,15 +17,15 @@ public interface DiaChi_api {
     Call<List<DiaChi>> readallDiaChi();
 
     @GET("DiaChi/get")
-    Call<DiaChi> getDiaChi(@Query("id") String id);
+    Call<DiaChi> getDiaChi(@Query("id") Integer id);
 
     @POST("DiaChi/create")
-    Call<DiaChi> createDiaChi(@Body DiaChi diachi);
+    Call<DiaChi> createDiaChi(@Body DiaChi t);
 
     @PUT("DiaChi/update")
-    Call<DiaChi> updateDiaChi(@Body DiaChi diachi);
+    Call<DiaChi> updateDiaChi(@Body DiaChi t);
 
     @PUT("DiaChi/delete")
-    Call<DiaChi> deleteDiaChi(@Query("id")String id);
+    Call<DiaChi> deleteDiaChi(@Body DiaChi t);
 
 }

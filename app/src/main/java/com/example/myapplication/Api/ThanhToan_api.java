@@ -1,6 +1,7 @@
 package com.example.myapplication.Api;
 
 import com.example.myapplication.Model.ThanhToan;
+import com.example.myapplication.Model.ThanhToan;
 
 import java.util.List;
 
@@ -16,15 +17,15 @@ public interface ThanhToan_api {
     Call<List<ThanhToan>> readallThanhToan();
 
     @GET("ThanhToan/get")
-    Call<ThanhToan> getThanhToan(@Query("id") String id);
+    Call<ThanhToan> getThanhToan(@Query("id") Integer id);
 
     @POST("ThanhToan/create")
-    Call<ThanhToan> createThanhToan(@Body ThanhToan thanhtoan);
+    Call<ThanhToan> createThanhToan(@Body ThanhToan t);
 
     @PUT("ThanhToan/update")
-    Call<ThanhToan> updateThanhToan(@Body ThanhToan thanhtoan);
+    Call<ThanhToan> updateThanhToan(@Body ThanhToan t);
 
     @PUT("ThanhToan/delete")
-    Call<ThanhToan> deleteThanhToan(@Query("id")String id);
+    Call<ThanhToan> deleteThanhToan(@Body ThanhToan t);
 
 }

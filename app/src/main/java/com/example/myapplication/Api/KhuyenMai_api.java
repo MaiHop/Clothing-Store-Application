@@ -1,6 +1,7 @@
 package com.example.myapplication.Api;
 
 import com.example.myapplication.Model.KhuyenMai;
+import com.example.myapplication.Model.KhuyenMai;
 
 import java.util.List;
 
@@ -16,15 +17,15 @@ public interface KhuyenMai_api {
     Call<List<KhuyenMai>> readallKhuyenMai();
 
     @GET("KhuyenMai/get")
-    Call<KhuyenMai> getKhuyenMai(@Query("id") String id);
+    Call<KhuyenMai> getKhuyenMai(@Query("id") Integer id);
 
     @POST("KhuyenMai/create")
-    Call<KhuyenMai> createKhuyenMai(@Body KhuyenMai khuyenmai);
+    Call<KhuyenMai> createKhuyenMai(@Body KhuyenMai t);
 
     @PUT("KhuyenMai/update")
-    Call<KhuyenMai> updateKhuyenMai(@Body KhuyenMai khuyenmai);
+    Call<KhuyenMai> updateKhuyenMai(@Body KhuyenMai t);
 
     @PUT("KhuyenMai/delete")
-    Call<KhuyenMai> deleteKhuyenMai(@Query("id")String id);
+    Call<KhuyenMai> deleteKhuyenMai(@Body KhuyenMai t);
 
 }

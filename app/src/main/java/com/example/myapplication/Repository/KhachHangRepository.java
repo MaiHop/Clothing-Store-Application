@@ -2,7 +2,7 @@ package com.example.myapplication.Repository;
 
 import com.example.myapplication.Api.KhachHang_api;
 import com.example.myapplication.Api.ServiceBuilder;
-import com.example.myapplication.Model.KhachHang;
+import com.example.myapplication.Model2.KhachHang;
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;

@@ -3,7 +3,7 @@ package com.example.myapplication.SharedPreferences;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.example.myapplication.Model.KhachHang;
+import com.example.myapplication.Model2.KhachHang;
 import com.google.gson.Gson;
 
 import java.sql.Connection;

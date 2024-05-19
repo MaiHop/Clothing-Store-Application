@@ -56,7 +56,7 @@ public class Adapter_Item_SP_WishList extends RecyclerView.Adapter<WishListVH>  
 
     @Override
     public void onBindViewHolder(@NonNull WishListVH holder, int position) {
-        sanPham =  arr_item_SP_WL.get(position);
+        SanPham sanPham =  arr_item_SP_WL.get(position);
         title.setText("Wishlist("+arr_item_SP_WL.size()+")");
         holder.updateUI(sanPham);
         holder.itemView.setOnClickListener(new View.OnClickListener() {

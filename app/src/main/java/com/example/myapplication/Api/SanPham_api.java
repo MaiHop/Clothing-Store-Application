@@ -26,5 +26,7 @@ public interface SanPham_api {
 
     @PUT("SanPham/delete")
     Call<SanPham> deleteSanPham(@Body SanPham t);
+    @GET("SanPham/getbyId")
+    Call<List<SanPham>> getSanPhambyIdSanPham(@Query("id") String id);
 
 }

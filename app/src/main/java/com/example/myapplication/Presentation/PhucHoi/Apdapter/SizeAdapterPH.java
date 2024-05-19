@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Model.KichThuoc;
+import com.example.myapplication.Model2.KichThuoc;
 import com.example.myapplication.Presentation.PhucHoi.ViewHolder.SizeVH;
 import com.example.myapplication.R;
 
@@ -46,7 +46,7 @@ public class SizeAdapterPH extends RecyclerView.Adapter<SizeVH> {
                 notifyItemChanged(selectedPosition);
 
                 if (listener != null) {
-                    listener.onItemClick(kichThuoc.getId());
+                    listener.onItemClick(String.valueOf(kichThuoc.getIdKichThuoc()));
                 }
             }
         });

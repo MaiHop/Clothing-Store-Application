@@ -6,7 +6,7 @@
 
     import androidx.recyclerview.widget.RecyclerView;
 
-    import com.example.myapplication.Model.KieuSP;
+    import com.example.myapplication.Model2.KieuSP;
     import com.example.myapplication.Model.NhomSP;
     import com.example.myapplication.R;
     public class KieuSPVH extends RecyclerView.ViewHolder {

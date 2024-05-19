@@ -7,7 +7,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Model.NhomSP;
+import com.example.myapplication.Model2.NhomSP;
 import com.example.myapplication.R;
 import com.squareup.picasso.Picasso;
 //import com.bumptech.glide.Glide;

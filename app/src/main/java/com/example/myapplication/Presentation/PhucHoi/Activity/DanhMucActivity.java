@@ -10,6 +10,7 @@ import android.widget.SearchView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -17,11 +18,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.Data.Data_Source.CartRepository;
-import com.example.myapplication.Model.KichThuoc;
-import com.example.myapplication.Model.KieuSP;
-import com.example.myapplication.Model.Mau;
-import com.example.myapplication.Model.NhomSP;
-import com.example.myapplication.Model.SanPham;
+import com.example.myapplication.Model2.DacDiem;
+import com.example.myapplication.Model2.Kho;
+import com.example.myapplication.Model2.KichThuoc;
+import com.example.myapplication.Model2.KieuSP;
+import com.example.myapplication.Model2.Mau;
+import com.example.myapplication.Model2.NhomSP;
+import com.example.myapplication.Model2.SanPham;
 import com.example.myapplication.Presentation.PhucHoi.Apdapter.ColorAdapterPH;
 import com.example.myapplication.Presentation.PhucHoi.Apdapter.KieuSPAdapter;
 import com.example.myapplication.Presentation.PhucHoi.Apdapter.SanPhamAdapter;
@@ -156,7 +159,7 @@ public class DanhMucActivity extends AppCompatActivity {
     private List<SanPham> filterSanPhamByNhomSPId(List<SanPham> sanPhamList, String nhomSPId) {
         List<SanPham> filteredList = new ArrayList<>();
         for (SanPham sanPham : sanPhamList) {
-            if (sanPham.getNhomSanPham().getId().equals(nhomSPId)) {
+            if (sanPham.getNhomSanPham().getIdNhomSP().equals(nhomSPId)) {
                 filteredList.add(sanPham);
             }
         }
@@ -207,25 +210,65 @@ public class DanhMucActivity extends AppCompatActivity {
         return null;
     }
 
+//    private List<SanPham> filterSanPham(KichThuoc size, Mau color, KieuSP kieuSP, float minPrice, float maxPrice) {
+//        List<SanPham> filteredList = new ArrayList<>();
+//        for (SanPham sanPham : sanPhamList) {
+//            if ((size == null || sanPham.getKichThuoc().getId().equals(size.getIdKichThuoc())) &&
+//                    (color == null || sanPham.getMau().getId().equals(color.getIdMau())) &&
+//                    (kieuSP == null || sanPham.getKieuSanPham().getIdKieuSP().equals(kieuSP.getIdKieuSP())) &&
+//                    (sanPham.getGiaban() >= minPrice && sanPham.getGiaban() <= maxPrice)) {
+//                filteredList.add(sanPham);
+//            }
+//        }
+//        return filteredList;
+//    }
+
     private List<SanPham> filterSanPham(KichThuoc size, Mau color, KieuSP kieuSP, float minPrice, float maxPrice) {
         List<SanPham> filteredList = new ArrayList<>();
         for (SanPham sanPham : sanPhamList) {
-            if ((size == null || sanPham.getKichThuoc().getId().equals(size.getId())) &&
-                    (color == null || sanPham.getMau().getId().equals(color.getId())) &&
-                    (kieuSP == null || sanPham.getKieuSanPham().getId().equals(kieuSP.getId())) &&
-                    (sanPham.getGiaban() >= minPrice && sanPham.getGiaban() <= maxPrice)) {
-                filteredList.add(sanPham);
+            boolean sizeMatches = false;
+            boolean colorMatches = false;
+            boolean kieuSPMatches = false;
+
+            // Kiểm tra các điều kiện kích thước, màu sắc và kiểu sản phẩm
+            for (Kho kho : sanPham.getListKho()) {
+                // Kiểm tra kích thước
+                for (DacDiem dacDiem : kho.getListDacDiem()) {
+                    if (size != null && dacDiem.getKichThuoc().getIdKichThuoc().equals(size.getIdKichThuoc())) {
+                        sizeMatches = true;
+                        break;
+                    }
+                }
+                // Kiểm tra màu sắc
+                if (color != null && kho.getMau().getIdMau().equals(color.getIdMau())) {
+                    colorMatches = true;
+                }
+                // Kiểm tra kiểu sản phẩm
+                if (kieuSP != null && sanPham.getKieuSanPham().getIdKieuSP().equals(kieuSP.getIdKieuSP())) {
+                    kieuSPMatches = true;
+                }
+
+                // Kiểm tra giá bán
+                boolean priceInRange = kho.getGiaBan() >= minPrice && kho.getGiaBan() <= maxPrice;
+
+                // Nếu tất cả các điều kiện đều đúng, thêm sản phẩm vào danh sách lọc
+                if (sizeMatches && colorMatches && kieuSPMatches && priceInRange) {
+                    filteredList.add(sanPham);
+                    // Thoát khỏi vòng lặp Kho vì đã tìm thấy một Kho phù hợp
+                    break;
+                }
             }
         }
         return filteredList;
     }
 
 
+
     public List<SanPham> getSanPhamByKieuSPId(String kieuSPId, String nhomSPId) {
         List<SanPham> filteredList = new ArrayList<>();
         for (SanPham sanPham : sanPhamList) {
-            if (sanPham.getKieuSanPham().getId().equals(kieuSPId) &&
-                    sanPham.getNhomSanPham().getId().equals(nhomSPId)) {
+            if (sanPham.getKieuSanPham().getIdKieuSP().equals(kieuSPId) &&
+                    sanPham.getNhomSanPham().getIdNhomSP().equals(nhomSPId)) {
                 filteredList.add(sanPham);
             }
         }
@@ -236,7 +279,7 @@ public class DanhMucActivity extends AppCompatActivity {
         CartRepository cartRepository = new CartRepository();
         List<NhomSP> nhomSPList = cartRepository.getListNhomSP();
         for (NhomSP nhomSP : nhomSPList) {
-            if (nhomSP.getId().equals(nhomSPId)) {
+            if (nhomSP.getIdNhomSP().equals(nhomSPId)) {
                 return nhomSP;
             }
         }
@@ -246,7 +289,7 @@ public class DanhMucActivity extends AppCompatActivity {
     private List<SanPham> searchSanPhamByNhomSPId(List<SanPham> sanPhamList, String nhomSPId, String keyword) {
         List<SanPham> searchedList = new ArrayList<>();
         for (SanPham sanPham : sanPhamList) {
-            if (sanPham.getNhomSanPham().getId().equals(nhomSPId) &&
+            if (sanPham.getNhomSanPham().getIdNhomSP().equals(nhomSPId) &&
                     sanPham.getTenSanPham().toLowerCase().contains(keyword.toLowerCase())) {
                 searchedList.add(sanPham);
             }
@@ -262,28 +305,81 @@ public class DanhMucActivity extends AppCompatActivity {
         }
     }
 
+//    private void sortByPriceAscending() {
+//        List<SanPham> filteredList = filterSanPhamByNhomSPId(sanPhamList, nhomSPId);
+//        Collections.sort(filteredList, new Comparator<SanPham>() {
+//            @Override
+//            public int compare(SanPham sp1, SanPham sp2) {
+//                return Double.compare(sp1.getGiaban(), sp2.getGiaban());
+//            }
+//        });
+//        sanPhamAdapter.updateList(filteredList);
+//    }
+
+//    private void sortByPriceDescending() {
+//        List<SanPham> filteredList = filterSanPhamByNhomSPId(sanPhamList, nhomSPId);
+//        Collections.sort(filteredList, new Comparator<SanPham>() {
+//            @Override
+//            public int compare(SanPham sp1, SanPham sp2) {
+//                return Double.compare(sp2.getGiaban(), sp1.getGiaban());
+//            }
+//        });
+//        sanPhamAdapter.updateList(filteredList);
+//    }
+
     private void sortByPriceAscending() {
         List<SanPham> filteredList = filterSanPhamByNhomSPId(sanPhamList, nhomSPId);
+
+        // Sắp xếp danh sách sản phẩm theo giá bán tăng dần
         Collections.sort(filteredList, new Comparator<SanPham>() {
             @Override
             public int compare(SanPham sp1, SanPham sp2) {
-                return Double.compare(sp1.getGiaban(), sp2.getGiaban());
+                double giaBan1 = findMinPrice(sp1);
+                double giaBan2 = findMinPrice(sp2);
+                return Double.compare(giaBan1, giaBan2);
+            }
+
+            // Hàm tìm giá bán thấp nhất trong danh sách kho của một sản phẩm
+            private double findMinPrice(SanPham sanPham) {
+                double minPrice = Double.MAX_VALUE;
+                for (Kho kho : sanPham.getListKho()) {
+                    double giaBan = kho.getGiaBan();
+                    if (giaBan < minPrice) {
+                        minPrice = giaBan;
+                    }
+                }
+                return minPrice;
             }
         });
+
         sanPhamAdapter.updateList(filteredList);
     }
-
     private void sortByPriceDescending() {
         List<SanPham> filteredList = filterSanPhamByNhomSPId(sanPhamList, nhomSPId);
         Collections.sort(filteredList, new Comparator<SanPham>() {
             @Override
             public int compare(SanPham sp1, SanPham sp2) {
-                return Double.compare(sp2.getGiaban(), sp1.getGiaban());
+                // Lấy giá bán nhỏ nhất từ danh sách các kho của sản phẩm 1
+                Double minPrice1 = getMinPrice(sp1.getListKho());
+                // Lấy giá bán nhỏ nhất từ danh sách các kho của sản phẩm 2
+                Double minPrice2 = getMinPrice(sp2.getListKho());
+                // So sánh giá bán nhỏ nhất của hai sản phẩm theo thứ tự giảm dần
+                return Double.compare(minPrice2, minPrice1);
             }
         });
         sanPhamAdapter.updateList(filteredList);
     }
 
+    // Phương thức để lấy giá bán nhỏ nhất từ danh sách các kho
+    private Double getMinPrice(List<Kho> listKho) {
+        Double minPrice = Double.MAX_VALUE;
+        for (Kho kho : listKho) {
+            if (kho.getGiaBan() != null && kho.getGiaBan() < minPrice) {
+                minPrice = kho.getGiaBan();
+            }
+        }
+        return minPrice;
+    }
     private void sortByNameAscending() {
         List<SanPham> filteredList = filterSanPhamByNhomSPId(sanPhamList, nhomSPId);
         Collections.sort(filteredList, new Comparator<SanPham>() {
@@ -345,7 +441,7 @@ public class DanhMucActivity extends AppCompatActivity {
         MauVM mauViewModel = new ViewModelProvider(this).get(MauVM.class);
         LinearLayoutManager layoutManager1 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         viewColor.setLayoutManager(layoutManager1);
-        mauViewModel.getMauListLiveData().observe(this, new Observer<List<Mau>>() {
+        mauViewModel.getMauListLiveData().observe((LifecycleOwner) this, new Observer<List<Mau>>() {
             @Override
             public void onChanged(List<Mau> mauList) {
                 adapterColor.setListMau(mauList);

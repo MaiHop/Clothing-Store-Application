@@ -19,7 +19,7 @@ public class PTThanhToanVM extends ViewModel {
 
     private void initData(){
         CartRepository res = new CartRepository();
-        listThanhToan = res.getListMP();
+//        listThanhToan = res.getListMP();
 
         listPTThanhToanLiveData.setValue(listThanhToan);
     }

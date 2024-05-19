@@ -19,7 +19,7 @@ public class KhuyenMaiVM extends ViewModel {
 
     private void initData(){
         CartRepository res = new CartRepository();
-        listKhuyenMai = res.getListKhuyenMai();
+//        listKhuyenMai = res.getListKhuyenMai();
 
         listKhuyenMaiLiveData.setValue(listKhuyenMai);
     }

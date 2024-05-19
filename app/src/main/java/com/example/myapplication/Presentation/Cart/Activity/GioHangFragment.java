@@ -20,8 +20,8 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Model.DonHang;
-import com.example.myapplication.Model.DonHangChiTiet;
+import com.example.myapplication.Model2.DonHang;
+import com.example.myapplication.Model2.DonHangChiTiet;
 import com.example.myapplication.Presentation.Cart.Apdapter.GioHangAdapter;
 import com.example.myapplication.Presentation.Cart.ViewModel.GioHangVM;
 import com.example.myapplication.R;

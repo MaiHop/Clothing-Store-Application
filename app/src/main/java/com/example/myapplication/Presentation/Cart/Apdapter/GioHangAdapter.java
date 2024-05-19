@@ -11,7 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Model.DonHangChiTiet;
+import com.example.myapplication.Model2.DonHangChiTiet;
 import com.example.myapplication.Presentation.Cart.Dialog.SPEditDialog;
 import com.example.myapplication.Presentation.Cart.ViewHolder.GioHangVH;
 import com.example.myapplication.Presentation.Cart.ViewModel.GioHangVM;
@@ -64,7 +64,6 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangVH> {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 DonHangChiTiet dh_edit = list.get(holder.getAdapterPosition());
-                dh_edit.setChecked(isChecked);
                 holder.updateTotal(list, btn_DatHang);
             }
         });
@@ -72,10 +71,10 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangVH> {
         holder.ib_Edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DonHangChiTiet dh_edit = list.get(holder.getAdapterPosition());
-                SPEditDialog dia = new SPEditDialog(context,list, dh_edit, gioHangVM);
-                dia.showEditSanPhamDialog();
-                notifyDataSetChanged();
+//                DonHangChiTiet dh_edit = list.get(holder.getAdapterPosition());
+//                SPEditDialog dia = new SPEditDialog(context,list, dh_edit, gioHangVM);
+//                dia.showEditSanPhamDialog();
+//                notifyDataSetChanged();
             }
         });
         holder.ib_Remove.setOnClickListener(new View.OnClickListener() {

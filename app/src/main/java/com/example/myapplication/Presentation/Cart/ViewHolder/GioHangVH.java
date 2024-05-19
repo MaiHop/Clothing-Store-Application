@@ -17,7 +17,8 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Model.DonHangChiTiet;
+import com.example.myapplication.Model2.DonHangChiTiet;
+import com.example.myapplication.Model2.Kho;
 import com.example.myapplication.Presentation.Cart.ViewModel.GioHangVM;
 import com.example.myapplication.R;
 import com.google.android.material.imageview.ShapeableImageView;
@@ -41,21 +42,26 @@ public class GioHangVH extends RecyclerView.ViewHolder {
         init();
     }
     public void updateUI(DonHangChiTiet donHangChiTiet){
-        Picasso.get().load(donHangChiTiet.getSanPham().getImageUrl()).into(iv_Image_cart);
-        Picasso.get().load(donHangChiTiet.getSanPham().getMau().getImgUrl()).into(iv_Color_cart);
+        for(Kho k : donHangChiTiet.getSanPham().getListKho()){
+            if(k.getMau().equals(donHangChiTiet.getMau())){
+                Picasso.get().load(k.getImageURL()).into(iv_Image_cart);
+                Picasso.get().load(donHangChiTiet.getMau().getImageUrl()).into(iv_Color_cart);
+            }
+        }
+
         this.tv_TenSanPham_cart.setText(donHangChiTiet.getSanPham().getTenSanPham());
-        this.tv_Size_cart.setText("Size : "+ donHangChiTiet.getSanPham().getKichThuoc().getTen());
-        this.tv_Mau_cart.setText("Color : "+ donHangChiTiet.getSanPham().getMau().getTen());
+        this.tv_Size_cart.setText("Size : "+ donHangChiTiet.getKichThuoc().getTen());
+        this.tv_Mau_cart.setText("Color : "+ donHangChiTiet.getMau().getTen());
         this.tv_SoLuong_cart.setText("Qty : " + donHangChiTiet.getSoLuong());
         this.tv_ThanhTien_cart.setText("$"+ donHangChiTiet.getThanhTien());
-        this.cb_Selected.setSelected(donHangChiTiet.isChecked());
+        this.cb_Selected.setSelected(true);
     }
 
     public void updateTotal(List<DonHangChiTiet> list, Button button){
         double total = 0;
         int count =0;
         for(DonHangChiTiet donHangChiTiet : list){
-            if(donHangChiTiet.isChecked()){
+            if(cb_Selected.isChecked()){
                 total += donHangChiTiet.getThanhTien();
                 count++;
             }

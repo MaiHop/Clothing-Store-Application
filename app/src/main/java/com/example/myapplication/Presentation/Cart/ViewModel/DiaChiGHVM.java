@@ -19,7 +19,7 @@ public class DiaChiGHVM extends ViewModel {
 
     private void initData(){
         CartRepository res = new CartRepository();
-        listDiaChi = res.getListAddress();
+//        listDiaChi = res.getListAddress();
 
         listDiaChiGHLiveData.setValue(listDiaChi);
     }

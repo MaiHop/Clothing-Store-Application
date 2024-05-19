@@ -18,6 +18,8 @@ public interface DonHang_api {
     @GET("DonHang/get")
     Call<DonHang> getDonHang(@Query("id") Integer id);
 
+    @GET("DonHang/findByidKhachHang")
+    Call<List<DonHang>> findByidKhachHang(@Query("id") Integer id);
     @POST("DonHang/create")
     Call<DonHang> createDonHang(@Body DonHang t);
 

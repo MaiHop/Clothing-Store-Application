@@ -16,17 +16,17 @@ public class SanPhamVM extends ViewModel {
     public SanPhamVM() {
         listSanPhamLiveData = new MutableLiveData<>();
     }
-    public SanPham getSanPham(SanPham sp){
-        CartRepository res = new CartRepository();
-        List<SanPham> list = res.getSanPham();
-        SanPham sanpham = new SanPham();
-        for(SanPham sanPham : list){
-            if(sanPham.getTenSanPham().equals(sp.getTenSanPham())&& sanPham.getMau().getId().equals(sp.getMau().getId()) && sanPham.getKichThuoc().getId().equals(sp.getKichThuoc().getId())){
-                sanpham = sanPham;
-            }
-        }
-        return sanpham;
-    }
+//    public SanPham getSanPham(SanPham sp){
+//        CartRepository res = new CartRepository();
+////        List<SanPham> list = res.getSanPham();
+//        SanPham sanpham = new SanPham();
+//        for(SanPham sanPham : list){
+//            if(sanPham.getTenSanPham().equals(sp.getTenSanPham())&& sanPham.getMau().getId().equals(sp.getMau().getId()) && sanPham.getKichThuoc().getId().equals(sp.getKichThuoc().getId())){
+//                sanpham = sanPham;
+//            }
+//        }
+//        return sanpham;
+//    }
 
 //    @Override
 //    public void getListSanPham(List<SanPham> list) {

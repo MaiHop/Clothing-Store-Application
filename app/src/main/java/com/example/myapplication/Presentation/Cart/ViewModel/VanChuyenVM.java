@@ -19,7 +19,7 @@ public class VanChuyenVM extends ViewModel {
 
     private void initData(){
         CartRepository res = new CartRepository();
-        listVanChuyen = res.getListDelivery();
+//        listVanChuyen = res.getListDelivery();
 
         listVanChuyenLiveData.setValue(listVanChuyen);
     }

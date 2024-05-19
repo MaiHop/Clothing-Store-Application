@@ -97,7 +97,7 @@ public class SPEditDialog {
                         }
                         sp_find.setKichThuoc(kichthuoc);
                         SanPhamVM sp_vm = new SanPhamVM();
-                        sp_find = sp_vm.getSanPham(sp_find);
+//                        sp_find = sp_vm.getSanPham(sp_find);
                         Picasso.get().load(sp_find.getImageUrl()).into(iv_Image_cart);
                         tv_TenSanPham_cart.setText(sp_find.getTenSanPham());
                         tv_SoLuongConLai.setText("Stock : "+sp_find.getSoLuong());
@@ -159,7 +159,7 @@ public class SPEditDialog {
                 donHangChiTiet.setThanhTien(Double.parseDouble(tv_ThanhTien_cart.getText().toString()));
                 donHangChiTiet.setSoLuong(Integer.parseInt(ed_SoLuongDat.getText().toString()));
 
-                gioHangVM.editCart(donHangChiTiet);
+//                gioHangVM.editCart(donHangChiTiet);
                 dialog.hide();
             }
         });

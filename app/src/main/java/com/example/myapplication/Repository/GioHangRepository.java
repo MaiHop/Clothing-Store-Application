@@ -1,6 +1,7 @@
 package com.example.myapplication.Repository;
 
 import com.example.myapplication.Api.DonHangChiTiet_api;
+import com.example.myapplication.Api.DonHang_api;
 import com.example.myapplication.Api.KhachHang_api;
 import com.example.myapplication.Api.ServiceBuilder;
 import com.example.myapplication.Model2.DonHang;
@@ -22,22 +23,20 @@ public class GioHangRepository  {
     }
 
     public void readGioHang(){
-        KhachHang_api api = ServiceBuilder.buildService(KhachHang_api.class);
-        Call<KhachHang> request = api.getKhachHang(2);
-        request.enqueue(new Callback<KhachHang>() {
+        DonHang_api api = ServiceBuilder.buildService(DonHang_api.class);
+        Call<List<DonHang>> request = api.findByidKhachHang(2);
+        request.enqueue(new Callback<List<DonHang>>() {
             @Override
-            public void onResponse(Call<KhachHang> call, Response<KhachHang> response) {
-                List<DonHang> list_dh = response.body().getListDonHang();
-                for(DonHang dh : list_dh){
-                    if (dh.getTrangThai().equals("Prepare")){
+            public void onResponse(Call<List<DonHang>> call, Response<List<DonHang>> response) {
+                for(DonHang dh : response.body()){
+                    if(dh.getTrangThai().equals("Prepare")){
                         gioHangInterface.getGioHang(dh.getListDonHangChiTiet());
                     }
                 }
-
             }
 
             @Override
-            public void onFailure(Call<KhachHang> call, Throwable t) {
+            public void onFailure(Call<List<DonHang>> call, Throwable t) {
 
             }
         });

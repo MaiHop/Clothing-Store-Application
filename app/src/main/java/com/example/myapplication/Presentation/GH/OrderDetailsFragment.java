@@ -31,21 +31,21 @@ public class OrderDetailsFragment extends Fragment {
         View view = inflater.inflate(R.layout.gh_activity_order_detail, container, false);
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
-        recyclerView = view.findViewById(R.id.rvDanhSachDonHang);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-        tvCheckoutTenDiaChiGiaoHang = view.findViewById(R.id.txtTenDiaChiGiaoHang);
-        tvCheckoutDiaChiGiaoHang = view.findViewById(R.id.txtDiaChiGiaoHang);
-        tvCheckoutTenDonViGiaoHang = view.findViewById(R.id.txtDonViGiaoHang);
-        tvCheckoutThoiGianGiaoHang = view.findViewById(R.id.txtThoiGianGiaoHang);
-        tvTenKhuyenMai = view.findViewById(R.id.txtTenKhuyenMai);
-        tvThongTinKhuyenMai = view.findViewById(R.id.txtThongTinKhuyenMai);
-        tvCheckoutPhiDichVu = view.findViewById(R.id.txtPhiDichVu);
-        tvCheckoutPhiGiaoHang = view.findViewById(R.id.txtPhiGiaoHang);
-        tvCheckoutTienThue = view.findViewById(R.id.txtTienThue);
-        tvCheckoutTienKhuyenMai = view.findViewById(R.id.txtTienKhuyenMai);
-        tvCheckoutTongTien = view.findViewById(R.id.txtTongTien);
-        tv_Checkout_ThanhTien = view.findViewById(R.id.txtThanhTien);
+//        recyclerView = view.findViewById(R.id.rvDanhSachDonHang);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+//
+//        tvCheckoutTenDiaChiGiaoHang = view.findViewById(R.id.txtTenDiaChiGiaoHang);
+//        tvCheckoutDiaChiGiaoHang = view.findViewById(R.id.txtDiaChiGiaoHang);
+//        tvCheckoutTenDonViGiaoHang = view.findViewById(R.id.txtDonViGiaoHang);
+//        tvCheckoutThoiGianGiaoHang = view.findViewById(R.id.txtThoiGianGiaoHang);
+//        tvTenKhuyenMai = view.findViewById(R.id.txtTenKhuyenMai);
+//        tvThongTinKhuyenMai = view.findViewById(R.id.txtThongTinKhuyenMai);
+//        tvCheckoutPhiDichVu = view.findViewById(R.id.txtPhiDichVu);
+//        tvCheckoutPhiGiaoHang = view.findViewById(R.id.txtPhiGiaoHang);
+//        tvCheckoutTienThue = view.findViewById(R.id.txtTienThue);
+//        tvCheckoutTienKhuyenMai = view.findViewById(R.id.txtTienKhuyenMai);
+//        tvCheckoutTongTien = view.findViewById(R.id.txtTongTien);
+//        tv_Checkout_ThanhTien = view.findViewById(R.id.txtThanhTien);
 
         // Fetch the order from the arguments
         DonHang donHang = (DonHang) getArguments().getSerializable("DONHANG");
@@ -64,9 +64,9 @@ public class OrderDetailsFragment extends Fragment {
         tv_Checkout_ThanhTien.setText(String.valueOf(donHang.getThanhTien()));
 
         CartRepository repository = new CartRepository();
-        DonHang dh1 = repository.getListDH().get(0); // Assuming you're interested in the first order
+//        DonHang dh1 = repository.getListDH().get(0); // Assuming you're interested in the first order
 
-        adapter = new ODAdapter(dh1.getListDonHangChiTiet());
+//        adapter = new ODAdapter(dh1.getListDonHangChiTiet());
         recyclerView.setAdapter(adapter);
 
         return view;

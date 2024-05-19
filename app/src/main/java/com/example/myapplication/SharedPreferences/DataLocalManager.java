@@ -2,7 +2,7 @@ package com.example.myapplication.SharedPreferences;
 
 import android.content.Context;
 
-import com.example.myapplication.Model.KhachHang;
+import com.example.myapplication.Model2.KhachHang;
 
 public class DataLocalManager {
 

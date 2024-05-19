@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Model.SanPham;
+import com.example.myapplication.Model2.SanPham;
 import com.example.myapplication.Presentation.Wishlist.Adapter.Adapter_Item_BoLoc_WishList;
 import com.example.myapplication.Presentation.Wishlist.Adapter.Adapter_Item_SP_WishList;
 import com.example.myapplication.Presentation.Wishlist.Model.BoLoc_WishList;

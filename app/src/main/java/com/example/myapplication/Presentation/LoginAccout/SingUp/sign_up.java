@@ -172,8 +172,18 @@ public class sign_up extends AppCompatActivity implements KhachHangRepository.Kh
                                                     khachHang.setGioiTinh(0);
                                                     try {
                                                         khachHangRepository.createKhachHang(khachHang);
-                                                    }catch (Exception e){
+//                                                        KhachHang khachHangsave = documentSnapshot.toObject(KhachHang.class);
 
+                                                        // Lưu thông tin vào SharedPreferences
+                                                        DataLocalManager.setUser(khachHang);
+                                                        Intent intent = new Intent(sign_up.this,SP_OTP);
+                                                        intent.putExtra("confirm_code", "sign_up");
+                                                        intent.putExtra("Email", email);
+                                                        intent.putExtra("Password", password);
+                                                        Toast.makeText(sign_up.this,"Mời bạn xác thực bên email của bạn",Toast.LENGTH_SHORT).show();
+                                                        startActivity(intent);
+                                                    }catch (Exception e){
+                                                        Log.e("Firebase", "Failed to write user to database", e);
                                                     }
 //                                                    DocumentReference docRef = database.collection("KhachHang").document(khachHang.getIdKhachHang());
 //                                                    docRef.get().addOnSuccessListener(documentSnapshot -> {
@@ -314,6 +324,11 @@ public class sign_up extends AppCompatActivity implements KhachHangRepository.Kh
 
     @Override
     public void onKhachHangCreated(KhachHang khachHang) {
+
+    }
+
+    @Override
+    public void onKhachHangUpdated(KhachHang khachHang) {
 
     }
 

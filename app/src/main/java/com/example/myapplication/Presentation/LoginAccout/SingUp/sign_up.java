@@ -164,7 +164,10 @@ public class sign_up extends AppCompatActivity implements KhachHangRepository.Kh
                                                 if (task.isSuccessful()) {
                                                     // Tạo dữ liệu người dùng trên Firebase Realtime Database
                                                     khachHangRepository = new KhachHangRepository(sign_up.this);
+//                                                    List<KhachHang> list = khachHangRepository.readAllKhachHang();
+//                                                    int id = list.size()+4;
                                                     KhachHang khachHang = new KhachHang();
+//                                                    khachHang.setIdKhachHang(id);
                                                     khachHang.setUid(user.getUid());
                                                     khachHang.setEmail(user.getEmail());
                                                     khachHang.setTen(user.getDisplayName());
@@ -173,11 +176,10 @@ public class sign_up extends AppCompatActivity implements KhachHangRepository.Kh
                                                     khachHang.setListDonHang(null);
                                                     khachHang.setListDiaChi(null);
                                                     khachHang.setListYeuThich(null);
-                                                    khachHang.setListThanhToan(null);
+//                                                    khachHang.setListThanhToan(null);
+                                                    khachHangRepository.createKhachHang(khachHang);
                                                     try {
-                                                        khachHangRepository.createKhachHang(khachHang);
 //                                                        KhachHang khachHangsave = documentSnapshot.toObject(KhachHang.class);
-
                                                         // Lưu thông tin vào SharedPreferences
                                                         DataLocalManager.setUser(khachHang);
                                                         Intent intent = new Intent(sign_up.this,SP_OTP);
@@ -266,12 +268,31 @@ public class sign_up extends AppCompatActivity implements KhachHangRepository.Kh
                                         public void run() {
                                             loadDialog.dismissDialog();
                                             FirebaseUser user = mAuth.getCurrentUser();
+                                            khachHangRepository = new KhachHangRepository(sign_up.this);
+//                                                    List<KhachHang> list = khachHangRepository.readAllKhachHang();
+//                                                    int id = list.size()+4;
                                             KhachHang khachHang = new KhachHang();
-                                            khachHang.setIdKhachHang(Integer.parseInt(user.getUid()));
+//                                                    khachHang.setIdKhachHang(id);
+                                            khachHang.setUid(user.getUid());
                                             khachHang.setEmail(user.getEmail());
                                             khachHang.setTen(user.getDisplayName());
                                             khachHang.setImageUrl(user.getPhotoUrl().toString());
                                             khachHang.setGioiTinh(0);
+                                            khachHang.setListDonHang(null);
+                                            khachHang.setListDiaChi(null);
+                                            khachHang.setListYeuThich(null);
+//                                                    khachHang.setListThanhToan(null);
+                                            khachHangRepository.createKhachHang(khachHang);
+                                            try {
+//                                                        KhachHang khachHangsave = documentSnapshot.toObject(KhachHang.class);
+                                                // Lưu thông tin vào SharedPreferences
+                                                DataLocalManager.setUser(khachHang);
+                                                Intent intent = new Intent(sign_up.this, Home.class);
+                                                startActivity(intent);
+                                                finish();
+                                            }catch (Exception e){
+                                                Log.e("Firebase", "Failed to write user to database", e);
+                                            }
 //                                            DocumentReference docRef = database.collection("KhachHang").document(khachHang.getIdKhachHang());
 //                                            docRef.get().addOnSuccessListener(documentSnapshot -> {
 //                                                        if (documentSnapshot.exists()) {

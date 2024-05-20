@@ -18,6 +18,8 @@ import com.example.myapplication.Presentation.ButtonNavigation.Home;
 import com.example.myapplication.Presentation.LoginAccout.SignIn.sign_in;
 import com.example.myapplication.Presentation.LoginAccout.SingUp.sign_up;
 import com.example.myapplication.R;
+import com.example.myapplication.Repository.KhachHangRepository;
+import com.example.myapplication.SharedPreferences.DataLocalManager;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -35,8 +37,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 
 import java.util.HashMap;
+import java.util.List;
 
-public class HomeThamGia extends AppCompatActivity {
+public class HomeThamGia extends AppCompatActivity implements KhachHangRepository.KhachHangInterface{
     Button btnSignIn, btnSignUP,btn_signIn_GG,btn_AP,btn_FB;
     TextView tv_error;
     Class<?> sign_up = sign_up.class,
@@ -49,6 +52,8 @@ public class HomeThamGia extends AppCompatActivity {
     int RC_SignIn = 1234;
     Load_Dialog loadDialog = new Load_Dialog(HomeThamGia.this);
     TextView tv_loading;
+
+    KhachHangRepository khachHangRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -141,12 +146,31 @@ public class HomeThamGia extends AppCompatActivity {
                                         public void run() {
                                             loadDialog.dismissDialog();
                                             FirebaseUser user = mAuth.getCurrentUser();
+                                            khachHangRepository = new KhachHangRepository(HomeThamGia.this);
+//                                                    List<KhachHang> list = khachHangRepository.readAllKhachHang();
+//                                                    int id = list.size()+4;
                                             KhachHang khachHang = new KhachHang();
-                                            khachHang.setIdKhachHang(Integer.parseInt(user.getUid()));
+//                                                    khachHang.setIdKhachHang(id);
+                                            khachHang.setUid(user.getUid());
                                             khachHang.setEmail(user.getEmail());
                                             khachHang.setTen(user.getDisplayName());
                                             khachHang.setImageUrl(user.getPhotoUrl().toString());
                                             khachHang.setGioiTinh(0);
+                                            khachHang.setListDonHang(null);
+                                            khachHang.setListDiaChi(null);
+                                            khachHang.setListYeuThich(null);
+//                                                    khachHang.setListThanhToan(null);
+                                            khachHangRepository.createKhachHang(khachHang);
+                                            try {
+//                                                        KhachHang khachHangsave = documentSnapshot.toObject(KhachHang.class);
+                                                // Lưu thông tin vào SharedPreferences
+                                                DataLocalManager.setUser(khachHang);
+                                                Intent intent = new Intent(HomeThamGia.this, Home.class);
+                                                startActivity(intent);
+                                                finish();
+                                            }catch (Exception e){
+                                                Log.e("Firebase", "Failed to write user to database", e);
+                                            }
 //                                            database.collection("KhachHang").document(khachHang.getIdKhachHang())
 //                                                    .set(khachHang)
 //                                                    .addOnSuccessListener(aVoid -> {
@@ -175,5 +199,30 @@ public class HomeThamGia extends AppCompatActivity {
             tv_error.setText("Lỗi hệ thống, xin quý khách đợi hệ thống được Cập Nhật !!!");
             tv_error.setVisibility(View.VISIBLE);
         }
+    }
+
+    @Override
+    public void onKhachHangCreated(KhachHang khachHang) {
+
+    }
+
+    @Override
+    public void onKhachHangUpdated(KhachHang khachHang) {
+
+    }
+
+    @Override
+    public void onAllKhachHangRead(List<KhachHang> khachHangList) {
+
+    }
+
+    @Override
+    public void onError(Throwable t) {
+
+    }
+
+    @Override
+    public void onKhachHangReceived(KhachHang body) {
+
     }
 }

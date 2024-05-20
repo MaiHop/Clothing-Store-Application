@@ -7,7 +7,6 @@ public class KhachHang implements Serializable {
 
     private Integer idKhachHang;
 
-
     private String uid;
     private String imageUrl;
 

@@ -19,7 +19,7 @@ public class YeuThichVM extends ViewModel implements WishListRepository.WishList
 
 //        loadData(); // Load data here from your repository or source
         productListWishLiveData = new MutableLiveData<>();
-        loadData();
+//        loadData();
     }
 
 
@@ -28,9 +28,9 @@ public class YeuThichVM extends ViewModel implements WishListRepository.WishList
 
     }
 
-    private void loadData() {
-       wishListRepository.readWishList();
-    }
+//    private void loadData() {
+//       wishListRepository.readWishList();
+//    }
 //    private void loadData() {
 //        // Assuming you have a repository that provides the data
 //        CartRepository repository = new CartRepository();

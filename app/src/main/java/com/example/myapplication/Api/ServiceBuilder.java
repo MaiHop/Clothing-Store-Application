@@ -19,9 +19,9 @@ public class ServiceBuilder {
 
 //    hung
 //    private static final String URL = "http://192.168.93.189:8080/";
-private static final String URL = "http://192.168.1.10:8081/";
+//private static final String URL = "http://192.168.1.10:8081/";
 //maihop
-//    private static final String URL = "http://192.168.0.111:8080/";
+    private static final String URL = "http://192.168.93.189:8081/";
 
 
 

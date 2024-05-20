@@ -155,14 +155,14 @@ public class sign_in extends AppCompatActivity implements KhachHangRepository.Kh
                             @Override
                             public void run() {
                                 loadDialog.dismissDialog();
-//                                khachHangRepository = new KhachHangRepository(sign_in.this);
-//                                String current = mAuth.getCurrentUser().getUid();
-//                                KhachHang khachHang = khachHangRepository.getKhachHang(current);
-//                                DataLocalManager.setUser(khachHang);
-
-
-//                                        Intent intent = new Intent(sign_in.this, Home.class);
-//                                        startActivity(intent);
+                                khachHangRepository = new KhachHangRepository(sign_in.this);
+                                String current = mAuth.getCurrentUser().getUid();
+                                khachHangRepository.getKhachHang(current);
+                                KhachHang khachHang = new KhachHang();
+                                khachHang.getUid();
+                                DataLocalManager.setUser(khachHang);
+                                Intent intent = new Intent(sign_in.this, Home.class);
+                                startActivity(intent);
 //                                DocumentReference docRef = database.collection("KhachHang").document(mAuth.getCurrentUser().getUid());
 //                                docRef.get().addOnSuccessListener(documentSnapshot -> {
 //                                            if (documentSnapshot.exists()) {
@@ -232,12 +232,31 @@ public class sign_in extends AppCompatActivity implements KhachHangRepository.Kh
                                 public void run() {
                                     loadDialog.dismissDialog();
                                     FirebaseUser user = mAuth.getCurrentUser();
+                                    khachHangRepository = new KhachHangRepository(sign_in.this);
+//                                                    List<KhachHang> list = khachHangRepository.readAllKhachHang();
+//                                                    int id = list.size()+4;
                                     KhachHang khachHang = new KhachHang();
-                                    khachHang.setIdKhachHang(Integer.parseInt(user.getUid()));
+//                                                    khachHang.setIdKhachHang(id);
+                                    khachHang.setUid(user.getUid());
                                     khachHang.setEmail(user.getEmail());
                                     khachHang.setTen(user.getDisplayName());
                                     khachHang.setImageUrl(user.getPhotoUrl().toString());
                                     khachHang.setGioiTinh(0);
+                                    khachHang.setListDonHang(null);
+                                    khachHang.setListDiaChi(null);
+                                    khachHang.setListYeuThich(null);
+//                                                    khachHang.setListThanhToan(null);
+                                    khachHangRepository.createKhachHang(khachHang);
+                                    try {
+//                                                        KhachHang khachHangsave = documentSnapshot.toObject(KhachHang.class);
+                                        // Lưu thông tin vào SharedPreferences
+                                        DataLocalManager.setUser(khachHang);
+                                        Intent intent = new Intent(sign_in.this, Home.class);
+                                        startActivity(intent);
+                                        finish();
+                                    }catch (Exception e){
+                                        Log.e("Firebase", "Failed to write user to database", e);
+                                    }
 //                                    DocumentReference docRef = database.collection("KhachHang").document(khachHang.getIdKhachHang());
 //                                    docRef.get().addOnSuccessListener(documentSnapshot -> {
 //                                                if (documentSnapshot.exists()) {

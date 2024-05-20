@@ -29,6 +29,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.myapplication.Model.KhachHang;
 import com.example.myapplication.Model.SanPham;
 import com.example.myapplication.Model.SanPham_V2;
@@ -266,19 +267,20 @@ public class MyProfile extends AppCompatActivity {
         });
     }
     private void loadUserData() {
-        Picasso.get().load(DataLocalManager.getUser().getImageUrl().toString()).into(img_Avata);
+        Glide.with(this).load(DataLocalManager.getUser().getImageUrl()).into(img_Avata);
+//        Picasso.get().load(DataLocalManager.getUser().getImageUrl()).into(img_Avata);
         txtip_fullname.setText(DataLocalManager.getUser().getTen());
         txtip_email.setText(DataLocalManager.getUser().getEmail());
 //        List<SanPham_V2> spyt = DataLocalManager.getUser().getListYeuThich();
-        int gioiTinhValue = DataLocalManager.getUser().getGioiTinh();
-        String gioiTinhString;
-        if (gioiTinhValue == 0) {
-            gioiTinhString = "Nam";
-        } else {
-            gioiTinhString = "Nữ";
-        }
-        int spinnerPosition = ((ArrayAdapter<String>) spinnerGender.getAdapter()).getPosition(gioiTinhString);
-        spinnerGender.setSelection(spinnerPosition);
+//        int gioiTinhValue = DataLocalManager.getUser().getGioiTinh();
+//        String gioiTinhString;
+//        if (gioiTinhValue == 0) {
+//            gioiTinhString = "Nam";
+//        } else {
+//            gioiTinhString = "Nữ";
+//        }
+//        int spinnerPosition = ((ArrayAdapter<String>) spinnerGender.getAdapter()).getPosition(gioiTinhString);
+//        spinnerGender.setSelection(spinnerPosition);
 //        if (mUser != null) {
 //            DocumentReference docRef = database.collection("users").document(mUser.getUid());
 //            docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {

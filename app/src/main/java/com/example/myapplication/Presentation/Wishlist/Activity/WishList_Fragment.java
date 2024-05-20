@@ -46,13 +46,13 @@ public class WishList_Fragment extends Fragment {
         recyclerViewSP.setLayoutManager(new GridLayoutManager(getContext(), 2));
         recyclerViewSP.setHasFixedSize(true);
         wishlist_VM = new ViewModelProvider(this).get(YeuThichVM.class);
-        wishlist_VM.getProductListWishLiveData().observe(getViewLifecycleOwner(), wishlists -> {
-            if(!(wishlists.isEmpty())){
-                list = wishlists;
-                Adapter_Item_SP_WishList adapterItemSpWishList = new Adapter_Item_SP_WishList(getContext(),wishlists,title,wishlist_VM);
-                recyclerViewSP.setAdapter(adapterItemSpWishList);
-            }
-        });
+//        wishlist_VM.getProductListWishLiveData().observe(getViewLifecycleOwner(), wishlists -> {
+//            if(!(wishlists.isEmpty())){
+//                list = wishlists;
+//                Adapter_Item_SP_WishList adapterItemSpWishList = new Adapter_Item_SP_WishList(getContext(),wishlists,title,wishlist_VM);
+//                recyclerViewSP.setAdapter(adapterItemSpWishList);
+//            }
+//        });
 
         return view;
     }

@@ -42,7 +42,7 @@ public class WishListVH extends RecyclerView.ViewHolder{
 //        this.tenSP.setText(sanPham.getTenSanPham());
         this.tenSP.setText(sanPham.getTenSanPham());
 //        this.giaSP.setText(decimalFormat.format(sanPham.getGiaban())+" VND");
-        this.giaSP.setText(decimalFormat.format(sanPham.getListKho().get(0).getImageURL())+" VND");
+//        this.giaSP.setText(decimalFormat.format(sanPham.getListKho().get(0).getImageURL())+" VND");
 
 
     }

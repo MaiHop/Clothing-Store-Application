@@ -63,7 +63,7 @@ public class sign_up extends AppCompatActivity implements KhachHangRepository.Kh
     GoogleSignInClient mGoogleSignInClinet;
     int RC_SignIn = 1234;
     Load_Dialog loadDialog = new Load_Dialog(sign_up.this);
-    private KhachHangRepository khachHangRepository;
+    KhachHangRepository khachHangRepository;
 
 
     @Override
@@ -343,6 +343,11 @@ public class sign_up extends AppCompatActivity implements KhachHangRepository.Kh
 
     @Override
     public void onError(Throwable t) {
+
+    }
+
+    @Override
+    public void onKhachHangReceived(KhachHang body) {
 
     }
 }

@@ -18,7 +18,9 @@ import com.example.myapplication.Model2.KhachHang;
 import com.example.myapplication.Presentation.ButtonNavigation.Home;
 import com.example.myapplication.Presentation.LoginAccout.ForgotPass.forgot_password;
 import com.example.myapplication.Presentation.LoginAccout.Load_Dialog;
+import com.example.myapplication.Presentation.LoginAccout.SingUp.sign_up;
 import com.example.myapplication.R;
+import com.example.myapplication.Repository.KhachHangRepository;
 import com.example.myapplication.SharedPreferences.DataLocalManager;
 import com.example.myapplication.UI.MainActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -40,8 +42,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 
 import java.util.HashMap;
+import java.util.List;
 
-public class sign_in extends AppCompatActivity {
+public class sign_in extends AppCompatActivity implements KhachHangRepository.KhachHangInterface{
     ImageView imagePack;
     TextView tv_forgotPW, tv_error;
     Button btn_signIn,
@@ -55,6 +58,9 @@ public class sign_in extends AppCompatActivity {
     GoogleSignInClient mGoogleSignInClinet;
     int RC_SignIn = 1234;
     Load_Dialog loadDialog = new Load_Dialog(sign_in.this);
+
+    KhachHangRepository khachHangRepository;
+
 
 
 
@@ -149,25 +155,31 @@ public class sign_in extends AppCompatActivity {
                             @Override
                             public void run() {
                                 loadDialog.dismissDialog();
+//                                khachHangRepository = new KhachHangRepository(sign_in.this);
+//                                String current = mAuth.getCurrentUser().getUid();
+//                                KhachHang khachHang = khachHangRepository.getKhachHang(current);
+//                                DataLocalManager.setUser(khachHang);
+
+
 //                                        Intent intent = new Intent(sign_in.this, Home.class);
 //                                        startActivity(intent);
-                                DocumentReference docRef = database.collection("KhachHang").document(mAuth.getCurrentUser().getUid());
-                                docRef.get().addOnSuccessListener(documentSnapshot -> {
-                                            if (documentSnapshot.exists()) {
-
-                                                KhachHang khachHangsave = documentSnapshot.toObject(KhachHang.class);
-
-                                                // Lưu thông tin vào SharedPreferences
-                                                DataLocalManager.setUser(khachHangsave);
-
-                                                Intent intent = new Intent(sign_in.this, Home.class);
-                                                startActivity(intent);
-                                                finish();
-                                            }
-                                        })
-                                        .addOnFailureListener(e -> {
-                                            Log.e("Firebase", "Failed to write user to database", e);
-                                        });
+//                                DocumentReference docRef = database.collection("KhachHang").document(mAuth.getCurrentUser().getUid());
+//                                docRef.get().addOnSuccessListener(documentSnapshot -> {
+//                                            if (documentSnapshot.exists()) {
+//
+//                                                KhachHang khachHangsave = documentSnapshot.toObject(KhachHang.class);
+//
+//                                                // Lưu thông tin vào SharedPreferences
+//                                                DataLocalManager.setUser(khachHangsave);
+//
+//                                                Intent intent = new Intent(sign_in.this, Home.class);
+//                                                startActivity(intent);
+//                                                finish();
+//                                            }
+//                                        })
+//                                        .addOnFailureListener(e -> {
+//                                            Log.e("Firebase", "Failed to write user to database", e);
+//                                        });
                             }
                         },1000);
                     }
@@ -260,5 +272,30 @@ public class sign_in extends AppCompatActivity {
             tv_error.setText("Lỗi hệ thống, xin quý khách đợi hệ thống được Cập Nhật !!!");
             tv_error.setVisibility(View.VISIBLE);
         }
+    }
+
+    @Override
+    public void onKhachHangCreated(KhachHang khachHang) {
+
+    }
+
+    @Override
+    public void onKhachHangUpdated(KhachHang khachHang) {
+
+    }
+
+    @Override
+    public void onAllKhachHangRead(List<KhachHang> khachHangList) {
+
+    }
+
+    @Override
+    public void onError(Throwable t) {
+
+    }
+
+    @Override
+    public void onKhachHangReceived(KhachHang body) {
+
     }
 }

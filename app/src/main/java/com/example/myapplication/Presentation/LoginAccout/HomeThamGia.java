@@ -164,10 +164,24 @@ public class HomeThamGia extends AppCompatActivity implements KhachHangRepositor
                                             try {
 //                                                        KhachHang khachHangsave = documentSnapshot.toObject(KhachHang.class);
                                                 // Lưu thông tin vào SharedPreferences
-                                                DataLocalManager.setUser(khachHang);
-                                                Intent intent = new Intent(HomeThamGia.this, Home.class);
-                                                startActivity(intent);
-                                                finish();
+//                                                        DataLocalManager.setUser(khachHang);
+//                                                        Intent intent = new Intent(sign_up.this,SP_OTP);
+//                                                        intent.putExtra("confirm_code", "sign_up");
+//                                                        intent.putExtra("Email", email);
+//                                                        intent.putExtra("Password", password);
+//                                                        Toast.makeText(sign_up.this,"Mời bạn xác thực bên email của bạn",Toast.LENGTH_SHORT).show();
+//                                                        startActivity(intent);
+
+                                                database.collection("KhachHang").document(khachHang.getUid())
+                                                        .set(khachHang)
+                                                        .addOnSuccessListener(aVoid -> {
+                                                            DataLocalManager.setUser(khachHang);
+                                                            Intent intent = new Intent(HomeThamGia.this, Home.class);
+                                                            startActivity(intent);
+                                                        })
+                                                        .addOnFailureListener(e -> {
+                                                            Log.e("Firebase", "Failed to write user to database", e);
+                                                        });
                                             }catch (Exception e){
                                                 Log.e("Firebase", "Failed to write user to database", e);
                                             }
@@ -175,7 +189,7 @@ public class HomeThamGia extends AppCompatActivity implements KhachHangRepositor
 //                                                    .set(khachHang)
 //                                                    .addOnSuccessListener(aVoid -> {
 //                                                        Intent intent = new Intent(HomeThamGia.this, Home.class);
-//                                                        startActivity(intent);
+////                                                        startActivity(intent);
 //                                                    })
 //                                                    .addOnFailureListener(e -> {
 //                                                        Log.e("Firebase", "Failed to write user to database", e);

@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.Model2.KhachHang;
 import com.example.myapplication.Presentation.ButtonNavigation.Home;
 import com.example.myapplication.Presentation.LoginAccout.ForgotPass.forgot_password;
+import com.example.myapplication.Presentation.LoginAccout.HomeThamGia;
 import com.example.myapplication.Presentation.LoginAccout.Load_Dialog;
 import com.example.myapplication.Presentation.LoginAccout.SingUp.sign_up;
 import com.example.myapplication.R;
@@ -250,10 +251,24 @@ public class sign_in extends AppCompatActivity implements KhachHangRepository.Kh
                                     try {
 //                                                        KhachHang khachHangsave = documentSnapshot.toObject(KhachHang.class);
                                         // Lưu thông tin vào SharedPreferences
-                                        DataLocalManager.setUser(khachHang);
-                                        Intent intent = new Intent(sign_in.this, Home.class);
-                                        startActivity(intent);
-                                        finish();
+//                                                        DataLocalManager.setUser(khachHang);
+//                                                        Intent intent = new Intent(sign_up.this,SP_OTP);
+//                                                        intent.putExtra("confirm_code", "sign_up");
+//                                                        intent.putExtra("Email", email);
+//                                                        intent.putExtra("Password", password);
+//                                                        Toast.makeText(sign_up.this,"Mời bạn xác thực bên email của bạn",Toast.LENGTH_SHORT).show();
+//                                                        startActivity(intent);
+
+                                        database.collection("KhachHang").document(khachHang.getUid())
+                                                .set(khachHang)
+                                                .addOnSuccessListener(aVoid -> {
+                                                    DataLocalManager.setUser(khachHang);
+                                                    Intent intent = new Intent(sign_in.this, Home.class);
+                                                    startActivity(intent);
+                                                })
+                                                .addOnFailureListener(e -> {
+                                                    Log.e("Firebase", "Failed to write user to database", e);
+                                                });
                                     }catch (Exception e){
                                         Log.e("Firebase", "Failed to write user to database", e);
                                     }

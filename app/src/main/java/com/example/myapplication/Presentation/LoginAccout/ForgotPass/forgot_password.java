@@ -19,8 +19,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.Presentation.LoginAccout.Load_Dialog;
 import com.example.myapplication.Presentation.LoginAccout.OTP.SP_OTP;
 import com.example.myapplication.R;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -28,6 +30,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class forgot_password extends AppCompatActivity {
     TextInputEditText txtip_email_forgot;
@@ -71,24 +76,28 @@ public class forgot_password extends AppCompatActivity {
                 Email = txtip_email_forgot.getText().toString().trim();
                 if (!TextUtils.isEmpty(Email)){
                     if(isValidEmail(Email)){
-                        DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("KhachHang");
-                        usersRef.orderByChild("email").equalTo(Email).addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(DataSnapshot dataSnapshot) {
-                                if (dataSnapshot.exists()) {
-                                    ResetPassWord();
-                                } else {
-                                    tv_error.setText("Email này chưa được đăng ký !!!");
-                                    tv_error.setVisibility(View.VISIBLE);
-                                }
-                            }
+                        FirebaseFirestore db = FirebaseFirestore.getInstance();
+                        CollectionReference usersRef = db.collection("KhachHang");
 
-                            @Override
-                            public void onCancelled(DatabaseError databaseError) {
-                                // Xử lý lỗi nếu có
-                                Log.e(TAG, "Lỗi khi kiểm tra email: " + databaseError.getMessage());
-                            }
-                        });
+                        usersRef.whereEqualTo("email", Email).get()
+                                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                        if (task.isSuccessful()) {
+                                            if (!task.getResult().isEmpty()) {
+                                                // Email exists in the database, call ResetPassWord()
+                                                ResetPassWord();
+                                            } else {
+                                                // Email does not exist, show error message
+                                                tv_error.setText("Email này chưa được đăng ký !!!");
+                                                tv_error.setVisibility(View.VISIBLE);
+                                            }
+                                        } else {
+                                            // Handle the error
+                                            Log.e(TAG, "Lỗi khi kiểm tra email: ", task.getException());
+                                        }
+                                    }
+                                });
                     }
                     else {
                         tv_error.setText("Email sai định dạng !!!");

@@ -40,8 +40,8 @@ public class Account_Fragment extends Fragment {
         initUI();
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         FirebaseUser mUser = mAuth.getCurrentUser();
-//        Picasso.get().load(mUser.getPhotoUrl().toString()).into(img_account);
-        Glide.with(this).load(DataLocalManager.getUser().getImageUrl()).into(img_account);
+        Picasso.get().load(mUser.getPhotoUrl().toString()).into(img_account);
+//        Glide.with(this).load(DataLocalManager.getUser().getImageUrl().toString()).into(img_account);
 
         tv_nameAccount.setText(mUser.getDisplayName());
         tv_mailAccount.setText(mUser.getEmail());

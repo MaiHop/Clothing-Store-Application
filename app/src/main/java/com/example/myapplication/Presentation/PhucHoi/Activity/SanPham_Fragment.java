@@ -14,6 +14,9 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.myapplication.Model.NhomSP;
 import com.example.myapplication.Model.SanPham;
 import com.example.myapplication.Presentation.PhucHoi.Apdapter.NhomSPAdapter;
@@ -45,6 +48,12 @@ public class SanPham_Fragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = getActivity().getLayoutInflater().inflate(R.layout.hoi_homepage, container, false);
 //        Toast.makeText(getContext(), "userID: "+userId, Toast.LENGTH_SHORT).show();
+        ArrayList<SlideModel> imageList = new ArrayList<>(); // Create image list
+        imageList.add(new SlideModel(R.drawable.hoi_slider1, ScaleTypes.CENTER_INSIDE));
+        imageList.add(new SlideModel(R.drawable.hoi_slider2,ScaleTypes.CENTER_INSIDE));
+        imageList.add(new SlideModel(R.drawable.hoi_slider3,ScaleTypes.CENTER_INSIDE));
+        ImageSlider imageSlider = view.findViewById(R.id.image_slider);
+        imageSlider.setImageList(imageList);
         recyclerView1 = view.findViewById(R.id.view2);
         recyclerView1.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
 

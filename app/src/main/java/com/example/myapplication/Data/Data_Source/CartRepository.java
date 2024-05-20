@@ -286,7 +286,7 @@ public class CartRepository {
         NhomSP nhomSP1 = new NhomSP();
         nhomSP1.setId("2");
         nhomSP1.setTen("Nữ");
-        nhomSP1.setImageURL("https://image.uniqlo.com/UQ/ST3/vn/imagesgoods/471281/item/vngoods_09_471281.jpg?width=750");
+        nhomSP1.setImageURL("https://image.uniqlo.com/UQ/ST3/vn/imagesgoods/465756/item/vngoods_00_465756.jpg?width=750s");
         nhomSP1.setListLoaiSP(this.getListLoaiSP());
 
 

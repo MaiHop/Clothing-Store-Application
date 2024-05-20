@@ -25,17 +25,9 @@ public class SanPhamNewVM extends ViewModel {
 
     }
     private void loadData() {
-        // Assuming you have a repository that provides the data
         CartRepository repository = new CartRepository();
         List<SanPham> allProducts = repository.getSanPham();
-        int totalProducts = allProducts.size();
-        // Khởi tạo danh sách sản phẩm theo thứ tự ngược
-        List<SanPham> reversedProducts = new ArrayList<>();
-        for (int i = totalProducts - 1; i >= 0; i--) {
-            reversedProducts.add(allProducts.get(i));
-        }
-        // Đặt danh sách sản phẩm theo thứ tự ngược vào LiveData
-        productListLiveData.setValue(reversedProducts);
+        productListLiveData.setValue(allProducts);
 
     }
 

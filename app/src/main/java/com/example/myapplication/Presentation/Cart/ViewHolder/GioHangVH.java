@@ -45,7 +45,6 @@ public class GioHangVH extends RecyclerView.ViewHolder {
         for(Kho k : donHangChiTiet.getSanPham().getListKho()){
             if(k.getMau().getIdMau().equals(donHangChiTiet.getMau().getIdMau())){
                 Picasso.get().load(k.getImageURL()).into(iv_Image_cart);
-                Picasso.get().load(k.getMau().getImageUrl()).into(iv_Color_cart);
 
             }
         }

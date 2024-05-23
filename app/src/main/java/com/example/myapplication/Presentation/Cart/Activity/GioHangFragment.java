@@ -98,7 +98,6 @@ public class GioHangFragment extends Fragment {
         btn_DatHang = view.findViewById(R.id.btn_DatHang);
         toolbar_cart = view.findViewById(R.id.toolbar_cart);
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar_cart);
-        toolbar_cart.setLogo(R.drawable.mh_baseline_check_box_outline_blank_24);
         btn_DatHang.setOnClickListener(v -> dathang());
     }
 }

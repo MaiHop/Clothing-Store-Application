@@ -113,8 +113,7 @@ public class GioHangActivity extends AppCompatActivity {
         this.toolbar_title = findViewById((R.id.toolbar_cart_title));
         this.btn_DatHang = findViewById(R.id.btn_DatHang);
         this.toolbar_cart = findViewById(R.id.toolbar_cart);
-        setSupportActionBar(toolbar_cart);
-        toolbar_cart.setLogo(R.drawable.mh_baseline_check_box_outline_blank_24);
+        setSupportActionBar(toolbar_cart);  
 
 
 

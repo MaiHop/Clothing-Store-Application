@@ -5,5 +5,5 @@
         android:title="add"
         android:id="@+id/item_cho_inf_add"
         app:showAsAction="ifRoom"
-        android:icon="@drawable/mh_baseline_check_box_outline_blank_24"/>
+        android:icon="@drawable/baseline_add_24"/>
 </menu>

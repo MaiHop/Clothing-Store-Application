@@ -43,7 +43,7 @@ public class ThanhToanActivity extends AppCompatActivity {
         setContentView(R.layout.mh_activity_checkout);
 
         init();
-        loadinfo();
+//        loadinfo();
     }
 
     private void loadinfo() {

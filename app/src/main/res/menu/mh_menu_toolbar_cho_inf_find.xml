@@ -5,5 +5,5 @@
         android:title="find"
         android:id="@+id/item_cho_inf_find"
         app:showAsAction="ifRoom"
-        android:icon="@drawable/mh_baseline_check_box_outline_blank_24"/>
+        android:icon="@drawable/search"/>
 </menu>
